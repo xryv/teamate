@@ -1,0 +1,17 @@
+# Dependencies
+/node_modules
+/package-lock.json
+
+# Environment Variables
+.env
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Production
+/build
+
+# Misc
+/.pnp
+.pnp.js

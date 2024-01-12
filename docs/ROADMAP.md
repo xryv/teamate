@@ -33,7 +33,7 @@ Teamate est une plateforme de réseau social conçue pour les gamers, permettant
 - Chaque membre du groupe doit créer au minimum :
   - Une interface web de consultation.
   - Une interface web de gestion (Création, Modification, Suppression).
-- Utiliser HTML5, CSS3, Tailwind ou autre librairie/framework. SASS est optionnel.
+- Utiliser HTML5, SASS, Tailwind ou autre librairie/framework.
 - Assurer que les IHM soient ergonomiques et testées sur différents périphériques.
 - Appliquer et factoriser les styles.
 - Les pages web doivent respecter les normes W3C et la charte graphique de l'entreprise.
