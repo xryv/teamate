@@ -1,0 +1,10 @@
+// Sidebar Styles
+.sidebar {
+    padding: 20px; 
+    background-color: $main-background-color;
+
+    .image-right {
+        max-width: 100%; 
+        height: auto; 
+    }
+}
