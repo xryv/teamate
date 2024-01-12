@@ -41,13 +41,78 @@ npm start
 
 ## Structure du Projet
 
-- `src/components`: Contient des composants UI comme Header, Footer et composants partagés.
-- `src/pages`: Contient les différentes pages de l'application telles que Accueil, Profil, etc.
-- `src/assets`: Stocke les assets statiques comme les images, icônes et styles.
-- `src/routes`: Gère la configuration du routage pour l'application.
-- `src/services`: Contient la logique de service, y compris les appels API et la gestion des données.
-- `src/hooks`: Hooks React personnalisés pour diverses fonctionnalités.
-- `src/store`: Configuration du store Redux (si Redux est utilisé).
+
+Le projet Teamate est structuré de manière claire et logique, favorisant une séparation des préoccupations et une maintenabilité accrue. Voici un aperçu détaillé de la structure du répertoire:
+
+```
+teamate/
+│
+├── src/
+│   ├── assets/          # Ressources statiques et médias
+│   │   ├── icons/       # Icônes SVG, favicon, etc.
+│   │   └── images/      # Images et photographies
+│   │
+│   ├── components/      # Composants UI réutilisables
+│   │   ├── footer.html  # Pied de page commun
+│   │   ├── header.html  # En-tête du site
+│   │   └── nav.html     # Barre de navigation
+│   │
+│   ├── features/        # Fonctionnalités spécifiques du projet
+│   │
+│   ├── pages/           # Pages HTML individuelles
+│   │   ├── home.html    # Page d'accueil
+│   │   └── profile.html # Page de profil utilisateur
+│   │
+│   ├── scripts/         # Scripts JavaScript pour l'interactivité
+│   │   └── main.js      # Point d'entrée du JavaScript
+│   │
+│   └── styles/          # Styles SCSS et CSS
+│       ├── main.scss    # Style principal
+│       ├── output.css   # CSS généré par SCSS
+│       ├── style.scss   # Fichiers de style supplémentaires
+│       ├── tailwind.css # Importations Tailwind
+│       │
+│       ├── abstracts/   # SCSS utilitaires, mixins et variables
+│       │   ├── _mixins.scss
+│       │   └── _variables.scss
+│       │
+│       ├── base/        # Styles de base, comme les réinitialisations
+│       │   └── _body.scss
+│       │
+│       ├── components/  # Styles des composants
+│       │   └── responsive.scss
+│       │
+│       ├── layout/      # Styles de mise en page, header, footer, etc.
+│       │   ├── _footer.scss
+│       │   ├── _header.scss
+│       │   └── _sidebar.scss
+│       │
+│       ├── pages/       # Styles spécifiques aux pages
+│       │   ├── _contact.scss
+│       │   ├── _formation.scss
+│       │   ├── _index.scss
+│       │   ├── _references.scss
+│       │   └── _temoignages.scss
+│       │
+│       └── utilities/   # Classes utilitaires et helpers SCSS
+```
+
+### Explication de la Structure
+
+- **`src/assets/`**: Ce répertoire contient toutes les ressources statiques comme les images et les icônes, qui seront utilisées sur l'ensemble du site.
+
+- **`src/components/`**: Ici, vous trouverez des morceaux de HTML réutilisables qui forment les blocs de construction de l'interface utilisateur, tels que les en-têtes, pieds de page, et barres de navigation.
+
+- **`src/pages/`**: Chaque fichier HTML représente une page distincte de l'application. Ils utilisent les composants pour construire l'interface complète de chaque page.
+
+- **`src/scripts/`**: Les fichiers JavaScript nécessaires pour rendre le site interactif sont situés ici. Le fichier `main.js` sert de point d'entrée pour le JavaScript utilisé sur le site.
+
+- **`src/styles/`**: Contient les fichiers SCSS qui sont compilés en CSS. Les dossiers internes organisent les styles en groupes logiques, par exemple `abstracts` pour les variables et mixins, `base` pour les styles de base, `components` pour les styles spécifiques aux composants, `layout` pour la mise en page générale, et `pages` pour les styles propres à chaque page.
+
+Chaque répertoire et fichier a été conçu avec l'intention de rendre le développement aussi intuitif et efficace que possible, en suivant les meilleures pratiques de l'industrie.
+```
+
+
 
 ## Construit Avec
 
@@ -250,4 +315,3 @@ Ajoutez des scripts pour faciliter le linting et le formatage :
 
 ---
 
-Ce README est conçu pour guider les développeurs, en particulier les juniors, à travers toutes les étapes du développement du projet Teamate. Suivre ces instructions aidera à maintenir la cohérence et la qualité tout au long du développement.
