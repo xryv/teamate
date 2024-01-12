@@ -112,10 +112,22 @@ Pour contribuer au projet Teamate, suivez ces étapes simples et claires :
 
 Nous utilisons SemVer pour le versioning. Pour les versions disponibles, consultez les tags sur ce dépôt.
 
-## Auteurs
+## Auteurs et Contributions
 
-- Bruno Cerqueira - Travail initial - Teamate
-- Voir aussi la liste des contributeurs qui ont participé à ce projet.
+**Bruno** - *Authentification et Sécurité des Utilisateurs*
+- Responsable du développement des fonctionnalités d'authentification, y compris la connexion/déconnexion, l'enregistrement, la récupération de mot de passe, et l'implémentation de mesures de sécurité pour les comptes utilisateurs.
+- Intégration de protocoles d'authentification robustes et de services d'authentification tiers.
+
+**Alex** - *Gestion et Personnalisation de Profil*
+- Conception de la fonctionnalité permettant aux utilisateurs de créer et de personnaliser leurs profils, d'ajouter des informations personnelles, des préférences de jeux, et d'intégrer des comptes de jeux externes.
+- Création d'une interface utilisateur pour l'édition de profil et mise en place de la logique backend nécessaire.
+
+**Yusuf** - *Interaction Sociale et Fonctionnalités de Réseautage*
+- Développement des fonctionnalités sociales permettant aux utilisateurs de se connecter, d'interagir, de suivre, d'envoyer des messages et de créer des groupes ou des communautés de jeux.
+
+**Vero** - *Moteur de Recherche et de Recommandation*
+- Mise en place d'un système de recherche et de recommandation permettant aux utilisateurs de trouver d'autres joueurs et de suggérer des amis ou des jeux basés sur les préférences et activités des utilisateurs.
+
 
 ## Licence
 
@@ -127,43 +139,95 @@ Ce projet est sous licence MIT - voir le fichier LICENSE.md pour plus de détail
 - Inspiration
 - etc
 
-## Préparation du Boilerplate pour Teamate
 
-Créez une nouvelle application :
+### Création de l'Application
+
+Pour commencer, créez le squelette de votre application en utilisant les technologies choisies :
 
 ```bash
-npx create-your-app teamate
+mkdir teamate && cd teamate
 ```
 
-Configurez le contrôle de version :
+*Note : Nous créons le dossier manuellement, car ce n'est pas une application React, donc `create-your-app` n'est pas nécessaire.*
+
+### Configuration du Contrôle de Version
+
+Initialisez Git pour gérer les versions de votre projet :
 
 ```bash
-cd teamate
 git init
 ```
 
-Installez les packages essentiels :
+### Installation des Packages Essentiels
+
+Installez Tailwind CSS et ses dépendances pour un design responsive et personnalisable :
 
 ```bash
 npm install tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
 
-Configurez Linting et Formatage :
+### Mise en Place du Linting et du Formatage
+
+Configurez ESLint pour maintenir la qualité du code :
 
 ```bash
 npx eslint --init
+```
+
+Puis, configurez Prettier pour uniformiser le formatage :
+
+```bash
 echo "{\n  \"semi\": false,\n  \"singleQuote\": true\n}" > .prettierrc
 ```
 
-Ajoutez des scripts dans package.json :
+### Configuration des Scripts dans package.json
+
+Ajoutez des scripts pour faciliter le linting et le formatage :
 
 ```json
 "scripts": {
-  "lint": "eslint .",
-  "format": "prettier --write ."
+  "start": "serve .",
+  "lint": "eslint '*/**/*.js'",
+  "format": "prettier --write '**/*.{html,scss,js}'"
 }
 ```
+
+*Note : Le script `start` sert à lancer un serveur local pour tester l'application.*
+
+### Organisation du Projet pour l'Évolutivité
+
+- Créez une structure de dossiers cohérente et intuitive :
+
+  ```bash
+  mkdir src && cd src
+  mkdir assets components layouts pages styles utils
+  cd ..
+  ```
+
+- Dans `src/assets`, stockez les images, icônes et autres ressources statiques.
+- Les composants réutilisables se placent dans `src/components`.
+- Pour les feuilles de style SCSS globales et de configuration Tailwind, utilisez `src/styles`.
+- `src/pages` contiendra le HTML pour chaque page de votre application.
+- `src/utils` est dédié aux fonctions JavaScript utilitaires.
+
+### Documentation et Repository
+
+- Créez un dossier `docs` pour votre documentation :
+
+  ```bash
+  mkdir docs
+  ```
+
+- Documentez chaque aspect de l'application, y compris les décisions de conception, les configurations et l'utilisation des composants.
+
+### Engagement pour les Bonnes Pratiques de Développement
+
+- Adoptez une approche **Mobile First** lors de la conception de l'interface utilisateur.
+- Suivez les principes de **code propre** : clarté, utilisation de composants réutilisables et évitement de la duplication.
+- Utilisez **Git Flow** pour la gestion des branches : développement de fonctionnalités, corrections et déploiements.
+- Assurez-vous que le code est bien commenté et que chaque fonction, composant et classe dispose d'une documentation appropriée.
+
 
 **Organisez la Structure du Projet** :
 
