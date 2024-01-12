@@ -110,7 +110,7 @@ teamate/
 - **`src/styles/`**: Contient les fichiers SCSS qui sont compilés en CSS. Les dossiers internes organisent les styles en groupes logiques, par exemple `abstracts` pour les variables et mixins, `base` pour les styles de base, `components` pour les styles spécifiques aux composants, `layout` pour la mise en page générale, et `pages` pour les styles propres à chaque page.
 
 Chaque répertoire et fichier a été conçu avec l'intention de rendre le développement aussi intuitif et efficace que possible, en suivant les meilleures pratiques de l'industrie.
-```
+
 
 
 
