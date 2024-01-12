@@ -4,45 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/style/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/src/styles/output.css">
 </head>
 
 <body>
-    <div class="bg-ctn">
+    <div class="container">
         <header>
-            <nav class="navbar">
-                <div class="left-nav">
-                    <div id="div-home" class="div-icons">
-                        <a class="active" class="hover" href="#"><img class="active-img" src="src/tabler_home.svg"
-                                alt="Accueil"></a>
+            <nav>
+                <div>
+                    <div id="div-home">
+                        <a class="text-red-500" href="#"><img src="src/tabler_home.svg" alt="Accueil">accueil</a>
                         <span id="home"></span>
                     </div>
-                    <div id="div-search" class="div-icons">
-                        <a class="active" href="#"><img src="src/material-symbols-light_search.svg" alt="Recherche"></a>
+                    <div id="div-search">
+                        <a href="#"><img src="src/material-symbols-light_search.svg" alt="Recherche"></a>
                         <span id="search"></span>
                     </div>
 
-                    <div id="div-event" class="div-icons">
+                    <div id="div-event">
 
-                        <a class="active" href="#"><img src="src/material-symbols-light_event-outline.svg"
-                                alt="Evenement"></a>
+                        <a href="#"><img src="src/material-symbols-light_event-outline.svg" alt="Evenement"></a>
                         <span id="event"></span>
                     </div>
 
-                    <div id="div-browse" class="div-icons">
-                        <a class="active" href="#"><img src="src/material-symbols-light_browse-outline.svg"
-                                alt='Parcourir'></a>
+                    <div id="div-browse">
+                        <a href="#"><img src="src/material-symbols-light_browse-outline.svg" alt='Parcourir'></a>
                         <span id="browse"></span>
                     </div>
                 </div>
 
-                <div class="center-nav">
+                <div>
                     <a href="#"><img src="src/logo.svg" alt=""></a>
                 </div>
-                <div class="right-nav">
+                <div>
 
                     <button id="re" type="button"><img src="src/mateam.svg" alt="team"></button>
 
@@ -58,9 +56,6 @@
             </nav>
         </header>
     </div>
-
-    <script src="public/JavaScript/script.js"></script>
-
 </body>
 
 </html>
