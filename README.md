@@ -1,7 +1,3 @@
-Based on the example of the "Aethereal Nexus" README, I'll create a comprehensive README for the "Teamate" project in French, adapted to fit the specifics of your project, including the technology stack (HTML, SCSS, Tailwind, JavaScript) and best practices for junior developers.
-
----
-
 # Teamate
 
 Teamate est une application moderne, conçue pour être un point de départ robuste pour des projets de développement web. Ce boilerplate intègre les meilleures pratiques et les dernières technologies pour garantir une expérience de développement fluide.
