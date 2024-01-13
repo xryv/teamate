@@ -10,25 +10,47 @@
     </head>
     <body>
         <!-- En-tête du site -->
-        <header>
-            <nav>
-                <!-- Barre de navigation -->
+        <header class="header">
+            <!-- Header-contaier ### src\components\header.html -->
+            <div class="header-container">
+                <img src="logo.png" alt="Logo Teamate" class="logo"> 
+                <!-- La navigation est incluse ici -->
+                <!--#include virtual="nav.html" -->
+            </div>
+
+            <!-- Navigation ### \src\components\nav.html -->
+            <nav class="navbar">
+                <ul class="nav-list">
+                    <li><a href="accueil.html">Accueil</a></li>
+                    <li><a href="recherche.html">Recherche</a></li>
+                    <li><a href="evenement.html">Evenement</a></li>
+                    <li><a href="parcourir.html">Parcourir</a></li>
+                    <!-- Ajoutez d'autres liens de navigation au besoin -->
+
+                    <!-- partie login -->
+                    <li><a href="inscription.html">Incrivez-vous</a></li>
+                    <li><a href="connexion.html">Connectez-vous</a></li>                   
+                </ul>    
             </nav>
+
         </header>
 
         <!-- Section principale -->
-        <main>
-            <!-- Formulaire de connexion -->
-            <section id="login">
-                <form>
-                    <!-- Champs de formulaire -->
-                </form>
-            </section>
+        <main>           
+            <!-- -->
+            <!-- -->
+            <!-- -->
+            <!-- -->
+            <!-- -->
+            <!-- -->
         </main>
 
-        <!-- Pied de page -->
-        <footer>
-            <!-- Informations de contact, droits d'auteur -->
+        <!-- Pied de page ### src\components\footer.html -->
+        <footer class="footer">
+            <div class="container">
+                <span>&copy; 2024 Teamate. Tous droits réservés.</span>
+                <!-- Ajoutez ici d'autres éléments du pied de page si nécessaire -->
+            </div>
         </footer>
 
         <script src="src/scripts/index.js"></script>
