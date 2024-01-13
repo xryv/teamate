@@ -37,12 +37,25 @@
 
         <!-- Section principale -->
         <main>           
-            <!-- -->
-            <!-- -->
-            <!-- -->
-            <!-- -->
-            <!-- -->
-            <!-- -->
+            <!-- Section de réinitialisation du mot de passe -->
+            <section id="reset-password">
+                <header>
+                    <!-- Titre de la section -->
+                    <h1>Réinitialiser le mot de passe</h1>
+                </header>
+                <form action="/reset-password" method="post">
+                    <!-- Champ pour l'adresse e-mail -->
+                    <div class="form-group">
+                        <label for="email-reset">Adresse e-mail:</label>
+                        <input type="email" id="email-reset" name="email" required>
+                    </div>
+                    
+                    <!-- Bouton pour soumettre le formulaire -->
+                    <div class="form-group">
+                        <button type="submit">Réinitialiser le mot de passe</button>
+                    </div>
+                </form>
+            </section>
         </main>
 
         <!-- Pied de page ### src\components\footer.html -->
