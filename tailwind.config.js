@@ -50,5 +50,34 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.navbarDiv': {
+          'display': 'flex',
+          'justify-content' :'center',
+          'transition': 'all ease-out 300ms',
+        },
+        '.navbarDiv:hover': {
+          'transform': 'translateY(-1rem)',
+        },
+        '.navbarA': {
+          'display': 'block',
+          'width': 'fit-content',
+          'height': 'fit-content',
+          'padding': '0.5rem',
+          'transition': 'all ease-out 700ms',
+        },
+        '.navbarSpanOfA': {
+          'position': 'absolute',
+          'font-family': 'Roboto, sans-serif',
+          'font-weight': 'medium',
+          'transform': 'translateY(75px)',
+          'color': '#FFA500',
+        },
+      };
+
+      addUtilities(newUtilities, ['hover', 'responsive']);
+    },
+  ],
 }
