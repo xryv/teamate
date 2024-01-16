@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <!-- src\pages\complete_registration\complete_register.html -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Teamate | Connectez-vous avec des gamers</title>
+    </head>
+    
+    <body>
+        <!-- En-tête du site -->
+        <header class="header">
+            <!-- Header-contaier ### src\components\header.html -->
+            <div class="header-container">
+                <img src="logo.png" alt="Logo Teamate" class="logo"> 
+                <!-- La navigation est incluse ici -->
+                <!--#include virtual="nav.html" -->
+            </div>
+
+            <!-- Navigation ### \src\components\nav.html -->
+            <nav class="navbar">
+                <ul class="nav-list">
+                    <a href="accueil.html">Accueil</a>
+                    <a href="recherche.html">Recherche</a>
+                    <a href="evenement.html">Evenement</a>
+                    <a href="parcourir.html">Parcourir</a>
+                    <!-- Ajoutez d'autres liens de navigation au besoin -->
+
+                   <!-- Login and registration links -->
+                   <a href="../login/login.html">Connectez-vous</a>
+                   <a href="../register/register.html">Incrivez-vous</a>                  
+                  
+                </ul>    
+            </nav>
+
+        </header>
+
+               <!-- Main content section -->
+               <main>
+                <!-- Account modification section -->
+                <section id="account-modification">
+                    <header>
+                        <h1>Modification du Compte Joueur</h1>
+                    </header>
+                    <form action="/updateAccount" method="post">
+                        <div class="form-group">
+                            <label for="username">Pseudo:</label>
+                            <input type="text" id="username" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="first-name">Prénom:</label>
+                            <input type="text" id="first-name" name="first-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Nom:</label>
+                            <input type="text" id="last-name" name="last-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Date de Naissance:</label>
+                            <input type="date" id="dob" name="dob">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Pays:</label>
+                            <input type="text" id="country" name="country">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">Ville (Optionnel):</label>
+                            <input type="text" id="city" name="city">
+                        </div>
+    
+                        <div class="form-group">
+                            <button type="submit">Mettre à jour le compte</button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+    
+
+        <!-- Pied de page ### src\components\footer.html -->
+        <footer class="footer">
+            <div class="container">
+                <span>&copy; 2024 Teamate. Tous droits réservés.</span>
+                <!-- Ajoutez ici d'autres éléments du pied de page si nécessaire -->
+            </div>
+        </footer>
+
+        <script src="src/scripts/index.js"></script>
+    </body>
+</html>
