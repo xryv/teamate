@@ -88,11 +88,11 @@ teamate/
 │       │   └── _sidebar.scss
 │       │
 │       ├── pages/       # Styles spécifiques aux pages
-│       │   ├── _contact.scss
-│       │   ├── _formation.scss
-│       │   ├── _index.scss
-│       │   ├── _references.scss
-│       │   └── _temoignages.scss
+│       │   ├── _
+│       │   ├── _
+│       │   ├── _
+│       │   ├── _
+│       │   └── _
 │       │
 │       └── utilities/   # Classes utilitaires et helpers SCSS
 ```
