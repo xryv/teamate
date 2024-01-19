@@ -167,9 +167,74 @@
                     </div>
                 </nav>
             </header>
-
         </div>
 
+        <!-- Contenu principal ici -->
+        <!-- Conteneur principal avec flexbox pour aligner la barre latérale et le contenu principal -->
+        <div class="flex min-h-screen">
+
+            <!-- Barre latérale pour la navigation -->
+            <aside class="w-1/5 bg-purple-600 p-5 text-white">
+                <nav class="flex flex-col space-y-2">
+                    <!-- Hyperlien vers la page principale du tableau de bord -->
+                    <a href="../dashboard.html" class="dashboard-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">DASHBOARD</a>
+                    <!-- Hyperlien vers la page des joueurs -->
+                    <a href="../players/dashboard_players.html" class="players-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">PLAYERS</a>
+                    <!-- Hyperlien vers la page des administrateurs -->
+                    <a href="../admins/dashboard_admins.html" class="admins-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">ADMINS</a>
+                    <!-- Hyperlien vers la page des comptes bannis -->
+                    <a href="../banned_accs/dashboard_banned.html" class="banned-accounts-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">BANNED ACCOUNTS</a>
+                    <!-- Hyperlien vers la page des invitations -->
+                    <a href="../invitations/dashboard_invitations.html" class="user-invitations-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">USER INVITATIONS</a>
+                    <!-- Hyperlien vers la page de gestion des rôles -->
+                    <a href="../roles/dashboard_roles.html" class="role-management-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">ROLE MANAGEMENT</a>
+                </nav>                
+            </aside>
+        
+
+            <!-- Section de contenu principal -->
+            <main class="w-4/5 p-5">
+
+                <!-- En-tête de la section avec le titre et le compteur total des invitations -->
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-semibold text-purple-700">USER INVITATIONS</h2>
+                    <!-- Bouton pour ajouter une nouvelle invitation -->
+                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded text-sm">TOTAL INVITATIONS</button>
+                </div>
+
+                <!-- Tableau de gestion des invitations des utilisateurs -->
+                <div class="rounded shadow-lg p-5 bg-white">
+                    <!-- En-tête du tableau -->
+                    <div class="grid grid-cols-3 text-xs font-bold mb-2">
+                        <span>Nom</span>
+                        <span>Email</span>
+                        <span>Date</span>
+                    </div>
+                    <!-- Lignes pour les invitations des utilisateurs, qui seront peuplées dynamiquement avec JavaScript -->
+                    <div class="grid grid-cols-3 items-center gap-4 mb-2 p-2 rounded bg-purple-100">
+                        <span>Nom du joueur</span>
+                        <span>email@example.com</span>
+                        <span>09/09/9999</span>
+                    </div>
+                    <!-- Plus de lignes seront ajoutées ici -->
+                </div>
+
+                <!-- Section d'informations supplémentaires -->
+                <div class="mt-4 text-sm">
+                    <p>LA PAGE D'INVITATIONS DES UTILISATEURS SERT COMME DES ENTRÉES DE JOURNAL D'ACTIVITÉ...</p>
+                    <!-- Texte descriptif supplémentaire -->
+                </div>
+            </main>
+        </div>
+
+    
+        <!-- Pied de page ### src\components\footer.html -->
+        <footer class="footer bg-bluePV-700 text-white py-4">
+            <div class="container max-w-6xl mx-auto text-center">
+                <span>&copy; 2024 Teamate. Tous droits réservés.</span>
+                <!-- Ajoutez ici d'autres éléments du pied de page si nécessaire -->
+            </div>
+        </footer>
 
         <script src="../../../scripts/navbar_admin.js"></script>
 

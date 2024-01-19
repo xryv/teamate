@@ -2,6 +2,7 @@
 <html lang="en">
 
     <head>
+        <!-- path teamate\src\pages\dashboard\players\dashboard_players.html -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -169,7 +170,101 @@
             </header>
 
         </div>
+    
+        <!-- Contenu principal ici -->
+        <!-- Conteneur principal avec flexbox pour aligner la barre latérale et le contenu principal -->
+        <div class="flex min-h-screen">
 
+            <!-- Barre latérale pour la navigation -->
+            <aside class="w-1/5 bg-purple-600 p-5 text-white">
+                <nav class="flex flex-col space-y-2">
+                    <!-- Hyperlien vers la page principale du tableau de bord -->
+                    <a href="../dashboard.html" class="dashboard-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">DASHBOARD</a>
+                    <!-- Hyperlien vers la page des joueurs -->
+                    <a href="../players/dashboard_players.html" class="players-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">PLAYERS</a>
+                    <!-- Hyperlien vers la page des administrateurs -->
+                    <a href="../admins/dashboard_admins.html" class="admins-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">ADMINS</a>
+                    <!-- Hyperlien vers la page des comptes bannis -->
+                    <a href="../banned_accs/dashboard_banned.html" class="banned-accounts-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">BANNED ACCOUNTS</a>
+                    <!-- Hyperlien vers la page des invitations -->
+                    <a href="../invitations/dashboard_invitations.html" class="user-invitations-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">USER INVITATIONS</a>
+                    <!-- Hyperlien vers la page de gestion des rôles -->
+                    <a href="../roles/dashboard_roles.html" class="role-management-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">ROLE MANAGEMENT</a>
+                </nav>                
+            </aside>
+
+                
+            <!-- Contenu principal -->
+            <main class="w-4/5 p-5">
+                <div class="mb-5">
+                    <h1 class="text-xl font-bold">PLAYERS</h1>
+                    <button class="add-player-btn bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded float-right">ADD PLAYER</button>
+                </div>
+
+                <!-- Table des joueurs -->
+                <div class="players-table bg-white rounded shadow-lg p-5">
+                    <div class="table-header grid grid-cols-5 gap-4 mb-2">
+                        <div class="font-bold">Name</div>
+                        <div class="font-bold">Email</div>
+                        <div class="font-bold">Role</div>
+                        <div class="font-bold">Status</div>
+                        <div class="font-bold">Actions</div>
+                    </div>
+                    <!-- Les lignes de joueurs seront générées dynamiquement ici. Exemple statique : -->
+                    <div class="player-row grid grid-cols-5 gap-4">
+                        <div>Player Name</div>
+                        <div>xxx@email.com</div>
+                        <div>Player</div>
+                        <div class="status-active">Active</div>
+                        <div class="player-actions space-x-1">
+                            <button class="edit-btn bg-green-500 hover:bg-green-600 text-white py-1 px-3 rounded">Edit</button>
+                            <button class="delete-btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">Delete</button>
+                        </div>
+                    </div>
+
+                    <!-- JOUER EXAMPLE 2 -->
+                    <div class="player-row grid grid-cols-5 gap-4">
+                        <div>Player Name</div>
+                        <div>xxx@email.com</div>
+                        <div>Player</div>
+                        <div class="status-active">Active</div>
+                        <div class="player-actions space-x-1">
+                            <button class="edit-btn bg-green-500 hover:bg-green-600 text-white py-1 px-3 rounded">Edit</button>
+                            <button class="delete-btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">Delete</button>
+                        </div>
+                    </div>
+                    <!-- JOUER EXAMPLE 3 -->
+                    <div class="player-row grid grid-cols-5 gap-4">
+                        <div>Player Name</div>
+                        <div>xxx@email.com</div>
+                        <div>Player</div>
+                        <div class="status-active">Active</div>
+                        <div class="player-actions space-x-1">
+                            <button class="edit-btn bg-green-500 hover:bg-green-600 text-white py-1 px-3 rounded">Edit</button>
+                            <button class="delete-btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">Delete</button>
+                        </div>
+                    </div>
+
+
+                    <div class="players-info mt-5 text-sm">
+                        <p>CETTE PAGE EST POUR LISTER TOUS LES JOUEURS ENREGISTRÉS DANS LA PLATEFORME, Y COMPRIS LEURS NOMS / ID, EMAILS ET LEURS RÔLES EN TANT QUE JOUEUR.</p>
+                        <p>LE STATUT INDIQUE LEUR ACTIVITÉ, SI UN UTILISATEUR NE PASSE PAS UN LOGIN SUR UNE PÉRIODE DE 90 JOURS PEUT PASSER À UN STATUT INACTIF.</p>
+                        <p>LES ACTIONS SONT RESPONSABLES DE MODIFIER LEURS INFORMATIONS COMME NOM, EMAIL, LEUR RÔLE, LEUR STATUT, ET AJOUTER UNE PÉNALITÉ -> REFROIDISSEMENT -> SUSPENDRE -> BANNIR. IL Y A UNE OPTION DE TEMPS EN FONCTION DE LA GRAVITÉ.</p>
+                        <p>LES ADMINISTRATEURS PEUVENT AUSSI CRÉER DE NOUVEAUX UTILISATEURS DIRECTEMENT DEPUIS CETTE PAGE, SANS L'EXIGENCE DE VÉRIFICATION PAR EMAIL.</p>
+                        <p>IL EST POSSIBLE D'ACCÉDER AUX AUTRES SECTIONS ÉGALEMENT DEPUIS CETTE PAGE.</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    
+        <!-- Pied de page ### src\components\footer.html -->
+        <footer class="footer bg-bluePV-700 text-white py-4">
+            <div class="container max-w-6xl mx-auto text-center">
+                <span>&copy; 2024 Teamate. Tous droits réservés.</span>
+                <!-- Ajoutez ici d'autres éléments du pied de page si nécessaire -->
+            </div>
+        </footer>
+    
 
         <script src="../../../scripts/navbar_admin.js"></script>
 

@@ -167,9 +167,95 @@
                     </div>
                 </nav>
             </header>
-
         </div>
 
+        <!-- Contenu principal ici -->
+        <!-- Conteneur principal avec flexbox pour aligner la barre latérale et le contenu principal -->
+        <div class="flex min-h-screen">
+
+            <!-- Barre latérale pour la navigation -->
+            <aside class="w-1/5 bg-purple-600 p-5 text-white">
+                <nav class="flex flex-col space-y-2">
+                    <!-- Hyperlien vers la page principale du tableau de bord -->
+                    <a href="../dashboard.html" class="dashboard-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">DASHBOARD</a>
+                    <!-- Hyperlien vers la page des joueurs -->
+                    <a href="../players/dashboard_players.html" class="players-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">PLAYERS</a>
+                    <!-- Hyperlien vers la page des administrateurs -->
+                    <a href="../admins/dashboard_admins.html" class="admins-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">ADMINS</a>
+                    <!-- Hyperlien vers la page des comptes bannis -->
+                    <a href="../banned_accs/dashboard_banned.html" class="banned-accounts-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">BANNED ACCOUNTS</a>
+                    <!-- Hyperlien vers la page des invitations -->
+                    <a href="../invitations/dashboard_invitations.html" class="user-invitations-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">USER INVITATIONS</a>
+                    <!-- Hyperlien vers la page de gestion des rôles -->
+                    <a href="../roles/dashboard_roles.html" class="role-management-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">ROLE MANAGEMENT</a>
+                </nav>                
+            </aside>
+
+            <!-- Main content section -->
+            <main class="w-4/5 p-5">
+                <!-- Header section with the title and the 'Add Player' button -->
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-semibold text-purple-700">BANNED ACCOUNTS</h2>
+                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded text-sm">ADD PLAYER</button>
+                </div>
+
+                <!-- Table for banned accounts -->
+                <div class="rounded shadow-lg p-5 bg-white">
+                    <!-- Table header -->
+                    <div class="grid grid-cols-5 text-xs font-bold mb-2">
+                        <span>Name</span>
+                        <span>Email</span>
+                        <span>Role</span>
+                        <span>Status</span>
+                        <span>Actions</span>
+                    </div>
+                    <!-- Rows for banned accounts, to be populated dynamically with JavaScript -->
+                    <div class="grid grid-cols-5 items-center gap-4 mb-2 p-2 rounded bg-purple-100">
+                        <span>Player Name</span>
+                        <span>xxx@email.com</span>
+                        <span>Player</span>
+                        <span class="text-red-500">Banned</span>
+                        <div class="flex gap-2">
+                            <button class="edit-btn bg-green-500 hover:bg-green-600 text-white py-1 px-3 rounded text-xs">Edit</button>
+                            <button class="delete-btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded text-xs">Delete</button>
+                        </div>
+                    </div>
+                    <!-- Rows for banned accounts, to be populated dynamically with JavaScript -->
+                    <div class="grid grid-cols-5 items-center gap-4 mb-2 p-2 rounded bg-purple-100">
+                        <span>Player Name</span>
+                        <span>xxx@email.com</span>
+                        <span>Player</span>
+                        <span class="text-red-500">Banned</span>
+                        <div class="flex gap-2">
+                            <button class="edit-btn bg-green-500 hover:bg-green-600 text-white py-1 px-3 rounded text-xs">Edit</button>
+                            <button class="delete-btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded text-xs">Delete</button>
+                        </div>
+                    </div>
+                    <!-- Rows for banned accounts, to be populated dynamically with JavaScript -->
+                    <div class="grid grid-cols-5 items-center gap-4 mb-2 p-2 rounded bg-purple-100">
+                        <span>Player Name</span>
+                        <span>xxx@email.com</span>
+                        <span>Player</span>
+                        <span class="text-red-500">Banned</span>
+                        <div class="flex gap-2">
+                            <button class="edit-btn bg-green-500 hover:bg-green-600 text-white py-1 px-3 rounded text-xs">Edit</button>
+                            <button class="delete-btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded text-xs">Delete</button>
+                        </div>
+                    </div>
+                    <!-- More rows will be added here -->
+                </div>
+            </main>
+        </div>
+
+
+    
+        <!-- Pied de page ### src\components\footer.html -->
+        <footer class="footer bg-bluePV-700 text-white py-4">
+            <div class="container max-w-6xl mx-auto text-center">
+                <span>&copy; 2024 Teamate. Tous droits réservés.</span>
+                <!-- Ajoutez ici d'autres éléments du pied de page si nécessaire -->
+            </div>
+        </footer>
 
         <script src="../../../scripts/navbar_admin.js"></script>
 
