@@ -1,10 +1,27 @@
-// Sidebar Styles
-.sidebar {
-    padding: 20px; 
-    background-color: $main-background-color;
+/* layout/_sidebar.scss */
 
-    .image-right {
-        max-width: 100%; 
-        height: auto; 
+/* Base style for sidebar */
+.sidebar {
+    background-color: $transparant-500;
+    color: #333;
+    padding: 1rem;
+    width: 250px;  // Adjust width as needed
+  }
+  
+  /* Sidebar navigation */
+  .sidebar-nav {
+    list-style: none;
+    
+    li {
+      margin-bottom: 1rem;
     }
-}
+  
+    a {
+      color: #333;
+      text-decoration: none;
+      
+      &:hover {
+        color: $bluePV-500;
+      }
+    }
+  }

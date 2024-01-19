@@ -6,52 +6,47 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Teamate | Connectez-vous avec des gamers</title>
+        <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+        <link href="../src/styles/main.css" rel="stylesheet">
     </head>
-    <body>
+    <body class="font-sans bg-gray-100">
         <!-- En-tête du site -->
-        <header class="header">
-            <!-- Header-contaier ### src\components\header.html -->
-            <div class="header-container">
-                <img src="logo.png" alt="Logo Teamate" class="logo"> 
+        <header class="header bg-bluePV-500 text-white">
+            <!-- Header-container ### src\components\header.html -->
+            <div class="header-container max-w-6xl mx-auto px-4 py-2 flex justify-between items-center">
+                <img src="../src/assets/navbar/logo.svg" alt="Logo Teamate" class=" w-32 h-auto"> 
                 <!-- La navigation est incluse ici -->
                 <!--#include virtual="nav.html" -->
+    
+                <!-- Navigation ### \src\components\nav.html -->
+                <nav class="navbar">
+                    <ul class="nav-list flex space-x-4">
+                        <li><a href="accueil.html" class="hover:text-orangePV-500">Accueil</a></li>
+                        <li><a href="recherche.html" class="hover:text-orangePV-500">Recherche</a></li>
+                        <li><a href="evenement.html" class="hover:text-orangePV-500">Evenement</a></li>
+                        <li><a href="parcourir.html" class="hover:text-orangePV-500">Parcourir</a></li>
+                        <!-- Ajoutez d'autres liens de navigation au besoin -->
+    
+                        <!-- Login and registration links -->
+                        <li><a href="../src/pages/login/login.html" class="hover:text-orangePV-500">Connectez-vous</a></li>
+                        <li><a href="../src/pages/register/register.html" class="hover:text-orangePV-500">Inscrivez-vous</a></li>
+                    </ul>    
+                </nav>
             </div>
-
-            <!-- Navigation ### \src\components\nav.html -->
-            <nav class="navbar">
-                <ul class="nav-list">
-                    <a href="accueil.html">Accueil</a>
-                    <a href="recherche.html">Recherche</a>
-                    <a href="evenement.html">Evenement</a>
-                    <a href="parcourir.html">Parcourir</a>
-                    <!-- Ajoutez d'autres liens de navigation au besoin -->
-
-                   <!-- Login and registration links -->
-                   <a href="../src/pages/login/login.html">Connectez-vous</a>
-                   <a href="../src/pages/register/register.html">Incrivez-vous</a>                  
-                  
-                </ul>    
-            </nav>
-
         </header>
-
+    
         <!-- Section principale -->
-        <main>           
-            <!-- -->
-            <!-- -->
-            <!-- -->
-            <!-- -->
-            <!-- -->
-            <!-- -->
+        <main class="py-8">           
+            <!-- Contenu principal ici -->
         </main>
-
+    
         <!-- Pied de page ### src\components\footer.html -->
-        <footer class="footer">
-            <div class="container">
+        <footer class="footer bg-bluePV-700 text-white py-4">
+            <div class="container max-w-6xl mx-auto text-center">
                 <span>&copy; 2024 Teamate. Tous droits réservés.</span>
                 <!-- Ajoutez ici d'autres éléments du pied de page si nécessaire -->
             </div>
         </footer>
-
+    
     </body>
-</html>
+    </html>

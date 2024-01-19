@@ -1,0 +1,53 @@
+/* pages/_dashboard.scss */
+
+/* Base style for dashboard page */
+.dashboard-page {
+    background-color: $transparant-100;
+    padding: 2rem;
+  }
+  
+  /* Dashboard layout */
+  .dashboard-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 1rem;
+  }
+  
+  /* Sidebar styles */
+  .dashboard-sidebar {
+    background-color: $bluePV-300;
+    padding: 1rem;
+    border-radius: 0.5rem;
+  
+    ul {
+      list-style: none;
+      padding: 0;
+  
+      li {
+        margin-bottom: 1rem;
+  
+        a {
+          color: #fff;
+          text-decoration: none;
+  
+          &:hover {
+            color: $purplePV-500;
+          }
+        }
+      }
+    }
+  }
+  
+  /* Main content area */
+  .dashboard-content {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  /* Dashboard-specific components and styles */
+  .dashboard-header {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  

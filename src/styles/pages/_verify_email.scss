@@ -1,0 +1,40 @@
+/* pages/_verify_email.scss */
+
+/* Base style for verify email page */
+.verify-email-page {
+    background-color: $transparant-500;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  /* Styles specific to verify email page content */
+  .verify-email-content {
+    max-width: 600px;
+    margin: auto;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+  
+    h1 {
+      font-size: 1.5rem;
+      color: $orangePV-500;
+    }
+  
+    p {
+      color: #333;
+      margin-bottom: 1rem;
+    }
+  
+    a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: $orangePV-500;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 0.25rem;
+  
+      &:hover {
+        background-color: darken($orangePV-500, 10%);
+      }
+    }
+  }

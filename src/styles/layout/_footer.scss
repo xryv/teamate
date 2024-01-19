@@ -1,12 +1,36 @@
-// _footer.scss
-.footer-logo {
-    // styles for the footer logo
+/* layout/_footer.scss */
+
+/* Base style for footer */
+.footer {
+    background-color: $bluePV-700;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
   }
   
-  .footer-nav {
-    // styles for the footer navigation
+  /* Footer content styling */
+  .footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
   
-  .social-icons {
-    // styles for the social icons
+  /* Footer links */
+  .footer-links {
+    list-style: none;
+    
+    li {
+      margin-bottom: 0.5rem;
+  
+      a {
+        color: #fff;
+        text-decoration: none;
+        
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
   }
+  
+  

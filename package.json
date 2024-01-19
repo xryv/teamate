@@ -4,13 +4,16 @@
   "description": "Teamate est une application moderne, conçue pour être un point de départ robuste pour des projets de développement web. Ce boilerplate intègre les meilleures pratiques et les dernières technologies pour garantir une expérience de développement fluide.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:scss": "sass --watch src/styles/main.scss src/styles/main.css",
+    "build:tailwind": "npx tailwindcss -i src/styles/main.css -o public/build/main.css --minify"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^10.4.16",
+    "node-sass": "^9.0.0",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.1"
   }

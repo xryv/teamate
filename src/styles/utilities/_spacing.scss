@@ -1,0 +1,17 @@
+/* utilities/_spacing.scss */
+
+/* Margin and padding utility classes */
+$spacing-sizes: (0, 4, 8, 16, 32, 64);
+
+@each $size in $spacing-sizes {
+  .m-#{$size} { margin: #{$size}px; }
+  .mt-#{$size} { margin-top: #{$size}px; }
+  .mr-#{$size} { margin-right: #{$size}px; }
+  .mb-#{$size} { margin-bottom: #{$size}px; }
+  .ml-#{$size} { margin-left: #{$size}px; }
+  .p-#{$size} { padding: #{$size}px; }
+  .pt-#{$size} { padding-top: #{$size}px; }
+  .pr-#{$size} { padding-right: #{$size}px; }
+  .pb-#{$size} { padding-bottom: #{$size}px; }
+  .pl-#{$size} { padding-left: #{$size}px; }
+}

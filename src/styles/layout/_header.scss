@@ -1,20 +1,37 @@
-// _header.scss
-.nav-container {
-    // styles for nav-container
+/* layout/_header.scss */
+
+/* Base style for header */
+.header {
+    background-color: $bluePV-500;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
   }
   
-  .hidden {
-    // styles for visually hiding elements but keeping them accessible
+  /* Navigation within the header */
+  .header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+  
+    li {
+      margin: 0 1rem;
+    }
+  
+    a {
+      color: #fff;
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
   
-  .logo-navbar {
-    // styles for the logo navbar
-  }
-  
+  /* Logo styling */
   .header-logo {
-    // styles for the header logo
+    font-size: 1.5rem;
+    font-weight: bold;
   }
   
-  .main-nav {
-    // styles for the main navigation
-  }

@@ -1,0 +1,41 @@
+/* pages/_login.scss */
+
+/* Base style for login page */
+.login-page {
+    background-color: $transparant-300;
+    padding: 2rem;
+  }
+  
+  /* Login form styling */
+  .login-form {
+    max-width: 400px;
+    margin: auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid $transparant-700;
+    }
+  
+    button[type="submit"] {
+      width: 100%;
+      padding: 0.5rem;
+      background-color: $bluePV-500;
+      color: #fff;
+      border: none;
+      border-radius: 0.25rem;
+  
+      &:hover {
+        background-color: darken($bluePV-500, 10%);
+      }
+    }
+  }
+  
+
+  
