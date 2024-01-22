@@ -1,0 +1,28 @@
+// Abstracts (variables, mixins)
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+// Base (typography, resets)
+@import "base/body";
+
+// Layout (header, footer, navigation, grid)
+@import "layout/header";
+@import "layout/footer";
+@import "layout/sidebar";
+
+// Components (reusable components)
+// (Add component imports here as you create them)
+
+// Pages (individual page styles)
+@import "pages/contact";
+@import "pages/formation";
+@import "pages/index";
+@import "pages/references";
+@import "pages/temoignages";
+
+// Utilities (helper classes, utilities)
+// (If you have utilities, import them here)
+
+
+
+
