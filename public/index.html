@@ -10,18 +10,16 @@
         <link href="../src/styles/main.css" rel="stylesheet">
     </head>
     <body>
-        <!-- En-tête du site -->
-    
-        <!-- Navigation ### \src\components\nav.html -->
-        <!-- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -->
-        <!-- A VOIR LE RESPONSIVE !! -->
-        <div class="bg-gradient">
 
-            <header>
+        <!-- En-tête du site -->
+        <!-- ZONE TAILWINDCSS -->
+        <header>
+            <div class="bg-gradient">
+
+                <!-- Debut Navbar -->
                 <nav class="flex justify-evenly">
                     <div class="flex items-center gap-10">
-
-                         <!-- Accueil ICON -->
+                        <!-- Accueil ICON -->
                         <div id="div-home" class="navbarDiv">
                             <a id="a-One" class="navbarA" href="#">
                                 <svg id="svgOne" class="" width="60" height="60" viewBox="0 0 60 60" fill="none">
@@ -35,7 +33,6 @@
                             </a>
                             <span id="home" class="navbarSpanOfA"></span>
                         </div>
-
                         <!-- Recherche ICON -->
                         <div id="div-search" class="navbarDiv">
                             <a id="a-Two" class="navbarA" href="#">
@@ -47,7 +44,6 @@
                             </a>
                             <span id="search" class="navbarSpanOfA"></span>
                         </div>
-
                         <!-- Event ICON -->                        
                         <div id="div-event" class="navbarDiv">
                             <a id="a-Three" class="navbarA" href="#">
@@ -61,7 +57,6 @@
                             </a>
                             <span id="event" class="navbarSpanOfA"></span>
                         </div>
-
                         <!-- Browse ICON -->                               
                         <div id="div-browse" class="navbarDiv">
                             <a id="a-Four" class="navbarA" href="#">
@@ -78,9 +73,13 @@
 
                     <!-- TEAMATE LOGO CENTER -->
                     <div>
-                        <a class="w-auto" href="#"><img src="../assets/navbar/logo.svg" alt=""></a>
+                        <a class="w-auto" href="#"><img src="../src/assets/navbar/logo.svg" alt=""></a>
                     </div>
+                    
+                    <!-- icons Droit -->
                     <div class="items-center flex gap-10">
+                    
+                        <!-- Icon Liste des Amis -->
                         <button id="re" type="button">
                             <svg width="66" height="62" viewBox="0 0 66 62" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g filter="url(#filter0_d_391_1491)">
@@ -116,7 +115,7 @@
                             </svg>
                         </button>
 
-                        <!-- FRIENDLIST BUTTON ICON -->
+                        <!-- NOTIFICATIONS BUTTON ICON -->
                         <button type="button">
                             <svg width="60" height="61" viewBox="0 0 60 61" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -151,14 +150,13 @@
 
                     </div>
                 </nav>
-            </header>
+            </div>
+        </header>
+        <!-- FIN DE ZONE TAILWINDCSS -->
 
-        </div>
 
-        <!-- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -->
-
-    
         <!-- Section principale -->
+        <!-- DEBUT DE ZONE SCSS -->
         <main class="py-8">           
             <!-- Contenu principal ici -->
         </main>
