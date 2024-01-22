@@ -6,7 +6,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Teamate | Connectez-vous avec des gamers</title>
+        <!-- TAILWIND -> HEADER <- RESPECTIVE CSS-->
         <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+        <link href="../../../public/build/tailwind.css" rel="stylesheet">
+
+        <!-- SCSS -> BODY & FOOTER <- RESPECTIVE CSS-->
         <link href="../../styles/main.css" rel="stylesheet">
     </head>
     <body>
@@ -140,8 +144,6 @@
                         -->
 
                         <!-- LOGIN & LOGOUT SECTION -->
-                        <!-- A VOIR LE CONTROL VIEW DE LA NAV AVEC CONDITION LOGGED IN & LOGGED OUT-->
-                        <!-- LOGIN & LOGOUT SECTION -->
                         <div class="navbarDiv">
                             <button type="button" id="login-btn" class="navbarA">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-in"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg>
@@ -159,7 +161,6 @@
                         </div> -->
 
                         <!-- REGISTRATION ICON -->
-
                         <div class="navbarDiv">
                             <button type="button" id="register-btn" class="navbarA">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-circle"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
@@ -167,8 +168,6 @@
                             <span id="register" class="navbarSpanOfA"></span>
                         </div>
                         
-
-
                         <!-- VERTICAL THREE DOT ...SIDE BAR -->
                         <button type="button">
                             <svg width="60" height="61" viewBox="0 0 60 61" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -194,37 +193,40 @@
         
         
         <!-- Section principale du contenu -->
-        <main>           
-            <!-- Section de Connexion -->
-            <section id="login">
-                <header>
-                    <!-- Titre de la section de connexion -->
-                    <h1>Connexion</h1>
+        <main class="main-content">           
+            <!-- Section de connexion -->
+            <section id="login" class="card">
+                <header class="card-header">
+                    <!-- Titre de la section -->
+                    <h1 class="text-2xl font-bold mb-4">Connexion</h1>
                 </header>
-                <form action="/login" method="post">
-                    <!-- Champ d'adresse e-mail -->
+                <form action="/login" method="post" class="card-content">
+                    <!-- Champ pour l'adresse e-mail -->
                     <div class="form-group">
-                        <label for="email">Adresse e-mail :</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="email" class="form-label">Adresse e-mail :</label>
+                        <input type="email" id="email" name="email" required class="form-input">
                     </div>
-                    <!-- Champ de mot de passe -->
+                    <!-- Champ pour le mot de passe -->
                     <div class="form-group">
-                        <label for="password">Mot de passe :</label>
-                        <input type="password" id="password" name="password" required>
+                        <label for="password" class="form-label">Mot de passe :</label>
+                        <input type="password" id="password" name="password" required class="form-input">
                     </div>
                     <!-- Bouton de soumission -->
                     <div class="form-group">
-                        <button type="submit">Se connecter</button>
+                        <button type="submit" class="btn btn-primary">Se connecter</button>
                     </div>
                 </form>
-                <!-- Lien vers la page d'inscription -->
-                <p>Pas encore de compte ? <a href="../register/register.html">Inscrivez-vous</a></p>
-                <!-- Lien vers la page de réinitialisation du mot de passe -->
-                <p><a href="../forgot_password/reinitialisation_mp.html">Mot de passe oublié ?</a></p>
+                <!-- Liens pour inscription et réinitialisation du mot de passe -->
+                <div class="text-center">
+                    <p class="text-sm">Pas encore de compte ? <a href="../register/register.html" class="text-purple-light hover:text-purple-dark">Inscrivez-vous</a></p>
+                    <p class="text-sm"><a href="../forgot_password/reinitialisation_mp.html" class="text-purple-light hover:text-purple-dark">Mot de passe oublié ?</a></p>
+                </div>
             </section>
         </main>
 
-        <!-- Pied de page ### src\components\footer.html -->
+
+
+        <!-- Pied de page -->
         <footer class="footer">
             <div class="container">
                 <span>&copy; 2024 Teamate. Tous droits réservés.</span>

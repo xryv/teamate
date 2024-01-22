@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <!-- \public\index.html -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Teamate | Connectez-vous avec des gamers</title>
         <link href="https://cdn.tailwindcss.com" rel="stylesheet">
         <link href="../src/styles/main.css" rel="stylesheet">
+        <link href="./build/tailwind.css" rel="stylesheet">
     </head>
     <body>
 
@@ -81,16 +81,20 @@
                     
                         <!-- LOGIN & LOGOUT SECTION -->
                         <div class="navbarDiv">
-                            <button type="button" id="login-btn" class="navbarA">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-in"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg>
-                            </button>
+                            <a id="login-btn" class="navbarA" href="./../src/pages/login/login.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-in">
+                                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                                    <polyline points="10 17 15 12 10 7"/>
+                                    <line x1="15" x2="3" y1="12" y2="12"/>
+                                </svg>
+                            </a>
                             <span id="login" class="navbarSpanOfA"></span>
                         </div>
-
+                        
                         <!-- LOGOUT ICON -->
-                        <!--
+                        <!-- 
                         <div class="navbarDiv">
-                            <button type="button" id="logout-btn" class="navbarA">
+                            <button type="button" id="logout-btn" class="navbarA"">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
                             </button>
                             <span id="logout" class="navbarSpanOfA"></span>
@@ -98,7 +102,7 @@
 
                         <!-- REGISTRATION ICON -->
                         <div class="navbarDiv">
-                            <button type="button" id="register-btn" class="navbarA">
+                            <button type="button" id="register-btn" class="navbarA" href="./../src/pages/register/register.html"> 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-circle"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
                             </button>
                             <span id="register" class="navbarSpanOfA"></span>
@@ -175,7 +179,6 @@
                             </svg>
                         </button>
                     </div>
-
                 </nav>
             </div>
         </header>
@@ -184,15 +187,18 @@
 
         <!-- Section principale -->
         <!-- DEBUT DE ZONE SCSS -->
-        <main class="py-8 container mx-auto text-center">
-            <h1 class="text-2xl font-bold mb-4">Documentation et Navigation pour la Gestion des Utilisateurs</h1>
-            <div class="flex justify-center space-x-4">
-                <a href="lien-documentation-1" class="btn">Documentation 1</a>
-                <a href="lien-documentation-2" class="btn">Documentation 2</a>
-                <a href="lien-documentation-3" class="btn">Documentation 3</a>
-                <a href="lien-utilisateur-1" class="btn">Utilisateur 1</a>
-                <a href="lien-utilisateur-2" class="btn">Utilisateur 2</a>
-            </div>
+        <main class="main-content grid">
+            <h1 class="card-header card">Documentation et Navigation pour la Gestion des Utilisateurs</h1> 
+                <a href="./../src/pages/login/login.html" class="btn card">Login.html</a>
+                <a href="./../src/pages/register/register.html" class="btn card">Register.html</a>
+                <a href="./../src/pages/verify_email/verify_email.html" class="btn card">verify_email.html</a>
+                <a href="./../src/pages/verified/verified.html" class="btn card">Verified.html</a>
+                <a href="./../src/pages/complete_registration/complete_register.html" class="btn card">complete_register.html</a>
+                <a href="./../src/pages/forgot_password/reinitialisation_mp.html" class="btn card">reinitialisation_mp.html</a>
+            <h1 class="card-header card">Navigation Post-Login</h1> 
+                <a href="lien-utilisateur-1" class="btn card">ROLE JOUEUR</a>
+                <a href="lien-utilisateur-2" class="btn card">ROLE ADMIN</a>
+                <a href="./../src/pages/dashboard/dashboard.html" class="btn card">dashboard.html</a>
         </main>
         
     

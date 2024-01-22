@@ -6,17 +6,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Teamate | Connectez-vous avec des gamers</title>
+        <!-- TAILWIND -> HEADER <- RESPECTIVE CSS-->
         <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+        <link href="../../../public/build/tailwind.css" rel="stylesheet">
+
+        <!-- SCSS -> BODY & FOOTER <- RESPECTIVE CSS-->
         <link href="../../styles/main.css" rel="stylesheet">
     </head>
     <body>
         <!-- En-tête du site -->
-    
-        <!-- Navigation ### \src\components\nav.html -->
-        <!-- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -->
-        <!-- A VOIR LE RESPONSIVE !! -->
-
-
         <header>
             <div class="bg-gradient">
                 <nav class="flex justify-evenly">
@@ -58,7 +56,6 @@
                                         d="M13.7062 14.9998H12.9417V16.5373V24.0373V24.5373H13.4417H48.5583H49.0583V24.0373V16.5373C49.0583 15.9973 48.8266 15.5233 48.4306 15.1266L48.4288 15.1247C48.0307 14.73 47.5559 14.4998 47.0157 14.4998H14.9843C14.5039 14.4998 14.0753 14.6819 13.7062 14.9998ZM34.8345 43.0957L34.8343 43.0954C33.8936 42.1593 33.4289 41.0411 33.4289 39.7123C33.4289 38.3838 33.8943 37.2636 34.8371 36.3239C35.7781 35.3861 36.9018 34.9223 38.2366 34.9223C39.571 34.9223 40.6947 35.3867 41.6358 36.3262L41.6361 36.3264C42.577 37.2643 43.0417 38.3835 43.0417 39.7123C43.0417 41.0408 42.5764 42.16 41.6338 43.0979L41.6333 43.0984C40.694 44.0361 39.5713 44.4998 38.2366 44.4998C36.9021 44.4998 35.7774 44.0354 34.8345 43.0957ZM12.4473 14.0118L12.4481 14.0111C13.1211 13.3388 13.9546 12.9998 14.9843 12.9998H19.4241H19.9241V12.4998V7.4248H21.6255V12.4998V12.9998H22.1255H40.0676H40.5676V12.4998V7.4248H42.076V12.4998V12.9998H42.576H47.0157C48.0454 12.9998 48.8789 13.3388 49.552 14.0111L49.5527 14.0118C50.2272 14.6826 50.5667 15.5125 50.5667 16.5373V48.4623C50.5667 49.4874 50.2278 50.3175 49.5549 50.9882C48.88 51.6608 48.0454 51.9998 47.0157 51.9998H14.9843C13.9543 51.9998 13.1207 51.6614 12.4477 50.9907C11.7729 50.3181 11.4333 49.4871 11.4333 48.4623V16.5373C11.4333 15.5125 11.7729 14.6826 12.4473 14.0118ZM48.4288 49.8749L48.4306 49.873C48.8266 49.4763 49.0583 49.0023 49.0583 48.4623V26.5373V26.0373H48.5583H13.4417H12.9417V26.5373V48.4623C12.9417 49.0023 13.1734 49.4763 13.5694 49.873L13.5712 49.8749C13.9693 50.2696 14.4442 50.4998 14.9843 50.4998H47.0157C47.5559 50.4998 48.0307 50.2696 48.4288 49.8749Z"
                                         fill="white" stroke="white" />
                                 </svg>
-
                             </a>
                             <span id="event" class="navbarSpanOfA"></span>
                         </div>
@@ -83,9 +80,7 @@
                     </div>
 
                      
-                    <div class="items-center flex gap-10">
-
-                        
+                    <div class="items-center flex gap-10">               
                         <button id="re" type="button">
                             <svg width="66" height="62" viewBox="0 0 66 62" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g filter="url(#filter0_d_391_1491)">
@@ -122,7 +117,6 @@
                         </button> 
 
                         <!-- FRIENDLIST BUTTON ICON - ETAPE PRE-LOGIN  -->
-                         
                         <button type="button">
                             <svg width="60" height="61" viewBox="0 0 60 61" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -138,9 +132,6 @@
                         <a class="w-auto" href="#"><img width="60px" src="../assets/navbar/rank.png" alt="rank"></a>
                         <a class="w-auto" href="#"><img width="60px" src="../assets/navbar/profil.png" alt="profil"></a>
                         
-
-                        <!-- LOGIN & LOGOUT SECTION -->
-                        <!-- A VOIR LE CONTROL VIEW DE LA NAV AVEC CONDITION LOGGED IN & LOGGED OUT-->
                         <!-- LOGIN & LOGOUT SECTION 
                         <div class="navbarDiv">
                             <button type="button" id="login-btn" class="navbarA">
@@ -167,8 +158,6 @@
                             <span id="register" class="navbarSpanOfA"></span>
                         </div> -->
                         
-
-
                         <!-- VERTICAL THREE DOT ...SIDE BAR -->
                         <button type="button">
                             <svg width="60" height="61" viewBox="0 0 60 61" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -184,15 +173,11 @@
                                 </defs>
                             </svg>
                         </button>  
-                        
-
                     </div>
                 </nav>
             </div>
         </header>
-        <!-- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -->
-        
-        
+
         <!-- Section principale du contenu -->
         <main>           
             <!-- Section de Connexion -->

@@ -6,7 +6,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Teamate | Connectez-vous avec des gamers</title>
+        <!-- TAILWIND -> HEADER <- RESPECTIVE CSS-->
         <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+        <link href="../../../public/build/tailwind.css" rel="stylesheet">
+
+        <!-- SCSS -> BODY & FOOTER <- RESPECTIVE CSS-->
         <link href="../../styles/main.css" rel="stylesheet">
     </head>
     <body>
@@ -155,31 +159,30 @@
 
         </div>
 
-        <!-- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -->
 
-
-        <!-- Section principale -->
-        <main>           
+      <!-- Section principale -->
+        <main class="main-content">
             <!-- Section de réinitialisation du mot de passe -->
-            <section id="reset-password">
-                <header>
+            <section id="reset-password" class="card">
+                <header class="card-header">
                     <!-- Titre de la section -->
-                    <h1>Réinitialiser le mot de passe</h1>
+                    <h1 class="text-2xl font-bold mb-4">Réinitialiser le mot de passe</h1>
                 </header>
-                <form action="/reset-password" method="post">
+                <form action="/reset-password" method="post" class="card-content">
                     <!-- Champ pour l'adresse e-mail -->
                     <div class="form-group">
-                        <label for="email-reset">Adresse e-mail:</label>
-                        <input type="email" id="email-reset" name="email" required>
+                        <label for="email-reset" class="form-label">Adresse e-mail:</label>
+                        <input type="email" id="email-reset" name="email" required class="form-input">
                     </div>
                     
                     <!-- Bouton pour soumettre le formulaire -->
                     <div class="form-group">
-                        <button type="submit">Réinitialiser le mot de passe</button>
+                        <button type="submit" class="btn btn-primary">Réinitialiser le mot de passe</button>
                     </div>
                 </form>
             </section>
         </main>
+
 
         <!-- Pied de page ### src\components\footer.html -->
         <footer class="footer">

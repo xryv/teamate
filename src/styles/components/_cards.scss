@@ -1,36 +1,28 @@
 /* components/_cards.scss */
 
-/* Style de base pour les cartes */
+// Styles pour les cartes
 .card {
-    background-color: #fff;
-    border: 1px solid $transparant-700;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    margin-bottom: 1rem;
-    transition: box-shadow 0.3s ease;
-  
-    &:hover {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-  
-    /* Titre de la carte */
-    .card-title {
-      font-size: 1.25rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-    }
-  
-    /* Contenu de la carte */
-    .card-body {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-    }
-  
-    /* Pied de carte */
-    .card-footer {
-      border-top: 1px solid $transparant-700;
-      padding-top: 0.5rem;
-    }
+  background-color: $white;               // Fond blanc pour les cartes
+  border-radius: $border-radius;          // Bords arrondis pour un look moderne
+  box-shadow: $box-shadow;                // Ombre subtile pour de la profondeur
+  padding: $spacing-medium;               // Espacement intérieur
+  margin-bottom: $spacing-medium;         // Espacement entre les cartes
+  transition: box-shadow 0.3s;            // Transition de l'ombre pour l'interaction
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba($black, 0.2); // Ombre plus prononcée au survol
   }
-  
+
+  // En-tête de la carte
+  .card-header {
+    font-size: $font-size-large;           // Grande taille de police pour les en-têtes
+    color: $white;                   // Couleur pour le texte de l'en-tête
+    margin-bottom: $spacing-small;         // Espacement après l'en-tête
+  }
+
+  // Contenu de la carte
+  .card-content {
+    font-size: $font-size-root;            // Taille de police standard pour le contenu
+    color: $black;                         // Couleur pour le texte du contenu
+  }
+}

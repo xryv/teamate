@@ -6,7 +6,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Teamate | Connectez-vous avec des gamers</title>
+        <!-- TAILWIND -> HEADER <- RESPECTIVE CSS-->
         <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+        <link href="../../../public/build/tailwind.css" rel="stylesheet">
+
+        <!-- SCSS -> BODY & FOOTER <- RESPECTIVE CSS-->
         <link href="../../styles/main.css" rel="stylesheet">
     </head>
     <body>
@@ -190,30 +194,34 @@
                 </nav>
             </div>
         </header>
-        <!-- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -->
-        
+ 
 
-        <!-- Section principale -->
-        <main>           
+       <!-- Section principale -->
+        <main class="main-content">
             <!-- Section de vérification de l'email -->
-            <section id="email-verification">
-                <header>
+            <section id="email-verification" class="card">
+                <header class="card-header">
                     <!-- Titre de la section de vérification -->
-                    <h1>Vérification de l'adresse e-mail</h1>
+                    <h1 class="text-2xl font-bold mb-4">Vérification de l'adresse e-mail</h1>
                 </header>
-                <p>
-                    <!-- Instruction pour l'utilisateur sur la vérification de l'email -->
-                    Veuillez vérifier votre e-mail pour activer votre compte.
-                </p>
-                <!-- Formulaire pour renvoyer le mail de vérification si nécessaire -->
-                <form action="/resend-verification" method="post">
-                    <!-- Champ caché pour l'identifiant utilisateur ou l'email (selon la logique de backend) -->
-                    <input type="hidden" name="user_id" value="user_id_value">
-                    <!-- Bouton pour renvoyer le mail de vérification -->
-                    <button type="submit">Renvoyer l'e-mail de vérification</button>
-                </form>
+                <div class="card-content">
+                    <p>
+                        <!-- Instruction pour l'utilisateur sur la vérification de l'email -->
+                        Veuillez vérifier votre e-mail pour activer votre compte.
+                    </p>
+                    <!-- Formulaire pour renvoyer le mail de vérification si nécessaire -->
+                    <form action="/resend-verification" method="post">
+                        <!-- Champ caché pour l'identifiant utilisateur ou l'email (selon la logique de backend) -->
+                        <input type="hidden" name="user_id" value="user_id_value">
+                        <!-- Bouton pour renvoyer le mail de vérification -->
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Renvoyer l'e-mail de vérification</button>
+                        </div>
+                    </form>
+                </div>
             </section>
         </main>
+
 
         <!-- Pied de page ### src\components\footer.html -->
         <footer class="footer">

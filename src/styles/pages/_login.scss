@@ -1,41 +1,66 @@
 /* pages/_login.scss */
 
-/* Base style for login page */
-.login-page {
-    background-color: $transparant-300;
-    padding: 2rem;
-  }
-  
-  /* Login form styling */
-  .login-form {
-    max-width: 400px;
-    margin: auto;
-    padding: 2rem;
-    background-color: #fff;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
-    input[type="text"],
-    input[type="password"] {
-      width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      border: 1px solid $transparant-700;
+// Styles spécifiques pour la page de connexion
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; // Hauteur complète de l'écran pour centrer verticalement
+  padding: $spacing-large;
+  background: linear-gradient(135deg, $purple-dark 0%, $purple-light 100%); // Fond dégradé
+
+  #login {
+    max-width: 400px; // Largeur maximale pour le formulaire de connexion
+    width: 100%;
+    margin: $spacing-large; // Espacement autour de la section pour la respiration
+    padding: $spacing-large; // Rembourrage intérieur pour l'esthétique
+    box-shadow: 0 10px 20px rgba($black, 0.2); // Ombre pour la profondeur
+    background-color: $purplePV-1000;
+
+    .card-header {
+      margin-bottom: $spacing-medium; // Espacement supplémentaire pour l'en-tête
     }
-  
-    button[type="submit"] {
-      width: 100%;
-      padding: 0.5rem;
-      background-color: $bluePV-500;
-      color: #fff;
-      border: none;
-      border-radius: 0.25rem;
-  
-      &:hover {
-        background-color: darken($bluePV-500, 10%);
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-small; // Espace entre les champs de formulaire
+
+      .form-group {
+        margin-bottom: $spacing-medium; // Espacement régulier pour les groupes de formulaire
+
+        .form-label {
+          display: block;
+          margin-bottom: $spacing-small;
+          color: $white; // Étiquettes de formulaire visibles sur le fond dégradé
+        }
+
+        .form-input {
+          width: 100%;
+          padding: $spacing-small;
+          border: 1px solid $grey;
+          border-radius: $border-radius;
+          font-size: $font-size-root;
+        }
+      }
+
+      .btn {
+        margin-top: $spacing-medium; // Espacement avant le bouton de soumission
+      }
+    }
+
+    // Style pour les liens de navigation supplémentaires
+    .text-center {
+      margin-top: $spacing-large; // Espace au-dessus des liens supplémentaires
+
+      a {
+        color: $white;
+        text-decoration: none; // Pas de soulignement pour un look épuré
+        &:hover {
+          color: $orange; // Couleur d'accentuation au survol
+          text-decoration: underline; // Soulignement pour indiquer la possibilité de cliquer
+        }
       }
     }
   }
-  
-
-  
+}

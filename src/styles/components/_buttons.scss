@@ -1,46 +1,29 @@
 /* components/_buttons.scss */
 
-/* Base style for buttons */
+// Styles pour les boutons
 .btn {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 0.25rem;
-    font-weight: 600;
-    cursor: pointer;
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  
-    &:hover {
-      opacity: 0.9;
-    }
-  
-    &:focus {
-      outline: none;
-    }
-  }
-  
-  /* Primary button variant */
-  .btn-primary {
-    background-color: $bluePV-500;
-    color: #fff;
-  
-    &:hover {
-      background-color: darken($bluePV-500, 10%);
-    }
-  }
-  
-  /* Secondary button variant */
-  .btn-secondary {
-    background-color: $purplePV-500;
-    color: #fff;
-  
-    &:hover {
-      background-color: darken($purplePV-500, 10%);
-    }
-  }
-  
+  padding: $spacing-medium $spacing-large;  // Rembourrage
+  border: none;                             // Pas de bordure
+  border-radius: $border-radius;            // Bords arrondis
+  cursor: pointer;                          // Curseur pointeur
+  font-weight: bold;                        // Texte en gras
+  transition: background-color 0.3s;       // Animation au survol
 
-  
-  
+  &.btn-primary {
+    background-color: $orange;             // Couleur principale pour les boutons
+    color: $white;                         // Texte blanc pour le contraste
+
+    &:hover {
+      background-color: darken($orange, 10%); // Assombrir au survol
+    }
+  }
+
+  &.btn-secondary {
+    background-color: $purple-light;       // Couleur secondaire pour les boutons
+    color: $purple-dark;                   // Texte violet foncé
+
+    &:hover {
+      background-color: darken($purple-light, 10%); // Assombrir au survol
+    }
+  }
+}

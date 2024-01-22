@@ -1,37 +1,17 @@
 // main.scss
-
-// 1. Abstracts: Importez les variables, mixins et fonctions en premier, car ils sont utilisés dans d'autres fichiers.
 @import 'abstracts/variables';
-// Ajoutez d'autres abstracts comme mixins ou fonctions ici
 
-// 2. Base: Styles de base, resets, typographie.
 @import 'base/reset';
 @import 'base/typography';
 
-// 3. Layout: Styles globaux pour les parties principales du site (header, footer, etc.).
-@import 'layout/header';
-@import 'layout/footer';
-@import 'layout/navigation';
-@import 'layout/sidebar';
-@import 'layout/grid';
-
-// 4. Components: Composants réutilis
 @import 'components/buttons';
 @import 'components/cards';
-@import 'components/modals';
 
-// 5. Pages: Styles spécifiques à chaque page.
-@import 'pages/complete_registration';
-@import 'pages/dashboard';
-@import 'pages/forgot_password';
-@import 'pages/login';
-@import 'pages/register';
-@import 'pages/verified';
-@import 'pages/verify_email';
-
-// 6. Thèmes: Différents thèmes comme le mode sombre.
-
-
-// 7. Utilitaires: Classes d'assistance avec une spécificité élevée.
 @import 'utilities/spacing';
 @import 'utilities/text';
+
+
+@import 'pages/login' ;
+@import 'pages/register' ;
+
+

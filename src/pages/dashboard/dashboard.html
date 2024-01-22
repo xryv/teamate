@@ -3,25 +3,31 @@
 
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="../../styles/main.css">
+        <!-- TAILWIND -> HEADER <- RESPECTIVE CSS-->
+        <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+        <link href="../../../public/build/tailwind.css" rel="stylesheet">
+
+        <!-- SCSS -> BODY & FOOTER <- RESPECTIVE CSS-->
+        <link href="../../styles/main.css" rel="stylesheet">
     </head>
+
 
     <body>
 
         <!-- NAVBAR -->
         <!-- A VOIR LE RESPONSIVE !! -->
-        <div class="bg-gradient">
 
-            <header>
+        <header>
+            <div class="bg-gradient">
                 <nav class="flex justify-evenly">
                     <div class="flex items-center gap-10">
-
-                         <!-- Accueil ICON -->
+                            <!-- Accueil ICON -->
                         <div id="div-home" class="navbarDiv">
                             <a id="a-One" class="navbarA" href="#">
                                 <svg id="svgOne" class="" width="60" height="60" viewBox="0 0 60 60" fill="none">
@@ -35,7 +41,6 @@
                             </a>
                             <span id="home" class="navbarSpanOfA"></span>
                         </div>
-
                         <!-- Recherche ICON -->
                         <div id="div-search" class="navbarDiv">
                             <a id="a-Two" class="navbarA" href="#">
@@ -47,7 +52,6 @@
                             </a>
                             <span id="search" class="navbarSpanOfA"></span>
                         </div>
-
                         <!-- Event ICON -->                        
                         <div id="div-event" class="navbarDiv">
                             <a id="a-Three" class="navbarA" href="#">
@@ -61,7 +65,6 @@
                             </a>
                             <span id="event" class="navbarSpanOfA"></span>
                         </div>
-
                         <!-- Browse ICON -->                               
                         <div id="div-browse" class="navbarDiv">
                             <a id="a-Four" class="navbarA" href="#">
@@ -73,8 +76,7 @@
                                 </svg>
                             </a>
                             <span id="browse" class="navbarSpanOfA"></span>
-                        </div>
-                        
+                        </div>                       
                         <!-- Dashboard ICON -->                               
                         <div id="div-dashboard" class="navbarDiv">
                             <a id="a-Four" class="navbarA" href="#">
@@ -86,15 +88,13 @@
                             </a>
                             <span id="dashboard" class="navbarSpanOfA"></span>
                         </div>
-
                     </div>
-
-                    <!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
 
                     <!-- TEAMATE LOGO CENTER -->
                     <div>
                         <a class="w-auto" href="#"><img src="../../assets/navbar/logo.svg" alt=""></a>
                     </div>
+
                     <div class="items-center flex gap-10">
                         <button id="re" type="button">
                             <svg width="66" height="62" viewBox="0 0 66 62" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -166,29 +166,29 @@
 
                     </div>
                 </nav>
-            </header>
-        </div>
+            </div>
+        </header>
 
-        <!-- Section principale -->
-        <main class="py-8">
-            <!-- Main navigation container -->
-            <nav class="flex flex-col space-y-2 bg-purple-600 p-5 text-white h-screen">
-                <!-- Hyperlink to the main dashboard page -->
-                <a href="./dashboard.html" class="dashboard-link py-3 px-4 hover:bg-purple-700 rounded transition-colors duration-300 text-center">DASHBOARD</a>
-                <!-- Hyperlink to the players page -->
-                <a href="./players/dashboard_players.html" class="players-link py-3 px-4 hover:bg-purple-700 rounded transition-colors duration-300 text-center">PLAYERS</a>
-                <!-- Hyperlink to the admins page -->
-                <a href="./admins/dashboard_admins.html" class="admins-link py-3 px-4 hover:bg-purple-700 rounded transition-colors duration-300 text-center">ADMINS</a>
-                <!-- Hyperlink to the banned accounts page -->
-                <a href="./banned_accs/dashboard_banned.html" class="banned-accounts-link py-3 px-4 hover:bg-purple-700 rounded transition-colors duration-300 text-center">BANNED ACCOUNTS</a>
-                <!-- Hyperlink to the user invitations page -->
-                <a href="./invitations/dashboard_invitations.html" class="user-invitations-link py-3 px-4 hover:bg-purple-700 rounded transition-colors duration-300 text-center">USER INVITATIONS</a>
-                <!-- Hyperlink to the role management page -->
-                <a href="./roles/dashboard_roles.html" class="role-management-link py-3 px-4 hover:bg-purple-700 rounded transition-colors duration-300 text-center">ROLE MANAGEMENT</a>
+
+       <!-- Section principale -->
+        <main class="main-content">
+            <!-- Conteneur principal de navigation -->
+            <nav class="nav-container">
+                <!-- Lien hypertexte vers la page principale du tableau de bord -->
+                <a href="./dashboard.html" class="nav-link card">DASHBOARD</a>
+                <!-- Lien hypertexte vers la page des joueurs -->
+                <a href="./players/dashboard_players.html" class="nav-link card">PLAYERS</a>
+                <!-- Lien hypertexte vers la page des administrateurs -->
+                <a href="./admins/dashboard_admins.html" class="nav-link card">ADMINS</a>
+                <!-- Lien hypertexte vers la page des comptes bannis -->
+                <a href="./banned_accs/dashboard_banned.html" class="nav-link card">BANNED ACCOUNTS</a>
+                <!-- Lien hypertexte vers la page des invitations d'utilisateurs -->
+                <a href="./invitations/dashboard_invitations.html" class="nav-link card">USER INVITATIONS</a>
+                <!-- Lien hypertexte vers la page de gestion des rôles -->
+                <a href="./roles/dashboard_roles.html" class="nav-link card">ROLE MANAGEMENT</a>
             </nav>
-
         </main>
-    
+
         <!-- Pied de page ### src\components\footer.html -->
         <footer class="footer bg-bluePV-700 text-white py-4">
             <div class="container max-w-6xl mx-auto text-center">

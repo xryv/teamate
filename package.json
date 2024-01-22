@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch:scss": "sass --watch src/styles/mainscss.scss src/styles/mainscss.css",
-    "build:tailwind": "npx tailwindcss -i src/styles/main.css -o public/build/main.css --minify"
+    "watch:scss": "sass --watch src/styles/main.scss src/styles/main.css",
+    "build:tailwind": "npx tailwindcss -i src/styles/tailwind.css -o public/build/tailwind.css --minify"
   },
   "keywords": [],
   "author": "",

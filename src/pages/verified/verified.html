@@ -6,22 +6,19 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Teamate | Connectez-vous avec des gamers</title>
+        <!-- TAILWIND -> HEADER <- RESPECTIVE CSS-->
         <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+        <link href="../../../public/build/tailwind.css" rel="stylesheet">
+
+        <!-- SCSS -> BODY & FOOTER <- RESPECTIVE CSS-->
         <link href="../../styles/main.css" rel="stylesheet">
     </head>
     <body>
         <!-- En-tête du site -->
-    
-        <!-- Navigation ### \src\components\nav.html -->
-        <!-- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -->
-        <!-- A VOIR LE RESPONSIVE !! -->
-
-
         <header>
             <div class="bg-gradient">
                 <nav class="flex justify-evenly">
                     <div class="flex items-center gap-10">
-
                         <!-- Accueil ICON -->
                         <div id="div-home" class="navbarDiv">
                             <a id="a-One" class="navbarA" href="#">
@@ -36,7 +33,6 @@
                             </a>
                             <span id="home" class="navbarSpanOfA"></span>
                         </div>
-
                         <!-- Recherche ICON -->
                         <div id="div-search" class="navbarDiv">
                             <a id="a-Two" class="navbarA" href="#">
@@ -48,7 +44,6 @@
                             </a>
                             <span id="search" class="navbarSpanOfA"></span>
                         </div>
-
                         <!-- Event ICON -->                        
                         <div id="div-event" class="navbarDiv">
                             <a id="a-Three" class="navbarA" href="#">
@@ -62,7 +57,6 @@
                             </a>
                             <span id="event" class="navbarSpanOfA"></span>
                         </div>
-
                         <!-- Browse ICON -->                               
                         <div id="div-browse" class="navbarDiv">
                             <a id="a-Four" class="navbarA" href="#">
@@ -81,10 +75,8 @@
                     <div>
                         <a class="w-auto" href="#"><img src="../../assets/navbar/logo.svg" alt=""></a>
                     </div>
-
-                     
+         
                     <div class="items-center flex gap-10">
-
                         <!--
                         <button id="re" type="button">
                             <svg width="66" height="62" viewBox="0 0 66 62" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -140,8 +132,6 @@
                         -->
 
                         <!-- LOGIN & LOGOUT SECTION -->
-                        <!-- A VOIR LE CONTROL VIEW DE LA NAV AVEC CONDITION LOGGED IN & LOGGED OUT-->
-                        <!-- LOGIN & LOGOUT SECTION -->
                         <div class="navbarDiv">
                             <button type="button" id="login-btn" class="navbarA">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-in"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg>
@@ -150,7 +140,7 @@
                         </div>
 
                         <!-- LOGOUT ICON 
-                        
+                      
                         <div class="navbarDiv">
                             <button type="button" id="logout-btn" class="navbarA">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
@@ -159,7 +149,6 @@
                         </div> -->
 
                         <!-- REGISTRATION ICON -->
-
                         <div class="navbarDiv">
                             <button type="button" id="register-btn" class="navbarA">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-circle"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
@@ -167,8 +156,6 @@
                             <span id="register" class="navbarSpanOfA"></span>
                         </div>
                         
-
-
                         <!-- VERTICAL THREE DOT ...SIDE BAR -->
                         <button type="button">
                             <svg width="60" height="61" viewBox="0 0 60 61" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -184,30 +171,29 @@
                                 </defs>
                             </svg>
                         </button>  
-                        
-
                     </div>
                 </nav>
             </div>
         </header>
-        <!-- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -->
-        
 
         <!-- Section principale -->
-        <main>           
+        <main class="main-content">
             <!-- Section de vérification de l'adresse e-mail -->
-            <section id="account-verification-success">
-                <header>
+            <section id="account-verification-success" class="card">
+                <header class="card-header">
                     <!-- Titre de la section de vérification -->
-                    <h1>Compte Vérifié</h1>
+                    <h1 class="text-2xl font-bold mb-4">Compte Vérifié</h1>
                 </header>
-                <p>
+                <p class="card-content">
                     Votre adresse e-mail a été vérifiée avec succès. Votre compte est maintenant actif.
                 </p>
                 <!-- Lien/Bouton pour Compléter l'Inscription -->
-                <a href="complete_register.html" class="button">Compléter votre Inscription</a>
+                <div class="text-center mt-4">
+                    <a href="complete_register.html" class="btn btn-primary">Compléter votre Inscription</a>
+                </div>
             </section>
         </main>
+
 
 
         <!-- Pied de page ### src\components\footer.html -->

@@ -6,22 +6,23 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Teamate | Connectez-vous avec des gamers</title>
+
+        <!-- TAILWIND -> HEADER <- RESPECTIVE CSS-->
         <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+        <link href="../../../public/build/tailwind.css" rel="stylesheet">
+
+        <!-- SCSS -> BODY & FOOTER <- RESPECTIVE CSS-->
         <link href="../../styles/main.css" rel="stylesheet">
     </head>
     <body>
         <!-- En-tête du site -->
-    
-        <!-- Navigation ### \src\components\nav.html -->
-        <!-- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -->
-        <!-- A VOIR LE RESPONSIVE !! -->
-
-
+        <!-- ZONE TAILWINDCSS -->
         <header>
             <div class="bg-gradient">
+
+                <!-- Debut Navbar -->
                 <nav class="flex justify-evenly">
                     <div class="flex items-center gap-10">
-
                         <!-- Accueil ICON -->
                         <div id="div-home" class="navbarDiv">
                             <a id="a-One" class="navbarA" href="#">
@@ -36,7 +37,6 @@
                             </a>
                             <span id="home" class="navbarSpanOfA"></span>
                         </div>
-
                         <!-- Recherche ICON -->
                         <div id="div-search" class="navbarDiv">
                             <a id="a-Two" class="navbarA" href="#">
@@ -48,7 +48,6 @@
                             </a>
                             <span id="search" class="navbarSpanOfA"></span>
                         </div>
-
                         <!-- Event ICON -->                        
                         <div id="div-event" class="navbarDiv">
                             <a id="a-Three" class="navbarA" href="#">
@@ -62,7 +61,6 @@
                             </a>
                             <span id="event" class="navbarSpanOfA"></span>
                         </div>
-
                         <!-- Browse ICON -->                               
                         <div id="div-browse" class="navbarDiv">
                             <a id="a-Four" class="navbarA" href="#">
@@ -81,11 +79,41 @@
                     <div>
                         <a class="w-auto" href="#"><img src="../../assets/navbar/logo.svg" alt=""></a>
                     </div>
-
-                     
+                    
+                    <!-- icons Droit -->
                     <div class="items-center flex gap-10">
+                    
+                        <!-- LOGIN & LOGOUT SECTION -->
+                        <div class="navbarDiv">
+                            <a id="login-btn" class="navbarA" href="../login/login.html"> 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-in">
+                                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                                    <polyline points="10 17 15 12 10 7"/>
+                                    <line x1="15" x2="3" y1="12" y2="12"/>
+                                </svg>
+                            </a>
+                            <span id="login" class="navbarSpanOfA"></span>
+                        </div>
+                        
+                        <!-- LOGOUT ICON -->
+                        <!-- 
+                        <div class="navbarDiv">
+                            <button type="button" id="logout-btn" class="navbarA"">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+                            </button>
+                            <span id="logout" class="navbarSpanOfA"></span>
+                        </div> -->
 
-                        <!--
+                        <!-- REGISTRATION ICON -->
+                        <div class="navbarDiv">
+                            <button type="button" id="register-btn" class="navbarA" href="../register/register.html"> 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-circle"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+                            </button>
+                            <span id="register" class="navbarSpanOfA"></span>
+                        </div>
+
+                        <!-- Icon Liste des Amis -->
+                        <!-- 
                         <button id="re" type="button">
                             <svg width="66" height="62" viewBox="0 0 66 62" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g filter="url(#filter0_d_391_1491)">
@@ -103,26 +131,25 @@
                                         stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </g>
                                 <defs>
-                                    <filter id="filter0_d_391_1491" x="-1" y="0.5" width="68" height="68"
-                                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <filter id="filter0_d_391_1491" x="-1" y="0.5" width="68" height="68" filterUnits="userSpaceOnUse"
+                                        color-interpolation-filters="sRGB">
                                         <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                        <feColorMatrix in="SourceAlpha" type="matrix"
-                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                            result="hardAlpha" />
                                         <feOffset dy="4" />
                                         <feGaussianBlur stdDeviation="2" />
                                         <feComposite in2="hardAlpha" operator="out" />
                                         <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-                                        <feBlend mode="normal" in2="BackgroundImageFix"
-                                            result="effect1_dropShadow_391_1491" />
-                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_391_1491"
-                                            result="shape" />
+                                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_391_1491" />
+                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_391_1491" result="shape" />
                                     </filter>
                                 </defs>
                             </svg>
-                        </button> -->
+                        </button>
+                        -->
 
-                        <!-- FRIENDLIST BUTTON ICON - ETAPE PRE-LOGIN  -->
-                        <!-- 
+                        <!-- NOTIFICATIONS BUTTON ICON -->
+                        <!--
                         <button type="button">
                             <svg width="60" height="61" viewBox="0 0 60 61" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -134,43 +161,13 @@
                             </svg>
                         </button> -->
 
-                        <!-- RANK & PROFILLE - ETAPE PRE-LOGIN - -->
-                        <!-- <a class="w-auto" href="#"><img width="60px" src="../assets/navbar/rank.png" alt="rank"></a>
+                        <!-- RANK & PROFILLE -->
+                        <!--
+                        <a class="w-auto" href="#"><img width="60px" src="../assets/navbar/rank.png" alt="rank"></a>
                         <a class="w-auto" href="#"><img width="60px" src="../assets/navbar/profil.png" alt="profil"></a>
                         -->
 
-                        <!-- LOGIN & LOGOUT SECTION -->
-                        <!-- A VOIR LE CONTROL VIEW DE LA NAV AVEC CONDITION LOGGED IN & LOGGED OUT-->
-                        <!-- LOGIN & LOGOUT SECTION -->
-                        <div class="navbarDiv">
-                            <button type="button" id="login-btn" class="navbarA">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-in"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg>
-                            </button>
-                            <span id="login" class="navbarSpanOfA"></span>
-                        </div>
-
-                        <!-- LOGOUT ICON 
-                        
-                        <div class="navbarDiv">
-                            <button type="button" id="logout-btn" class="navbarA">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
-                            </button>
-                            <span id="logout" class="navbarSpanOfA"></span>
-                        </div>
-                        -->
-
-                        <!-- REGISTRATION ICON -->
-
-                        <div class="navbarDiv">
-                            <button type="button" id="register-btn" class="navbarA">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-circle"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
-                            </button>
-                            <span id="register" class="navbarSpanOfA"></span>
-                        </div>
-                        
-
-
-                        <!-- VERTICAL THREE DOT ...SIDE BAR -->
+                        <!-- VERTICAL THREE DOT ... SIDE BAR -->
                         <button type="button">
                             <svg width="60" height="61" viewBox="0 0 60 61" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0_368_1270)">
@@ -184,55 +181,56 @@
                                     </clipPath>
                                 </defs>
                             </svg>
-                        </button>  
-                        
-
+                        </button>
                     </div>
                 </nav>
             </div>
         </header>
-        <!-- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -- END --- HEADER --- NAVBAR --- END -->
-        
+        <!-- FIN DE ZONE TAILWINDCSS -->
 
-               <!-- Main content section -->
-               <main>
-                <!-- Account modification section -->
-                <section id="account-modification">
-                    <header>
-                        <h1>Modification du Compte Joueur</h1>
-                    </header>
-                    <form action="/updateAccount" method="post">
-                        <div class="form-group">
-                            <label for="username">Pseudo:</label>
-                            <input type="text" id="username" name="username">
-                        </div>
-                        <div class="form-group">
-                            <label for="first-name">Prénom:</label>
-                            <input type="text" id="first-name" name="first-name">
-                        </div>
-                        <div class="form-group">
-                            <label for="last-name">Nom:</label>
-                            <input type="text" id="last-name" name="last-name">
-                        </div>
-                        <div class="form-group">
-                            <label for="dob">Date de Naissance:</label>
-                            <input type="date" id="dob" name="dob">
-                        </div>
-                        <div class="form-group">
-                            <label for="country">Pays:</label>
-                            <input type="text" id="country" name="country">
-                        </div>
-                        <div class="form-group">
-                            <label for="city">Ville (Optionnel):</label>
-                            <input type="text" id="city" name="city">
-                        </div>
-    
-                        <div class="form-group">
-                            <button type="submit">Mettre à jour le compte</button>
-                        </div>
-                    </form>
-                </section>
-            </main>
+        <!-- Section principale du contenu -->
+        <main class="main-content">
+            <!-- Section de modification du compte -->
+            <section id="account-modification" class="card">
+                <header class="card-header">
+                    <!-- Titre de la section -->
+                    <h1 class="text-2xl font-bold mb-4">Modification du Compte Joueur</h1>
+                </header>
+                <form action="/updateAccount" method="post" class="card-content">
+                    <!-- Groupe de formulaires pour chaque champ -->
+                    <div class="form-group">
+                        <label for="username" class="form-label">Pseudo:</label>
+                        <input type="text" id="username" name="username" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="first-name" class="form-label">Prénom:</label>
+                        <input type="text" id="first-name" name="first-name" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name" class="form-label">Nom:</label>
+                        <input type="text" id="last-name" name="last-name" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="dob" class="form-label">Date de Naissance:</label>
+                        <input type="date" id="dob" name="dob" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="country" class="form-label">Pays:</label>
+                        <input type="text" id="country" name="country" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="city" class="form-label">Ville (Optionnel):</label>
+                        <input type="text" id="city" name="city" class="form-input">
+                    </div>
+
+                    <!-- Bouton pour soumettre le formulaire -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Mettre à jour le compte</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+
     
 
         <!-- Pied de page ### src\components\footer.html -->

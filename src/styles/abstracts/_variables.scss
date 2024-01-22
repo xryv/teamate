@@ -1,5 +1,6 @@
 // abstracts/_variables.scss
 
+// Partage du Group*
 // PurplePV Color Palette
 $purplePV-100: rgba(93, 3, 98, 0.1);
 $purplePV-200: rgba(93, 3, 98, 0.2);
@@ -47,3 +48,29 @@ $transparant-700: rgba(177, 188, 195, 0.7);
 $transparant-800: rgba(177, 188, 195, 0.8);
 $transparant-900: rgba(177, 188, 195, 0.9);
 $transparant-1000: rgba(177, 188, 195, 1);
+
+// Pour organiser avec les elements du Main.
+// Palette de couleurs
+$purple-dark: #3d155f;      // Pour le texte et les éléments importants
+$purple-light: #a991d4;     // Pour les arrière-plans et les éléments secondaires
+$orange: #f39237;           // Accents pour les boutons et les icônes
+$white: #ffffff;            // Pour le fond des cartes et le texte
+$grey: #c4c4c4;             // Pour les bordures et les ombres
+$black: #000000;            // Pour le texte primaire
+
+// Typographie
+$font-stack: 'Open Sans', sans-serif; // Police moderne et lisible
+$font-size-root: 16px;                // Taille de police de base
+$font-size-large: 1.25rem;            // Grande taille de police pour les titres
+$font-size-small: 0.875rem;           // Petite taille de police pour le texte secondaire
+
+// Espacements
+$spacing-small: 8px;
+$spacing-medium: 16px;
+$spacing-large: 24px;
+
+// Bordures
+$border-radius: 8px;
+
+// Ombres
+$box-shadow: 0 2px 4px rgba($black, 0.2);
