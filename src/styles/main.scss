@@ -7,9 +7,11 @@
 @import 'components/buttons';
 @import 'components/cards';
 
+@import 'layout/grid';
+@import 'layout/dashlayout';
+
 @import 'utilities/spacing';
 @import 'utilities/text';
-
 
 @import 'pages/login' ;
 @import 'pages/register' ;

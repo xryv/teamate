@@ -195,16 +195,43 @@
         </main>
 
 
+        <!-- Pied de page -->
+        <!-- SECTION TAILWIND CSS -->
+        <footer class="bg-gradient py-4">
+            <div class="container mx-auto px-4">
+                <!-- Flex container pour aligner les éléments -->
+                <div class="flex justify-evenly items-center text-white">
+                    
+                    <!-- Logo et liens principaux -->
+                    <div>
+                        <!-- Lien vers la page d'accueil avec le logo -->
+                        <a href="#"><img src="../../assets/navbar/logo.svg" alt="Logo Teamate" class="w-auto"></a>
+                    </div>
 
-        <!-- Pied de page ### src\components\footer.html -->
-        <footer class="footer">
-            <div class="container">
-                <span>&copy; 2024 Teamate. Tous droits réservés.</span>
-                <!-- Ajoutez ici d'autres éléments du pied de page si nécessaire -->
+                    <!-- Liens de navigation -->
+                    <nav class="flex items-center gap-10 text-white">
+                        <!-- Liens dans le pied de page -->
+                        <a href="#" class="footer-link text-white">Accueil</a>
+                        <a href="#" class="footer-link text-white">Recherche</a>
+                        <a href="#" class="footer-link text-white">Événements</a>
+                        <a href="#" class="footer-link text-white">Parcourir</a>
+                    </nav>
+
+                    <!-- Liens de compte utilisateur -->
+                    <div class="flex items-center gap-10">
+                        <!-- Liens pour connexion et inscription -->
+                        <a href="../src/pages/login/login.html" class="footer-link">Connexion</a>
+                        <a href="../src/pages/register/register.html" class="footer-link">Inscription</a>
+                    </div>
+                </div>
+
+                <!-- Texte de copyright en bas -->
+                <div class="text-center text-white mt-4">
+                    &copy; 2024 Teamate. Tous droits réservés.
+                </div>
             </div>
         </footer>
 
-        
         <!-- scripts --scripts --scripts --scripts --scripts -->
         <script src="../../scripts/navbar.js"></script>        
         <script src="../../scripts/authNavbar.js"></script>        

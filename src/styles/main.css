@@ -207,6 +207,72 @@ blockquote {
   color: #000000;
 }
 
+/* layout/_grid.scss */
+/* Simple grid layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+/* Grid item */
+.grid-item {
+  background-color: rgba(177, 188, 195, 0.7);
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 1rem;
+}
+
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+}
+.dashboard-layout .sidebar {
+  width: 20%;
+  background-color: rgba(93, 3, 98, 0.6);
+  padding: 16px;
+  text-align: center;
+}
+.dashboard-layout .sidebar .sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.dashboard-layout .sidebar .sidebar-nav .sidebar-link {
+  padding: 8px;
+  color: #ffffff;
+}
+.dashboard-layout .sidebar .sidebar-nav .sidebar-link:hover {
+  background-color: rgba(93, 3, 98, 0.7);
+}
+.dashboard-layout .players-table {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+}
+.dashboard-layout .players-table .table-header {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.dashboard-layout .players-table .player-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+.dashboard-layout .players-table .players-info {
+  margin-top: 24px;
+  font-size: 0.875rem;
+}
+
 /* utilities/_spacing.scss */
 /* Margin and padding utility classes */
 .m-0 {
@@ -506,7 +572,7 @@ blockquote {
 .main-content #login .card-content .form-group .form-label, .main-content #login #registration form .form-group .form-label, #registration .main-content #login form .form-group .form-label {
   display: block;
   margin-bottom: 8px;
-  color: #ffffff;
+  color: rgb(93, 3, 98);
 }
 .main-content #login .card-content .form-group .form-input, .main-content #login #registration form .form-group .form-input, #registration .main-content #login form .form-group .form-input {
   width: 100%;

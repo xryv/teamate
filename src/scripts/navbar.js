@@ -2,14 +2,17 @@ const div_home = document.querySelector('#div-home');
 const div_search = document.querySelector('#div-search');
 const div_evente = document.querySelector('#div-event');
 const div_browse = document.querySelector('#div-browse');
+
 const svgOne = document.querySelector('#svgOne')
 const svgTwo = document.querySelector('#svgTwo')
 const svgThree = document.querySelector('#svgThree')
 const svgFour = document.querySelector('#svgFour')
+
 const a_One = document.querySelector('#a-One')
 const a_Two = document.querySelector('#a-Two')
 const a_Three = document.querySelector('#a-Three')
 const a_Four = document.querySelector('#a-Four')
+
 const home = document.querySelector('#home');
 const search = document.querySelector('#search');
 const evente = document.querySelector('#event');

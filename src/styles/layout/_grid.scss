@@ -14,5 +14,9 @@
     border-radius: 0.25rem;
   }
   
-
-  
+  .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: $spacing-medium;
+      padding: 1rem;
+  }
