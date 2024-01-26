@@ -1,9 +1,6 @@
 # Teamate
 
-Plateforme en ligne axée sur la mise en relation et l'interaction sociale entre joueurs, 
-a2ec Pes objectifs clés centrés sur la gratuité pour les utilisateurs, la promotion Pe 
-la bien2eillance et la maximisation Pes abonnés et Pes clics pour attirer Pes 
-sponsors et Pe la publicité8 Voici une Pescription générale Pu projet 
+Plateforme en ligne axée sur la mise en relation et l'interaction sociale entre joueurs, avec des objectifs clés centrés sur la gratuité pour les utilisateurs, la promotion de la bienveillance et la maximisation des abonnés et des clics pour attirer des sponsors et de la publicité. Voici une description générale du projet.
 
 ## Démarrage
 
