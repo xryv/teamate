@@ -127,75 +127,76 @@
 
         <!-- Contenu principal ici -->
         <!-- Conteneur principal avec flexbox pour aligner la barre latérale et le contenu principal -->
-        <div class="flex min-h-screen">
+        <div class="main-content">
 
             <!-- Barre latérale pour la navigation -->
-            <aside class="w-1/5 bg-purple-600 p-5 text-white">
-                <nav class="flex flex-col space-y-2">
+            <aside class="sidebar">
+                <nav>
                     <!-- Hyperlien vers la page principale du tableau de bord -->
-                    <a href="../dashboard.html" class="dashboard-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">DASHBOARD</a>
+                    <a href="../dashboard.html" class="nav-link text-center">DASHBOARD</a>
                     <!-- Hyperlien vers la page des joueurs -->
-                    <a href="../players/dashboard_players.html" class="players-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">PLAYERS</a>
+                    <a href="../players/dashboard_players.html" class="nav-link text-center">PLAYERS</a>
                     <!-- Hyperlien vers la page des administrateurs -->
-                    <a href="../admins/dashboard_admins.html" class="admins-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">ADMINS</a>
+                    <a href="../admins/dashboard_admins.html" class="nav-link text-center">ADMINS</a>
                     <!-- Hyperlien vers la page des comptes bannis -->
-                    <a href="../banned_accs/dashboard_banned.html" class="banned-accounts-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">BANNED ACCOUNTS</a>
+                    <a href="../banned_accs/dashboard_banned.html" class="nav-link text-center">BANNED ACCOUNTS</a>
                     <!-- Hyperlien vers la page des invitations -->
-                    <a href="../invitations/dashboard_invitations.html" class="user-invitations-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">USER INVITATIONS</a>
+                    <a href="../invitations/dashboard_invitations.html" class="nav-link text-center">USER INVITATIONS</a>
                     <!-- Hyperlien vers la page de gestion des rôles -->
-                    <a href="../roles/dashboard_roles.html" class="role-management-btn py-2 px-4 hover:bg-purple-700 text-white block text-center">ROLE MANAGEMENT</a>
+                    <a href="../roles/dashboard_roles.html" class="nav-link text-center">ROLE MANAGEMENT</a>
                 </nav>                
             </aside>
         
             <!-- Contenu de la page Admins -->
-            <section class="content w-3/4 p-4">
-            <div class="header flex justify-between items-center mb-4">
-                <h1 class="text-xl font-bold text-purple-700">ADMINS</h1>
-                <button class="btn bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded text-sm">ADD PLAYER</button>
-            </div>
+            <section class="card content">
+                <header class="card-header">
+                  <h1 class="title">ADMINS</h1>
+                  <button class="btn btn-primary">ADD PLAYER</button>
+                </header>
 
-            <!-- Table des admins -->
-            <div class="table w-full">
-                <div class="table-header grid grid-cols-5 text-xs font-bold mb-2">
-                    <span>Name</span>
-                    <span>Email</span>
-                    <span>Role</span>
-                    <span>Status</span>
-                    <span>Actions</span>
-                </div>
-                <!-- Exemple de ligne - devra être générée dynamiquement avec JS -->
-                <div class="table-row grid grid-cols-5 items-center mb-1 p-2 rounded bg-purple-200 text-purple-700">
-                    <span>Player Name</span>
-                    <span>xxx@email.com</span>
-                    <span>Admin</span>
-                    <span>Active</span>
-                    <span class="flex gap-1">
-                        <button class="edit-btn bg-green-500 hover:bg-green-600 text-white py-1 px-3 rounded">Edit</button>
-                        <button class="delete-btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">Delete</button>
-                    </span>
-                </div>
-                <!-- Exemple de ligne 2 - devra être générée dynamiquement avec JS -->
-                <div class="table-row grid grid-cols-5 items-center mb-1 p-2 rounded bg-purple-200 text-purple-700">
-                    <span>Player Name</span>
-                    <span>xxx@email.com</span>
-                    <span>Admin</span>
-                    <span>Active</span>
-                    <span class="flex gap-1">
-                        <button class="edit-btn bg-green-500 hover:bg-green-600 text-white py-1 px-3 rounded">Edit</button>
-                        <button class="delete-btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">Delete</button>
-                    </span>
-                </div>
-                <!-- Exemple de ligne 2 - devra être générée dynamiquement avec JS -->
-                <div class="table-row grid grid-cols-5 items-center mb-1 p-2 rounded bg-purple-200 text-purple-700">
-                    <span>Player Name</span>
-                    <span>xxx@email.com</span>
-                    <span>Admin</span>
-                    <span>Active</span>
-                    <span class="flex gap-1">
-                        <button class="edit-btn bg-green-500 hover:bg-green-600 text-white py-1 px-3 rounded">Edit</button>
-                            <button class="delete-btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">Delete</button>
-                    </span>
-                </div>
+                <!-- Admins table -->
+                <div class="card-content players-table">
+                    <div class="table-header">
+                      <span>Name</span>
+                      <span>Email</span>
+                      <span>Role</span>
+                      <span>Status</span>
+                      <span>Actions</span>
+                    </div>
+                    <!-- Exemple de ligne - devra être générée dynamiquement avec JS -->
+                    <div class="player-row">
+                        <span>Player Name</span>
+                        <span>xxx@email.com</span>
+                        <span>Admin</span>
+                        <span>Active</span>
+                        <span class="actions">
+                            <button class="btn btn-secondary edit-btn">Edit</button>
+                            <button class="btn btn-secondary delete-btn">Delete</button>
+                        </span>
+                    </div>
+                    <!-- Exemple de ligne 2 - devra être générée dynamiquement avec JS -->
+                    <div class="player-row">
+                        <span>Player Name</span>
+                        <span>xxx@email.com</span>
+                        <span>Admin</span>
+                        <span>Active</span>
+                        <span class="actions">
+                            <button class="btn btn-secondary edit-btn">Edit</button>
+                            <button class="btn btn-secondary delete-btn">Delete</button>
+                          </span>
+                    </div>
+                    <!-- Exemple de ligne 2 - devra être générée dynamiquement avec JS -->
+                    <div class="player-row">
+                        <span>Player Name</span>
+                        <span>xxx@email.com</span>
+                        <span>Admin</span>
+                        <span>Active</span>
+                        <span class="actions">
+                            <button class="btn btn-secondary edit-btn">Edit</button>
+                            <button class="btn btn-secondary delete-btn">Delete</button>
+                        </span>
+                    </div>
+
             </div>
         </div>
     

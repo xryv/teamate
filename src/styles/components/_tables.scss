@@ -1,0 +1,32 @@
+/* components/_tables.scss */
+.players-table {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); // J'ajuste le nombre de colonnes si nécessaire
+    gap: $spacing-small; // J'ajuste l'espacement entre les lignes et les colonnes si nécessaire
+
+    .table-header,
+    .player-row {
+        display: contents; // Ceci assure que la mise en page en grille s'applique aux enfants
+
+        span, .actions {
+            text-align: left;
+            padding: $spacing-medium; // J'ajuste le rembourrage pour assurer l'alignement
+        }
+
+        .actions {
+            display: flex;
+            gap: $spacing-small; // Je fournis de l'espace entre les boutons
+            justify-content: flex-start; // J'aligne les boutons au début de la cellule de la grille
+        }
+    }
+    
+    .table-header {
+        background-color: $transparant-700; // Je peux ajuster l'arrière-plan pour différencier l'en-tête
+        font-weight: bold;
+        span {
+            overflow: hidden; // Assure que le contenu ne déborde pas de son conteneur
+            text-overflow: ellipsis; // Ajoute des points de suspension au texte qui déborde
+            white-space: nowrap; // Garde le contenu sur une seule ligne
+        }
+    }
+}

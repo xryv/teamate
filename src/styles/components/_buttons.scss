@@ -1,29 +1,38 @@
 /* components/_buttons.scss */
 
-// Styles pour les boutons
+
 .btn {
-  padding: $spacing-medium $spacing-large;  // Rembourrage
-  border: none;                             // Pas de bordure
-  border-radius: $border-radius;            // Bords arrondis
-  cursor: pointer;                          // Curseur pointeur
-  font-weight: bold;                        // Texte en gras
-  transition: background-color 0.3s;       // Animation au survol
+  padding: $spacing-medium $spacing-large;
+  border-radius: $border-radius;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
 
   &.btn-primary {
-    background-color: $orange;             // Couleur principale pour les boutons
-    color: $white;                         // Texte blanc pour le contraste
-
+    background: linear-gradient(to right, $purplePV-700, $bluePV-700); // Bouton avec dégradé
+    color: $white;
     &:hover {
-      background-color: darken($orange, 10%); // Assombrir au survol
+      background: linear-gradient(to right, $purplePV-800, $bluePV-800); // Assombrissement au survol
     }
   }
 
   &.btn-secondary {
-    background-color: $purple-light;       // Couleur secondaire pour les boutons
-    color: $purple-dark;                   // Texte violet foncé
-
+    background-color: $purple-light;
+    color: $purple-dark;
     &:hover {
-      background-color: darken($purple-light, 10%); // Assombrir au survol
+      background-color: darken($purple-light, 10%);
     }
   }
+
+  .btn-admin {
+    @extend .btn; 
+    background-color: $bluePV-500;
+    color: $white;
+    &:hover {
+      background-color: $bluePV-600;
+    }
+  }
+  
 }
+
+

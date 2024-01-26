@@ -1,28 +1,26 @@
 /* components/_cards.scss */
 
-// Styles pour les cartes
+// Mise à jour du style des cartes pour le dégradé
 .card {
-  background-color: $white;               // Fond blanc pour les cartes
-  border-radius: $border-radius;          // Bords arrondis pour un look moderne
-  box-shadow: $box-shadow;                // Ombre subtile pour de la profondeur
-  padding: $spacing-medium;               // Espacement intérieur
-  margin-bottom: $spacing-medium;         // Espacement entre les cartes
-  transition: box-shadow 0.3s;            // Transition de l'ombre pour l'interaction
+  background: linear-gradient(to right, $purplePV-500, $bluePV-500); // Dégradé de violet à bleu
+  color: $white; // Texte en blanc pour contraste
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  padding: $spacing-medium;
+  margin-bottom: $spacing-medium;
+  transition: box-shadow 0.3s;
 
   &:hover {
-    box-shadow: 0 4px 8px rgba($black, 0.2); // Ombre plus prononcée au survol
+    box-shadow: 0 4px 8px rgba($black, 0.3);
   }
 
-  // En-tête de la carte
   .card-header {
-    font-size: $font-size-large;           // Grande taille de police pour les en-têtes
-    color: $white;                   // Couleur pour le texte de l'en-tête
-    margin-bottom: $spacing-small;         // Espacement après l'en-tête
+    font-size: $font-size-large;
+    margin-bottom: $spacing-small;
   }
 
-  // Contenu de la carte
   .card-content {
-    font-size: $font-size-root;            // Taille de police standard pour le contenu
-    color: $black;                         // Couleur pour le texte du contenu
+    font-size: $font-size-root;
   }
 }
+

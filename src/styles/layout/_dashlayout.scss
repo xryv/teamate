@@ -39,10 +39,14 @@
             }
 
             .player-row {
-                display: grid;
-                grid-template-columns: repeat(5, 1fr);
-                gap: $spacing-small;
-            }
+                @extend .grid-item; // Utiliser les styles de grille
+                background-color: $purplePV-200;
+                color: $purplePV-700;
+                margin-bottom: $spacing-small;
+                padding: $spacing-small;
+                border-radius: $border-radius;
+              }
+              
 
             .players-info {
                 margin-top: $spacing-large;
@@ -51,3 +55,9 @@
         }
     }
 
+    .table-row {
+        background-color: $purplePV-200;
+        color: $purplePV-700;
+        @extend .grid; // Assure une disposition en grille cohérente
+      }
+      
