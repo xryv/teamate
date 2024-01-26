@@ -12,9 +12,30 @@ Cette barre de navigation a été principalement construite par les membres du g
 
 De plus, cette barre de navigation était destinée à être stylisée uniquement avec TailwindCSS. De cette manière, la barre de navigation/l'en-tête se concentre uniquement sur TailwindCSS, car ses capacités sont vastes et elle peut être plus propre, plus rapide et intuitive pour l'objectif d'une telle barre de navigation.
 
-### nav_admin.html
+Je souhaite simplement exprimer tous les icônes qui existent dans la barre de navigation. Par exemple, il y a des boutons de connexion (login), de déconnexion (logout), un tableau de bord pour les amis, des éléments d'administration. Il y a des éléments qui apparaissent uniquement lorsque l'utilisateur n'est pas connecté, d'autres qui ne s'affichent que lorsque l'utilisateur est connecté, et d'autres qui sont seulement visibles par les administrateurs.
 
-Cette barre de navigation a une section supplémentaire, elle contient le tableau de bord. La raison de la construction de ce composant supplémentaire est de clarifier l'importance que plus tard, seuls les administrateurs pourraient avoir accès à cette barre de navigation.
+**Visibilité des Icônes de la Barre de Navigation :**
+
+1. **Icônes Visibles à 100% :**
+   - Icône Accueil (Accueil ICON)
+   - Icône Recherche (Recherche ICON)
+   - Icône Événement (Event ICON)
+   - Icône Navigation (Browse ICON)
+
+2. **Icônes Spécifiques à l'Administrateur :**
+   - Icône Tableau de Bord (Dashboard ICON) --> Visible uniquement pour les administrateurs
+
+3. **Icônes Conditionnées par le Statut de Connexion de l'Utilisateur :**
+   - Icône Connexion (Login Icon) --> Visible lorsque l'utilisateur n'est pas connecté
+   - Icône Inscription (Register Icon) --> Visible lorsque l'utilisateur n'est pas connecté
+   - Icône Déconnexion (Logout Icon) --> Visible lorsque l'utilisateur est connecté
+
+4. **Icônes Visibles Uniquement Lorsque l'Utilisateur est Connecté :**
+   - Liste des Amis (Friends List Icon)
+   - Notifications (Notifications Icon)
+   - Classement (Rank Icon)
+   - Les Trois Points (Three Dots Icon) - Menu supplémentaire
+
 
 ### footer.html
 
