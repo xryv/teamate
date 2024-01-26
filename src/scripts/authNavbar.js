@@ -21,7 +21,7 @@ function addHoverEffect(div, a_Element, span_Element, text_Span, svg_Element) {
 
     div.addEventListener('mouseleave', () => {
         span_Element.innertText= '';
-        div.classList.remove('bg-slate-500', 'rounded-full');
+        a_Element.remove('bg-slate-500', 'rounded-full');
         svg_Element.style.stroke = 'white'; 
     });
 }

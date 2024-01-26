@@ -1,19 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Footer Component</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Footer Component</title>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
-<!-- Pied de page ### src\components\footer.html -->
-<footer class="footer">
-    <div class="container">
-        <span>&copy; 2024 Teamate. Tous droits réservés.</span>
-        <!-- Ajoutez ici d'autres éléments du pied de page si nécessaire -->
-    </div>
-</footer>
+        <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+        <link href="../styles/main.css" rel="stylesheet">
+        <link href="../../public/build/tailwind.css" rel="stylesheet">
+    </head>
+    </head>
+    <body>
 
-</body>
+            <!-- Pied de page -->
+            <!-- SECTION TAILWIND CSS -->
+            <footer class="bg-gradient py-4">
+                <div class="container mx-auto px-4">
+                    <!-- Flex container pour aligner les éléments -->
+                    <div class="flex justify-evenly items-center text-white">
+                        
+                        <!-- Logo et liens principaux -->
+                        <div>
+                            <!-- Lien vers la page d'accueil avec le logo -->
+                            <a href="#"><img src="../assets/navbar/logo.svg" alt="Logo Teamate" class="w-auto"></a>
+                        </div>
+
+                        <!-- Liens de navigation -->
+                        <nav class="flex items-center gap-10">
+                            <!-- Add - Liens dans le pied de page -->
+                            <a href="#" class="footer-link">Accueil</a>
+                            <a href="#" class="footer-link">Recherche</a>
+                            <a href="#" class="footer-link">Événements</a>
+                            <a href="#" class="footer-link">Parcourir</a>
+                        </nav>
+
+                        <!-- Liens de compte utilisateur -->
+                        <div class="flex items-center gap-10">
+                            <!-- Add - Liens pour connexion et inscription -->
+                            <a href="#" class="footer-link">Connexion</a>
+                            <a href="#" class="footer-link">Inscription</a>
+                        </div>
+                    </div>
+
+                    <!-- Texte de copyright en bas -->
+                    <div class="text-center text-white mt-4">
+                        &copy; 2024 Teamate. Tous droits réservés.
+                    </div>
+                </div>
+            </footer>
+
+    </body>
 </html>
