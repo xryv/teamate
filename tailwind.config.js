@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
-  theme: {
+  content: ["./src/**/*.{html,js}", "./public/**/*.{html,js,vue}"],  theme: {
     extend: {
       fontFamily: {
         custom: ['Roboto', 'sans-serif'],
@@ -83,7 +82,7 @@ module.exports = {
           'position': 'absolute',
           'font-family': 'Roboto, sans-serif',
           'font-weight': '400',
-          'transform': 'translateY(75px)',
+          'transform': 'translateY(55px)',
           'color': '#FFA500',
         },
       };

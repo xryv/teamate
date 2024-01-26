@@ -1,32 +1,31 @@
-const div_login = document.querySelector('#div-login');
-const div_register = document.querySelector('#div-register');
-const div_logout = document.querySelector('#div-logout');
+function setupHoverEffect(divSelector, btnSelector, spanSelector, svgColorEnter, svgColorLeave, textSpan) {
+    const div = document.querySelector(divSelector);
+    const a = document.querySelector(btnSelector);
+    const span = document.querySelector(spanSelector);
+    const svg = div.querySelector('svg');
 
-const a_login = document.querySelector('#login-btn');
-const a_logout = document.querySelector('#logout-btn');
-const a_register = document.querySelector('#register-btn');
-
-const span_login = document.querySelector('#login');
-const span_logout = document.querySelector('#logout');
-const span_register = document.querySelector('#register');
-
-
-function addHoverEffect(div, a_Element, span_Element, text_Span, svg_Element) {
-    
     div.addEventListener('mouseenter', () => {
-        span_Element.innertText= text_Span;
-        a_Element.classList.add('bg-slate-500', 'rounded-full');
-        svg_Element.style.stroke = '#0B3156'; 
+        span.innerText = textSpan;
+        a.classList.add('bg-slate-500', 'rounded-full');
+        svg.style.stroke = svgColorEnter;
     });
 
     div.addEventListener('mouseleave', () => {
-        span_Element.innertText= '';
-        a_Element.remove('bg-slate-500', 'rounded-full');
-        svg_Element.style.stroke = 'white'; 
+        span.innerText = '';
+        a.classList.remove('bg-slate-500', 'rounded-full');
+        svg.style.stroke = svgColorLeave;
     });
 }
 
 
-addHoverEffect(div_login, a_login, span_login, 'Connexion', div_login.querySelector('svg'));
-addHoverEffect(div_logout, a_logout, span_logout, 'Déconnexion', div_logout.querySelector('svg'));
-addHoverEffect(div_register, a_register, span_register, 'Inscription', div_register.querySelector('svg'));
+setupHoverEffect('#div-login', '#login-btn', '#login', '#0B3156', 'white', 'Login');
+setupHoverEffect('#div-register', '#register-btn', '#register', '#0B3156', 'white', 'Register');
+setupHoverEffect('#div-logout', '#logout-btn', '#logout', '#0B3156', 'white', 'Logout');
+setupHoverEffect('#div-dashboard', '#a-five', '#dashboard', '#0B3156', 'white', 'Dashboard');
+
+
+setupHoverEffect('#div-home', '#a-One', '#home', '#0B3156', 'white', 'Home');
+setupHoverEffect('#div-search', '#a-Two', '#search', '#0B3156', 'white', 'Search');
+setupHoverEffect('#div-event', '#a-Three', '#event', '#0B3156', 'white', 'Events');
+setupHoverEffect('#div-browse', '#a-Four', '#browse', '#0B3156', 'white', 'Browse');
+
