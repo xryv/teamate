@@ -1,33 +1,40 @@
 /* components/_tables.scss */
 
+/* Style pour la table des joueurs */
 .players-table {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); // ajuste le nombre de colonnes si nécessaire
-    gap: $spacing-small; // ajuste l'espacement entre les lignes et les colonnes si nécessaire
+    display: grid; // Affiche les éléments sous forme de grille
+    grid-template-columns: 1fr 2fr 1fr 1fr auto; // Répartit l'espace des colonnes, plus pour l'email
+    gap: $spacing-small; // Espacement entre les colonnes et les lignes
+    background-color: transparent;
 
+    /* Style pour l'en-tête et chaque ligne de joueur */
     .table-header,
     .player-row {
-        display: contents; // Ceci assure que la mise en page en grille s'applique aux enfants
+        display: grid; // Chaque ligne est une grille pour aligner avec l'en-tête
+        grid-template-columns: 1fr 2fr 1fr 1fr auto; // Même répartition que la grille principale
 
-        span, .actions {
-            text-align: left;
-            padding: $spacing-medium; // J'ajuste le rembourrage pour assurer l'alignement
+        /* Style commun pour le texte et les actions */
+        span {
+            padding: $spacing-medium; // Padding pour le texte
+            text-align: left; // Alignement du texte à gauche
+            overflow: hidden; // Cache le débordement de texte
+            text-overflow: ellipsis; // Ajoute des points de suspension si le texte déborde
+            white-space: nowrap; // Empêche le texte de passer à la ligne
         }
 
+        /* Style pour les boutons d'actions */
         .actions {
-            display: flex;
-            gap: $spacing-small; // l'espace entre les boutons
-            justify-content: flex-start; // les boutons au début de la cellule de la grille
+            display: flex; // Utilise flexbox pour l'alignement des boutons
+            gap: $spacing-small; // Espacement entre les boutons
+            justify-content: flex-start; // Alignement au début de la cellule
+            padding: $spacing-medium; // Padding autour des boutons
+            overflow: visible; // Assure que les boutons ne soient pas coupés
         }
     }
-    
+
+    /* Style pour l'en-tête du tableau */
     .table-header {
-        background-color: $transparant-700; // ajuster l'arrière-plan pour différencier l'en-tête
-        font-weight: bold;
-        span {
-            overflow: hidden; // Assure que le contenu ne déborde pas de son conteneur
-            text-overflow: ellipsis; // Ajoute des points de suspension au texte qui déborde
-            white-space: nowrap; // Garde le contenu sur une seule ligne
-        }
+        background-color: transparent; // Couleur de fond pour différencier l'en-tête
+        font-weight: bold; // Texte en gras pour l'en-tête
     }
 }

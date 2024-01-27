@@ -4,17 +4,15 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Teamate | Connectez-vous avec des gamers</title>
+        <title>Teamate | ADMIN DASHBOARD - PLAYERS</title>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <!-- TAILWIND -> HEADER <- RESPECTIVE CSS-->
-        <link href="https://cdn.tailwindcss.com" rel="stylesheet">
-        <link href="../../../../public/build/tailwind.css" rel="stylesheet">
 
-        <!-- SCSS -> BODY & FOOTER <- RESPECTIVE CSS-->
-        <link href="../../../styles/main.css" rel="stylesheet">
+        <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+        <link href="/src/styles/main.css" rel="stylesheet">
+        <link href="/public/build/tailwind.css" rel="stylesheet">
     </head>
 
     <body>
@@ -23,13 +21,12 @@
         <!-- ZONE TAILWINDCSS -->
         <header>
             <div class="bg-gradient">
-
                 <!-- Debut Navbar -->
                 <nav class="flex justify-evenly">
                     <div class="flex items-center gap-10">
                         <!-- Accueil ICON -->
                         <div id="div-home" class="navbarDiv">
-                            <a id="a-One" class="navbarA" href="#">
+                            <a id="a-One" class="navbarA" href="/public/index.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                             </a>
                             <span id="home" class="navbarSpanOfA"></span>
@@ -57,7 +54,7 @@
                         </div>
                         <!-- Dashboard ICON -->                               
                         <div id="div-dashboard" class="navbarDiv">
-                            <a id="a-five" class="navbarA" href="#">
+                            <a id="a-five" class="navbarA" href="/src/pages/dashboard/dashboard.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-crown"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
                             </a>
                             <span id="dashboard" class="navbarSpanOfA"></span>
@@ -71,7 +68,7 @@
                     
                     <!-- icons Droit -->
                     <div class="items-center flex gap-10">
-                    
+                        
                         <!-- LOGIN & LOGOUT SECTION -->
                         <div id="div-login" class="navbarDiv">
                             <a id="login-btn" class="navbarA" href="/src/pages/login/login.html">
@@ -123,130 +120,136 @@
         </header>
         <!-- FIN DE ZONE TAILWINDCSS -->
     
-        <!-- Contenu principal ici -->
-        <!-- Conteneur principal avec flexbox pour aligner la barre latérale et le contenu principal -->
+        <!-- Ici commence le contenu principal -->
+        <!-- Conteneur flex pour aligner la barre latérale et le contenu principal -->
         <div class="main-content">
 
             <!-- Barre latérale pour la navigation -->
             <aside class="sidebar">
-                <nav>
-                    <!-- Hyperlien vers la page principale du tableau de bord -->
-                    <a href="../dashboard.html" class="nav-link text-center">DASHBOARD</a>
-                    <!-- Hyperlien vers la page des joueurs -->
-                    <a href="../players/dashboard_players.html" class="nav-link text-center">PLAYERS</a>
-                    <!-- Hyperlien vers la page des administrateurs -->
-                    <a href="../admins/dashboard_admins.html" class="nav-link text-center">ADMINS</a>
-                    <!-- Hyperlien vers la page des comptes bannis -->
-                    <a href="../banned_accs/dashboard_banned.html" class="nav-link text-center">BANNED ACCOUNTS</a>
-                    <!-- Hyperlien vers la page des invitations -->
-                    <a href="../invitations/dashboard_invitations.html" class="nav-link text-center">USER INVITATIONS</a>
-                    <!-- Hyperlien vers la page de gestion des rôles -->
-                    <a href="../roles/dashboard_roles.html" class="nav-link text-center">ROLE MANAGEMENT</a>
+                <!-- Menu de navigation -->
+                <nav class="sidebar-nav">
+                    <!-- Liens de navigation -->
+                    <a href="../dashboard.html" class="nav-link">TABLEAU DE BORD</a>
+                    <a href="../players/dashboard_players.html" class="nav-link">JOUEURS</a>
+                    <a href="../admins/dashboard_admins.html" class="nav-link">ADMINISTRATEURS</a>
+                    <a href="../banned_accs/dashboard_banned.html" class="nav-link">COMPTES BANNIS</a>
+                    <a href="../invitations/dashboard_invitations.html" class="nav-link">INVITATIONS UTILISATEURS</a>
+                    <a href="../roles/dashboard_roles.html" class="nav-link">GESTION DES RÔLES</a>
                 </nav>                
             </aside>
 
-                
-            <!-- Contenu principal -->
-            <section class="card content">
-                <header class="card-header">
-                    <h5 class="title">PLAYERS MANAGEMENT</h1>
-                        <button class="btn btn-primary">NEW PLAYER</button>
-                </header>
+            <!-- Section du contenu principal -->
+            <section class="content">
+                <!-- Carte pour le contenu du gestionnaire des joueurs -->
+                <div class="card">
+                    <!-- En-tête de la carte avec le titre et le bouton pour ajouter un nouveau joueur -->
+                    <header class="card-header">
+                        <h5 class="title">GESTION DES JOUEURS</h5>
+                        <button class="btn btn-primary">NOUVEAU JOUEUR</button>
+                    </header>
 
-                <!-- Table des joueurs -->
-                <div class="card-content players-table">
-                    <div class="table-header">
-                        <span>Name</span>
-                        <span>Email</span>
-                        <span>Role</span>
-                        <span>Status</span>
-                        <span>Actions</span>
-                    </div>
-                    <!-- Les lignes de joueurs seront générées dynamiquement ici -->
-                    <!-- Example Row -->
+                    <!-- Tableau pour afficher les joueurs -->
+                    <div class="card-content players-table grid-container">
+                        <!-- En-tête du tableau définissant les colonnes -->
+                        <div class="table-header">
+                            <span>Nom</span>
+                            <span>Email</span>
+                            <span>Rôle</span>
+                            <span>Statut</span>
+                            <span>Actions</span>
+                        </div>
+
+                    <!-- Les lignes de joueurs générées dynamiquement seront ici -->
+                    <!-- Exemple de ligne -->
                     <div class="player-row">
-                        <span>Nom</span>
-                        <span>nom@email.com</span>
-                        <span>Player</span>
-                        <span class="status-active">Active</span>
+                        <span>Nom</span> <!-- Nom du joueur -->
+                        <span>nom@email.com</span> <!-- Email du joueur -->
+                        <span>Joueur</span> <!-- Rôle du joueur -->
+                        <span class="status-active">Actif</span> <!-- Statut du joueur -->
                         <span class="actions">
-                            <button class="btn btn-secondary">Edit</button>
-                            <button class="btn btn-secondary">Delete</button>
+                            <button class="btn btn-modify">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                            </button> <!-- Bouton pour modifier un joueur -->
+                            <button class="btn btn-delete">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-x"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="17" x2="22" y1="8" y2="13"/><line x1="22" x2="17" y1="8" y2="13"/></svg>
+                            </button> <!-- Bouton pour supprimer un joueur -->
                         </span>
                     </div>
 
-                    <!-- Example Row -->
                     <div class="player-row">
-                        <span>Nom</span>
-                        <span>nom@email.com</span>
-                        <span>Player</span>
-                        <span class="status-active">Active</span>
+                        <span>Nom</span> <!-- Nom du joueur -->
+                        <span>nom@email.com</span> <!-- Email du joueur -->
+                        <span>Joueur</span> <!-- Rôle du joueur -->
+                        <span class="status-active">Actif</span> <!-- Statut du joueur -->
                         <span class="actions">
-                            <button class="btn btn-secondary">Edit</button>
-                            <button class="btn btn-secondary">Delete</button>
+                            <button class="btn btn-modify">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                            </button> <!-- Bouton pour modifier un joueur -->
+                            <button class="btn btn-delete">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-x"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="17" x2="22" y1="8" y2="13"/><line x1="22" x2="17" y1="8" y2="13"/></svg>
+                            </button> <!-- Bouton pour supprimer un joueur -->
                         </span>
                     </div>
 
-
-                    <!-- Example Row -->
                     <div class="player-row">
-                        <span>Nom</span>
-                        <span>nom@email.com</span>
-                        <span>Player</span>
-                        <span class="status-active">Active</span>
+                        <span>Nom</span> <!-- Nom du joueur -->
+                        <span>nom@email.com</span> <!-- Email du joueur -->
+                        <span>Joueur</span> <!-- Rôle du joueur -->
+                        <span class="status-active">Actif</span> <!-- Statut du joueur -->
                         <span class="actions">
-                            <button class="btn btn-secondary">Edit</button>
-                            <button class="btn btn-secondary">Delete</button>
+                            <button class="btn btn-modify">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                            </button> <!-- Bouton pour modifier un joueur -->
+                            <button class="btn btn-delete">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-x"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="17" x2="22" y1="8" y2="13"/><line x1="22" x2="17" y1="8" y2="13"/></svg>
+                            </button> <!-- Bouton pour supprimer un joueur -->
                         </span>
                     </div>
-
-
                 </div>
-            </main>
+            </section>
         </div>
+
+
     
 
-        <!-- Pied de page -->
-        <!-- SECTION TAILWIND CSS -->
-        <footer class="bg-gradient py-4">
-            <div class="container mx-auto px-4">
-                <!-- Flex container pour aligner les éléments -->
-                <div class="flex justify-evenly items-center text-white">
-                    
-                    <!-- Logo et liens principaux -->
-                    <div>
-                        <!-- Lien vers la page d'accueil avec le logo -->
-                        <a href="#"><img src="../../../assets/navbar/logo.svg" alt="Logo Teamate" class="w-auto"></a>
+            <!-- Pied de page -->
+            <!-- SECTION TAILWIND CSS -->
+            <footer class="bg-gradient py-4">
+                <div class="container mx-auto px-4">
+                    <!-- Flex container pour aligner les éléments -->
+                    <div class="flex justify-evenly items-center text-white">
+                        
+                        <!-- Logo et liens principaux -->
+                        <div>
+                            <!-- Lien vers la page d'accueil avec le logo -->
+                            <a href="/public/index.html"><img src="/src/assets/navbar/logo.svg" alt="Logo Teamate" class="w-auto"></a>
+                        </div>
+
+                        <!-- Liens de navigation -->
+                        <nav class="flex items-center gap-10">
+                            <!-- Add - Liens dans le pied de page -->
+                            <a href="/public/index.html" class="footer-link">Accueil</a>
+                            <a href="#" class="footer-link">Recherche</a>
+                            <a href="#" class="footer-link">Événements</a>
+                            <a href="#" class="footer-link">Parcourir</a>
+                        </nav>
+
+                        <!-- Liens de compte utilisateur -->
+                        <div class="flex items-center gap-10">
+                            <!-- Liens pour connexion et inscription -->
+                            <a href="/src/pages/login/login.html" class="footer-link">Connexion</a>
+                            <a href="/src/pages/register/register.html" class="footer-link">Inscription</a>
+                        </div>
                     </div>
 
-                    <!-- Liens de navigation -->
-                    <nav class="flex items-center gap-10 text-white">
-                        <!-- Liens dans le pied de page -->
-                        <a href="#" class="footer-link text-white">Accueil</a>
-                        <a href="#" class="footer-link text-white">Recherche</a>
-                        <a href="#" class="footer-link text-white">Événements</a>
-                        <a href="#" class="footer-link text-white">Parcourir</a>
-                    </nav>
-
-                    <!-- Liens de compte utilisateur -->
-                    <div class="flex items-center gap-10">
-                        <!-- Liens pour connexion et inscription -->
-                        <a href="/src/pages/login/login.html" class="footer-link">Connexion</a>
-                        <a href="/src/pages/register/register.html" class="footer-link">Inscription</a>
+                    <!-- Texte de copyright en bas -->
+                    <div class="text-center text-white mt-4">
+                        &copy; 2024 Teamate. Tous droits réservés.
                     </div>
                 </div>
-
-                <!-- Texte de copyright en bas -->
-                <div class="text-center text-white mt-4">
-                    &copy; 2024 Teamate. Tous droits réservés.
-                </div>
-            </div>
-        </footer>
-
-        <!-- scripts --scripts --scripts --scripts --scripts -->
-        <script src="../../../scripts/navbar.js"></script>        
-        <script src="../../../scripts/authNavbar.js"></script>        
-        <script src="../../../scripts/navbar_admin.js"></script>
+            </footer>
+            
+        <!-- scripts -->
+        <script src="/src/scripts/navbar.js"></script>    
     </body>
-
 </html>

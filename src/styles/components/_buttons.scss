@@ -2,11 +2,12 @@
 
 
 .btn {
-  padding: $spacing-medium $spacing-large;
+  padding: $spacing-small; // Reduced padding for a smaller button
   border-radius: $border-radius;
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s;
+  font-size: $font-size-small;
 
   &.btn-primary {
     background: linear-gradient(to right, $purplePV-700, $bluePV-700); // Bouton avec dégradé
@@ -32,7 +33,31 @@
       background-color: $bluePV-600;
     }
   }
+
+
+  &.btn-modify {
+    @extend .btn; 
+    background-color: $orangePV-500; // Orange color for modify actions
+    color: $white;
+    &:hover {
+      background-color: $orangePV-600; // Darken the background color on hover
+    }
+  }
+  
+  // Specific styles for the 'Delete' button
+  &.btn-delete {
+    @extend .btn; 
+    background-color: $purple-light; // Red color for delete actions
+    color: $white;
+    &:hover {
+      background-color: $red; // Darken the background color on hover
+    }
+  }
+  
   
 }
+
+
+
 
 

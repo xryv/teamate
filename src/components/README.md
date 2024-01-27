@@ -38,6 +38,7 @@ Je souhaite simplement exprimer tous les icônes qui existent dans la barre de n
 
 
 ### Composants pour le MAIN HTML avec SCSS classes.
+[Guide SCSS ](https://github.com/xryv/teamate/blob/BRUNO/src/styles/README.MD).
 
 #### card.html
 - **Carte pour afficher informations de la manière TEAMATE.**
