@@ -21,6 +21,9 @@
 
   .card-content {
     font-size: $font-size-root;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-small; // Espace entre les champs de formulaire
   }
 }
 

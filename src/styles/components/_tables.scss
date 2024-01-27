@@ -1,8 +1,9 @@
 /* components/_tables.scss */
+
 .players-table {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); // J'ajuste le nombre de colonnes si nécessaire
-    gap: $spacing-small; // J'ajuste l'espacement entre les lignes et les colonnes si nécessaire
+    grid-template-columns: repeat(5, 1fr); // ajuste le nombre de colonnes si nécessaire
+    gap: $spacing-small; // ajuste l'espacement entre les lignes et les colonnes si nécessaire
 
     .table-header,
     .player-row {
@@ -15,13 +16,13 @@
 
         .actions {
             display: flex;
-            gap: $spacing-small; // Je fournis de l'espace entre les boutons
-            justify-content: flex-start; // J'aligne les boutons au début de la cellule de la grille
+            gap: $spacing-small; // l'espace entre les boutons
+            justify-content: flex-start; // les boutons au début de la cellule de la grille
         }
     }
     
     .table-header {
-        background-color: $transparant-700; // Je peux ajuster l'arrière-plan pour différencier l'en-tête
+        background-color: $transparant-700; // ajuster l'arrière-plan pour différencier l'en-tête
         font-weight: bold;
         span {
             overflow: hidden; // Assure que le contenu ne déborde pas de son conteneur

@@ -37,8 +37,67 @@ Je souhaite simplement exprimer tous les icônes qui existent dans la barre de n
    - Les Trois Points (Three Dots Icon) - Menu supplémentaire
 
 
-### footer.html
+### Composants pour le MAIN HTML avec SCSS classes.
 
-Ceci est un pied de page simple, il contient les principaux liens de navigation, avec un texte clair pour une lecture facile puisque la barre de navigation l'exprime de manière plus dynamique et interactive avec des icônes.
+#### card.html
+- **Carte pour afficher informations de la manière TEAMATE.**
+- **Personnalisable** pour différents contenus, facile à comprendre.
+- **Cohérence de style** avec l'application.
 
-The footer follows the same strategy than the navbar, using only 
+```html
+    <div class="card">
+        <div class="card-header">Titre de la Carte</div>
+        <div class="card-content">Contenu de la carte...</div>
+    </div>
+```
+
+#### form.html
+- Éléments de formulaire pour la collecte d'informations.
+- Champs clairement étiquetés, intuitifs et esthétiques d'accord avec TEAMATE.
+- Adaptés pour inscription, connexion et saisie de données.
+
+```html
+   <form>
+         <div class="form-group">
+            <label for="name" class="form-label">Nom :</label>
+            <input type="text" id="name" class="form-input">
+         </div>
+         <div class="form-group">
+            <label for="email" class="form-label">Email :</label>
+            <input type="email" id="email" class="form-input">
+         </div>
+         <button type="submit" class="btn btn-primary">Envoyer</button>
+   </form>
+```
+
+#### sidebar.html
+- Barre latérale pour navigation rapide dans l'application.
+- Contient liens vers sections principales.
+- Usage dans le dashboard.
+
+```html
+   <aside class="sidebar">
+      <nav>
+            <ul>
+               <li><a href="#" class="nav-link">Accueil</a></li>
+               <li><a href="#" class="nav-link">Profil</a></li>
+               <li><a href="#" class="nav-link">Messages</a></li>
+               <li><a href="#" class="nav-link">Paramètres</a></li>
+            </ul>
+      </nav>
+   </aside>
+```
+
+#### table.html
+- Design pour tables de données claires et organisées.
+- Présente données structurées (jouers, datas, etc.).
+- Lisibilité et adaptation aux différents écrans assurées.
+
+```html
+   <div class="players-table">
+         <div class="table-header">En-tête de Table</div>
+         <div class="player-row">Ligne de Joueur</div>
+   </div>
+```
+
+Chaque composant est conçu pour être réutilisé et facilement intégré dans diverses parties de l'application, assurant une expérience utilisateur & developpeur est cohérente et efficace. Ces composants sont utilisés en respectant les guidelines établies pour maintenir une uniformité dans l'interface de l'application.

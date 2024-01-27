@@ -1,13 +1,13 @@
 /* layout/_grid.scss */
 
-/* Simple grid layout */
+/* Grid layout */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); // Example grid setup
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
     gap: 1rem;
   }
   
-  /* Grid item */
+  /* Grid */
   .grid-item {
     background-color: $transparant-700;
     padding: 1rem;

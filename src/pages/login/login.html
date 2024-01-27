@@ -23,13 +23,12 @@
         <!-- ZONE TAILWINDCSS -->
         <header>
             <div class="bg-gradient">
-
                 <!-- Debut Navbar -->
                 <nav class="flex justify-evenly">
                     <div class="flex items-center gap-10">
                         <!-- Accueil ICON -->
                         <div id="div-home" class="navbarDiv">
-                            <a id="a-One" class="navbarA" href="#">
+                            <a id="a-One" class="navbarA" href="/public/index.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                             </a>
                             <span id="home" class="navbarSpanOfA"></span>
@@ -57,7 +56,7 @@
                         </div>
                         <!-- Dashboard ICON -->                               
                         <div id="div-dashboard" class="navbarDiv">
-                            <a id="a-five" class="navbarA" href="#">
+                            <a id="a-five" class="navbarA" href="/src/pages/dashboard/dashboard.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-crown"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
                             </a>
                             <span id="dashboard" class="navbarSpanOfA"></span>
@@ -71,10 +70,10 @@
                     
                     <!-- icons Droit -->
                     <div class="items-center flex gap-10">
-                    
+                        
                         <!-- LOGIN & LOGOUT SECTION -->
                         <div id="div-login" class="navbarDiv">
-                            <a id="login-btn" class="navbarA" href="login.html">
+                            <a id="login-btn" class="navbarA" href="/src/pages/login/login.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-in"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg>
                             </a>
                             <span id="login" class="navbarSpanOfA"></span>
@@ -90,7 +89,7 @@
 
                         <!-- REGISTRATION ICON -->
                         <div id="div-register" class="navbarDiv">
-                            <button type="button" id="register-btn" class="navbarA" href="src/pages/register/register.html"> 
+                            <button type="button" id="register-btn" class="navbarA" href="/src/pages/register/register.html"> 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-plus"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><line x1="12" x2="12" y1="8" y2="16"/><line x1="8" x2="16" y1="12" y2="12"/></svg>
                             </button>
                             <span id="register" class="navbarSpanOfA"></span>
@@ -122,7 +121,6 @@
             </div>
         </header>
         <!-- FIN DE ZONE TAILWINDCSS -->
-
 
 
         
@@ -168,23 +166,23 @@
                     <!-- Logo et liens principaux -->
                     <div>
                         <!-- Lien vers la page d'accueil avec le logo -->
-                        <a href="#"><img src="../../assets/navbar/logo.svg" alt="Logo Teamate" class="w-auto"></a>
+                        <a href="/public/index.html"><img src="/src/assets/navbar/logo.svg" alt="Logo Teamate" class="w-auto"></a>
                     </div>
 
                     <!-- Liens de navigation -->
-                    <nav class="flex items-center gap-10 text-white">
-                        <!-- Liens dans le pied de page -->
-                        <a href="#" class="footer-link text-white">Accueil</a>
-                        <a href="#" class="footer-link text-white">Recherche</a>
-                        <a href="#" class="footer-link text-white">Événements</a>
-                        <a href="#" class="footer-link text-white">Parcourir</a>
+                    <nav class="flex items-center gap-10">
+                        <!-- Add - Liens dans le pied de page -->
+                        <a href="#" class="footer-link">Accueil</a>
+                        <a href="#" class="footer-link">Recherche</a>
+                        <a href="#" class="footer-link">Événements</a>
+                        <a href="#" class="footer-link">Parcourir</a>
                     </nav>
 
                     <!-- Liens de compte utilisateur -->
                     <div class="flex items-center gap-10">
                         <!-- Liens pour connexion et inscription -->
-                        <a href="../src/pages/login/login.html" class="footer-link">Connexion</a>
-                        <a href="../src/pages/register/register.html" class="footer-link">Inscription</a>
+                        <a href="/src/pages/login/login.html" class="footer-link">Connexion</a>
+                        <a href="/src/pages/register/register.html" class="footer-link">Inscription</a>
                     </div>
                 </div>
 
