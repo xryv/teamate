@@ -12,23 +12,29 @@ Cette phase implique la création de maquettes détaillées qui servent de réf�
 
 ## Maquettes
 
-Voici les maquettes développées pour Teamate :
-
-- **Charte Graphique**:
-  ![Charte Graphique](assets/chartegraphine.png)
-  La charte graphique détaille le schéma de couleurs, la typographie et les éléments visuels de base.
-
-- **Mockup - Page de Connexion et Inscription**:
-  ![Mockup 1](assets/mockup-1.png)
-  Cette maquette montre la conception initiale des pages de connexion et d'inscription.
-
-- **Mockup - Tableau de Bord**:
-  ![Mockup 2](assets/mockup-2.png)
-  Illustration du tableau de bord et des différentes sections pour la gestion des utilisateurs.
+Voici les maquettes développées par Bruno :
 
 - **Wireframe Général**:
   ![Wireframe](assets/wireframe.png)
-  Le wireframe offre une vue d'ensemble simplifiée du flux de navigation de l'application.
+
+Le wireframe offre une vue d'ensemble simplifiée du flux de navigation de l'application.
+
+- **Charte Graphique**:
+  ![Charte Graphique](assets/chartegraphine.png)
+
+La charte graphique détaille le schéma de couleurs, la typographie et les éléments visuels de base.
+
+- **Mockup - Page de Connexion et Inscription**:
+  ![Mockup 1](assets/mockup-1.png)
+
+Cette maquette montre la conception initiale des pages de connexion et d'inscription.
+
+- **Mockup - Tableau de Bord**:
+  ![Mockup 2](assets/mockup-2.png)
+
+Illustration du tableau de bord et des différentes sections pour la gestion des utilisateurs.
+
+
 
 ## Comparaison avec la Conception Finale
 

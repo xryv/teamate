@@ -37,12 +37,6 @@ Découvrez Teamate, un réseau dédié aux amateurs de jeux vidéo. [README Prin
 ### Scripts et Fonctionnalités
 - [Interactivité](./src/scripts/README.md)
 
-### Contribuer
-- [Guide de Contribution](#)
-
-### Licence et Droits
-- [Termes et Conditions](#)
-
 ## Démarrage
 Ces instructions vous guideront pour lancer une copie du projet sur votre machine locale à des fins de développement et de test.
 
