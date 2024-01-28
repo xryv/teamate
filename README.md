@@ -1,8 +1,9 @@
 # Teamate
 
-Teamate est une application moderne, conçue pour être un point de départ robuste pour des projets de développement web. Ce boilerplate intègre les meilleures pratiques et les dernières technologies pour garantir une expérience de développement fluide.
+Plateforme en ligne axée sur la mise en relation et l'interaction sociale entre joueurs, avec des objectifs clés centrés sur la gratuité pour les utilisateurs, la promotion de la bienveillance et la maximisation des abonnés et des clics pour attirer des sponsors et de la publicité. Voici une description générale du projet.
 
-## Démarrage
+
+## AIDE GITHUB & Démarrage
 
 Ces instructions vous aideront à lancer une copie du projet sur votre machine locale à des fins de développement et de test.
 
