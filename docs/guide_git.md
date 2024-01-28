@@ -1,6 +1,6 @@
 # Étape 1 : Configuration de l'Environnement de Développement pour Teamate
 
-Bienvenue sur le projet Teamate! En tant que développeur débutant, il est essentiel de configurer votre environnement de manière méthodique et efficace. Suivez ces instructions détaillées pour préparer votre espace de travail. Je serai là à chaque étape pour vous guider.
+Il est essentiel de configurer votre environnement de manière méthodique et efficace. Suivez ces instructions détaillées pour préparer votre espace de travail. Je serai là à chaque étape pour vous guider.
 
 ## Commencer avec le Pied Droit
 
@@ -102,7 +102,7 @@ git add .
 git commit -m "Configuration initiale du projet Teamate avec Tailwind CSS"
 
 # Poussez vos modifications sur le dépôt distant.
-git push -u origin main
+git push
 ```
 
 ## En Conclusion

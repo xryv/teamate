@@ -320,7 +320,7 @@ blockquote {
   align-items: center;
   min-height: 100vh;
   padding: 24px;
-  background: linear-gradient(135deg, #3d155f 0%, #a991d4 100%);
+  background: linear-gradient(to right, #0a3155, #172e60, #2e2966, #471d67, #5f0061);
 }
 
 /* layout/_grid.scss */
