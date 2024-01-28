@@ -74,23 +74,8 @@ teamate/
 │   └── build/
 └── src/
     ├── assets/
-    │   ├── icons/
-    │   ├── messagerie/
-    │   └── navbar/
     ├── components/
     ├── pages/
-    │   ├── complete_registration/
-    │   ├── dashboard/
-    │   │   ├── admins/
-    │   │   ├── banned_accs/
-    │   │   ├── invitations/
-    │   │   ├── players/
-    │   │   └── roles/
-    │   ├── forgot_password/
-    │   ├── login/
-    │   ├── register/
-    │   ├── verified/
-    │   └── verify_email/
     ├── scripts/
     └── styles/
         ├── abstracts/
