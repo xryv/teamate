@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <!-- \public\index.html -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Teamate | Connectez-vous avec des gamers</title>
+        <!-- TAILWIND -> HEADER <- RESPECTIVE CSS-->
+        <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+        <link href="../../../public/build/tailwind.css" rel="stylesheet">
+
+        <!-- SCSS -> BODY & FOOTER <- RESPECTIVE CSS-->
+        <link href="../../styles/main.css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- En-tête du site -->
+        <!-- ZONE TAILWINDCSS -->
+        <header>
+            <div class="bg-gradient">
+                <!-- Debut Navbar -->
+                <nav class="flex justify-evenly">
+                    <div class="flex items-center gap-10">
+                        <!-- Accueil ICON -->
+                        <div id="div-home" class="navbarDiv">
+                            <a id="a-One" class="navbarA" href="/public/index.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            </a>
+                            <span id="home" class="navbarSpanOfA"></span>
+                        </div>
+                        <!-- Recherche ICON -->
+                        <div id="div-search" class="navbarDiv">
+                            <a id="a-Two" class="navbarA" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                            </a>
+                            <span id="search" class="navbarSpanOfA"></span>
+                        </div>
+                        <!-- Event ICON -->                        
+                        <div id="div-event" class="navbarDiv">
+                            <a id="a-Three" class="navbarA" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
+                            </a>
+                            <span id="event" class="navbarSpanOfA"></span>
+                        </div>
+                        <!-- Browse ICON -->                               
+                        <div id="div-browse" class="navbarDiv">
+                            <a id="a-Four" class="navbarA" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-dashboard"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+                            </a>
+                            <span id="browse" class="navbarSpanOfA"></span>
+                        </div>
+                        <!-- Dashboard ICON -->                               
+                        <div id="div-dashboard" class="navbarDiv">
+                            <a id="a-five" class="navbarA" href="/src/pages/dashboard/dashboard.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-crown"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
+                            </a>
+                            <span id="dashboard" class="navbarSpanOfA"></span>
+                        </div>
+                    </div>
+
+                    <!-- TEAMATE LOGO CENTER -->
+                    <div>
+                        <a class="w-auto" href="#"><img src="/src/assets/navbar/logo.svg" alt=""></a>
+                    </div>
+                    
+                    <!-- icons Droit -->
+                    <div class="items-center flex gap-10">
+                        
+                        <!-- LOGIN & LOGOUT SECTION -->
+                        <div id="div-login" class="navbarDiv">
+                            <a id="login-btn" class="navbarA" href="/src/pages/login/login.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-in"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg>
+                            </a>
+                            <span id="login" class="navbarSpanOfA"></span>
+                        </div>
+                        
+                        <!-- LOGOUT ICON -->                        
+                        <div id="div-logout" class="navbarDiv">
+                            <button type="button" id="logout-btn" class="navbarA">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+                            </button>
+                            <span id="logout" class="navbarSpanOfA"></span>
+                        </div> 
+
+                        <!-- REGISTRATION ICON -->
+                        <div id="div-register" class="navbarDiv">
+                            <button type="button" id="register-btn" class="navbarA" href="/src/pages/register/register.html"> 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-plus"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><line x1="12" x2="12" y1="8" y2="16"/><line x1="8" x2="16" y1="12" y2="12"/></svg>
+                            </button>
+                            <span id="register" class="navbarSpanOfA"></span>
+                        </div>
+
+                        <!-- Icon Liste des Amis -->                         
+                        <button type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-round"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg>
+                        </button>
+                        
+
+                        <!-- NOTIFICATIONS BUTTON ICON --> 
+                        <button id="div-notif" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+                        </button> 
+
+                        <!-- RANK & PROFILLE -->
+                        <!--
+                        <a class="w-auto" href="#"><img width="60px" src="../assets/navbar/rank.png" alt="rank"></a>
+                        <a class="w-auto" href="#"><img width="60px" src="../assets/navbar/profil.png" alt="profil"></a>
+                        -->
+
+                        <!-- VERTICAL THREE DOT ... SIDE BAR -->
+                        <button type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-more-vertical"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- FIN DE ZONE TAILWINDCSS -->
+ 
+
+       <!-- Section principale -->
+        <main class="main-content">
+            <!-- Section de vérification de l'email -->
+            <section id="email-verification" class="card">
+                <header class="card-header">
+                    <!-- Titre de la section de vérification -->
+                    <h1 class="text-2xl font-bold mb-4">Vérification de l'adresse e-mail</h1>
+                </header>
+                <div class="card-content">
+                    <p>
+                        <!-- Instruction pour l'utilisateur sur la vérification de l'email -->
+                        Veuillez vérifier votre e-mail pour activer votre compte.
+                    </p>
+                    <!-- Formulaire pour renvoyer le mail de vérification si nécessaire -->
+                    <form action="/resend-verification" method="post">
+                        <!-- Champ caché pour l'identifiant utilisateur ou l'email (selon la logique de backend) -->
+                        <input type="hidden" name="user_id" value="user_id_value">
+                        <!-- Bouton pour renvoyer le mail de vérification -->
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Renvoyer l'e-mail de vérification</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+            <!-- Pied de page -->
+            <!-- SECTION TAILWIND CSS -->
+            <footer class="bg-gradient py-4">
+                <div class="container mx-auto px-4">
+                    <!-- Flex container pour aligner les éléments -->
+                    <div class="flex justify-evenly items-center text-white">
+                        
+                        <!-- Logo et liens principaux -->
+                        <div>
+                            <!-- Lien vers la page d'accueil avec le logo -->
+                            <a href="/public/index.html"><img src="/src/assets/navbar/logo.svg" alt="Logo Teamate" class="w-auto"></a>
+                        </div>
+
+                        <!-- Liens de navigation -->
+                        <nav class="flex items-center gap-10">
+                            <!-- Add - Liens dans le pied de page -->
+                            <a href="/public/index.html" class="footer-link">Accueil</a>
+                            <a href="#" class="footer-link">Recherche</a>
+                            <a href="#" class="footer-link">Événements</a>
+                            <a href="#" class="footer-link">Parcourir</a>
+                        </nav>
+
+                        <!-- Liens de compte utilisateur -->
+                        <div class="flex items-center gap-10">
+                            <!-- Liens pour connexion et inscription -->
+                            <a href="/src/pages/login/login.html" class="footer-link">Connexion</a>
+                            <a href="/src/pages/register/register.html" class="footer-link">Inscription</a>
+                        </div>
+                    </div>
+
+                    <!-- Texte de copyright en bas -->
+                    <div class="text-center text-white mt-4">
+                        &copy; 2024 Teamate. Tous droits réservés.
+                    </div>
+                </div>
+            </footer>
+            
+        <!-- scripts -->
+        <script src="/src/scripts/navbar.js"></script>    
+    </body>
+</html>

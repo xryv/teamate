@@ -1,0 +1,32 @@
+/* components/_forms.scss */
+
+// Styles pour les inputs de formulaire avec placeholder
+.form-input {
+    background-color: transparent;       // Fond transparent
+    border-bottom: 3px solid $purplePV-100; // Ligne en dessous plus foncée pour contraste
+    padding: $spacing-small;             // Espacement pour le texte
+    width: 100%;
+    border: 1px solid $grey;
+    border-radius: $border-radius;
+    font-size: $font-size-root;
+    
+    
+    &::placeholder {                     // Style pour les placeholders
+      color: $transparant-700;           // Couleur des placeholders
+    }
+    
+    &:focus {
+      border-color: $purplePV-500;       // Couleur de bordure lors du focus
+      outline: none;                     // Suppression de l'outline par défaut
+    }
+  }
+
+.form-label {
+  display: block;
+  margin-bottom: $spacing-small;
+  color: $white; // Étiquettes de formulaire
+}
+
+.form-group {
+  margin-bottom: $spacing-medium; // Espacement régulier pour les groupes de formulaire
+}

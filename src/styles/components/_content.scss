@@ -1,0 +1,10 @@
+// components/_content.scss
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; // Hauteur complète de l'écran pour centrer verticalement
+    padding: $spacing-large;
+    background: linear-gradient(to right, #0a3155, #172e60, #2e2966, #471d67, #5f0061),
+}  

@@ -1,0 +1,19 @@
+.sidebar {
+    color: $white;
+    padding: $spacing-medium;
+    width: 20%; 
+    min-height: 100vh;
+  
+    .nav-link {
+      display: block;
+      padding: $spacing-small $spacing-medium;
+      color: $white;
+      text-decoration: none;
+      transition: background-color 0.3s;
+  
+      &:hover, &.active {
+        background-color: $purplePV-700;
+      }
+    }
+  }
+  

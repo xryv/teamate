@@ -1,5 +1,77 @@
-$primary-color: #4CAF50; // Green
-$secondary-color: #333; // Dark Grey
-$text-color: #333;
-$background-color: #fff;
-$link-color: #0275d8; // Blue
+// abstracts/_variables.scss
+
+// Partage du Group*
+// PurplePV Color Palette
+$purplePV-100: rgba(93, 3, 98, 0.1);
+$purplePV-200: rgba(93, 3, 98, 0.2);
+$purplePV-300: rgba(93, 3, 98, 0.3);
+$purplePV-400: rgba(93, 3, 98, 0.4);
+$purplePV-500: rgba(93, 3, 98, 0.5);
+$purplePV-600: rgba(93, 3, 98, 0.6);
+$purplePV-700: rgba(93, 3, 98, 0.7);
+$purplePV-800: rgba(93, 3, 98, 0.8);
+$purplePV-900: rgba(93, 3, 98, 0.9);
+$purplePV-1000: rgba(93, 3, 98, 1);
+
+// BluePV Color Palette
+$bluePV-100: rgba(11, 49, 86, 0.1);
+$bluePV-200: rgba(11, 49, 86, 0.2);
+$bluePV-300: rgba(11, 49, 86, 0.3);
+$bluePV-400: rgba(11, 49, 86, 0.4);
+$bluePV-500: rgba(11, 49, 86, 0.5);
+$bluePV-600: rgba(11, 49, 86, 0.6);
+$bluePV-700: rgba(11, 49, 86, 0.7);
+$bluePV-800: rgba(11, 49, 86, 0.8);
+$bluePV-900: rgba(11, 49, 86, 0.9);
+$bluePV-1000: rgba(11, 49, 86, 1);
+
+// OrangePV Color Palette
+$orangePV-100: rgba(243, 129, 99, 0.1);
+$orangePV-200: rgba(243, 129, 99, 0.2);
+$orangePV-300: rgba(243, 129, 99, 0.3);
+$orangePV-400: rgba(243, 129, 99, 0.4);
+$orangePV-500: rgba(243, 129, 99, 0.5);
+$orangePV-600: rgba(243, 129, 99, 0.6);
+$orangePV-700: rgba(243, 129, 99, 0.7);
+$orangePV-800: rgba(243, 129, 99, 0.8);
+$orangePV-900: rgba(243, 129, 99, 0.9);
+$orangePV-1000: rgba(243, 129, 99, 1);
+
+// Transparant Color Palette
+$transparant-100: rgba(177, 188, 195, 0.1);
+$transparant-200: rgba(177, 188, 195, 0.2);
+$transparant-300: rgba(177, 188, 195, 0.3);
+$transparant-400: rgba(177, 188, 195, 0.4);
+$transparant-500: rgba(177, 188, 195, 0.5);
+$transparant-600: rgba(177, 188, 195, 0.6);
+$transparant-700: rgba(177, 188, 195, 0.7);
+$transparant-800: rgba(177, 188, 195, 0.8);
+$transparant-900: rgba(177, 188, 195, 0.9);
+$transparant-1000: rgba(177, 188, 195, 1);
+
+// Pour organiser avec les elements du Main.
+// Palette de couleurs
+$purple-dark: #3d155f;      // Pour le texte et les éléments importants
+$purple-light: #a991d4;     // Pour les arrière-plans et les éléments secondaires
+$orange: #f39237;           // Accents pour les boutons et les icônes
+$white: #ffffff;            // Pour le fond des cartes et le texte
+$grey: #c4c4c4;             // Pour les bordures et les ombres
+$black: #000000;            // Pour le texte primaire
+$red :#ff0000; 
+
+// Typographie
+$font-stack: 'Open Sans', sans-serif; // Police moderne et lisible
+$font-size-root: 16px;                // Taille de police de base
+$font-size-large: 1.25rem;            // Grande taille de police pour les titres
+$font-size-small: 0.875rem;           // Petite taille de police pour le texte secondaire
+
+// Espacements
+$spacing-small: 8px;
+$spacing-medium: 16px;
+$spacing-large: 24px;
+
+// Bordures
+$border-radius: 8px;
+
+// Ombres
+$box-shadow: 0 2px 4px rgba($black, 0.2);

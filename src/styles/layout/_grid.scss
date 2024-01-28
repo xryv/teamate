@@ -1,0 +1,22 @@
+/* layout/_grid.scss */
+
+/* Grid layout */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 1rem;
+  }
+  
+  /* Grid */
+  .grid-item {
+    background-color: $transparant-700;
+    padding: 1rem;
+    border-radius: 0.25rem;
+  }
+  
+  .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: $spacing-medium;
+      padding: 1rem;
+  }

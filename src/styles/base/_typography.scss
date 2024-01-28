@@ -1,0 +1,73 @@
+/* base/_typography.scss */
+
+/* Import your web fonts here (if any) */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+/* Define your primary font family and fallbacks */
+$font-family-primary: 'Open Sans', sans-serif;
+
+/* Root font size for relative unit scaling */
+html {
+  font-size: 100%;  // Typically 16px
+}
+
+/* Base document settings for better type rendering */
+body {
+  font-family: $font-family-primary;
+  color: #333;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+h1 { font-size: 2.5rem; }  // Example size, adjust as needed
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+/* Paragraphs */
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* Links */
+a {
+  color: #007bff;  
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Lists */
+ul, ol {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.25rem;
+}
+
+/* Blockquotes */
+blockquote {
+  margin: 0;
+  padding-left: 1.5rem;
+  border-left: 4px solid #ddd;  
+  font-style: italic;
+}
+
+

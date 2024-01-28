@@ -1,0 +1,23 @@
+// main.scss
+@import 'abstracts/variables';
+
+@import 'base/reset';
+@import 'base/typography';
+
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/forms';
+@import 'components/sidebar';
+@import 'components/tables';
+@import 'components/content';
+
+@import 'layout/grid';
+@import 'layout/dashlayout';
+
+@import 'utilities/spacing';
+@import 'utilities/text';
+
+
+
+
+

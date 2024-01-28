@@ -1,0 +1,29 @@
+/* components/_cards.scss */
+
+// Mise à jour du style des cartes pour le dégradé
+.card {
+  background: linear-gradient(to right, $purplePV-500, $bluePV-500); // Dégradé de violet à bleu
+  color: $white; // Texte en blanc pour contraste
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  padding: $spacing-medium;
+  margin-bottom: $spacing-medium;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba($black, 0.3);
+  }
+
+  .card-header {
+    font-size: $font-size-large;
+    margin-bottom: $spacing-small;
+  }
+
+  .card-content {
+    font-size: $font-size-root;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-small; // Espace entre les champs de formulaire
+  }
+}
+
