@@ -16,7 +16,9 @@ Bienvenue dans l'univers de Teamate, où la passion du jeu crée des liens. Déc
 Découvrez Teamate, un réseau dédié aux amateurs de jeux vidéo. [README Principal](./README.md).
 
 ### Documentation
-- [Phase Initiale](./docs/phase-1.md)
+- [Guide pour Git](./docs/guide_git.md)
+- [Phase Maquettage](./docs/maquettage.md)
+- [Phase HTML/CSS](./docs/html_css.md)
 - [Feuille de Route](./docs/ROADMAP.md)
 
 ### Architecture du Projet
