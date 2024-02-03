@@ -12,6 +12,7 @@ import { ButtonOrLink } from '../components/Button';
 const NavStyled = styled.nav`
     ${tw`relative flex items-center justify-center gap-6`}
 `;
+
 const LogoList = styled.ul`
 ${tw` flex flex-row justify-center items-center w-1/3 md:w-fit md:px-3`}
 li {

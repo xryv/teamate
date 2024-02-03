@@ -1,4 +1,4 @@
-import { BurgerButton, BurgerButtonSpan, StyledButton, StyledLink } from '../styles/StyleButton';
+import { BurgerButton, BurgerButtonSpan, StyledButton, StyledLink } from '../styles/styleButton';
 import { type ButtonOrLinkProps } from '../types/ListItemProps';
 
 export const ButtonOrLink = ({ children, href, isLink, isBurger, isOpen, handleClick, ...props }: ButtonOrLinkProps): JSX.Element => {
