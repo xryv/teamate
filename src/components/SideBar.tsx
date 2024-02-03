@@ -9,7 +9,7 @@ export function SideBarComponent({ isOpen }: SideBarComponentProps): JSX.Element
             <StyledUlSideBar>
                 {ulList.map((item) => (
                     <li key={item.id}>
-                        <ButtonOrLink href={item.href ?? '#'} isLink={item.isLink}>
+                        <ButtonOrLink $size= href={item.href ?? '#'} isLink={item.isLink}>
                             {item.svg}
                             {item.src !== undefined && <img width='40px' src={item.src} alt={item.name} />}
                             <span>{item.name}</span>

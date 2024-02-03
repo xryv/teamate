@@ -18,10 +18,11 @@ const buttonVariant: Record<string, TwStyle> = {
 };
 
 const buttonSize: Record<string, TwStyle> = {
-    firstHalf: tw`rounded-2xl`,
+    firstHalf: tw`p-2 rounded-2xl`,
     secondHalf: tw`rounded-2xl`,
     large: tw`text-xl`,
-    default: tw``,
+    default: tw`p-2`,
+    buttonSide: tw`p-0.5 hover:text-orangePV-900 hover:scale-105`,
 };
 
 const linkVariant: Record<string, TwStyle> = {
@@ -31,11 +32,11 @@ const linkVariant: Record<string, TwStyle> = {
 };
 
 export const StyledBurgerButton = styled.button`
-    ${tw`flex flex-col justify-center items-center w-8 h-4 p-5 border-none outline-none `};
+    ${tw`flex flex-col justify-center items-center w-fit h-fit p-5 border-none outline-none `};
 `;
 
 export const StyledBurgerButtonSpan = styled.span<StyledBurgerButtonSpanProps>`
-    ${tw`absolute block w-8 h-0.5 bg-slate-100 transition-all duration-300 ease-out`};
+    ${tw`absolute block w-8 h-0.5 bg-slate-100 transition-all duration-300 ease-out `};
     ${({ $variant }) => BurgerVariantStyles[$variant]};
 `;
 
@@ -45,7 +46,11 @@ export const StyledLinkText = styled.a<StyledLinkTextProps>`
 `;
 
 export const StyledButtonOrLink = styled.button<StyledButtonOrLinkProps>`
-    ${tw`flex flex-col justify-center items-center p-2 text-slate-100 transition-all duration-300 ease-out border-none outline-none rounded-md`};
+    ${tw`flex flex-col justify-center items-center text-slate-100 transition-all duration-300 ease-out border-none outline-none rounded-md`};
     ${({ $variant = 'default' }) => buttonVariant[$variant]};
     ${({ $size = 'default' }) => buttonSize[$size]};
+    &:hover {
+        ${({ $variant = 'default' }) => buttonVariant[$variant]};
+        ${({ $size = 'default' }) => buttonSize[$size]};
+    }
 `;

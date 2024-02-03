@@ -21,5 +21,5 @@ export interface ButtonOrLinkProps {
     isOpen?: boolean
     onClick?: () => void
     $variant?: 'firstHalf' | 'secondHalf' | 'active' | 'default' | string
-    $size?: 'firstHalf' | 'secondHalf' | 'large' | 'default' | string
+    $size?: 'firstHalf' | 'secondHalf' | 'large' | 'default' | 'buttonSide'
 }
