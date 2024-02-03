@@ -1,22 +1,24 @@
-import { BurgerButton, BurgerButtonSpan, StyledButton, StyledLink } from '../styles/styleButton';
-import { type ButtonOrLinkProps } from '../types/ListItemProps';
+// import styles from 'src/styles/styleButton.ts';
+import { StyledBurgerButton, StyledBurgerButtonSpan, StyledButtonOrLink } from '../styles/styleButton';
+// import interfaces from 'src/types/ButtonProps';
+import { type ButtonOrLinkProps } from '../interfaces/ButtonProps';
 
-export const ButtonOrLink = ({ children, href, isLink, isBurger, isOpen, handleClick, ...props }: ButtonOrLinkProps): JSX.Element => {
+export const ButtonOrLink = ({ children, href, isLink, isBurger, isOpen, onClick, ...props }: ButtonOrLinkProps): JSX.Element => {
     if (isBurger !== undefined) {
         return (
-            <BurgerButton onClick={handleClick}>
-                <BurgerButtonSpan variant={isOpen !== undefined ? 'top-active' : 'top'} />
-                <BurgerButtonSpan variant={isOpen !== undefined ? 'center-active' : 'center'} />
-                <BurgerButtonSpan variant={isOpen !== undefined ? 'bottom-active' : 'bottom'} />
-            </BurgerButton>
+            <StyledBurgerButton onClick={onClick}>
+                <StyledBurgerButtonSpan $variant={isOpen ?? false ? 'top-active' : 'top'} />
+                <StyledBurgerButtonSpan $variant={isOpen ?? false ? 'center-active' : 'center'} />
+                <StyledBurgerButtonSpan $variant={isOpen ?? false ? 'bottom-active' : 'bottom'} />
+            </StyledBurgerButton>
         );
     } else {
         return isLink === true
             ? (
-                <StyledLink href={href} {...props}>{children}</StyledLink>
+                <StyledButtonOrLink as='a' href={href} {...props}>{children}</StyledButtonOrLink>
             )
             : (
-                <StyledButton {...props}>{children}</StyledButton>
+                <StyledButtonOrLink {...props}>{children}</StyledButtonOrLink>
             );
     }
 };

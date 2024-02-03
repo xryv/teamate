@@ -1,37 +1,51 @@
-import tw from 'twin.macro';
+import tw, { type TwStyle } from 'twin.macro';
 import styled from 'styled-components';
-import { type BurgerButtonSpanProps } from '../types/ButtonProps';
+import { type StyledLinkTextProps, type BurgerButtonSpanProps as StyledBurgerButtonSpanProps, type StyledButtonOrLinkProps } from '../interfaces/ButtonProps';
 
-export const StyledButton = styled.button`
-    ${tw`p-2 text-slate-100 transition-all duration-300 ease-out border-none outline-none rounded-md`}
+const BurgerVariantStyles = {
+    top: tw`-translate-y-2`,
+    center: tw``,
+    bottom: tw`translate-y-2`,
+    'top-active': tw`rotate-[135deg]`,
+    'center-active': tw`transition-opacity duration-100 opacity-0`,
+    'bottom-active': tw`-rotate-[135deg]`,
+};
+const buttonVariant: Record<string, TwStyle> = {
+    firstHalf: tw`bg-transparant-600 -translate-y-4 text-bluePV-500 `,
+    secondHalf: tw``,
+    active: tw`bg-green-500`,
+    default: tw``,
+};
+
+const buttonSize: Record<string, TwStyle> = {
+    firstHalf: tw`rounded-2xl`,
+    secondHalf: tw`rounded-2xl`,
+    large: tw`text-xl`,
+    default: tw``,
+};
+
+const linkVariant: Record<string, TwStyle> = {
+    default: tw`opacity-0`,
+    notHover: tw``,
+    hover: tw`opacity-100 text-orangePV-900 -translate-y-4`,
+};
+
+export const StyledBurgerButton = styled.button`
+    ${tw`flex flex-col justify-center items-center w-8 h-4 p-5 border-none outline-none `};
 `;
 
-export const StyledLink = styled.a`
-    ${tw`p-2 text-slate-100 transition-all duration-300 ease-out border-none outline-none rounded-md`}
+export const StyledBurgerButtonSpan = styled.span<StyledBurgerButtonSpanProps>`
+    ${tw`absolute block w-8 h-0.5 bg-slate-100 transition-all duration-300 ease-out`};
+    ${({ $variant }) => BurgerVariantStyles[$variant]};
 `;
 
-export const BurgerButton = styled.button`
-    ${tw`z-40 flex flex-col justify-center items-center w-8 h-4 border-none outline-none p-5`};
+export const StyledLinkText = styled.a<StyledLinkTextProps>`
+    ${tw`absolute text-slate-100 transition-all duration-300 ease-out top-16`}
+    ${({ $variant = 'default' }) => linkVariant[$variant]};
 `;
 
-export const BurgerButtonSpan = styled.span<BurgerButtonSpanProps>`
-        ${tw`absolute block w-8 h-0.5 bg-slate-100 transition-all duration-300 ease-out`};
-        ${({ variant }) => {
-        switch (variant) {
-            case 'top':
-                return tw`-translate-y-2`;
-            case 'center':
-                return tw``;
-            case 'bottom':
-                return tw`translate-y-2`;
-
-            case 'top-active':
-                return tw`rotate-[135deg]`;
-            case 'center-active':
-                return tw`transition-opacity duration-100 opacity-0`;
-            case 'bottom-active':
-                return tw`-rotate-[135deg]`;
-        }
-    }};
-    }
+export const StyledButtonOrLink = styled.button<StyledButtonOrLinkProps>`
+    ${tw`flex flex-col justify-center items-center p-2 text-slate-100 transition-all duration-300 ease-out border-none outline-none rounded-md`};
+    ${({ $variant = 'default' }) => buttonVariant[$variant]};
+    ${({ $size = 'default' }) => buttonSize[$size]};
 `;

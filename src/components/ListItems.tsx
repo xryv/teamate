@@ -1,8 +1,9 @@
 import { ButtonOrLink } from './Button';
-import { type ListItemProps } from '../types/ListItemProps';
+import { type ListItemProps } from '../interfaces/ListItemProps';
 import tw from 'twin.macro';
 import styled from 'styled-components';
 import { useCallback, useState } from 'react';
+import { StyledLinkText } from '../styles/styleButton';
 
 const UlStyled = styled.ul`
     ${tw`hidden relative md:flex flex-row items-center justify-center gap-8 w-1/3 max-w-96`}
@@ -12,8 +13,6 @@ const UlStyled = styled.ul`
 `;
 
 const LogoStyled = styled.img`${tw`w-10`}`;
-
-const LinkTextStyled = styled.a`${tw`absolute text-orangePV-900  translate-y-8`}`;
 
 export const ListItems = ({ items }: { items: ListItemProps[] }): JSX.Element => {
     const [hoveredItemId, setHoveredItemId] = useState<number | null>(null);
@@ -33,11 +32,17 @@ export const ListItems = ({ items }: { items: ListItemProps[] }): JSX.Element =>
                     <li key={item.id}
                         onMouseEnter={() => { handleMouseEnter(item.id); }}
                         onMouseLeave={handleMouseLeave}>
-                        <ButtonOrLink href={item.href} isLink={item.isLink}>
-                            {(item.src !== undefined && item.display === undefined) && <LogoStyled src={item.src} alt={item.name} />}
+                        <ButtonOrLink
+                            $variant={hoveredItemId === item.id ? item.variantTopBar : undefined}
+                            $size={hoveredItemId === item.id ? item.sizeTopBar : undefined}
+                            href={item.href}
+                            isLink={item.isLink}>
+                            {(item.src !== undefined) && <LogoStyled src={item.src} alt={item.name} />}
                             {item.svg}
                         </ButtonOrLink>
-                        {hoveredItemId === item.id && <LinkTextStyled href={item.href}>{item.name}</LinkTextStyled>}
+                        <StyledLinkText $variant={hoveredItemId === item.id ? 'hover' : 'default'}
+                            href={item.href}>{item.name}
+                        </StyledLinkText>
                     </li>
                 ))}
             </UlStyled>
