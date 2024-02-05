@@ -1,9 +1,9 @@
 // import styles from 'src/styles/styleButton.ts';
-import { StyledBurgerButton, StyledBurgerButtonSpan, StyledButtonOrLink } from '../styles/styleButton';
+import { StyledBurgerButton, StyledBurgerButtonSpan, StyledButtonOrLink } from '../../styles/styleButton';
 // import interfaces from 'src/types/ButtonProps';
-import { type ButtonOrLinkProps } from '../interfaces/ButtonProps';
+import { type ButtonOrLinkProps } from '../../interfaces/ButtonProps';
 
-export const ButtonOrLink = ({ children, href, isLink, isBurger, isOpen, onClick, ...props }: ButtonOrLinkProps): JSX.Element => {
+export const ButtonOrLink = ({ children, href, isLink, isBurger, isOpen, isSubmit, onClick, ...props }: ButtonOrLinkProps): JSX.Element => {
     if (isBurger !== undefined) {
         return (
             <StyledBurgerButton onClick={onClick}>
@@ -15,10 +15,10 @@ export const ButtonOrLink = ({ children, href, isLink, isBurger, isOpen, onClick
     } else {
         return isLink === true
             ? (
-                <StyledButtonOrLink as='a' href={href} {...props}>{children}</StyledButtonOrLink>
+                <StyledButtonOrLink onClick={onClick} as='a' href={href} {...props}>{children}</StyledButtonOrLink>
             )
             : (
-                <StyledButtonOrLink {...props}>{children}</StyledButtonOrLink>
+                <StyledButtonOrLink onClick={onClick} type={isSubmit ?? false ? 'submit' : 'button'} {...props}>{children}</StyledButtonOrLink>
             );
     }
 };

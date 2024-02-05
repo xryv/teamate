@@ -4,8 +4,8 @@ export interface BurgerButtonSpanProps {
 }
 // Interface for the StyledButtonOrLink component create on src/styles/styleButton.ts
 export interface StyledButtonOrLinkProps {
-    $variant?: 'firstHalf' | 'secondHalf' | 'active' | 'default' | string
-    $size?: 'firstHalf' | 'secondHalf' | 'large' | 'default' | string
+    $variant?: string
+    $size?: string
 }
 // Interface for the StyledLinkText component create on src/styles/styleButton.ts
 export interface StyledLinkTextProps {
@@ -19,7 +19,8 @@ export interface ButtonOrLinkProps {
     isLink?: boolean
     isBurger?: boolean
     isOpen?: boolean
+    isSubmit?: boolean
     onClick?: () => void
-    $variant?: 'firstHalf' | 'secondHalf' | 'active' | 'default' | string
-    $size?: 'firstHalf' | 'secondHalf' | 'large' | 'default' | 'buttonSide'
+    $variant?: string
+    $size?: string
 }

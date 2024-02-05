@@ -1,7 +1,7 @@
-import { TopBar as TopBarStyled, LogoList, GameList, BurgerList } from '../styles/stylesNavbar';
-import { ListItems } from '../components/ListItems';
-import { ButtonOrLink } from '../components/Button';
-import { firstHalf, secondHalf, logo, game } from '../data/ulListNavbar';
+import { TopBar as TopBarStyled, LogoList, GameList, BurgerList } from '../../../styles/stylesNavbar';
+import { ButtonOrLink } from '../../Button/Button';
+import { firstHalf, secondHalf, logo, game } from '../../../data/ulListNavbar';
+import { ListItems } from '../ListItems/ListItems';
 
 export function TopBar({ isOpen, onClick }: { isOpen: boolean, onClick: () => void }): JSX.Element {
     return (

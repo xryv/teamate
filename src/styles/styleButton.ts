@@ -11,18 +11,29 @@ const BurgerVariantStyles = {
     'bottom-active': tw`-rotate-[135deg]`,
 };
 const buttonVariant: Record<string, TwStyle> = {
-    firstHalf: tw`bg-transparant-600 -translate-y-4 text-bluePV-500 `,
+    firstHalf: tw`bg-transparant-600 -translate-y-4 text-bluePV-500`,
     secondHalf: tw``,
-    active: tw`bg-green-500`,
     default: tw``,
+    ghost: tw``,
 };
 
 const buttonSize: Record<string, TwStyle> = {
     firstHalf: tw`p-2 rounded-2xl`,
-    secondHalf: tw`rounded-2xl`,
-    large: tw`text-xl`,
-    default: tw`p-2`,
-    buttonSide: tw`p-0.5 hover:text-orangePV-900 hover:scale-105`,
+    secondHalf: tw``,
+    default: tw`p-2 rounded-md`,
+    large: tw`p-3 rounded-md`,
+    rounded: tw`p-2 rounded-full`,
+    mic: tw`w-12 p-2 rounded-full`,
+    smiley: tw`w-12 p-2 left-0 rounded-full`,
+};
+const buttonSizeHovered: Record<string, TwStyle> = {
+    buttonSide: tw`text-orangePV-900`,
+};
+
+const buttonVariantHovered: Record<string, TwStyle> = {
+    default: tw``,
+    ghostHovered: tw`bg-transparant-600 text-bluePV-500`,
+
 };
 
 const linkVariant: Record<string, TwStyle> = {
@@ -41,16 +52,16 @@ export const StyledBurgerButtonSpan = styled.span<StyledBurgerButtonSpanProps>`
 `;
 
 export const StyledLinkText = styled.a<StyledLinkTextProps>`
-    ${tw`absolute text-slate-100 transition-all duration-300 ease-out top-16`}
+    ${tw`absolute px-2 pb-4 text-slate-100 transition-all duration-300 ease-out top-16`}
     ${({ $variant = 'default' }) => linkVariant[$variant]};
 `;
 
 export const StyledButtonOrLink = styled.button<StyledButtonOrLinkProps>`
-    ${tw`flex flex-col justify-center items-center text-slate-100 transition-all duration-300 ease-out border-none outline-none rounded-md`};
-    ${({ $variant = 'default' }) => buttonVariant[$variant]};
-    ${({ $size = 'default' }) => buttonSize[$size]};
-    &:hover {
+        ${tw`flex flex-col justify-center items-center text-slate-100 transition-all duration-300 ease-out border-none outline-none rounded-md`};
         ${({ $variant = 'default' }) => buttonVariant[$variant]};
         ${({ $size = 'default' }) => buttonSize[$size]};
-    }
+        &:hover {
+                ${({ $variant = 'default' }) => buttonVariantHovered[$variant]};
+                ${({ $size = 'default' }) => buttonSizeHovered[$size]};
+        }
 `;

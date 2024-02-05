@@ -1,9 +1,9 @@
-import { ButtonOrLink } from './Button';
-import { type ListItemProps } from '../interfaces/ListItemProps';
+import { ButtonOrLink } from '../../Button/Button';
+import { type ListItemProps } from '../../../interfaces/ListItemProps';
 import tw from 'twin.macro';
 import styled from 'styled-components';
 import { useCallback, useState } from 'react';
-import { StyledLinkText } from '../styles/styleButton';
+import { StyledLinkText } from '../../../styles/styleButton';
 
 const UlStyled = styled.ul`
     ${tw`hidden relative md:flex flex-row items-center justify-center gap-8 w-1/3 max-w-96`}

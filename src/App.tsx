@@ -1,3 +1,4 @@
+import Messaging from './layouts/Messaging';
 import Navbar from './layouts/Navbar';
 
 function App(): JSX.Element {
@@ -6,6 +7,9 @@ function App(): JSX.Element {
             <header className="font-custom h-fit">
                 <Navbar />
             </header>
+            <main className='font-custom bg-gradient min-h-screen'>
+                <Messaging />
+            </main>
         </>
     );
 }

@@ -1,5 +1,5 @@
-import { TopBar } from '../components/TopBar';
-import { SideBarComponent } from '../components/SideBar';
+import { TopBar } from '../components/NavBar/TopBar/TopBar';
+import { SideBarComponent } from '../components/NavBar/SideBar/SideBar';
 import { useState, useEffect, useRef } from 'react';
 
 export default function Navbar(): JSX.Element {
