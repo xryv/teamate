@@ -1,7 +1,7 @@
 import { Mic, SendHorizontal, Smile } from 'lucide-react';
 import { StyleChatBar } from './StyleChatBar';
 import { ButtonOrLink } from '../../Button/Button';
-import { type ChangeEvent, useState } from 'react';
+import { type ChangeEvent, useState, forwardRef } from 'react';
 import Picker from '@emoji-mart/react';
 
 interface ChatBarProps {
@@ -12,14 +12,14 @@ interface ChatBarProps {
     onEmojiSelect: (emoji: { native: string }) => void
 }
 
-export function ChatBar({ placeholder, onEmojiSelect, value, name, onChange }: ChatBarProps): JSX.Element {
+const ChatBar = forwardRef<HTMLFormElement, ChatBarProps>(({ placeholder, onEmojiSelect, value, name, onChange }, ref) => {
     const [showEmojis, setShowEmojis] = useState(false);
 
     return (
         <StyleChatBar>
             <div>
                 <label htmlFor="chatInput" className='hidden'>Message</label>
-                <input autoFocus id="chatInput" type="text" placeholder={placeholder} value={value} name={name} onChange={onChange} autoComplete="off" />
+                <input ref={ref} autoFocus id="chatInput" type="text" placeholder={placeholder} value={value} name={name} onChange={onChange} autoComplete="off" />
 
                 <ButtonOrLink onClick={() => { setTimeout(() => { setShowEmojis(!showEmojis); }, 0); }} $size='smiley' $variant='ghostHovered' >
                     <Smile />
@@ -49,4 +49,7 @@ export function ChatBar({ placeholder, onEmojiSelect, value, name, onChange }: C
 
         </StyleChatBar>
     );
-}
+});
+
+ChatBar.displayName = 'Chat';
+export default ChatBar;

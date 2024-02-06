@@ -14,6 +14,7 @@ module.exports = {
       backgroundImage: {
         'gradient': 'linear-gradient(to right, #0a3155, #172e60, #2e2966, #471d67, #5f0061)',
         'gradient2': 'linear-gradient(to right, #451d66, #4c1965, #521364, #590b63, #5f0061);',
+        'conic-gradient': 'conic-gradient(#0a3155, #172e60, #2e2966, #471d67, #5f0061)',
       },
       colors: {
         'noirTransparent': {
