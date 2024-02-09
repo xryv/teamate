@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5.5.1/dist/iro.min.js"></script>
+    <link rel="stylesheet" href="/teamate/src/styles/output.css">
+
+    <title>pickerColor</title>
+</head>
+
+<body class="bg-gradient box-border font-roboto">
+
+    <div class="flex justify-evenly">
+        <div id="colorPicker"></div>
+        <div id="colorPicker2"></div>
+        <div id="colorPicker3"></div>
+        <div id="colorPicker4"></div>
+        <div id="colorPicker5"></div>
+    </div>
+
+    <script src="/teamate/src/scripts/navbar.js"></script>
+    <script type="module" src="/teamate/src/scripts/main.js"></script>
+
+    <script>
+        const colorPicker = new iro.ColorPicker("#colorPicker", {
+          width: 100,
+        });
+        const colorPicker2 = new iro.ColorPicker("#colorPicker2", {
+          width: 100,
+        });
+        const colorPicker3 = new iro.ColorPicker("#colorPicker3", {
+          width: 100,
+        });
+        const colorPicker4 = new iro.ColorPicker("#colorPicker4", {
+          width: 100,
+        });
+        const colorPicker5 = new iro.ColorPicker("#colorPicker5", {
+          width: 100,
+        });
+    
+        colorPicker.on('color:change', (color) => {
+            document.documentElement.style.setProperty('--profil-block', color.hexString);
+        });
+    
+        colorPicker2.on('color:change', (color) => {
+            document.documentElement.style.setProperty('--profil-top', color.hexString);
+        });
+    
+        colorPicker3.on('color:change', (color) => {
+            document.documentElement.style.setProperty('--profil-text', color.hexString);
+        });
+    
+        colorPicker4.on('color:change', (color) => {
+            document.documentElement.style.setProperty('--profil-shadow', color.hexString);
+        });
+    
+        colorPicker5.on('color:change', (color) => {
+            document.documentElement.style.setProperty('--profil-border', color.hexString);
+        });
+    </script>
+    
+
+
+</body>
+
+</html>

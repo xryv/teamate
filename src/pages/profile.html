@@ -1,0 +1,374 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/teamate/src/styles/output.css">
+
+</head>
+
+<body class="bg-gradient box-border font-roboto">
+    <header>
+        <nav class="grid grid-cols-5 place-items-center items-center">
+            <div class="col-span-2 flex justify-end items-center gap-24">
+
+                <div id="div-home" class="navbarDiv">
+                    <a id="a-One" class="navbarA" href="#">
+                        <svg id="svgOne" class="" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                            <path
+                                d="M12.5 30H7.5L30 7.5L52.5 30H47.5M12.5 30V47.5C12.5 48.8261 13.0268 50.0979 13.9645 51.0355C14.9021 51.9732 16.1739 52.5 17.5 52.5H42.5C43.8261 52.5 45.0979 51.9732 46.0355 51.0355C46.9732 50.0979 47.5 48.8261 47.5 47.5V30"
+                                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M22.5 52.5V37.5C22.5 36.1739 23.0268 34.9021 23.9645 33.9645C24.9021 33.0268 26.1739 32.5 27.5 32.5H32.5C33.8261 32.5 35.0979 33.0268 36.0355 33.9645C36.9732 34.9021 37.5 36.1739 37.5 37.5V52.5"
+                                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <span id="home" class="navbarSpanOfA"></span>
+                </div>
+
+                <div id="div-search" class="navbarDiv">
+                    <a id="a-Two" class="navbarA" href="#">
+                        <svg id="svgTwo" class="" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                            <path
+                                d="M48.7125 50.3853L33.0575 34.7304C31.8075 35.7954 30.37 36.6195 28.745 37.2029C27.12 37.7862 25.4867 38.0779 23.845 38.0779C19.8417 38.0779 16.4534 36.692 13.68 33.9204C10.9067 31.147 9.52002 27.7595 9.52002 23.7579C9.52002 19.7562 10.905 16.367 13.675 13.5904C16.4467 10.812 19.8334 9.42285 23.835 9.42285C27.8384 9.42285 31.2284 10.8095 34.005 13.5829C36.7817 16.3562 38.17 19.7454 38.17 23.7504C38.17 25.487 37.8625 27.1679 37.2475 28.7929C36.6309 30.4179 35.8225 31.8079 34.8225 32.9629L50.4775 48.6153L48.7125 50.3853ZM23.845 35.5753C27.1617 35.5753 29.9625 34.4337 32.2475 32.1504C34.5309 29.867 35.6725 27.0662 35.6725 23.7479C35.6725 20.4312 34.5309 17.6312 32.2475 15.3479C29.9642 13.0645 27.1642 11.9229 23.8475 11.9229C20.5309 11.9229 17.73 13.0645 15.445 15.3479C13.1617 17.6312 12.02 20.4312 12.02 23.7479C12.02 27.0645 13.1617 29.8645 15.445 32.1479C17.7284 34.4312 20.5284 35.5753 23.845 35.5753Z"
+                                fill="white" />
+                        </svg>
+                    </a>
+                    <span id="search" class="navbarSpanOfA"></span>
+                </div>
+
+                <div id="div-event" class="navbarDiv">
+                    <a id="a-Three" class="navbarA" href="#">
+                        <svg id="svgThree" width="60" height="60" viewBox="0 0 60 60" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M13.7062 14.9998H12.9417V16.5373V24.0373V24.5373H13.4417H48.5583H49.0583V24.0373V16.5373C49.0583 15.9973 48.8266 15.5233 48.4306 15.1266L48.4288 15.1247C48.0307 14.73 47.5559 14.4998 47.0157 14.4998H14.9843C14.5039 14.4998 14.0753 14.6819 13.7062 14.9998ZM34.8345 43.0957L34.8343 43.0954C33.8936 42.1593 33.4289 41.0411 33.4289 39.7123C33.4289 38.3838 33.8943 37.2636 34.8371 36.3239C35.7781 35.3861 36.9018 34.9223 38.2366 34.9223C39.571 34.9223 40.6947 35.3867 41.6358 36.3262L41.6361 36.3264C42.577 37.2643 43.0417 38.3835 43.0417 39.7123C43.0417 41.0408 42.5764 42.16 41.6338 43.0979L41.6333 43.0984C40.694 44.0361 39.5713 44.4998 38.2366 44.4998C36.9021 44.4998 35.7774 44.0354 34.8345 43.0957ZM12.4473 14.0118L12.4481 14.0111C13.1211 13.3388 13.9546 12.9998 14.9843 12.9998H19.4241H19.9241V12.4998V7.4248H21.6255V12.4998V12.9998H22.1255H40.0676H40.5676V12.4998V7.4248H42.076V12.4998V12.9998H42.576H47.0157C48.0454 12.9998 48.8789 13.3388 49.552 14.0111L49.5527 14.0118C50.2272 14.6826 50.5667 15.5125 50.5667 16.5373V48.4623C50.5667 49.4874 50.2278 50.3175 49.5549 50.9882C48.88 51.6608 48.0454 51.9998 47.0157 51.9998H14.9843C13.9543 51.9998 13.1207 51.6614 12.4477 50.9907C11.7729 50.3181 11.4333 49.4871 11.4333 48.4623V16.5373C11.4333 15.5125 11.7729 14.6826 12.4473 14.0118ZM48.4288 49.8749L48.4306 49.873C48.8266 49.4763 49.0583 49.0023 49.0583 48.4623V26.5373V26.0373H48.5583H13.4417H12.9417V26.5373V48.4623C12.9417 49.0023 13.1734 49.4763 13.5694 49.873L13.5712 49.8749C13.9693 50.2696 14.4442 50.4998 14.9843 50.4998H47.0157C47.5559 50.4998 48.0307 50.2696 48.4288 49.8749Z"
+                                fill="white" stroke="white" />
+                        </svg>
+
+                    </a>
+                    <span id="event" class="navbarSpanOfA"></span>
+                </div>
+
+                <div id="div-browse" class="navbarDiv">
+
+                    <a id="a-Four" class="navbarA" href="#">
+                        <svg class="" id="svgFour" width="60" height="60" viewBox="0 0 60 60" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10 32.5V14.0375C10 12.8875 10.3858 11.9275 11.1575 11.1575C11.9275 10.3858 12.8875 10 14.0375 10H27.5V32.5H10ZM32.5 10H45.9625C47.1125 10 48.0725 10.3858 48.8425 11.1575C49.6142 11.9275 50 12.8933 50 14.055V22.5H32.5V10ZM32.5 50V27.5H50V45.9625C50 47.1125 49.615 48.0725 48.845 48.8425C48.0733 49.6142 47.1125 50 45.9625 50H32.5ZM10 37.5H27.5V50H14.0375C12.8875 50 11.9275 49.615 11.1575 48.845C10.3858 48.0733 10 47.1067 10 45.945V37.5ZM12.5 30H25V12.5H14.0375C13.5892 12.5 13.2208 12.6442 12.9325 12.9325C12.6442 13.2208 12.5 13.5892 12.5 14.0375V30ZM35 20H47.5V14.0375C47.5 13.5892 47.3558 13.2208 47.0675 12.9325C46.7792 12.6442 46.4108 12.5 45.9625 12.5H35V20ZM35 30V47.5H45.9625C46.4108 47.5 46.7792 47.3558 47.0675 47.0675C47.3558 46.7792 47.5 46.4108 47.5 45.9625V30H35ZM12.5 40V45.9625C12.5 46.4108 12.6442 46.7792 12.9325 47.0675C13.2208 47.3558 13.5892 47.5 14.0375 47.5H25V40H12.5Z"
+                                fill="white" />
+                        </svg>
+
+                    </a>
+                    <span id="browse" class="navbarSpanOfA"></span>
+                </div>
+            </div>
+            <div class="">
+                <a class="w-auto" href="#"><img src="/teamate/src/icon/logo.svg" alt=""></a>
+            </div>
+            <div class="col-span-2 items-center flex gap-24">
+
+                <button class="flex flex-shrink-0" id="re" type="button"><img src="/teamate/src/icon/mateam.svg"
+                        alt="team"></button>
+
+                <button class="flex flex-shrink-0" type="button"><img src="/teamate/src/icon/notifs.svg"
+                        alt="notifs"></button>
+
+                <a class="flex flex-shrink-0 w-auto" href="#"><img src="/teamate/src/icon/rank.svg" alt="rank"></a>
+
+                <a class="flex flex-shrink-0 w-auto" href="#"><img src="/teamate/src/icon/profil.svg" alt="profil"></a>
+
+                <button class="flex flex-shrink-0" type="button"><img src="/teamate/src/icon/setting.svg"
+                        alt="parametres"></button>
+
+            </div>
+        </nav>
+    </header>
+    <main class="flex flex-col gap-10 ">
+
+        <article class="relative h-44 flex  items-end justify-center mt-8">
+            <div id="photo"
+                class="flex items-center justify-center border-4 border-profil-border absolute top-0 left-0 bg-slate-100 rounded-full h-52 w-52 text-center overflow-hidden">
+                <input class="hidden" type="file" name="photo" id="photo-upload">
+                <label for="photo-upload"
+                    class="flex items-center justify-center h-full w-full absolute inset-x-1/2 inset-y-1/2 -translate-x-[50%] -translate-y-[50%] cursor-pointer text-slate-200 opacity-0 hover:opacity-100 hover:bg-noirTransparent-800">
+                    <u>Modifier</u>
+                </label>
+                <img id="photoDeProfil" class="w-full h-full object-cover hover:opacity-0"
+                    src="/teamate/src/icon/la-personne.png" alt="Photo de profil">
+            </div>
+            <div class="bg-profil-block rounded-full h-32 w-full flex justify-end border-2 border-profil-border">
+                <div class="flex justify-between items-center w-11/12">
+                    <div class="ml-20">
+                        <div class="flex justify-start items-start">
+                            <p class="text-purplePV-1000 text-3xl font-semibold">Emma</p>
+                            <button class="ml-1" id="btn_name"><svg xmlns="http://www.w3.org/2000/svg" height="10"
+                                    width="10"
+                                    viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path fill="#ffffff"
+                                        d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z" />
+                                </svg></button>
+                        </div>
+                        <div class="flex">
+                            <p class="text-profil-text">En ligne</p>
+                            <img class="ml-2 max-w-2" src="/teamate/src/icon/ping.svg" alt="#">
+                        </div>
+                    </div>
+                    <div>
+                        <button id="btn_color" class="mr-20 text-profil-text" href="#"><u>Modifier</u></button>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+
+
+
+        <article
+            class=" flex justify-evenly items-center rounded-full bg-profil-top mx-auto w-2/4">
+            <div>
+                <img src="/teamate/src/icon/levelMain.svg" alt="#">
+                <p class="text-profil-text text-center">Level 54</p>
+            </div>
+            <article>
+                <div>
+                    <p class="text-profil-text">Top 1</p>
+                </div>
+                <div class=" mx-auto">
+                    <img src="/teamate/src/icon/Valo.svg" alt="#">
+                </div>
+                <div class="flex justify-center">
+                    <img class="" src="/teamate/src/icon/level1.svg" alt="#">
+                </div>
+            </article>
+            <article>
+                <div>
+                    <p class="text-profil-text">Top 2</p>
+                </div>
+                <div>
+                    <img src="/teamate/src/icon/RocketLeague.svg" alt="#">
+                </div>
+                <div class="flex justify-center">
+                    <img src="/teamate/src/icon/level2.svg" alt="#">
+                </div>
+            </article>
+            <article>
+                <div>
+                    <p class="text-profil-text">Top 3</p>
+                </div>
+                <div>
+                    <img src="/teamate/src/icon/Fortnite.svg" alt="#">
+                </div>
+                <div class="flex justify-center">
+                    <img class="" src="/teamate/src/icon/level3.svg" alt="#">
+                </div>
+            </article>
+        </article>
+
+        <!-- PAGE PRINCIPALE  -->
+
+        <section class=" flex justify-between gap-8 mx-16">
+            <article class="flex items-center flex-col  bg-profil-block rounded-2xl p-8 gap-8 w-1/4 ">
+                <div
+                    class="p-5 shadow-3xl rounded-bl-3xl rounded-tr-3xl rounded-br-3xl shadow-lg shadow-profil-shadow w-11/12">
+                    <p id="bio" class="text-profil-text text-base">Hello, compétitrice passionnée depuis l'enfance, a toujours
+                        cherché à repousser ses limites. Des jeux entre amis à la scène des tournois, j’inspire par sa
+                        détermination. Toujours prête pour de nouveaux défis, je reste une figure respectée dans le
+                        monde des jeux compétitifs</p>
+                </div>
+                <div
+                    class="py-5 shadow-3xl rounded-bl-3xl rounded-tr-3xl rounded-br-3xl shadow-lg shadow-profil-shadow w-11/12 h-3/4">
+                    <p class="text-slat">
+                    <div class=" flex flex-col justify-center items-center">
+                        <img class="mb-5 w-40" src="/teamate/src/icon/imgArticle1 (3).svg" alt="#"><img
+                            class="mb-5  w-40" src="/teamate/src/icon/imgArticle1 (2).svg" alt="#"><img
+                            class="mb-5  w-40" src="/teamate/src/icon/imgArticle1 (1).svg" alt="#">
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="/teamate/src/icon/fleche-vers-le-bas (1).svg" alt="#">
+                    </div>
+                </div>
+            </article>
+            <article class="flex flex-col gap-8 w-3/4">
+                <div class="relative flex items-center">
+                    <label for="publier" class="block text-sm font-medium text-white"></label>
+                    <div class="flex items-center relative w-full">
+                        <input
+                            class="pl-10 pr-8 py-2 rounded-full w-full focus:outline-none text-profil-text bg-profil-block border-2 border-profil-border"
+                            type="text" id="publier" name="publier" placeholder="| Publier ...">
+                        <img src="/teamate/src/icon/fleche-courbe 1.svg" alt="Image 2"
+                            class="absolute right-0 top-1/2 transform -translate-y-1/2 w-8 h-8 mr-10 rounded-full">
+                        <img src="/teamate/src/icon/img.svg" alt="Image 1"
+                            class="absolute right-0 top-1/2 transform -translate-y-1/2 w-8 h-8 mr-2 rounded-full">
+                    </div>
+                </div>
+                <div class="bg-profil-block rounded-2xl h-full w-full">
+                    <div class="flex flex-col gap-2 w-11/12 m-auto mt-8">
+                        <div class="flex items-center  gap-4 ">
+                            <img class="" src="/teamate/src/icon/imgProfilFilActualité.png" alt="#">
+                            <div>
+                                <p class="text-purplePV-1000 text-xl">Emma</p>
+                                <p class="text-sm text-profil-text">Hier à 13h36</p>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-profil-text">Trop cool !!!</p>
+                        </div>
+                        <div
+                            class="flex items-center gap-4 p-4 shadow-3xl rounded-bl-3xl rounded-tr-3xl rounded-br-3xl shadow-lg shadow-profil-shadow">
+                            <img class="" src="/teamate/src/icon/jeuActu1.png" alt="#">
+                            <div>
+                                <h1 class="text-profil-text">Esport : Gentle Mates débarque en LFL et sur Rocket
+                                    League</h1><br>
+                                <p class="text-profil-text font-light text-sm">Gentle Mates, le club fondé par le trio de
+                                    youtubers et
+                                    streamers à succès
+                                    Squeezie-Gotaga-Brawks, a officialisé ce jeudi soir l'effectif qui défendra ses
+                                    couleurs
+                                    au sein du Championnat de France de League of Legends et son arrivée sur la scène
+                                    professionnelle de Rocket League.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 w-11/12 m-auto mt-8">
+                        <div class="flex items-center  gap-4 ">
+                            <img class="" src="/teamate/src/icon/imgProfilFilActualité.png" alt="#">
+                            <div>
+                                <p class="text-xl text-purplePV-1000">Emma</p>
+                                <p class="text-sm text-profil-text">lundi à 18h35</p>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-profil-text">qui serait partant pour participer avec moi ?</p>
+                        </div>
+                        <div
+                            class="flex items-center gap-4 p-4 shadow-3xl rounded-bl-3xl rounded-tr-3xl rounded-br-3xl shadow-lg shadow-profil-shadow">
+                            <img class="" src="/teamate/src/icon/jeuActu2.png" alt="#">
+                            <div>
+                                <h1 class="text-profil-text">TOURNOIS VALORANT</h1><br>
+                                <p class="text-profil-text font-light text-sm">Vous avez envie d'action non-stop sur
+                                    Valorant ? Vous aimeriez pouvoir exercer votre maîtrise du jeu et ramener des prix
+                                    sympas à la maison ? Eh bien, allumez les orbes de guérison de votre Sage, car nous
+                                    avons ce dont vous avez soif ! Bienvenue sur GameChampions.com, le centre vibrant
+                                    des tournois exaltants de Valorant. Préparez-vous à verrouiller et à charger, ça va
+                                    être explosif !</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 w-11/12 m-auto mt-8">
+                        <div class="flex items-center  gap-4 ">
+                            <img class="" src="/teamate/src/icon/imgProfilFilActualité.png" alt="#">
+                            <div>
+                                <p class="text-xl text-purplePV-1000">Emma</p>
+                                <p class="text-sm text-profil-text">Il y a 3 jours</p>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-profil-text"></p>
+                        </div>
+                        <div
+                            class="flex items-center p-4 shadow-3xl rounded-bl-3xl rounded-tr-3xl rounded-br-3xl shadow-lg shadow-profil-shadow">
+                            <img class="" src="/teamate/src/icon/jeuActu3.png" alt="#">
+                            <div
+                                class="flex items-center justify-center gap-4 bg-profil-top px-4 py-2 rounded-full m-auto ">
+                                <a href="#">Regarder le live !</a>
+                                <img src="/teamate/src/icon/contour-du-bouton-circulaire-fleche-droite.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="w-1/5 text-profil-text flex flex-col gap-8">
+                <div class="flex justify-between">
+                    <div
+                        class="flex items-center justify-center flex-col border-2 border-profil-border bg-profil-block w-11 h-11 rounded-tr-full rounded-full">
+                        <p class="text-center text-sm leading-tight">Lun</p>
+                        <p class="text-center text-sm leading-tight">1</p>
+                    </div>
+                    <div class="flex items-center justify-center flex-col rounded-full bg-profil-block w-11 h-11">
+                        <p class="text-center text-sm leading-tight">Mar</p>
+                        <p class="text-center text-sm leading-tight">2</p>
+                    </div>
+                    <div class="flex items-center justify-center flex-col rounded-full bg-profil-block w-11 h-11">
+                        <p class="text-center text-sm leading-tight">Mer</p>
+                        <p class="text-center text-sm leading-tight">3</p>
+                    </div>
+                    <div class="flex items-center justify-center flex-col rounded-full bg-profil-block w-11 h-11">
+                        <p class="text-center text-sm leading-tight">Jeu</p>
+                        <p class="text-center text-sm leading-tight">4</p>
+                    </div>
+                    <div class="flex items-center justify-center flex-col rounded-full bg-profil-block w-11 h-11">
+                        <p class="text-center text-sm leading-tight">Ven</p>
+                        <p class="text-center text-sm leading-tight">5</p>
+                    </div>
+                    <div class="flex items-center justify-center flex-col rounded-full bg-profil-block w-11 h-11">
+                        <p class="text-center text-sm leading-tight">Sam</p>
+                        <p class="text-center text-sm leading-tight">6</p>
+                    </div>
+                </div>
+                <div class="border-2 border-profil-border bg-profil-block rounded-br-2xl rounded-tr-2xl rounded-bl-2xl p-8 ">
+                    <img class="" src="/teamate/src/icon/calendrier 1.svg" alt="#">
+                </div>
+
+                <div class=" border-2 border-profil-border bg-profil-block rounded-2xl p-8 flex flex-col justify-between gap-8">
+                    <div class=" mx-auto">
+                        <img class="rounded-2xl" src="/teamate/src/icon/Sova_Teaser_-_embed_6.gif" alt="#">
+                    </div>
+
+                    <div class="flex flex-col gap-4">
+                        <div>
+                            <h2>Activités récentes : </h2>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <img src="/teamate/src/icon/jeuRecent (1).png" alt="#">
+                            <p>10,5h les 15 derniers jours</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <img src="/teamate/src/icon/jeuRecent (2).png" alt="#">
+                            <p>6.5h les 15 derniers jours</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <img src="/teamate/src/icon/jeuRecent (3).png" alt="#">
+                            <p>0.5h les 15 derniers jours</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <p>Ami(e)s : <span>240</span></p>
+                        <div class="flex items-center justify-start gap-2">
+                            <img src="/teamate/src/icon/iconAmis (1).png" alt="#"><img
+                                src="/teamate/src/icon/iconAmis (2).png" alt="#"><img
+                                src="/teamate/src/icon/iconAmis (3).png" alt="#"><img
+                                src="/teamate/src/icon/iconAmis (4).png" alt="#"><img
+                                src="/teamate/src/icon/iconAmis (5).png" alt="#"><img
+                                src="/teamate/src/icon/contour-du-bouton-circulaire-fleche-droite (3) 1.svg" alt="#">
+                        </div>
+
+                    </div>
+                    <div class="max-w-full">
+                        <p>Connexion :</p>
+                        <div class="flex justify-start items-center max-w-full gap-2 ">
+                            <img class="max-w-full" src="/teamate/src/icon/playstation.svg" alt="#"><img
+                                class="max-w-full" src="/teamate/src/icon/xbox (1).svg" alt="#"><img class="max-w-full"
+                                src="/teamate/src/icon/riot.svg" alt="#"><img class="max-w-full"
+                                src="/teamate/src/icon/Steam_icon_logo 2.svg" alt="#"><img class="max-w-full"
+                                src="/teamate/src/icon/epicGames.svg" alt="#"><img class="max-w-full"
+                                src="/teamate/src/icon/tic.svg" alt="#">
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+    </main>
+    <script src="/teamate/src/scripts/navbar.js"></script>
+    <script type="module" src="/teamate/src/scripts/main.js"></script>
+
+
+</body>
+
+</html>
