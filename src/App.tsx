@@ -3,12 +3,11 @@ import Navbar from './layouts/Navbar';
 
 function App(): JSX.Element {
     return (
-        <div className=' bg-gradient min-h-screen'>
-            {/* <div className="absolute top"></div> */}
-            <header className="font-custom h-fit">
+        <div className='flex flex-col bg-gradient min-h-screen font-custom'>
+            <header className="h-fit">
                 <Navbar />
             </header>
-            <main className='font-custom'>
+            <main className='relative flex flex-grow flex-col justify-between items-center w-full'>
                 <Messaging />
             </main>
         </div>

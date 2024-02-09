@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-export const NameOfGroup = styled.form`
+export const StyleNameOfGroup = styled.form`
     ${tw`mt-10 mb-4`}
 
     label {

@@ -5,12 +5,12 @@ import { useState, useEffect, useRef } from 'react';
 export default function Navbar(): JSX.Element {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [navHeight, setNavHeight] = useState<string>('0px');
-    const barRef = useRef<null>(null);
+    const barRef = useRef<HTMLElement | null>(null);
 
     useEffect(() => {
         const updateHeight = (): void => {
             if (barRef.current !== null) {
-                const newNavHeight = (barRef.current as HTMLElement).offsetHeight;
+                const newNavHeight = barRef.current.offsetHeight;
                 setNavHeight(`${newNavHeight}px`);
             }
         };

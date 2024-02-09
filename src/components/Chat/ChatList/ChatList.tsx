@@ -1,20 +1,58 @@
 import { PencilLine, Trash2 } from 'lucide-react';
+import { ChatListContainer } from './styleChatList';
+import { useEffect, useRef, useState } from 'react';
+import { useTransition, animated } from 'react-spring';
 
-export function ChatList({ list, onEdit, onDelete }: { list: Array<{ message: string, id: string, user: string, timestamp: string }>, onEdit: (id: string) => void, onDelete: (id: string) => void }): JSX.Element {
+export function ChatList({ list, onEdit, onDelete }: { list: Array<{ message?: string | undefined, id: string, user: boolean, timestamp: string, image?: string | undefined }>, onEdit: (id: string) => void, onDelete: (id: string) => void }): JSX.Element {
+    const [isHovered, setIsHovered] = useState<string>('');
+    const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+    const handleMouseEnter = (item: string): void => {
+        setIsHovered(item);
+    };
+    const handleMouseLeave = (): void => {
+        setIsHovered('');
+    };
+
+    const transitions = useTransition(list, {
+        from: { transform: 'translate3d(5px,10px,0px)', opacity: 0 },
+        enter: { transform: 'translate3d(0px,0px,0px)', opacity: 1 },
+        leave: { transform: 'translate3d(5px,0px,0)', opacity: 0 },
+        keys: message => message.id,
+    });
+
+    useEffect(() => {
+        if (messagesEndRef.current !== null) {
+            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [list]);
+
     return (
-        <ul>
-            {list.map((content) => (
-                <li className='relative' key={content.id}>
-                    <p>{content.message}</p>
-                    <small>{content.timestamp}</small>
-                    <div className='absolute top-0 right-0'>
-                        {content.user === 'user' && <>
-                            <button className='' type='button' onClick={() => { onEdit(content.id); }}><PencilLine /></button>
-                            <button className='' type='button' onClick={() => { onDelete(content.id); }}><Trash2 /></button>
-                        </>}
-                    </div>
-                </li>
-            ))}
-        </ul>
+        <>
+            <div className='flex flex-col flex-grow justify-end w-full'>
+                <ChatListContainer className='scrollbar-rounded' >
+                    {transitions((styles, item) => (
+                        <animated.li
+                            style={styles}
+                            className={`message ${item.user ? 'items-end' : 'items-start'}`}
+                            key={item.id}
+                            onMouseEnter={() => { handleMouseEnter(item.id); }}
+                            onMouseLeave={() => { handleMouseLeave(); }}
+                        >
+                            <div className='content-time'>
+                                {item.image !== undefined && <img src={item.image} alt="image envoyée par un utilisateur" />}
+                                <p className='content'>{item.message}</p>
+                                <small className='time'>{item.timestamp}</small>
+                            </div>
+                            <div className={`edit-delete transition-opacity duration-100 ease-in ${item.user && isHovered === item.id ? 'opacity-100' : 'opacity-0'}`}>
+                                {item.image === undefined && <button className='' type='button' onClick={() => { onEdit(item.id); }}><PencilLine size={16} /></button>}
+                                <button className='' type='button' onClick={() => { onDelete(item.id); }}><Trash2 size={16} /></button>
+                            </div>
+                        </animated.li>
+                    ))}
+                    <div ref={messagesEndRef} />
+                </ChatListContainer>
+            </div>
+        </>
     );
 }

@@ -1,6 +1,6 @@
 import { PencilLine } from 'lucide-react';
-import { type ButtonHTMLAttributes, useState, forwardRef } from 'react';
-import { NameOfGroup as StyledNameOfGroup, StyledButton } from './styleNameOfGroup';
+import { type ButtonHTMLAttributes, useState } from 'react';
+import { StyleNameOfGroup as StyledNameOfGroup, StyledButton } from './styleNameOfGroup';
 
 type ConditionalButtonProps = {
     submittedValue: string
@@ -13,7 +13,7 @@ const ConditionalButton = ({ submittedValue, ...props }: ConditionalButtonProps)
     return <StyledButton {...props} />;
 };
 
-const NameOfGroupe = forwardRef<HTMLFormElement, unknown>((_, ref) => {
+export const NameOfGroup = (): JSX.Element => {
     const [nameOfGroup, setNameOfGroup] = useState<string>('');
     const [submittedValue, setSubmittedValue] = useState<string>('');
 
@@ -29,7 +29,7 @@ const NameOfGroupe = forwardRef<HTMLFormElement, unknown>((_, ref) => {
     };
 
     return (
-        <StyledNameOfGroup ref={ref} onSubmit={handleSubmit}>
+        <StyledNameOfGroup onSubmit={handleSubmit}>
             <label htmlFor="name"></label>
             {submittedValue === '' &&
                     <input autoComplete='off' type="text" id='name' placeholder='Nom du groupe...' value={nameOfGroup} onChange={(e) => { setNameOfGroup(e.target.value); }} />
@@ -42,8 +42,4 @@ const NameOfGroupe = forwardRef<HTMLFormElement, unknown>((_, ref) => {
             </div>
         </StyledNameOfGroup>
     );
-});
-
-NameOfGroupe.displayName = 'NameOfGroupe';
-
-export default NameOfGroupe;
+};

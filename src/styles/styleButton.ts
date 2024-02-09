@@ -25,6 +25,7 @@ const buttonSize: Record<string, TwStyle> = {
     rounded: tw`p-2 rounded-full`,
     mic: tw`w-12 p-2 rounded-full`,
     smiley: tw`w-12 p-2 left-0 rounded-full`,
+    paperclip: tw`w-12 p-2 left-10 rounded-full`,
 };
 const buttonSizeHovered: Record<string, TwStyle> = {
     buttonSide: tw`text-orangePV-900`,

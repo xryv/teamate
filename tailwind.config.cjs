@@ -80,5 +80,15 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require ( 'tailwind-scrollbar' ) ( {  nocompatible : true  } ) , 
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.inset-shadow': {
+          boxShadow: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+        },
+      }
+      addUtilities(newUtilities)
+    }
+  ],
 }
