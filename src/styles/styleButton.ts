@@ -58,7 +58,7 @@ export const StyledLinkText = styled.a<StyledLinkTextProps>`
 `;
 
 export const StyledButtonOrLink = styled.button<StyledButtonOrLinkProps>`
-        ${tw`flex flex-col justify-center items-center text-slate-100 transition-all duration-300 ease-out border-none outline-none rounded-md`};
+        ${tw`flex flex-col justify-center items-center text-slate-100 overflow-hidden transition-all duration-300 ease-out border-none outline-none rounded-md`};
         ${({ $variant = 'default' }) => buttonVariant[$variant]};
         ${({ $size = 'default' }) => buttonSize[$size]};
         &:hover {

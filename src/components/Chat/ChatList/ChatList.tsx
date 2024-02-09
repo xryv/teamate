@@ -1,5 +1,5 @@
 import { PencilLine, Trash2 } from 'lucide-react';
-import { ChatListContainer } from './styleChatList';
+import { ChatListContainer, Time } from './styleChatList';
 import { useEffect, useRef, useState } from 'react';
 import { useTransition, animated } from 'react-spring';
 
@@ -30,7 +30,7 @@ export function ChatList({ list, onEdit, onDelete }: { list: Array<{ message?: s
     return (
         <>
             <div className='flex flex-col flex-grow justify-end w-full'>
-                <ChatListContainer className='scrollbar-rounded' >
+                <ChatListContainer className='scrollbar-rounded'>
                     {transitions((styles, item) => (
                         <animated.li
                             style={styles}
@@ -39,10 +39,10 @@ export function ChatList({ list, onEdit, onDelete }: { list: Array<{ message?: s
                             onMouseEnter={() => { handleMouseEnter(item.id); }}
                             onMouseLeave={() => { handleMouseLeave(); }}
                         >
-                            <div className='content-time'>
-                                {item.image !== undefined && <img src={item.image} alt="image envoyée par un utilisateur" />}
-                                <p className='content'>{item.message}</p>
-                                <small className='time'>{item.timestamp}</small>
+                            <div className='content-time-image'>
+                                {item.image !== undefined && <img className='image' src={item.image} alt="image envoyée par un utilisateur" />}
+                                {item.message !== undefined && <p className='content'>{item.message}</p>}
+                                <Time $image={item.image !== undefined}>{item.timestamp ?? ''}</Time>
                             </div>
                             <div className={`edit-delete transition-opacity duration-100 ease-in ${item.user && isHovered === item.id ? 'opacity-100' : 'opacity-0'}`}>
                                 {item.image === undefined && <button className='' type='button' onClick={() => { onEdit(item.id); }}><PencilLine size={16} /></button>}

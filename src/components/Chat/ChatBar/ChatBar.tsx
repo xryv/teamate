@@ -14,7 +14,7 @@ interface ChatBarProps {
 }
 
 export function ChatBar({ placeholder, value, name, onChange, onEmojiSelect, onsubmit }: ChatBarProps): JSX.Element {
-    const [showEmojis, setShowEmojis] = useState(false);
+    const [showEmojis, setShowEmojis] = useState<boolean>(false);
     const fileInputRef = useRef<HTMLInputElement | null>(null);
 
     const handlePaperclipClick = (): void => {
