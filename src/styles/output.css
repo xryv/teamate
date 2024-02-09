@@ -632,6 +632,10 @@ video {
   margin-right: 5rem;
 }
 
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
 .mt-16 {
   margin-top: 4rem;
 }
@@ -712,6 +716,10 @@ video {
   height: 100vh;
 }
 
+.h-10 {
+  height: 2.5rem;
+}
+
 .w-1\/4 {
   width: 25%;
 }
@@ -766,6 +774,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-10 {
+  width: 2.5rem;
 }
 
 .min-w-full {
@@ -966,6 +978,15 @@ video {
   background-color: rgb(100 116 139 / var(--tw-bg-opacity));
 }
 
+.bg-transparent {
+  background-color: transparent;
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .bg-gradient {
   background-image: linear-gradient(to right, #0a3155, #172e60, #2e2966, #471d67, #5f0061);
 }
@@ -985,6 +1006,11 @@ video {
 
 .p-8 {
   padding: 2rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .px-4 {
@@ -1087,6 +1113,10 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-profil-top {
+  color: var(--profil-top);
+}
+
 .opacity-0 {
   opacity: 0;
 }
@@ -1100,6 +1130,11 @@ video {
 .shadow-profil-shadow {
   --tw-shadow-color: var(--profil-shadow);
   --tw-shadow: var(--tw-shadow-colored);
+}
+
+.outline-none {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .navbarDiv {

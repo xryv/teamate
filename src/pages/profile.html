@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/teamate/src/styles/output.css">
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5.5.1/dist/iro.min.js"></script>
 
 </head>
 
@@ -103,10 +104,15 @@
                 <div class="flex justify-between items-center w-11/12">
                     <div class="ml-20">
                         <div class="flex justify-start items-start">
-                            <p class="text-purplePV-1000 text-3xl font-semibold">Emma</p>
+                            <div>
+                                <p id="name" class="text-profil-top text-3xl font-semibold">Emma</p>
+                                <label class="hidden" for="inputName"></label>
+                                <input name="inputName" id="inputName"
+                                    class="mt-1 hidden rounded-lg text-profil-text bg-transparent border-2 border-profil-border outline-none px-2"
+                                    type="text">
+                            </div>
                             <button class="ml-1" id="btn_name"><svg xmlns="http://www.w3.org/2000/svg" height="10"
-                                    width="10"
-                                    viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    width="10" viewBox="0 0 512 512">
                                     <path fill="#ffffff"
                                         d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z" />
                                 </svg></button>
@@ -116,7 +122,16 @@
                             <img class="ml-2 max-w-2" src="/teamate/src/icon/ping.svg" alt="#">
                         </div>
                     </div>
-                    <div>
+                    <div class="flex gap-16">
+                        <div id="colorPicker" class="hidden">
+                            <div class="flex gap-16">
+                                <div id="colorPicker1"></div>
+                                <div id="colorPicker2"></div>
+                                <div id="colorPicker3"></div>
+                                <div id="colorPicker4"></div>
+                                <div id="colorPicker5"></div>
+                            </div>
+                        </div>
                         <button id="btn_color" class="mr-20 text-profil-text" href="#"><u>Modifier</u></button>
                     </div>
                 </div>
@@ -126,8 +141,7 @@
 
 
 
-        <article
-            class=" flex justify-evenly items-center rounded-full bg-profil-top mx-auto w-2/4">
+        <article class=" flex justify-evenly items-center rounded-full bg-profil-block mx-auto w-2/4">
             <div>
                 <img src="/teamate/src/icon/levelMain.svg" alt="#">
                 <p class="text-profil-text text-center">Level 54</p>
@@ -173,10 +187,10 @@
             <article class="flex items-center flex-col  bg-profil-block rounded-2xl p-8 gap-8 w-1/4 ">
                 <div
                     class="p-5 shadow-3xl rounded-bl-3xl rounded-tr-3xl rounded-br-3xl shadow-lg shadow-profil-shadow w-11/12">
-                    <p id="bio" class="text-profil-text text-base">Hello, compétitrice passionnée depuis l'enfance, a toujours
-                        cherché à repousser ses limites. Des jeux entre amis à la scène des tournois, j’inspire par sa
-                        détermination. Toujours prête pour de nouveaux défis, je reste une figure respectée dans le
-                        monde des jeux compétitifs</p>
+                    <p id="bio" class="text-profil-text text-base">Hello, compétitrice passionnée depuis l'enfance, a
+                        toujours cherché à repousser ses limites. Des jeux entre amis à la scène des tournois, j’inspire
+                        par sa détermination. Toujours prête pour de nouveaux défis, je reste une figure respectée dans
+                        le monde des jeux compétitifs</p>
                 </div>
                 <div
                     class="py-5 shadow-3xl rounded-bl-3xl rounded-tr-3xl rounded-br-3xl shadow-lg shadow-profil-shadow w-11/12 h-3/4">
@@ -207,9 +221,12 @@
                 <div class="bg-profil-block rounded-2xl h-full w-full">
                     <div class="flex flex-col gap-2 w-11/12 m-auto mt-8">
                         <div class="flex items-center  gap-4 ">
-                            <img class="" src="/teamate/src/icon/imgProfilFilActualité.png" alt="#">
+                            <div class="flex items-center justify-center w-10 h-10 bg-white rounded-full overflow-hidden ">
+                                <img id="miniature1" class="w-full h-full object-cover" src="" alt="Miniature de profil">
+                            </div>
+
                             <div>
-                                <p class="text-purplePV-1000 text-xl">Emma</p>
+                                <p class="text-profil-top text-xl">Emma</p>
                                 <p class="text-sm text-profil-text">Hier à 13h36</p>
                             </div>
                         </div>
@@ -222,7 +239,8 @@
                             <div>
                                 <h1 class="text-profil-text">Esport : Gentle Mates débarque en LFL et sur Rocket
                                     League</h1><br>
-                                <p class="text-profil-text font-light text-sm">Gentle Mates, le club fondé par le trio de
+                                <p class="text-profil-text font-light text-sm">Gentle Mates, le club fondé par le trio
+                                    de
                                     youtubers et
                                     streamers à succès
                                     Squeezie-Gotaga-Brawks, a officialisé ce jeudi soir l'effectif qui défendra ses
@@ -235,9 +253,12 @@
                     </div>
                     <div class="flex flex-col gap-2 w-11/12 m-auto mt-8">
                         <div class="flex items-center  gap-4 ">
-                            <img class="" src="/teamate/src/icon/imgProfilFilActualité.png" alt="#">
+                            <div class="flex items-center justify-center w-10 h-10 bg-white rounded-full overflow-hidden ">
+                                <img id="miniature2" class="w-full h-full object-cover" src="" alt="Miniature de profil">
+                            </div>
+
                             <div>
-                                <p class="text-xl text-purplePV-1000">Emma</p>
+                                <p class="text-xl text-profil-top">Emma</p>
                                 <p class="text-sm text-profil-text">lundi à 18h35</p>
                             </div>
                         </div>
@@ -261,9 +282,12 @@
                     </div>
                     <div class="flex flex-col gap-2 w-11/12 m-auto mt-8">
                         <div class="flex items-center  gap-4 ">
-                            <img class="" src="/teamate/src/icon/imgProfilFilActualité.png" alt="#">
+                            <div class="flex items-center justify-center w-10 h-10 bg-white rounded-full overflow-hidden ">
+                                <img id="miniature3" class="w-full h-full object-cover" src="" alt="Miniature de profil">
+                            </div>
+
                             <div>
-                                <p class="text-xl text-purplePV-1000">Emma</p>
+                                <p class="text-xl text-profil-top">Emma</p>
                                 <p class="text-sm text-profil-text">Il y a 3 jours</p>
                             </div>
                         </div>
@@ -311,11 +335,13 @@
                         <p class="text-center text-sm leading-tight">6</p>
                     </div>
                 </div>
-                <div class="border-2 border-profil-border bg-profil-block rounded-br-2xl rounded-tr-2xl rounded-bl-2xl p-8 ">
+                <div
+                    class="border-2 border-profil-border bg-profil-block rounded-br-2xl rounded-tr-2xl rounded-bl-2xl p-8 ">
                     <img class="" src="/teamate/src/icon/calendrier 1.svg" alt="#">
                 </div>
 
-                <div class=" border-2 border-profil-border bg-profil-block rounded-2xl p-8 flex flex-col justify-between gap-8">
+                <div
+                    class=" border-2 border-profil-border bg-profil-block rounded-2xl p-8 flex flex-col justify-between gap-8">
                     <div class=" mx-auto">
                         <img class="rounded-2xl" src="/teamate/src/icon/Sova_Teaser_-_embed_6.gif" alt="#">
                     </div>
