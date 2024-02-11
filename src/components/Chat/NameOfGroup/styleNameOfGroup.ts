@@ -19,6 +19,13 @@ export const StyleNameOfGroup = styled.form`
     }
     div {
         ${tw`relative`}
+        button {
+            ${tw`absolute -top-4 -right-10 outline-none transition-all duration-300 ease-in`}
+            svg {
+                ${tw`text-slate-600`}
+            }
+        }
+
 
         h1 {
             ${tw`text-slate-300 transition-all duration-300 ease-in`}
@@ -29,13 +36,5 @@ export const StyleNameOfGroup = styled.form`
                 ${tw`text-5xl`}
             }
         }
-    }
-`;
-
-export const StyledButton = styled.button`
-    ${tw`absolute -top-4 -right-10 outline-none transition-all duration-300 ease-in`}
-
-    svg {
-        ${tw`text-slate-600`}
     }
 `;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import { type SideBarProps } from '../interfaces/SideBarProps';
 
-export const TopBar = styled.nav`${tw`relative flex items-center justify-center gap-6 bg-gradient md:py-4  z-50`}`;
+export const TopBar = styled.nav`${tw`relative flex items-center justify-center gap-6 md:py-4  z-50`}`;
 
 export const LogoList = styled.ul`${tw` flex flex-row justify-center items-center w-1/3 md:w-fit md:px-3`}
 li {

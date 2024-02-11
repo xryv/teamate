@@ -3,12 +3,18 @@ import { ChatListContainer, Time } from './styleChatList';
 import { useEffect, useRef, useState } from 'react';
 import { useTransition, animated } from 'react-spring';
 
-export function ChatList({ list, onEdit, onDelete }: { list: Array<{ message?: string | undefined, id: string, user: boolean, timestamp: string, image?: string | undefined }>, onEdit: (id: string) => void, onDelete: (id: string) => void }): JSX.Element {
+interface ChatListProps {
+    list: Array<{ message?: string | undefined, id: string, user: boolean, timestamp: string, image?: string | undefined }>
+    onEdit: (id: string) => void
+    onDelete: (id: string) => void
+}
+
+export function ChatList({ list, onEdit, onDelete }: ChatListProps): JSX.Element {
     const [isHovered, setIsHovered] = useState<string>('');
     const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
-    const handleMouseEnter = (item: string): void => {
-        setIsHovered(item);
+    const handleMouseEnter = (id: string): void => {
+        setIsHovered(id);
     };
     const handleMouseLeave = (): void => {
         setIsHovered('');
