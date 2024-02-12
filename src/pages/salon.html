@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../styles/salon.css">
     <link rel="stylesheet" href="../styles/output.css">
 
 </head>
@@ -148,70 +150,151 @@
         </header>
     </div>
 
-    <main class="m-8 w-full bg-gradient">
+    <main class="mx-32">
         <!-- ... Vos autres éléments ... -->
-        <div class="my-16 mx-auto w-60 py-2 rounded-full  bg-gradien">
-            <h1 class="text-white text-center text-3xl font-bold ">Recherche</h1>
+        <div class="m-8 flex justify-center items-center">
+            <label for="nameCreate"></label>
+            <input id="nameCreate" name="nameCreate" class="text-center text-slate-200 rounded-full my-8 p-3 bg-transparant-300 outline-none text-2xl"
+                type="text" placeholder="Nom du salon...">
         </div>
+        <section>
+            <article>
+                <label for="search"></label>
+                <input class="mb-8 rounded-full bg-transparant-300 text-slate-200 outline-none px-3 py-1" name="search" type="text" placeholder="Rechercher">
+                <section>
+                    <article>
+                        <div class="flex justify-between  items-center mb-16">
 
-        <section  >
-            <article>
-                <input class="mb-6 pl-5 text-slate-100 bg-transparant-400 rounded-full focus:outline-none" type="text"
-                    placeholder="Rechercher ...">
-                <div class="flex gap-8 items-center mb-16">
-                    <img src="../assets/salon/Forza 1.png" alt=""><img src="../assets/salon/Asseto Corsa.png"
-                        alt=""><img src="../assets/salon/Grandturismo.png" alt=""><img src="../assets/salon/valo.png"
-                        alt=""><img src="../assets/salon/gta.png" alt=""><img src="../assets/salon/lol.png" alt=""><img
-                        src="../assets/salon/minecraft.png" alt=""><img src="../assets/salon/rocketleague.png"
-                        alt=""><img class="h-12"
-                        src="../assets/salon/contour-du-bouton-circulaire-fleche-droite (3) 3.png" alt="">
-                </div>
-            </article>
-            <article>
-                <div class="flex items-center gap-20 mb-10">
-                    <div class="flex items-center gap-10">
-                        <p class="text-white">Nombre de joueurs : </p>
-                        <input id="playerSlider" type="range" min="0" max="10" step="1" class="w-48" />
-                        <span id="sliderValue" class="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-full bg-gray-800 text-white px-2 py-1 rounded-full"></span>
-                    </div>
-                    <div class="flex items-center gap-10 justify-center">
-                        <p class="text-white">Sélection d'âge : </p>
-                        <input id="ageSlider" type="range" min="10" max="99" step="1" class="w-48" />
-                        <span id="ageSliderValue" class="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-full bg-gray-800 text-white px-2 py-1 rounded-full"></span>
-                    </div>
-                </div>
-                <div class="flex items-center gap-20 mb-10">
-                    <div class="flex items-center gap-8">
-                        <label for="languageSelect" class="text-white">Langue : </label>
-                        <select id="languageSelect" class="px-4 rounded-full bg-gray-500 text-white">
-                            <option value="fr">FR</option>
-                            <option value="en">EN</option>
-                            <option value="es">ES</option>
-                        </select>
-                    </div>
-                    <div class="flex items-center">
-                        <p class="text-white block">Micro :</p>
-                        <input type="radio" id="microOn" name="microStatus" class="ml-2" />
-                        <label for="microOn" class="text-white ml-1 cursor-pointer">On</label>
-                      
-                        <input type="radio" id="microOff" name="microStatus" class="ml-2" />
-                        <label for="microOff" class="text-white ml-1 cursor-pointer">Off</label>
-                      </div>
-                </div>
-                <div class="flex justify-center items-center">
-                    <button class="flex justify-center items-center text-2xl font-bold bg-gradient-to-r from-pink-500 to-orange-600 text-white rounded-full m-auto w-56 py-2">
-                        <a href="../pages/salon3.html" class="flex items-center">
-                            Rejoindre
-                            <img src="../assets/salon/contour-du-bouton-circulaire-fleche-droite (3) 3.png" alt="" class="ml-2">
-                        </a>
-                    </button>
-            </article>
-        </section>
+                            <div class="">
+                                <label class="relative flex items-center justify-center cursor-pointer">
+                                    <img class=" " src="../assets/salon/cs2_1.png" alt="">
+                                    <input class="absolute  right-0.5 bottom-0 h-3 w-3 m-1 invisible checked:visible" type="checkbox">
+                                </label>
+                            </div>
+
+                            <div class="">
+                                <label class="relative flex items-center justify-center cursor-pointer">
+                                    <img class=" w-full h-full object-cover "
+                                        src="../assets/salon/farcry6.png" alt="">
+                                    <input class="absolute rounded-full right-0.5 bottom-0 h-3 w-3 m-1 invisible checked:visible" type="checkbox">
+                                </label>
+                            </div>
+
+                            <div class="">
+                                <label class="relative flex items-center justify-center cursor-pointer">
+                                    <img class=" w-full h-full object-cover " src="../assets/salon/fortnite.png"
+                                        alt="">
+                                    <input class="absolute rounded-full right-0.5 bottom-0 h-3 w-3 m-1 invisible checked:visible" type="checkbox">
+                                </label>
+                            </div>
+
+                            <div class="">
+                                <label class="relative flex items-center justify-center cursor-pointer">
+                                    <img class=" w-full h-full object-cover " src="../assets/salon/Forza_1.png"
+                                        alt="">
+                                    <input class="absolute rounded-full right-0.5 bottom-0 h-3 w-3 m-1 invisible checked:visible" type="checkbox">
+                                </label>
+                            </div>
+
+                            <div class="">
+                                <label class="relative flex items-center justify-center cursor-pointer">
+                                    <img class=" w-full h-full object-cover "
+                                        src="../assets/salon/gta.png" alt="">
+                                    <input class="absolute rounded-full right-0.5 bottom-0 h-3 w-3 m-1 invisible checked:visible" type="checkbox">
+                                </label>
+                            </div>
+
+                            <div class="">
+                                <label class="relative flex items-center justify-center cursor-pointer">
+                                    <img class=" w-full h-full object-cover "
+                                        src="../assets/salon/lol.png" alt="">
+                                    <input class="absolute rounded-full right-0.5 bottom-0 h-3 w-3 m-1 invisible checked:visible" type="checkbox">
+                                </label>
+                            </div>
+
+                            <div class="">
+                                <label class="relative flex items-center justify-center cursor-pointer">
+                                    <img class=" w-full h-full object-cover " src="../assets/salon/minecraft.png"
+                                        alt="">
+                                    <input class="absolute rounded-full right-0.5 bottom-0 h-3 w-3 m-1 invisible checked:visible" type="checkbox">
+                                </label>
+                            </div>
+                            <div class="">
+                                <label class="relative flex items-center justify-center cursor-pointer">
+                                    <img class=" w-full h-full object-cover " src="../assets/salon/ow2_1.png"
+                                        alt="">
+                                    <input class="absolute rounded-full right-0.5 bottom-0 h-3 w-3 m-1 invisible checked:visible" type="checkbox">
+                                </label>
+                            </div>
+                            <div class="">
+                                <label class="relative flex items-center justify-center cursor-pointer">
+                                    <img class=" w-full h-full object-cover " src="../assets/salon/rl.png"
+                                        alt="">
+                                    <input class="absolute rounded-full right-0.5 bottom-0 h-3 w-3 m-1 invisible checked:visible" type="checkbox">
+                                </label>
+                            </div>
+                            <div class="">
+                                <label class="relative flex items-center justify-center cursor-pointer">
+                                    <img class=" w-full h-full object-cover " src="../assets/salon/ow2_1.png"
+                                        alt="">
+                                    <input class="absolute rounded-full right-0.5 bottom-0 h-3 w-3 m-1 invisible checked:visible" type="checkbox">
+                                </label>
+                            </div>
+
+                            <button>
+                                <img src="../assets/salon/contour-du-bouton-circulaire-fleche-droite (3) 3.png" alt="">
+                            </button>
+
+
+                        </div>
+                    </article>
+                    <article>
+                        <div class="flex items-center gap-20 mb-10">
+                            <div class="flex items-center gap-10">
+                                <p class="text-white">Nombre de joueurs : </p>
+                                <input id="playerSlider" type="range" min="0" max="10" step="1" class="w-48" />
+                                <span id="sliderValue"></span>
+                            </div>
+                            <div class="flex items-center gap-10 justify-center">
+                                <p class="text-white">Sélection d'âge : </p>
+                                <input id="ageSlider" type="range" min="10" max="99" step="1" class="w-48" />
+                                <span id="ageSliderValue"></span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-20 mb-10">
+                            <div class="flex items-center gap-8">
+                                <label for="languageSelect" class="text-white">Langue : </label>
+                                <select id="languageSelect" class="px-4 rounded-full bg-gray-500 text-white">
+                                    <option value="fr">FR</option>
+                                    <option value="en">EN</option>
+                                    <option value="es">ES</option>
+                                </select>
+                            </div>
+                            <div class="flex items-center">
+                                <p class="text-white block">Micro :</p>
+                                <input type="radio" id="microOn" name="microStatus" class="ml-2" />
+                                <label for="microOn" class="text-white ml-1 cursor-pointer">On</label>
+
+                                <input type="radio" id="microOff" name="microStatus" class="ml-2" />
+                                <label for="microOff" class="text-white ml-1 cursor-pointer">Off</label>
+                            </div>
+                        </div>
+                        <div class="flex justify-center items-center">
+                            <button
+                                class="flex justify-center text-2xl font-bold bg-gradient-to-r from-pink-500 to-orange-600 text-white rounded-full w-56 py-2">
+                                <a href="../pages/salon3.html" class="flex items-center gap-8 ml-10">
+                                    Créer
+                                    <img src="../assets/salon/contour-du-bouton-circulaire-fleche-droite (3) 3.png"
+                                        alt="" class="ml-2">
+                                </a>
+                            </button>
+                    </article>
+                </section>
     </main>
 
 
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
-   <script src="../scripts/salon.js"></script>
+    <script src="../scripts/salon.js"></script>
     <script src="../scripts/navbar.js"></script>
 </body>
 

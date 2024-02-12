@@ -1,47 +1,28 @@
-// console.log("dossier lie");
+document.addEventListener("DOMContentLoaded", function() {
 
 
+const ageSlider = document.getElementById("ageSlider");
 
-// // / Récupérer l'élément input et l'élément span
+// Sélectionnez l'élément span où vous voulez afficher la valeur
+const ageSliderValue = document.getElementById("ageSliderValue");
 
-// const slider = document.getElementById('playerSlider');
-// const sliderValue = document.getElementById('sliderValue');
-// const ageSlider = document.getElementById('ageSlider');
-// const ageSliderValue = document.getElementById('ageSliderValue');
-
-
-// slider.addEventListener('input', function() {
-  
-//   sliderValue.textContent = slider.value;
+// Écoutez les changements de la barre de défilement
+ageSlider.addEventListener("input", function() {
+    // Mettre à jour le contenu de l'élément span avec la valeur de la barre de défilement
+    ageSliderValue.textContent = ageSlider.value;
+         // Sélection de la slide bar et de l'élément où afficher la valeur
+         const playerSlider = document.getElementById("playerSlider");
+         const sliderValue = document.getElementById("sliderValue");
+ 
+         // Événement input pour détecter les changements en temps réel sur la slide bar
+         playerSlider.addEventListener("input", function() {
+             // Mettre à jour la valeur affichée
+             sliderValue.textContent = playerSlider.value;
+         });
+ 
+         // Mettre à jour la valeur affichée initialement
+         sliderValue.textContent = playerSlider.value;
+});
+});
 
  
-//   const thumbSize = 16; 
-//   const thumbPosition = ((slider.value - slider.min) / (slider.max - slider.min)) * slider.offsetWidth;
-//   sliderValue.style.left = `calc(${thumbPosition}px - ${thumbSize / 2}px)`;
-// });
-// ageSlider.addEventListener('input', function() {
-    
-//     ageSliderValue.textContent = ageSlider.value;
-  
-    
-//     const thumbSize = 16; 
-//     const thumbPosition = ((ageSlider.value - ageSlider.min) / (ageSlider.max - ageSlider.min)) * ageSlider.offsetWidth;
-//     ageSliderValue.style.left = `calc(${thumbPosition}px - ${thumbSize / 2}px)`;
-//   });
-//  console.log("le document est lié ");
-// JavaScript code to update the slider values in real-time
-const playerSlider = document.getElementById('playerSlider');
-const sliderValue = document.getElementById('sliderValue');
-sliderValue.textContent = playerSlider.value;
-
-playerSlider.oninput = function() {
-  sliderValue.textContent = this.value;
-};
-
-const ageSlider = document.getElementById('ageSlider');
-const ageSliderValue = document.getElementById('ageSliderValue');
-ageSliderValue.textContent = ageSlider.value;
-
-ageSlider.oninput = function() {
-  ageSliderValue.textContent = this.value;
-};

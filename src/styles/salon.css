@@ -1,0 +1,8 @@
+#ageSliderValue {
+    color:white; /* Couleur du texte */
+    font-size: 14px; /* Taille de la police */
+    margin-left: 5px; /* Marge à gauche pour l'espacement */
+}
+#sliderValue {
+    color: white; /* Couleur du texte en blanc */
+}
