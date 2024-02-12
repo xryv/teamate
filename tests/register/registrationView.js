@@ -1,45 +1,45 @@
 class RegistrationView {
     constructor() {
-        console.log("Initializing Registration View...");
+        console.log("Initialisation de la vue d'inscription...");
         this.registerForm = document.getElementById('registration-form');
         this.registerForm.addEventListener('submit', (e) => this.submitHandler(e));
     }
 
     bindFormSubmit(callback) {
-        console.log("Binding form submit callback.");
+        console.log("Liaison du callback de soumission du formulaire.");
         this.formSubmitCallback = callback;
     }
 
     submitHandler(e) {
         e.preventDefault();
-        console.log("Form submission event triggered.");
+        console.log("Événement de soumission du formulaire déclenché.");
         const formData = new FormData(this.registerForm);
         const userData = Object.fromEntries(formData.entries());
-        console.log("Form data captured:", userData);
+        console.log("Données du formulaire capturées :", userData);
         this.formSubmitCallback(userData);
     }
 
     displayError(message) {
-        // Assume there's an element with the ID 'formFeedback' for displaying messages
+
         const feedbackElement = document.getElementById('formFeedback');
         feedbackElement.textContent = message;
-        feedbackElement.style.color = 'red'; // Example styling for error messages
+        feedbackElement.style.color = 'red'; 
     }
 
     displaySuccess(message) {
         const feedbackElement = document.getElementById('formFeedback');
         feedbackElement.textContent = message;
-        feedbackElement.style.color = 'green'; // Example styling for success messages
+        feedbackElement.style.color = 'green'; 
     }
 
     clearForm() {
-        console.log("Clearing form fields.");
+        console.log("Effacement des champs du formulaire.");
         const form = document.getElementById('registration-form');
         if (form) {
             form.reset();
-            console.log("Form fields have been cleared.");
+            console.log("Les champs du formulaire ont été effacés.");
         } else {
-            console.log("Form not found, cannot clear fields.");
+            console.log("Formulaire non trouvé, impossible d'effacer les champs.");
         }
     }
 }

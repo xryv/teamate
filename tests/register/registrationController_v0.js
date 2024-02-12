@@ -20,15 +20,14 @@ class RegistrationController {
         
         try {
             console.log("Form data validation passed. Creating new user...");
-            const newUser = this.registrationModel.createUser(
-                formData.email,
-                formData.password, 
-                formData.username, 
-                formData.name, 
-                formData.surname, 
-                formData.born, 
-                formData.country
-            );
+            const newUser = this.registrationModel.createUser(formData.email, formData.password, formData.username, formData.name, formData.surname, formData.born, formData.country);
+            if (newUser) {
+                this.userDataCenter.addUser(newUser);
+                this.registrationView.displaySuccess("User registered successfully.");
+            } else {
+                this.registrationView.displayError("An error occurred during registration.");
+            }
+            
             console.log("New user created successfully:", newUser);
 
             this.userDataCenter.addUser(newUser); // Add new user to UserDataCenter
@@ -36,6 +35,7 @@ class RegistrationController {
 
             this.registrationView.displaySuccess("User registered successfully.");
             this.registrationView.clearForm();
+            
         } catch (error) {
             console.error("Error occurred during user registration:", error);
             this.registrationView.displayError("An error occurred during registration.");

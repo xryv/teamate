@@ -1,45 +1,16 @@
-// login.js
-console.log("login.js loaded successfully.");
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("Document chargé. Initialisation de la fonctionnalité de connexion...");
+    const userDataCenter = new UserDataCenter();
 
-import { UserDataCenter } from '../../userDataCenter';
+    // Pré-remplissage avec des exemples d'utilisateurs pour le test
+    console.log("Pré-remplissage des utilisateurs pour les tests...");
+    userDataCenter.addUser(new User('test@example.com', 'password123', 'TestUser', 'Test', 'User', '2000-01-01', 'TestLand'));
+    userDataCenter.addUser(new User('jane.doe@example.com', 'securePassword123', 'JaneDoe', 'Jane', 'Doe', '1985-01-01', 'Global Tech'));
+    userDataCenter.addUser(new User('john.smith@example.com', 'passwordSecure456', 'JohnSmith', 'John', 'Smith', '1982-02-02', 'Tech Innovations'));
+    userDataCenter.addUser(new User('sarah.connor@example.com', 'future123', 'SarahConnor', 'Sarah', 'Connor', '1987-03-03', 'Cybernetics'));
+    userDataCenter.addUser(new User('james.bond@example.com', '007Secret', 'JamesBond', 'James', 'Bond', '1965-04-04', 'British Intelligence'));
+    userDataCenter.addUser(new User('ada.lovelace@example.com', 'algorithmic', 'AdaLovelace', 'Ada', 'Lovelace', '1815-12-10', 'Analytical Engine Co'));
 
-const userDataCenter = new UserDataCenter();
-
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('login').addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevent the form's default submission behavior
-
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value; // Reminder: In real applications, handle securely
-
-        console.log(`Attempting login for: ${email}`);
-
-        try {
-            // Assuming a method exists for validating users (this would typically involve checking a hashed password)
-            const user = userDataCenter.queryData(email);
-            if (!user) {
-                throw new Error('User not found.');
-            }
-
-            // Placeholder for password validation - in real scenarios, you'd compare hashed passwords
-            if (user.password !== password) {
-                throw new Error('Invalid password.');
-            }
-
-            console.log('Login successful:', email);
-            alert('Login successful!'); // Display an alert for successful login
-
-            // Set user email in session storage to use in subsequent steps or pages
-            sessionStorage.setItem('userEmail', email);
-
-            // Optionally, redirect the user to another page or update the UI to show they're logged in
-            // window.location.href = '/path/to/next/page.html'; // Uncomment to redirect
-        } catch (error) {
-            console.error('Login attempt failed:', error);
-            alert('Login failed: ' + error.message); // Optionally, alert the user of the failure
-        } finally {
-            console.log(`Login attempt for ${email} has concluded.`);
-            // Any cleanup actions, like clearing the form
-        }
-    });
+    const loginController = new LoginController(userDataCenter);
+    new LoginView(loginController);
 });

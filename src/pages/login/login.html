@@ -132,21 +132,23 @@
                     <!-- Titre de la section -->
                     <h1 class="text-2xl font-bold mb-4">Connexion</h1>
                 </header>
-                <form action="/login" method="post" class="card-content">
+                <form id="login-form" method="post" class="card-content">  <!-- action="/login" -->
                     <!-- Champ pour l'adresse e-mail -->
                     <div class="form-group">
                         <label for="email" class="form-label">Adresse e-mail :</label>
-                        <input type="email" id="email" name="email" required class="form-input">
+                        <input type="email" id="email" name="email" required class="form-input" placeholder="test@example.com">
                     </div>
                     <!-- Champ pour le mot de passe -->
                     <div class="form-group">
                         <label for="password" class="form-label">Mot de passe :</label>
-                        <input type="password" id="password" name="password" required class="form-input">
+                        <input type="password" id="password" name="password" required class="form-input" placeholder="password123">
                     </div>
                     <!-- Bouton de soumission -->
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Se connecter</button>
                     </div>
+                    <!-- Below your login form -->
+                    <div id="loginFeedback"></div>
                 </form>
                 <!-- Liens pour inscription et réinitialisation du mot de passe -->
                 <div class="text-center">
@@ -155,6 +157,7 @@
                 </div>
             </section>
         </main>
+
 
         <!-- Pied de page -->
         <!-- SECTION TAILWIND CSS -->
@@ -195,7 +198,14 @@
 
         <!-- scripts --scripts --scripts --scripts --scripts -->
         <script src="../../scripts/navbar.js"></script>       
-        <script type="module" src="/src/scripts/userDataCenter/userDataCenter.js"></script>  
-        <script type="module" src="/src/scripts/userDataCenter/pages/login/login.js"></script>        
+        
+        <script src="/src/scripts/userDataCenter/data/users.js"></script>
+        <script src="/src/scripts/userDataCenter/data/userDataCenter.js"></script> 
+
+ 
+
+        <script src="/src/scripts/userDataCenter/pages/login/loginController.js"></script>
+        <script src="/src/scripts/userDataCenter/pages/login/loginView.js"></script>
+        <script src="/src/scripts/userDataCenter/pages/login/login.js"></script>
     </body>
 </html>

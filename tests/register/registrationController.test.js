@@ -1,21 +1,21 @@
-QUnit.module('Registration Controller Tests', function(hooks) {
+QUnit.module('Tests du contrôleur d\'inscription', function(hooks) {
 
     let registrationModel, registrationView, registrationController;
 
     // Cette fonction utilitaire crée une fonction simulée (mock function) pour suivre les appels et les arguments.
-    // Elle est utilisée pour simuler les comportements de certaines fonctions sans exécuter leur logique réelle.
-    function createMockFunction(name) { // Add a name parameter for identification
+    function createMockFunction(name) {
         const mockFn = function(...args) {
-            console.log(`Mock function '${name}' called with arguments:`, args);
+            console.log(`Fonction simulée '${name}' appelée avec les arguments :`, args);
             mockFn.calls.push(args);
             mockFn.lastCall = args;
             return mockFn.implementation(...args);
         };
         mockFn.calls = [];
         mockFn.lastCall = null;
-        mockFn.implementation = () => { console.log(`Mock function '${name}' default implementation called.`); };
+        mockFn.implementation = () => { console.log(`Implémentation par défaut de la fonction simulée '${name}' appelée.`); };
         return mockFn;
     }
+
     
 
     hooks.beforeEach(() => {
@@ -70,53 +70,25 @@ QUnit.module('Registration Controller Tests', function(hooks) {
             </section>
         </main>
         `;
-
-        // À ce stade, il est sûr d'instancier RegistrationView et RegistrationModel
         registrationView = new RegistrationView();
         registrationModel = new RegistrationModel();
 
-        // Remplacement de createUser par une fonction mock
-        registrationModel.createUser = createMockFunction();
-        // Définition de l'implémentation de la fonction mock pour simuler la création d'un utilisateur
-        // et retourner directement les données passées en argument
-        // Inside beforeEach or where you define your mock functions
-        // Inside beforeEach or where you define your mock functions
-        registrationModel.createUser.implementation = (email, password, username, name, surname, born, country) => {
-            // Ensure the User class is imported or accessible in this scope
-            return new User(email, password, username, name, surname, born, country);
-        };
-
-        
-        
-
-
-        // Mock des méthodes d'affichage de la vue pour empêcher les mises à jour réelles du DOM
-        registrationView.displaySuccess = createMockFunction();
-        registrationView.displayError = createMockFunction();
-
-        // OR 
-
-        // Inside beforeEach
         registrationModel.createUser = createMockFunction('createUser');
         registrationView.displaySuccess = createMockFunction('displaySuccess');
         registrationView.displayError = createMockFunction('displayError');
 
-
-        // Création d'une instance du contrôleur en le reliant au modèle et à la vue mockés
         registrationController = new RegistrationController(registrationModel, registrationView);
 
         registrationView.displaySuccess.implementation = (message) => {
-            console.log("5555displaySuccess called with message:", message);
+            console.log("displaySuccess appelée avec le message :", message);
         };
         
         registrationView.displayError.implementation = (message) => {
-            console.log("44444displayError called with message:", message);
+            console.log("displayError appelée avec le message :", message);
         };
-        
-        });
+    });
 
-
-    QUnit.test('Controller handles registration data correctly', function(assert) {
+    QUnit.test('Le contrôleur gère correctement les données d\'inscription', function(assert) {
         let done = assert.async();
         let testData = {
             email: 'test@example.com',
@@ -128,30 +100,19 @@ QUnit.module('Registration Controller Tests', function(hooks) {
             country: 'France'
         };
     
-        console.log("Starting test: Controller handles registration data correctly");
+        console.log("Début du test : Le contrôleur gère correctement les données d'inscription");
     
-        // Simulate form submission
         registrationController.handleRegisterUser(testData);
 
-        console.log('createUser calls:', registrationModel.createUser.calls);
-        console.log('displaySuccess calls:', registrationView.displaySuccess.calls);
-        console.log('displayError calls:', registrationView.displayError.calls);
-
-        // After calling handleRegisterUser
         setTimeout(() => {
-            // Assuming createUser tracks calls in a 'calls' array
-            assert.ok(registrationModel.createUser.calls.length > 0, 'createUser should be called at least once');
+            assert.ok(registrationModel.createUser.calls.length > 0, 'createUser devrait être appelée au moins une fois');
             
-            // Checking if createUser was called with expected arguments
             let expectedArgs = [testData.email, testData.password, testData.username, testData.name, testData.surname, testData.born, testData.country];
-            assert.deepEqual(registrationModel.createUser.calls[0], expectedArgs, 'createUser called with expected args');
+            assert.deepEqual(registrationModel.createUser.calls[0], expectedArgs, 'createUser appelée avec les arguments attendus');
             
-            // Checking if displaySuccess was called once
-            assert.equal(registrationView.displaySuccess.calls.length, 1, 'displaySuccess called once');
+            assert.equal(registrationView.displaySuccess.calls.length, 1, 'displaySuccess devrait être appelée une fois');
             
             done();
-        }, 1000); // Adjust timeout as needed
+        }, 1000);
     });
-
-        
 });

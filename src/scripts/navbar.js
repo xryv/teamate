@@ -23,7 +23,6 @@ setupHoverEffect('#div-register', '#register-btn', '#register', '#0B3156', 'whit
 setupHoverEffect('#div-logout', '#logout-btn', '#logout', '#0B3156', 'white', 'Logout');
 setupHoverEffect('#div-dashboard', '#a-five', '#dashboard', '#0B3156', 'white', 'Dashboard');
 
-
 setupHoverEffect('#div-home', '#a-One', '#home', '#0B3156', 'white', 'Home');
 setupHoverEffect('#div-search', '#a-Two', '#search', '#0B3156', 'white', 'Search');
 setupHoverEffect('#div-event', '#a-Three', '#event', '#0B3156', 'white', 'Events');

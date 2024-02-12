@@ -1,29 +1,29 @@
-QUnit.module('LoginController Tests', function() {
-    // Setup for tests; creating instances of UserDataCenter and LoginController
+QUnit.module('Tests du LoginController', function() {
+    // Configuration pour les tests : création d'instances de UserDataCenter et de LoginController
     let userDataCenter = new UserDataCenter();
     let loginController = new LoginController(userDataCenter);
 
-    QUnit.test('Login with correct credentials', function(assert) {
-        // Setup: Adding a mock user
+    QUnit.test('Connexion avec des identifiants corrects', function(assert) {
+        // Configuration : Ajout d'un utilisateur fictif
         userDataCenter.addUser(new User('test@example.com', 'correctPassword'));
 
-        // Action: Attempting to log in with correct credentials
+        // Action : Tentative de connexion avec les bons identifiants
         let result = loginController.login('test@example.com', 'correctPassword');
 
-        // Assert: Login should be successful
-        assert.ok(result, 'Login should succeed with correct credentials.');
+        // Vérification : La connexion devrait réussir
+        assert.ok(result, 'La connexion devrait réussir avec les bons identifiants.');
     });
 
-    QUnit.test('Login with incorrect credentials', function(assert) {
-        // Setup: Ensuring the user exists in UserDataCenter
+    QUnit.test('Connexion avec des identifiants incorrects', function(assert) {
+        // Configuration : Assurer que l'utilisateur existe dans UserDataCenter
         userDataCenter.addUser(new User('test@example.com', 'correctPassword'));
 
-        // Action: Attempting to log in with incorrect credentials
+        // Action : Tentative de connexion avec des identifiants incorrects
         let result = loginController.login('test@example.com', 'wrongPassword');
 
-        // Assert: Login should fail
-        assert.notOk(result, 'Login should fail with incorrect credentials.');
+        // Vérification : La connexion devrait échouer
+        assert.notOk(result, 'La connexion devrait échouer avec des identifiants incorrects.');
     });
 
-    // Additional tests could include handling of edge cases, such as non-existent users
+    // Des tests supplémentaires pourraient inclure la gestion de cas limites, tels que des utilisateurs non existants
 });

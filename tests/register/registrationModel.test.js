@@ -1,77 +1,55 @@
 // Suite de tests pour la validation des données d'inscription
 QUnit.module('Tests de validation d\'inscription', function() {
 
-    // Test de validation de l'email
+    // Test de validation de l'email avec des cas plus précis
     QUnit.test('Validation de l\'email', function(assert) {
-        // Exemple de validation d'un email incorrect
-        let result = validateEmail('invalidemail'); // Supposons que `validateEmail` soit une fonction de validation
-        assert.notOk(result, 'Un email invalide doit échouer à la validation.');
-
-        // Exemple de validation d'un email correct
-        result = validateEmail('valid@example.com');
-        assert.ok(result, 'Un email valide doit passer la validation.');
+        assert.notOk(validateEmail('just@'), 'Un email sans domaine doit échouer à la validation.');
+        assert.notOk(validateEmail('noatsign.com'), 'Un email sans @ doit échouer à la validation.');
+        assert.ok(validateEmail('correct@example.com'), 'Un email correct doit passer la validation.');
     });
 
-    // Test de validation du mot de passe
+    // Test de validation du mot de passe avec des critères spécifiques
     QUnit.test('Validation du mot de passe', function(assert) {
-        // Exemple de validation d'un mot de passe trop court
-        let result = validatePassword('short'); // Supposons que `validatePassword` soit une fonction de validation
-        assert.notOk(result, 'Un mot de passe trop court doit échouer à la validation.');
-
-        // Exemple de validation d'un mot de passe suffisamment complexe
-        result = validatePassword('ValidPassword1!');
-        assert.ok(result, 'Un mot de passe conforme doit passer la validation.');
+        assert.notOk(validatePassword('short1'), 'Un mot de passe trop court doit échouer à la validation.');
+        assert.notOk(validatePassword('nouppercase1!'), 'Un mot de passe sans majuscule doit échouer à la validation.');
+        assert.notOk(validatePassword('NOLOWERCASE1!'), 'Un mot de passe sans minuscule doit échouer à la validation.');
+        assert.notOk(validatePassword('NoSpecial123'), 'Un mot de passe sans symbole doit échouer à la validation.');
+        assert.ok(validatePassword('Valid1Password!'), 'Un mot de passe conforme doit passer la validation.');
     });
 
-    // Test de validation du nom d'utilisateur
+    // Test de validation du nom d'utilisateur avec des règles spécifiques
     QUnit.test('Validation du nom d\'utilisateur', function(assert) {
-        // Exemple avec un nom d'utilisateur contenant des caractères spéciaux non autorisés
-        let result = validateUsername('user@name'); // Suppose `validateUsername` vérifie les caractères autorisés
-        assert.notOk(result, 'Un nom d’utilisateur avec des caractères spéciaux doit échouer à la validation.');
-
-        // Exemple avec un nom d'utilisateur valide
-        result = validateUsername('username123');
-        assert.ok(result, 'Un nom d\'utilisateur valide doit passer la validation.');
+        assert.notOk(validateUsername('us'), 'Un nom d’utilisateur trop court doit échouer à la validation.');
+        assert.notOk(validateUsername('user@name'), 'Un nom d’utilisateur avec des caractères spéciaux doit échouer à la validation.');
+        assert.ok(validateUsername('username123'), 'Un nom d\'utilisateur conforme doit passer la validation.');
     });
 
-
-    // Test de validation du prénom
+    // Tests de validation pour les noms, avec des critères clairs
     QUnit.test('Validation du prénom', function(assert) {
-        let result = validateFirstName(''); // Suppose `validateFirstName` vérifie que le prénom n'est pas vide
-        assert.notOk(result, 'Un prénom vide doit échouer à la validation.');
-
-        result = validateFirstName('Jean');
-        assert.ok(result, 'Un prénom valide doit passer la validation.');
+        assert.notOk(validateFirstName('   '), 'Un prénom constitué d\'espaces doit échouer à la validation.');
+        assert.ok(validateFirstName('Jean'), 'Un prénom valide doit passer la validation.');
     });
 
-    // Test de validation du nom de famille
     QUnit.test('Validation du nom de famille', function(assert) {
-        let result = validateLastName(''); // Suppose `validateLastName` vérifie que le nom de famille n'est pas vide
-        assert.notOk(result, 'Un nom de famille vide doit échouer à la validation.');
-
-        result = validateLastName('Dupont');
-        assert.ok(result, 'Un nom de famille valide doit passer la validation.');
+        assert.notOk(validateLastName(''), 'Un nom de famille vide doit échouer à la validation.');
+        assert.ok(validateLastName('Dupont'), 'Un nom de famille valide doit passer la validation.');
     });
 
-    // Test de validation de la date de naissance
+    // Test de validation de la date de naissance avec le format correct et la logique de date
     QUnit.test('Validation de la date de naissance', function(assert) {
-        let result = validateDateOfBirth('1980-02-30'); // Suppose `validateDateOfBirth` vérifie la validité de la date
-        assert.notOk(result, 'Une date de naissance invalide doit échouer à la validation.');
-
-        result = validateDateOfBirth('1990-01-01');
-        assert.ok(result, 'Une date de naissance valide doit passer la validation.');
+        // Assurez-vous que le format de la date est correct (AAAA-MM-JJ) pour ces tests
+        assert.notOk(validateDateOfBirth('1980-02-31'), 'Une date de naissance avec un jour inexistant doit échouer à la validation.'); // February 31st does not exist.
+        assert.notOk(validateDateOfBirth('2050-01-01'), 'Une date de naissance dans le futur doit échouer à la validation.'); // A future date.
+        assert.ok(validateDateOfBirth('1990-01-01'), 'Une date de naissance valide doit passer la validation.'); // A valid past date.
     });
 
-    // Test de validation du pays
+
+    // Test de validation du pays, potentiellement contre une liste de pays valides
     QUnit.test('Validation du pays', function(assert) {
-        let result = validateCountry(''); // Suppose `validateCountry` vérifie que le pays n'est pas vide
-        assert.notOk(result, 'Un pays vide doit échouer à la validation.');
-
-        result = validateCountry('France');
-        assert.ok(result, 'Un pays valide doit passer la validation.');
+        assert.notOk(validateCountry(''), 'Un champ de pays vide doit échouer à la validation.');
+        // Supposer que `validateCountry` pourrait aussi vérifier la validité contre une liste pré-définie
+        assert.ok(validateCountry('France'), 'Un pays valide doit passer la validation.');
     });
 
-
-    // Il est crucial d’expliciter clairement le but de chaque test à travers des commentaires et d’assurer
-    // que les messages d'assertion fournissent un feedback précis sur la raison de l’échec ou de la réussite du test.
+    // Commentaires explicatifs pour chaque test, assurant que les raisons des échecs ou réussites sont bien comprises.
 });
