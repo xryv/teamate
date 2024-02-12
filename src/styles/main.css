@@ -162,6 +162,38 @@ blockquote {
   font-style: italic;
 }
 
+@media (min-width: 640px) {
+  .navbarDiv {
+    padding: 8px 0;
+  }
+}
+
+@media (min-width: 640px) {
+  .navbarA svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (min-width: 640px) {
+  .w-auto {
+    max-width: 120px;
+  }
+}
+
+@media (min-width: 640px) {
+  .flex.justify-evenly {
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+}
+
+@media (min-width: 640px) {
+  #menu-toggle {
+    display: block;
+  }
+}
+
 /* components/_buttons.scss */
 .btn, .btn.btn-delete, .btn.btn-modify, .btn .btn-admin {
   padding: 8px;
@@ -205,6 +237,23 @@ blockquote {
 }
 .btn.btn-delete:hover, .btn .btn-delete.btn-admin:hover {
   background-color: #ff0000;
+}
+
+.close-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .btn, .btn .btn-admin, .btn.btn-modify, .btn.btn-delete {
+    padding: 4px;
+    font-size: 0.7875rem;
+  }
 }
 
 /* components/_cards.scss */
@@ -314,6 +363,13 @@ blockquote {
   font-weight: bold;
 }
 
+@media (min-width: ) {
+  .players-table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
 .main-content {
   display: flex;
   justify-content: center;
@@ -321,6 +377,34 @@ blockquote {
   min-height: 100vh;
   padding: 24px;
   background: linear-gradient(to right, #0a3155, #172e60, #2e2966, #471d67, #5f0061);
+}
+
+/* components/_modals.scss */
+/* Style de base pour les modales */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: none;
+}
+.modal.active {
+  display: block;
+}
+.modal .modal-content {
+  margin-bottom: 2rem;
+}
+.modal .modal-footer {
+  display: flex;
+  justify-content: space-between;
+  text-align: right;
 }
 
 /* layout/_grid.scss */
@@ -394,6 +478,16 @@ blockquote {
 .table-row {
   background-color: rgba(93, 3, 98, 0.2);
   color: rgba(93, 3, 98, 0.7);
+}
+
+@media (min-width: 768px) {
+  .dashboard-layout {
+    flex-direction: column;
+  }
+  .dashboard-layout .sidebar {
+    width: 100%;
+    padding: 8px;
+  }
 }
 
 /* utilities/_spacing.scss */

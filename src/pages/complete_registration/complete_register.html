@@ -131,7 +131,7 @@
                     <!-- Titre de la section -->
                     <h1 class="text-2xl font-bold mb-4">Modification du Compte Joueur</h1>
                 </header>
-                <form action="/updateAccount" method="post" class="card-content">
+                <form id="updateAccountForm" action="/updateAccount" method="post" class="card-content">
                     <!-- Groupe de formulaires pour chaque champ -->
                     <div class="form-group">
                         <label for="username" class="form-label">Pseudo:</label>
@@ -151,12 +151,20 @@
                     </div>
                     <div class="form-group">
                         <label for="country" class="form-label">Pays:</label>
-                        <input type="text" id="country" name="country" class="form-input">
+                        <select id="country" name="country" class="form-input">
+                            <!-- Populate this select element with countries from the API using JavaScript -->
+                        </select>
                     </div>
+                
+                     <!-- 
+                        TODO A VOIRE....
                     <div class="form-group">
                         <label for="city" class="form-label">Ville (Optionnel):</label>
-                        <input type="text" id="city" name="city" class="form-input">
+                        <select id="city" name="city" class="form-input">
+                            <option>Select la ville</option>
+                        </select>
                     </div>
+                    -->
 
                     <!-- Bouton pour soumettre le formulaire -->
                     <div class="form-group">
@@ -206,6 +214,8 @@
             </footer>
             
         <!-- scripts -->
-        <script src="/src/scripts/navbar.js"></script>    
+        <script src="/src/scripts/navbar.js"></script> 
+        <script src="/src/scripts/fetch_countries.js"></script>    
+        <script src="/src/scripts/userDataCenter/pages/complete_register/complete_register.js"></script>   
     </body>
 </html>

@@ -61,3 +61,14 @@
         @extend .grid; // Assure une disposition en grille cohérente
       }
       
+
+.dashboard-layout {
+@include respond-to(md) {
+    flex-direction: column;
+    
+    .sidebar {
+    width: 100%;
+    padding: $spacing-small;
+    }
+}
+}

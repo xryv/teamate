@@ -116,38 +116,60 @@
         </header>
         <!-- FIN DE ZONE TAILWINDCSS -->
  
-
-        <!-- Section principale du contenu -->
         <main class="main-content">
-            <!-- Section d'Inscription -->
             <section id="registration" class="card">
-                <header class="card-header">
-                    <!-- Titre de la section d'inscription -->
-                    <h1 class="text-2xl font-bold mb-4">Inscription</h1>
-                </header>
-                <form action="/register" method="post" class="card-content">
-                    <!-- Champ d'adresse e-mail -->
-                    <div class="form-group">
-                        <label for="email" class="form-label">Adresse e-mail :</label>
-                        <input type="email" id="email" name="email" required class="form-input">
-                    </div>
-                    <!-- Champ de mot de passe -->
-                    <div class="form-group">
-                        <label for="password" class="form-label">Mot de passe :</label>
-                        <input type="password" id="password" name="password" required class="form-input">
-                    </div>
-                    <!-- Champ de confirmation du mot de passe -->
-                    <div class="form-group">
-                        <label for="confirm-password" class="form-label">Confirmez le mot de passe :</label>
-                        <input type="password" id="confirm-password" name="confirm-password" required class="form-input">
-                    </div>
-                    <!-- Bouton de soumission -->
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">S'inscrire</button>
-                    </div>
-                </form>
+              <header class="card-header">
+                <h1 class="text-2xl font-bold mb-4">Inscription</h1>
+              </header>
+              
+              <form id="registration-form" class="card-content">
+                <div class="form-group">
+                  <label for="email" class="form-label">Adresse e-mail :</label>
+                  <input type="email" id="email" name="email" required class="form-input">
+                </div>
+                <div class="form-group">
+                  <label for="password" class="form-label">Mot de passe :</label>
+                  <input type="password" id="password" name="password" required class="form-input">
+                </div>
+                <div class="form-group">
+                  <label for="confirm-password" class="form-label">Confirmez le mot de passe :</label>
+                  <input type="password" id="confirm-password" name="confirm-password" required class="form-input">
+                </div>
+                
+
+                <div class="form-group">
+                    <label for="username" class="form-label">Nom d'utilisateur :</label>
+                    <input type="text" id="username" name="username" required class="form-input">
+                  </div>
+                  <div class="form-group">
+                    <label for="name" class="form-label">Prénom :</label>
+                    <input type="text" id="name" name="name" required class="form-input">
+                  </div>
+                  <div class="form-group">
+                    <label for="surname" class="form-label">Nom de famille :</label>
+                    <input type="text" id="surname" name="surname" required class="form-input">
+                  </div>
+                  <div class="form-group">
+                    <label for="born" class="form-label">Date de naissance :</label>
+                    <input type="date" id="born" name="born" required class="form-input">
+                  </div>
+                  <div class="form-group">
+                    <label for="country" class="form-label">Pays:</label>
+                    <select id="country" name="country" class="form-input">
+                        <!-- Populate this select element with countries from the API using JavaScript -->
+                    </select>
+                  </div>
+
+                  
+
+
+                <div class="form-group">
+                    <button type="submit" id="registerButton" class="btn btn-primary">S'inscrire</button> <!-- Changed button type to submit -->
+                  </div>
+                  <div id="formFeedback"></div> 
+              </form>
             </section>
-        </main>
+          </main>
 
 
 
@@ -190,5 +212,21 @@
             
         <!-- scripts -->
         <script src="/src/scripts/navbar.js"></script>    
+            <!-- 
+        <script type="module" src="/src/scripts/userDataCenter/userDataCenter.js"></script>  
+        <script type="module" src="/src/scripts/userDataCenter/pages/register/register.js"></script>    
+        -->
+
+        <script src="fetch_countries.js"></script>
+        <script src="userDataCenter.js"></script> 
+        <script src="validation.js"></script>
+        <script src="register.js"></script>
+        <script src="user.js"></script>
+        <script src="registrationModel.js"></script>
+        <script src="registrationView.js"></script>
+        <script src="registrationController.js"></script>
+
+        
+    
     </body>
 </html>

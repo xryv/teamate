@@ -1,0 +1,59 @@
+// Define breakpoints
+$breakpoints: (
+  'sm': 640px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1280px,
+);
+
+// Mixin for media queries
+@mixin respond-to($breakpoint) {
+  @media (min-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+
+.navbarDiv {
+    @include respond-to('sm') {
+      // Adjustments for small screens
+      padding: 8px 0;
+    }
+  }
+  
+  .navbarA {
+    @include respond-to('sm') {
+      // Make icons smaller on small screens
+      svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+  
+
+  // Adjust logo size and navbar padding on small screens
+.w-auto {
+    @include respond-to('sm') {
+      max-width: 120px; // Adjust logo size
+    }
+  }
+  
+  .flex.justify-evenly {
+    @include respond-to('sm') {
+      justify-content: space-between; // Adjust spacing for items
+      padding: 0 10px; // Add padding on the sides
+    }
+  }
+  
+
+  // Toggle menu visibility on small screens
+#menu-toggle {
+    @include respond-to('sm') {
+      display: block; // Show toggle button on small screens
+    }
+  }
+  
+  // Custom JS to toggle menu
+  // Assuming you have a way to toggle classes with JavaScript
+  

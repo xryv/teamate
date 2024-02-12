@@ -1,15 +1,19 @@
 // main.scss
 @import 'abstracts/variables';
+@import 'abstracts/mixins';
+
 
 @import 'base/reset';
 @import 'base/typography';
 
+@import 'components/navbar';
 @import 'components/buttons';
 @import 'components/cards';
 @import 'components/forms';
 @import 'components/sidebar';
 @import 'components/tables';
 @import 'components/content';
+@import 'components/modals';
 
 @import 'layout/grid';
 @import 'layout/dashlayout';

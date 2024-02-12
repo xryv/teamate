@@ -2,32 +2,33 @@
 
 /* Style de base pour les modales */
 .modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 400px;
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 0.25rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    display: none;
-  
-    /* Affichage de la modale */
-    &.active {
-      display: block;
-    }
-  
-    /* Contenu de la modale */
-    .modal-content {
-      margin-bottom: 2rem;
-    }
-  
-    /* Pied de la modale */
-    .modal-footer {
-      text-align: right;
-    }
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: none;
+
+  &.active {
+    display: block;
   }
-  
+
+  .modal-content {
+    margin-bottom: 2rem;
+  }
+
+  .modal-footer {
+    display: flex;
+    justify-content: space-between; 
+    text-align: right;
+  }
+
+
+
+}

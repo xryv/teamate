@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Functionality Tests</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.3.css">
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+
+    <!-- QUnit Library -->
+    <script src="https://code.jquery.com/qunit/qunit-2.9.3.js"></script>
+
+    <!-- User and UserDataCenter Scripts -->
+    <script src="../user-management/user.js"></script>
+    <script src="../userDataCenter-management/userDataCenter.js"></script>
+
+    <!-- Login Functionality Scripts -->
+    <script src="../login/login.js"></script>
+    <script src="../login/loginController.js"></script>
+    <script src="../login/loginView.js"></script>
+    <script src="../login/validation.js"></script> <!-- If you have separate validation logic for login -->
+
+    <!-- Test Scripts -->
+    <script src="loginController.test.js"></script>
+    <script src="loginView.test.js"></script>
+    <script src="login-tests.js"></script>
+</body>
+</html>

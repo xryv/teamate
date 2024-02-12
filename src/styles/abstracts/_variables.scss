@@ -75,3 +75,11 @@ $border-radius: 8px;
 
 // Ombres
 $box-shadow: 0 2px 4px rgba($black, 0.2);
+
+
+
+// responsive breakpoints
+$breakpoint-xs: 480px; // Extra small devices (phones)
+$breakpoint-sm: 768px; // Small devices (tablets)
+$breakpoint-md: 992px; // Medium devices (desktops)
+$breakpoint-lg: 1200px; // Large devices (large desktops)

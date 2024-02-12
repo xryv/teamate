@@ -38,3 +38,11 @@
         font-weight: bold; // Texte en gras pour l'en-tête
     }
 }
+
+
+.players-table {
+@include respond-to(xs) {
+    display: block;
+    overflow-x: auto;
+}
+}

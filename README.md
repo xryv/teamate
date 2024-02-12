@@ -1,8 +1,10 @@
-# Teamate: La Plateforme Sociale pour Gamers
+# Teamate: Authentication 
 
-Bienvenue dans l'univers de Teamate, où la passion du jeu crée des liens. Découvrez, connectez-vous et partagez votre univers gaming!
+Hello, in this documentation youll find all the respective informations related to the building of the authentication system and user data management.
 
 ## Table des Matières
+
+in this section of introcution you will find all the index of the documentation, easy to understand, easy to navigate.
 1. [Introduction](#introduction)
 2. [Documentation](#documentation)
 3. [Architecture du Projet](#architecture-du-projet)
@@ -22,6 +24,7 @@ Découvrez Teamate, un réseau dédié aux amateurs de jeux vidéo. [README Prin
 - [Feuille de Route](./docs/ROADMAP.md)
 
 ### Architecture du Projet
+- [UserDataCenter](./src/api/models/UserDataCenter.md)
 - [Composants Web](./src/components/README.md)
 - [Pages Utilisateur](./src/pages/README.md)
 - [Gestion des Styles](./src/styles/README.MD)
@@ -112,7 +115,7 @@ teamate/
 Instructions claires pour contribuer au projet Teamate.
 
 ## Auteurs et Contributions
-- **Bruno** - Authentification et Sécurité
+- **Bruno** - Authentification
 - **Alex** - Gestion de Profil
 - **Yusuf** - Interactions Sociales
 - **Vero** - Moteur de Recherche et Recommandation

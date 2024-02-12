@@ -11,6 +11,7 @@ Thumbs.db
 
 # Production
 /build
+/lab
 
 # Misc
 /.pnp
