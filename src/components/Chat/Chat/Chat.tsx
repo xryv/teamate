@@ -2,6 +2,7 @@ import { type FormEvent, useState, type MouseEventHandler, type ChangeEvent, typ
 import { ChatList } from '../ChatList/ChatList';
 import { ChatBar } from '../ChatBar/ChatBar';
 import { ToggleUser } from '../ToggleUser/ToggleUser';
+import { io } from 'socket.io-client';
 
 interface Message {
     message?: string | undefined
@@ -9,6 +10,7 @@ interface Message {
     user: boolean
     timestamp: string
 }
+const socket = io('http://localhost:3001');
 
 export function Chat(): JSX.Element {
     const [message, setMessage] = useState<string | undefined>('');
@@ -95,6 +97,15 @@ export function Chat(): JSX.Element {
     const handleClick: MouseEventHandler<HTMLDivElement> = () => {
         setToggleUser(!toggleUser);
     };
+
+    // const sendMessage = (): void => {
+    //     socket.emit('send-message', { message: 'Hello' });
+    // };
+
+    useEffect(() => {
+        socket.on('receive_message', (msg) => {
+        });
+    }, [socket]);
 
     return (
         <>

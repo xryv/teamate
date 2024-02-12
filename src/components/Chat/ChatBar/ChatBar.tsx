@@ -3,6 +3,7 @@ import { StyleChatBar } from './StyleChatBar';
 import { ButtonOrLink } from '../../Button/Button';
 import { type ChangeEvent, useState, useRef } from 'react';
 import Picker from '@emoji-mart/react';
+import { io } from 'socket.io-client';
 
 interface ChatBarProps {
     placeholder: string
