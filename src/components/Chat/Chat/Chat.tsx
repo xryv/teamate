@@ -1,8 +1,8 @@
-import { type FormEvent, useState, type MouseEventHandler, type ChangeEvent, type SetStateAction } from 'react';
+import { type FormEvent, useState, type MouseEventHandler, type ChangeEvent, type SetStateAction, useEffect } from 'react';
 import { ChatList } from '../ChatList/ChatList';
 import { ChatBar } from '../ChatBar/ChatBar';
 import { ToggleUser } from '../ToggleUser/ToggleUser';
-import { io } from 'socket.io-client';
+// import { io } from 'socket.io-client';
 
 interface Message {
     message?: string | undefined
@@ -10,7 +10,7 @@ interface Message {
     user: boolean
     timestamp: string
 }
-const socket = io('http://localhost:3001');
+// const socket = io('http://localhost:3001');
 
 export function Chat(): JSX.Element {
     const [message, setMessage] = useState<string | undefined>('');
@@ -18,6 +18,7 @@ export function Chat(): JSX.Element {
     const [listMessages, setListMessages] = useState<Message[]>([]);
     const [editingId, setEditingId] = useState<string | null>(null);
     const [toggleUser, setToggleUser] = useState<boolean>(false);
+    // const [messageReceive, setMessageReceive] = useState<string>('');
 
     // fonction qui génère un nouvel id, un nouvel utilisateur et un nouveau timestamp
     function generateNewMessageMetadata(): { id: string, user: boolean, timestamp: string } {
@@ -98,20 +99,25 @@ export function Chat(): JSX.Element {
         setToggleUser(!toggleUser);
     };
 
-    // const sendMessage = (): void => {
-    //     socket.emit('send-message', { message: 'Hello' });
-    // };
+    const sendMessage = (): void => {
+        socket.emit('send-message', { message });
+    };
 
-    useEffect(() => {
-        socket.on('receive_message', (msg) => {
-        });
-    }, [socket]);
+    // useEffect(() => {
+    //     socket.emit('send-message',{user: })
+    // }, [socket]);
+
+    // useEffect(() => {
+    //     socket.on('receive_message', (msg: { message: string }) => {
+    //         setMessageReceive(msg.message);
+    //     });
+    // }, [socket]);
 
     return (
         <>
             <ToggleUser toggleUser={toggleUser} onClick={handleClick} />
             <ChatList list={listMessages} onEdit={handleEdit} onDelete={handleDelete} />
-            <ChatBar onsubmit={handleSubmit} onEmojiSelect={handleChange} placeholder='Message' value={message} name={`message from ${toggleUser ? 'other' : 'user'}`} onChange={handleChange} />
+            <ChatBar onClick={sendMessage} onsubmit={handleSubmit} onEmojiSelect={handleChange} placeholder='Message' value={message} name={`message from ${toggleUser ? 'other' : 'user'}`} onChange={handleChange} />
         </>
     );
 }

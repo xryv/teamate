@@ -23,4 +23,5 @@ export interface ButtonOrLinkProps {
     onClick?: () => void
     $variant?: string
     $size?: string
+    to?: string
 }

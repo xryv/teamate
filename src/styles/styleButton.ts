@@ -1,6 +1,8 @@
 import tw, { type TwStyle } from 'twin.macro';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { type StyledLinkTextProps, type BurgerButtonSpanProps as StyledBurgerButtonSpanProps, type StyledButtonOrLinkProps } from '../interfaces/ButtonProps';
+import { type LinkProps } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const BurgerVariantStyles = {
     top: tw`-translate-y-2`,
@@ -57,12 +59,20 @@ export const StyledLinkText = styled.a<StyledLinkTextProps>`
     ${({ $variant = 'default' }) => linkVariant[$variant]};
 `;
 
+const generateCommonStyles = css<StyledButtonOrLinkProps>`
+    ${tw`flex flex-col justify-center items-center text-slate-100 overflow-hidden transition-all duration-300 ease-out border-none outline-none rounded-md`};
+    ${({ $variant = 'default' }) => buttonVariant[$variant]};
+    ${({ $size = 'default' }) => buttonSize[$size]};
+    &:hover {
+        ${({ $variant = 'default' }) => buttonVariantHovered[$variant]};
+        ${({ $size = 'default' }) => buttonSizeHovered[$size]};
+    }
+`;
+
+export const StyledLink = styled(Link)<LinkProps & StyledButtonOrLinkProps>`
+    ${generateCommonStyles}
+`;
+
 export const StyledButtonOrLink = styled.button<StyledButtonOrLinkProps>`
-        ${tw`flex flex-col justify-center items-center text-slate-100 overflow-hidden transition-all duration-300 ease-out border-none outline-none rounded-md`};
-        ${({ $variant = 'default' }) => buttonVariant[$variant]};
-        ${({ $size = 'default' }) => buttonSize[$size]};
-        &:hover {
-                ${({ $variant = 'default' }) => buttonVariantHovered[$variant]};
-                ${({ $size = 'default' }) => buttonSizeHovered[$size]};
-        }
+    ${generateCommonStyles}
 `;

@@ -10,14 +10,20 @@
         "airbnb-typescript"
     ],
     "parserOptions": {
-        "ecmaVersion": "latest"
+        "ecmaVersion": "latest",
+        "project": ["./tsconfig.json"]
     },
     "plugins": [
         "react"
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",
-        "@typescript-eslint/indent": ["error", 4]
-
+        "@typescript-eslint/indent": ["error", 4],
+        "import/extensions": ["error", "ignorePackages", {
+            "js": "never",
+            "jsx": "never",
+            "ts": "never",
+            "tsx": "never"
+        }]
     }
 }

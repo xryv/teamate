@@ -1,9 +1,8 @@
 import { Mic, Paperclip, SendHorizontal, Smile } from 'lucide-react';
 import { StyleChatBar } from './StyleChatBar';
 import { ButtonOrLink } from '../../Button/Button';
-import { type ChangeEvent, useState, useRef } from 'react';
+import { type ChangeEvent, useState, useRef, type FormEvent, type MouseEventHandler } from 'react';
 import Picker from '@emoji-mart/react';
-import { io } from 'socket.io-client';
 
 interface ChatBarProps {
     placeholder: string
@@ -11,10 +10,11 @@ interface ChatBarProps {
     name: string
     onChange: (e: ChangeEvent<HTMLInputElement>) => void
     onEmojiSelect: (emoji: { native: string }) => void
-    onsubmit: (e: React.FormEvent<HTMLFormElement>) => void
+    onsubmit: (e: FormEvent<HTMLFormElement>) => void
+    onClick: (e: MouseEventHandler<HTMLDivElement>) => void
 }
 
-export function ChatBar({ placeholder, value, name, onChange, onEmojiSelect, onsubmit }: ChatBarProps): JSX.Element {
+export function ChatBar({ placeholder, onClick, value, name, onChange, onEmojiSelect, onsubmit }: ChatBarProps): JSX.Element {
     const [showEmojis, setShowEmojis] = useState<boolean>(false);
     const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -45,7 +45,7 @@ export function ChatBar({ placeholder, value, name, onChange, onEmojiSelect, ons
                 ? (
                     <>
 
-                        <ButtonOrLink $size='default' $variant='ghostHovered' isSubmit >
+                        <ButtonOrLink onClick={onClick} $size='default' $variant='ghostHovered' isSubmit >
                             <SendHorizontal />
                         </ButtonOrLink>
                     </>

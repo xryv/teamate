@@ -1,25 +1,29 @@
-// server/server.js
 import express from 'express';
-import { createServer } from 'http';
-import { Server } from 'socket.io';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import userRoute from './Routes/userRoute.js';
 
 const app = express();
-const httpServer = createServer(app);
-const io = new Server(httpServer, {
-    cors: {
-        origin: '*',
-        methods: ['GET', 'POST'],
-    },
+dotenv.config({ path: './server/.env' });
+
+app.use(express.json());
+app.use(cors());
+app.use('/api/users', userRoute);
+
+app.get('/', (req, res) => {
+    res.send('Hello World!');
 });
 
-io.on('connection', (socket) => {
-    console.log(`a user connected ${socket.id}`);
-    socket.on('send-message', (msg) => {
-        socket.broadcast.emit('receive_message',msg)
-    },
-    );
+const port = process.env.PORT ?? 3001;
+const uri = process.env.ATLAS_URI;
+
+app.listen(port, () => {
+    console.log(`Server is running on port: ${port}`);
 });
 
-httpServer.listen(3001, () => {
-    console.log('listening on *:3001');
-});
+mongoose.connect(uri)
+    .then(() => {
+        console.log('MongoDB database connection established successfully');
+    })
+    .catch(err => { console.log(err); });
