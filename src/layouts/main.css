@@ -758,21 +758,3 @@ blockquote {
 }
 
 /*# sourceMappingURL=main.css.map */
-@keyframes gradient {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
-
-.text-gradient {
-  /* background: linear-gradient(to right, #0a3155, #172e60, #2e2966, #471d67, #5f0061); */
-  /* linear-gradient(90deg, #0a3155, #172e60, #2e2966, #471d67, #5f0061); */
-
-  background: linear-gradient(90deg, #0a3155, #172e60, #2e2966, #471d67, #5f0061, #0a3155);
-  
-  background-size: 200% auto;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  animation: gradient 5s linear infinite;
-}
