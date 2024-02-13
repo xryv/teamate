@@ -210,23 +210,28 @@
                 </div>
             </footer>
             
-        <!-- scripts -->
+        <!-- scripts navbar -->
         <script src="/src/scripts/navbar.js"></script>    
-            <!-- 
-        <script type="module" src="/src/scripts/userDataCenter/userDataCenter.js"></script>  
-        <script type="module" src="/src/scripts/userDataCenter/pages/register/register.js"></script>    
-        -->
 
-        <script src="/src/scripts/userDataCenter/services/fetch_countries.js"></script>
-        <script src="/src/scripts/userDataCenter/data/userDataCenter.js"></script> 
-        <script src="/src/scripts/userDataCenter/pages/register/validation.js"></script>
-        <script src="/src/scripts/userDataCenter/pages/register/register.js"></script>
-        <script src="/src/scripts/userDataCenter/data/users.js"></script>
-        <script src="/src/scripts/userDataCenter/pages/register/registrationModel.js"></script>
-        <script src="/src/scripts/userDataCenter/pages/register/registrationView.js"></script>
-        <script src="/src/scripts/userDataCenter/pages/register/registrationController.js"></script>
+        <!-- Utility Scripts -->
+        <script src="/src/scripts/js/utils/validation.js"></script>
 
-        
+        <!-- Model Scripts -->
+        <script src="/src/scripts/js/models/user.js"></script>
+        <script src="/src/scripts/js/models/userDataCenter.js"></script>
+        <script src="/src/scripts/js/models/registrationModel.js"></script>
+
+        <!-- Service Scripts -->
+        <script src="/src/scripts/js/services/fetch_countries.js"></script>
+
+        <!-- View Script -->
+        <script src="/src/scripts/js/views/registrationView.js"></script>
+
+        <!-- Controller Script -->
+        <script src="/src/scripts/js/controllers/registrationController.js"></script>
+
+        <!-- Page-specific Initialization Script (If you have one for setting up the page) -->
+        <script src="/src/scripts/js/pages/register.js"></script>
     
     </body>
 </html>
