@@ -1,31 +1,49 @@
 class UserDataCenter {
-  constructor() {
-      this.users = [];
-      console.log('UserDataCenter initialisé.');
-  }
+    constructor() {
+        this.users = [];
+        console.log('UserDataCenter initialisé.');
+    }
+  
+    addUser(user) {
+        this.users.push(user);
+    }
 
-  addUser(user) {
-      this.users.push(user);
-  }
+    // Méthode pour changer le rôle d'un utilisateur
+    setUserRole(email, newRole) {
+        const user = this.users.find(user => user.email === email);
+        if (user) {
+            user.role = newRole;
+        }
+    }
 
-  getAllUsers() {
-      return this.users;
-  }
+    // Méthode pour récupérer des utilisateurs par rôle
+    getUsersByRole(role) {
+        return this.users.filter(user => user.role === role);
+    }
+  
+    getAllUsers() {
+        return this.users;
+    }
+  
+    deleteUserByEmail(email) {
+        this.users = this.users.filter(user => user.email !== email);
+    }
 
-  deleteUserByEmail(email) {
-      this.users = this.users.filter(user => user.email !== email);
-  }
 
-  preloadUsers() {
-      const mockUsers = [
-          new User("jane.doe@example.com", "securePassword123", "JaneDoe", "Jane", "Doe", "1985-01-01", "Global Tech"),
-          new User("john.smith@example.com", "passwordSecure456", "JohnSmith", "John", "Smith", "1982-02-02", "Tech Innovations"),
-          new User("sarah.connor@example.com", "future123", "SarahConnor", "Sarah", "Connor", "1987-03-03", "Cybernetics"),
-          new User("james.bond@example.com", "007Secret", "JamesBond", "James", "Bond", "1965-04-04", "British Intelligence"),
-          new User("ada.lovelace@example.com", "algorithmic", "AdaLovelace", "Ada", "Lovelace", "1815-12-10", "Analytical Engine Co")
-      ];
-      this.users.push(...mockUsers);
-      console.log('Utilisateurs préchargés dans UserDataCenter.');
+  
+    preloadUsers() {
+        const mockUsers = [
+            new User("player1@example.com", "password123", "PlayerOne", "Player", "One", "1995-01-01", "TechLand", "Joueur", "Active"),
+            new User("admin1@example.com", "adminPassword123", "AdminOne", "Admin", "One", "1990-02-02", "AdminVille", "Admin", "Inactive"),
+            new User("player2@example.com", "password456", "PlayerTwo", "Player", "Two", "1998-03-03", "GameCity", "Joueur", "Suspended"),
+            new User("player3@example.com", "password789", "PlayerThree", "Player", "Three", "1996-04-04", "Playground", "Joueur", "Active"),
+            new User("admin2@example.com", "adminPassword456", "AdminTwo", "Admin", "Two", "1985-05-05", "ControlCenter", "Admin", "Active")
+        ];
+        this.users.push(...mockUsers);
+        console.log('preloaded into UserDataCenter...');
+    }
+    
+    
+    
   }
   
-}
