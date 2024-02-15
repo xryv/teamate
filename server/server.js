@@ -12,10 +12,10 @@ app.use(cors());
 app.use('/api/users', userRoute);
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('Welcome to the server!');
 });
 
-const port = process.env.PORT ?? 3001;
+const port = process.env.PORT ?? 5000;
 const uri = process.env.ATLAS_URI;
 
 app.listen(port, () => {

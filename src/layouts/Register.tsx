@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { TextField, Button, Box, createTheme, ThemeProvider } from '@mui/material';
+import React, { useState, useContext } from 'react';
+import { TextField, Button, Box, createTheme, ThemeProvider, Alert } from '@mui/material';
 import tw from 'twin.macro';
 import styled, { css } from 'styled-components';
+import { AuthContext } from '../context/AuthContext';
 
 const theme = createTheme({
     palette: {
@@ -35,52 +36,75 @@ const TextGradient = styled.h1`
 `;
 
 function RegisterPage(): JSX.Element {
-    const [username, setUsername] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
-    const [email, setEmail] = useState<string>('');
-    const [confirmPassword, setConfirmPassword] = useState<string>('');
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
-        event.preventDefault();
-        if (password === confirmPassword &&
-            password.length > 0 &&
-            username.length > 0 &&
-            email.length > 0) {
-            console.log('Inscription réussie');
-        } else {
-            console.log('Inscription échouée');
-        }
-    };
+    const [confirmPassword, setConfirmPassword] = useState('');
+    // Ajoutez ces états pour suivre les erreurs
+    const authContext = useContext(AuthContext);
+    if (authContext === null) {
+        throw new Error('AuthContext is not provided');
+    }
+    const { registerInfo, updateRegisterInfo, registerUser, registerError, isRegisterLoading } = authContext;
+    const [emailError, setEmailError] = useState('');
+    const [usernameError, setUsernameError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+    const [registerSuccess, setRegisterSuccess] = useState<boolean>(false);
+    const [confirmPasswordError, setConfirmPasswordError] = useState('');
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        const { name, value } = event.target;
-        switch (name) {
-            case 'username':
-                setUsername(value);
-                break;
-            case 'password':
-                setPassword(value);
-                break;
-            case 'email':
-                setEmail(value);
-                break;
-            case 'confirmPassword':
-                setConfirmPassword(value);
-                break;
-            default:
-                break;
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
+        e.preventDefault();
+
+        // Réinitialiser les erreurs
+        setEmailError('');
+        setUsernameError('');
+        setPasswordError('');
+        setConfirmPasswordError('');
+
+        // Vérifier tous les champs
+        if (registerInfo.email === '') {
+            setEmailError('Veuillez remplir ce champ');
         }
-    };
+        if (registerInfo.username === '') {
+            setUsernameError('Veuillez remplir ce champ');
+        }
+        if (registerInfo.password === '') {
+            setPasswordError('Veuillez remplir ce champ');
+        }
+        if (confirmPassword === '') {
+            setConfirmPasswordError('Veuillez remplir ce champ');
+        }
+        // Vérifier si les mots de passe correspondent
+        if (registerInfo.password !== confirmPassword) {
+            setPasswordError('Les mots de passe ne correspondent pas');
+            setConfirmPasswordError('Les mots de passe ne correspondent pas');
+        }
+
+        // Si aucune erreur, appeler la fonction pour enregistrer l'utilisateur
+        if (registerInfo.email !== '' && registerInfo.username !== '' && registerInfo.password !== '' && confirmPassword !== '' && registerInfo.password === confirmPassword) {
+            registerUser().then(() => {
+                // Faire quelque chose lorsque la promesse est résolue
+                if (registerError !== null) {
+                    // console.log('registerError');
+                    setRegisterSuccess(true);
+                    setTimeout(() => {
+                        // Faire quelque chose après un délai
+                        // Par exemple, vous pouvez changer l'état ici pour afficher un message de succès
+                    }, 2000);
+                }
+            }).catch((error) => {
+                // Gérer l'erreur
+                console.error(error);
+            });
+        }
+    }
 
     const formFields = [
-        { label: 'Adresse e-mail', type: 'email', value: email, name: 'email', onChange: handleChange },
-        { label: "Nom d'utilisateur", type: 'text', value: username, name: 'username', onChange: handleChange },
-        { label: 'Mot de passe', type: 'password', value: password, name: 'password', onChange: handleChange },
-        { label: 'Confirmez le mot de passe', type: 'password', value: confirmPassword, name: 'confirmPassword', onChange: handleChange },
+        { label: 'Adresse e-mail', type: 'email', value: registerInfo.email, name: 'email', onchange: (e: React.ChangeEvent<HTMLInputElement>) => { updateRegisterInfo({ ...registerInfo, email: e.target.value }); } },
+        { label: "Nom d'utilisateur", type: 'text', value: registerInfo.username, name: 'username', onchange: (e: React.ChangeEvent<HTMLInputElement>) => { updateRegisterInfo({ ...registerInfo, username: e.target.value }); } },
+        { label: 'Mot de passe', type: 'password', value: registerInfo.password, name: 'password', onchange: (e: React.ChangeEvent<HTMLInputElement>) => { updateRegisterInfo({ ...registerInfo, password: e.target.value }); } },
+        { label: 'Confirmer le mot de passe', type: 'password', value: confirmPassword, name: 'confirmPassword', onchange: (e: React.ChangeEvent<HTMLInputElement>) => { setConfirmPassword(e.target.value); } },
     ];
 
     return (
         <section className='flex flex-col items-center max-w-[70%] h-full my-10 p-10 bg-transparant-600 rounded-xl backdrop-blur-2xl'>
-
             <TextGradient className='w-full text-5xl text-gradient text-center p-2 font-bold font'>Inscription</TextGradient>
             <ThemeProvider theme={theme}>
 
@@ -89,10 +113,10 @@ function RegisterPage(): JSX.Element {
                 <Box
                     component="form"
                     sx={{
-                        display: 'flex', // Utilisez flex pour permettre l'alignement et la justification
-                        flexDirection: 'column', // Empile les éléments verticalement
-                        justifyContent: 'center', // Centre les éléments verticalement
-                        alignItems: 'center', // Centre les éléments horizontalement
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
                         '& .MuiTextField-root': { my: 1, width: '100%' },
                     }}
                     noValidate
@@ -109,9 +133,22 @@ function RegisterPage(): JSX.Element {
                             required
                             value={field.value}
                             name={field.name}
-                            onChange={field.onChange}
+                            onChange={field.onchange}
+                            error={field.name === 'email' ? emailError !== '' : field.name === 'username' ? usernameError !== '' : field.name === 'password' ? passwordError !== '' : confirmPasswordError !== ''}
+                            helperText={field.name === 'email' ? emailError : field.name === 'username' ? usernameError : field.name === 'password' ? passwordError : confirmPasswordError}
                         />
                     ))}
+                    {registerError !== null && (
+                        <Alert severity="error" sx={{ width: '100%', mt: 2 }}>
+                            {registerError}
+
+                        </Alert>
+                    )}
+                    {registerSuccess && (
+                        <Alert severity="success" sx={{ width: '100%', mt: 2 }}>
+                            Inscription réussie !
+                        </Alert>
+                    )}
                     <Button
                         type="submit"
                         variant="contained"
@@ -119,7 +156,7 @@ function RegisterPage(): JSX.Element {
                         disableElevation
                         sx={{ marginTop: '20px' }}
                     >
-                    S&apos;inscrire
+                        {isRegisterLoading ? 'Créer un compte' : "S'inscrire"}
                     </Button>
                 </Box>
             </ThemeProvider>

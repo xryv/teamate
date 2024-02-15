@@ -37,7 +37,6 @@ export const ListItems = ({ items }: { items: ListItemProps[] }): JSX.Element =>
                             $size={hoveredItemId === item.id ? item.sizeTopBar : undefined}
                             href={item.href}
                             isLink={item.isLink}>
-                            {(item.src !== undefined) && <LogoStyled src={item.src} alt={item.name} />}
                             {item.svg}
                         </ButtonOrLink>
                         <StyledLinkText $variant={hoveredItemId === item.id ? 'hover' : 'default'}

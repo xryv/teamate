@@ -3,6 +3,8 @@ import { registerUser, loginUser, findUser, getUsers } from '../Controllers/user
 
 const router = express.Router();
 
+router.get('/register', registerUser);
+
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 router.get('/find/:userId', findUser);
