@@ -10,4 +10,6 @@ export interface ListItemProps {
     display?: string
     variantTopBar?: string
     sizeTopBar?: string
+    as?: string
+    isConnect?: boolean
 }

@@ -1,31 +1,30 @@
-import { type ReactElement, createContext, useState, useCallback, type SetStateAction } from 'react';
+import { type ReactElement, createContext, useState, useCallback, type SetStateAction, useEffect, useContext } from 'react';
 import { type PostRequestResponse, baseUrl, postRequest } from '../utils/services';
+import { type User, type AuthContextInterface, type RegisterInfo } from './AuthContextProps';
 
-interface User {
-    username: string
-    email: string
-    password: string
-}
-
-interface RegisterInfo {
-    username: string
-    email: string
-    password: string
-}
-
-interface AuthContextInterface {
-    user: User | null
-    registerInfo: RegisterInfo
-    updateRegisterInfo: (info: SetStateAction<RegisterInfo>) => void
-    registerUser: () => Promise<void>
-    registerError: string | null
-    isRegisterLoading: boolean
-}
-
+// JE COMPREND RIEN AUX TYPES DE CETTE FONCTION
+// Un hook qui retourne le contexte d'authentification
 export const AuthContext = createContext<AuthContextInterface | null>(null);
 
+export function useAuthContext(keys: Array<keyof AuthContextInterface> = []): Partial<AuthContextInterface> {
+    const authContext = useContext(AuthContext);
+    if (authContext === null) {
+        throw new Error('AuthContext is not provided');
+    }
+
+    if (keys.length === 0) {
+        return authContext; // return all objects if no keys are provided
+    }
+
+    const result: { [K in keyof AuthContextInterface]?: any } = {};
+    for (const key of keys) {
+        result[key] = authContext[key];
+    }
+    return result;
+}
+
 export const AuthContextProvider = ({ children }: { children: ReactElement }): JSX.Element => {
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<User | null | any>(null);
     const [registerError, setRegisterError] = useState<string | null>(null);
     const [isRegisterLoading, setRegisterLoading] = useState<boolean>(false);
     const [registerInfo, setRegisterInfo] = useState<RegisterInfo>({
@@ -33,6 +32,15 @@ export const AuthContextProvider = ({ children }: { children: ReactElement }): J
         email: '',
         password: '',
     });
+
+    console.log('user', user);
+
+    useEffect(() => {
+        const userItem = localStorage.getItem('User');
+        if (userItem !== null) {
+            setUser(JSON.parse(userItem));
+        }
+    }, []);
 
     const updateRegisterInfo = useCallback((info: SetStateAction<RegisterInfo>) => {
         setRegisterInfo(info);
@@ -64,8 +72,22 @@ export const AuthContextProvider = ({ children }: { children: ReactElement }): J
         setUser(newUser);
     }, [registerInfo]);
 
+    const logoutUser = useCallback(() => {
+        localStorage.removeItem('User');
+        setUser(null);
+    }, []);
+
     return (
-        <AuthContext.Provider value={{ user, registerInfo, updateRegisterInfo, registerUser, registerError, isRegisterLoading }}>
+        <AuthContext.Provider value={{
+            user,
+            registerInfo,
+            updateRegisterInfo,
+            registerUser,
+            registerError,
+            isRegisterLoading,
+            logoutUser,
+
+        }}>
             {children}
         </AuthContext.Provider>
     );

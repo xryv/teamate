@@ -9,7 +9,8 @@ export interface StyledButtonOrLinkProps {
 }
 // Interface for the StyledLinkText component create on src/styles/styleButton.ts
 export interface StyledLinkTextProps {
-    $variant?: 'hover' | string
+    $variant?: string
+    $size?: string
 }
 
 // Interface for the ButtonOrLink component on src/components/Button.tsx

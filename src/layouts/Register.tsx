@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { TextField, Button, Box, createTheme, ThemeProvider, Alert } from '@mui/material';
 import tw from 'twin.macro';
 import styled, { css } from 'styled-components';
-import { AuthContext } from '../context/AuthContext';
+import { useAuthContext } from '../context/AuthContext';
 
 const theme = createTheme({
     palette: {
@@ -38,11 +38,7 @@ const TextGradient = styled.h1`
 function RegisterPage(): JSX.Element {
     const [confirmPassword, setConfirmPassword] = useState('');
     // Ajoutez ces états pour suivre les erreurs
-    const authContext = useContext(AuthContext);
-    if (authContext === null) {
-        throw new Error('AuthContext is not provided');
-    }
-    const { registerInfo, updateRegisterInfo, registerUser, registerError, isRegisterLoading } = authContext;
+    const { registerInfo, updateRegisterInfo, registerUser, registerError, isRegisterLoading } = useAuthContext(['registerInfo', 'updateRegisterInfo', 'registerUser', 'registerError', 'isRegisterLoading']);
     const [emailError, setEmailError] = useState('');
     const [usernameError, setUsernameError] = useState('');
     const [passwordError, setPasswordError] = useState('');
@@ -97,7 +93,7 @@ function RegisterPage(): JSX.Element {
     }
 
     const formFields = [
-        { label: 'Adresse e-mail', type: 'email', value: registerInfo.email, name: 'email', onchange: (e: React.ChangeEvent<HTMLInputElement>) => { updateRegisterInfo({ ...registerInfo, email: e.target.value }); } },
+        { label: 'Adresse e-mail', type: 'email', value: registerInfo.email, name: 'email', onchange: (e: React.ChangeEvent<HTMLInputElement>) => { updateRegisterInfo({ ...registerInfo, email: e.target.value || '' }); } },
         { label: "Nom d'utilisateur", type: 'text', value: registerInfo.username, name: 'username', onchange: (e: React.ChangeEvent<HTMLInputElement>) => { updateRegisterInfo({ ...registerInfo, username: e.target.value }); } },
         { label: 'Mot de passe', type: 'password', value: registerInfo.password, name: 'password', onchange: (e: React.ChangeEvent<HTMLInputElement>) => { updateRegisterInfo({ ...registerInfo, password: e.target.value }); } },
         { label: 'Confirmer le mot de passe', type: 'password', value: confirmPassword, name: 'confirmPassword', onchange: (e: React.ChangeEvent<HTMLInputElement>) => { setConfirmPassword(e.target.value); } },
@@ -141,7 +137,6 @@ function RegisterPage(): JSX.Element {
                     {registerError !== null && (
                         <Alert severity="error" sx={{ width: '100%', mt: 2 }}>
                             {registerError}
-
                         </Alert>
                     )}
                     {registerSuccess && (
@@ -156,7 +151,7 @@ function RegisterPage(): JSX.Element {
                         disableElevation
                         sx={{ marginTop: '20px' }}
                     >
-                        {isRegisterLoading ? 'Créer un compte' : "S'inscrire"}
+                        {isRegisterLoading === true ? 'Créer un compte' : "S'inscrire"}
                     </Button>
                 </Box>
             </ThemeProvider>

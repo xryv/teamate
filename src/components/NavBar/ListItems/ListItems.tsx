@@ -4,6 +4,7 @@ import tw from 'twin.macro';
 import styled from 'styled-components';
 import { useCallback, useState } from 'react';
 import { StyledLinkText } from '../../../styles/styleButton';
+import { useAuthContext } from '../../../context/AuthContext';
 
 const UlStyled = styled.ul`
     ${tw`hidden relative md:flex flex-row items-center justify-center gap-8 w-1/3 max-w-96`}
@@ -12,9 +13,8 @@ const UlStyled = styled.ul`
     }
 `;
 
-const LogoStyled = styled.img`${tw`w-10`}`;
-
 export const ListItems = ({ items }: { items: ListItemProps[] }): JSX.Element => {
+    const { logoutUser } = useAuthContext();
     const [hoveredItemId, setHoveredItemId] = useState<number | null>(null);
 
     const handleMouseEnter = useCallback((id: number): void => {
@@ -42,6 +42,9 @@ export const ListItems = ({ items }: { items: ListItemProps[] }): JSX.Element =>
                         <StyledLinkText $variant={hoveredItemId === item.id ? 'hover' : 'default'}
                             href={item.href}>{item.name}
                         </StyledLinkText>
+                        {item.isConnect !== undefined && <StyledLinkText onClick={() => logoutUser } $variant={hoveredItemId === item.id ? 'hoverConnect' : 'defaultConnect'}
+                            href={item.href}>{item.isConnect && 'Se déconnecter'}
+                        </StyledLinkText>}
                     </li>
                 ))}
             </UlStyled>

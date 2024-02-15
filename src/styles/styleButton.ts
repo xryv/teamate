@@ -41,8 +41,19 @@ const buttonVariantHovered: Record<string, TwStyle> = {
 
 const linkVariant: Record<string, TwStyle> = {
     default: tw`opacity-0`,
+    defaultConnect: tw`opacity-0 translate-y-6`,
     notHover: tw``,
     hover: tw`opacity-100 text-orangePV-900 -translate-y-4`,
+    hoverConnect: tw`opacity-100 text-orangePV-900 translate-y-2`,
+};
+
+const linkSize: Record<string, TwStyle> = {
+    default: tw`max-w-36 p-2`,
+    large: tw``,
+    rounded: tw``,
+    mic: tw``,
+    smiley: tw``,
+    paperclip: tw``,
 };
 
 export const StyledBurgerButton = styled.button`
@@ -57,6 +68,7 @@ export const StyledBurgerButtonSpan = styled.span<StyledBurgerButtonSpanProps>`
 export const StyledLinkText = styled.a<StyledLinkTextProps>`
     ${tw`absolute px-2 pb-4 text-slate-100 transition-all duration-300 ease-out top-16`}
     ${({ $variant = 'default' }) => linkVariant[$variant]};
+    ${({ $size = 'default' }) => linkSize[$size]};
 `;
 
 const generateCommonStyles = css<StyledButtonOrLinkProps>`

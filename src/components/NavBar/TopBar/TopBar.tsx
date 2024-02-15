@@ -1,9 +1,11 @@
+import { game, logo, useFirstHalf, useSecondHalf } from '../../../data/ulListNavbar';
 import { TopBar as TopBarStyled, LogoList, GameList, BurgerList } from '../../../styles/stylesNavbar';
 import { ButtonOrLink } from '../../Button/Button';
-import { firstHalf, secondHalf, logo, game } from '../../../data/ulListNavbar';
 import { ListItems } from '../ListItems/ListItems';
 
 export function TopBar({ isOpen, onClick }: { isOpen: boolean, onClick: () => void }): JSX.Element {
+    const firstHalf = useFirstHalf();
+    const secondHalf = useSecondHalf();
     return (
         <TopBarStyled>
             <ListItems items={firstHalf} />
