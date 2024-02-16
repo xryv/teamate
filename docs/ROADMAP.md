@@ -93,12 +93,8 @@ Teamate est un réseau social qui permet aux gamers de se mettre en contact selo
 
 ### Fonctionnalités Clés
 
-1. **Authentification et Sécurité des Utilisateurs** : Développement de fonctionnalités de connexion/déconnexion, enregistrement des utilisateurs, récup
-
-ération de mot de passe, et garantie des mesures de sécurité pour les comptes des utilisateurs.
-2. **Gestion et Personnalisation de Profil** : Permettre aux utilisateurs de créer et de personnaliser leurs profils, avec intégration de leurs comptes de jeux.
-3. **Interaction Sociale et Fonctionnalités de Réseautage** : Développer des fonctionnalités permettant la communication en temps réel, des systèmes de demandes d'amis, de notifications, et des forums ou salles de chat.
-4. **Moteur de Recherche et de Recommandation** : Développer un système permettant aux utilisateurs de rechercher d'autres joueurs et un moteur de recommandation basé sur leurs préférences et activités.
-
----
+1. **Authentification et Sécurité des Utilisateurs**  
+2. **Gestion et Personnalisation de Profil** 
+3. **Interaction Sociale et Fonctionnalités de Réseautage**
+4. **Moteur de Recherche et de Recommandation**
 
