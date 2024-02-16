@@ -4,6 +4,7 @@ Bienvenue dans la documentation principale de Teamate. Ici, nous détaillons l'a
 
 ## Table des Matières
 - [Introduction](#introduction)
+- [Documentation](#documentation)
 - [Architecture du Projet](#architecture-du-projet)
 - [Utilisation et Fonctionnalités](#utilisation-et-fonctionnalités)
 - [Styles et Design](#styles-et-design)
@@ -11,6 +12,12 @@ Bienvenue dans la documentation principale de Teamate. Ici, nous détaillons l'a
 
 ### Introduction
 Découvrez Teamate, un espace dédié aux amateurs de jeux vidéo, offrant une expérience utilisateur immersive et sécurisée. Pour une vue globale, parcourez le [README Principal](./README.md).
+
+### Documentation
+- [Guide pour Git](./docs/guide_git.md)
+- [Phase Maquettage](./docs/maquettage.md)
+- [Phase HTML/CSS OLD VERSION](./docs/html_css_oldversion.md)
+- [Feuille de Route](./docs/ROADMAP.md)
 
 ### Architecture du Projet
 L'architecture de Teamate s'articule autour de l'approche MVC, offrant modularité et maintenabilité. Explorez nos documents structurant le projet :
@@ -41,7 +48,7 @@ Les scripts JavaScript assurent l'interactivité et le dynamisme de l'applicatio
 - [Scripts](./src/scripts/Scripts.md)
 - [Navbar](./src/scripts/navbar.js)
 
-## Images et Guides Visuels
+## Images et Guides Visuels ( OLD VERSION )
 Les images suivantes offrent un aperçu visuel de notre architecture et des interfaces utilisateur :
 - [Administrateurs](./docs/assets/administrateurs.png)
 - [Comptes Bannis](./docs/assets/comptes_bannis.png)
@@ -52,9 +59,17 @@ Les images suivantes offrent un aperçu visuel de notre architecture et des inte
 - [Inscription](./docs/assets/register.png)
 - [SCSS et Tailwind](./docs/assets/scss_plus_tailwind.png)
 
+
+### Prérequis
+- Node.js et npm ([Node.js](https://nodejs.org/))
+- Un éditeur de code comme Visual Studio Code ([Visual Studio Code](https://code.visualstudio.com/))
+- Git ([Git SCM](https://git-scm.com/))
+
 ## Démarrage
 Pour contribuer à Teamate, vous aurez besoin de Node.js, npm, un éditeur de code et Git. Les étapes d'installation sont simples :
 
+### Installation
+Clonez et installez le projet :
 ```bash
 git clone https://github.com/xryv/teamate.git
 cd teamate
