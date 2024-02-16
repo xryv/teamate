@@ -7,6 +7,7 @@ Bienvenue dans la documentation principale de Teamate. Ici, nous détaillons l'a
 - [Documentation](#documentation)
 - [Architecture du Projet](#architecture-du-projet)
 - [Utilisation et Fonctionnalités](#utilisation-et-fonctionnalités)
+- [Components](#styles-et-design)
 - [Styles et Design](#styles-et-design)
 - [Scripts et Logique](#scripts-et-logique)
 
@@ -39,25 +40,17 @@ Commencez avec Teamate en suivant les [instructions de démarrage](#démarrage) 
   - [Connexion](./src/pages/login/login.html) - [Documentation](./src/pages/login/login.md)
   - [Inscription](./src/pages/register/register.html) - [Documentation](./src/pages/register/register.md)
 
+### Components
+  - [HTML Components Guide](./src/components/README.md)
+
 ### Styles et Design
 Les styles sont gérés via SCSS et Tailwind CSS pour un design cohérent et réactif.
-- [Styles](./src/styles/README.MD)
+- [SCSS + TAILWIND Styles](./src/styles/README.MD)
 
 ### Scripts et Logique
 Les scripts JavaScript assurent l'interactivité et le dynamisme de l'application.
-- [Scripts](./src/scripts/Scripts.md)
+- [MVC Scripts](./src/scripts/js/js.md)
 - [Navbar](./src/scripts/navbar.js)
-
-## Images et Guides Visuels ( OLD VERSION )
-Les images suivantes offrent un aperçu visuel de notre architecture et des interfaces utilisateur :
-- [Administrateurs](./docs/assets/administrateurs.png)
-- [Comptes Bannis](./docs/assets/comptes_bannis.png)
-- [Gestion des Rôles](./docs/assets/gestion_roles.png)
-- [Invitations](./docs/assets/invitations.png)
-- [Joueurs](./docs/assets/joueurs.png)
-- [Connexion](./docs/assets/login.png)
-- [Inscription](./docs/assets/register.png)
-- [SCSS et Tailwind](./docs/assets/scss_plus_tailwind.png)
 
 
 ### Prérequis
