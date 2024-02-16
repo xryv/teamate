@@ -46,3 +46,17 @@ Chaque fichier joue un rôle essentiel dans l'initialisation de l'application, s
 | Liaison MVC         | Instancie `RegistrationModel`, crée `RegistrationView`, puis lie le tout avec `RegistrationController`. |
 
 Ces tableaux résument les étapes d'initialisation cruciales pour chaque page, démontrant l'approche structurée pour activer les fonctionnalités spécifiques de l'application. Cette organisation permet une clarté dans la mise en place des interactions utilisateur et la gestion des données, assurant une expérience utilisateur cohérente et intuitive à travers les différentes pages de l'application.
+
+
+# Navigation Rapide
+
+| Section          | Lien                                                   |
+|------------------|--------------------------------------------------------|
+| **Accueil**      | [Accueil](../js.md)                                      |
+| **Contrôleurs**  | [Contrôleurs](../controllers/controllers.md)           |
+| **Modèles**      | [Modèles](../models/models.md)                         |
+| **Pages**        | [Pages](../pages/pages.md)                             |
+| **Services**     | [Services](../services/services.md)                    |
+| **Utilitaires**  | [Utilitaires](../utils/utils.md)                       |
+| **Vues**         | [Vues](../views/views.md)                              |
+

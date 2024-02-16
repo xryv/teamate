@@ -50,3 +50,16 @@ Le répertoire des Vues connecte les actions utilisateur avec la logique applica
 | `displaySuccess(message)`| Montre un message de succès pour confirmer l'inscription réussie.                             | -                                                                              |
 | `clearForm()`            | Nettoie les champs du formulaire post-inscription.                                            | -                                                                              |
 
+
+# Navigation Rapide
+
+| Section          | Lien                                                   |
+|------------------|--------------------------------------------------------|
+| **Accueil**      | [Accueil](../js.md)                                      |
+| **Contrôleurs**  | [Contrôleurs](../controllers/controllers.md)           |
+| **Modèles**      | [Modèles](../models/models.md)                         |
+| **Pages**        | [Pages](../pages/pages.md)                             |
+| **Services**     | [Services](../services/services.md)                    |
+| **Utilitaires**  | [Utilitaires](../utils/utils.md)                       |
+| **Vues**         | [Vues](../views/views.md)                              |
+

@@ -22,3 +22,17 @@ Ce fichier inclut des fonctions de validation pour différents types de données
 - Peuvent être intégrées à des écouteurs d'événements pour fournir une validation en temps réel et des retours visuels aux utilisateurs.
 
 Ces fonctions de validation jouent un rôle essentiel dans la prévention des erreurs de saisie et l'amélioration de l'expérience utilisateur en fournissant des feedbacks immédiats sur la validité des données entrées.
+
+
+# Navigation Rapide
+
+| Section          | Lien                                                   |
+|------------------|--------------------------------------------------------|
+| **Accueil**      | [Accueil](../js.md)                                      |
+| **Contrôleurs**  | [Contrôleurs](../controllers/controllers.md)           |
+| **Modèles**      | [Modèles](../models/models.md)                         |
+| **Pages**        | [Pages](../pages/pages.md)                             |
+| **Services**     | [Services](../services/services.md)                    |
+| **Utilitaires**  | [Utilitaires](../utils/utils.md)                       |
+| **Vues**         | [Vues](../views/views.md)                              |
+

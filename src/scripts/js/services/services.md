@@ -14,3 +14,17 @@ Le répertoire des Services contient des fonctionnalités spécifiques qui fourn
 **Interactions**:
 - Interagit avec l'API RestCountries pour obtenir les pays.
 - Modifie le DOM pour afficher la liste des pays dans un `<select>`.
+
+
+# Navigation Rapide
+
+| Section          | Lien                                                   |
+|------------------|--------------------------------------------------------|
+| **Accueil**      | [Accueil](../js.md)                                      |
+| **Contrôleurs**  | [Contrôleurs](../controllers/controllers.md)           |
+| **Modèles**      | [Modèles](../models/models.md)                         |
+| **Pages**        | [Pages](../pages/pages.md)                             |
+| **Services**     | [Services](../services/services.md)                    |
+| **Utilitaires**  | [Utilitaires](../utils/utils.md)                       |
+| **Vues**         | [Vues](../views/views.md)                              |
+

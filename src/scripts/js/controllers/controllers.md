@@ -56,3 +56,17 @@ Le répertoire des Contrôleurs orchestre les interactions entre l'interface uti
 ### Résumé
 
 Chaque contrôleur joue un rôle spécifique dans la gestion des interactions des utilisateurs au sein de l'application, assurant que les données circulent sans heurt entre l'interface utilisateur et le modèle de données sous-jacent. Ils sont conçus pour encapsuler et abstraire les complexités de la manipulation des données, de la validation, et des mises à jour de l'UI, les rendant cruciaux pour maintenir l'intégrité opérationnelle et l'expérience utilisateur de l'application.
+
+
+# Navigation Rapide
+
+| Section          | Lien                                                   |
+|------------------|--------------------------------------------------------|
+| **Accueil**      | [Accueil](../js.md)                                      |
+| **Contrôleurs**  | [Contrôleurs](../controllers/controllers.md)           |
+| **Modèles**      | [Modèles](../models/models.md)                         |
+| **Pages**        | [Pages](../pages/pages.md)                             |
+| **Services**     | [Services](../services/services.md)                    |
+| **Utilitaires**  | [Utilitaires](../utils/utils.md)                       |
+| **Vues**         | [Vues](../views/views.md)                              |
+

@@ -61,3 +61,17 @@ Ces modèles représentent la couche principale de gestion des données dans l'a
 **Interactions**:
 - `UserDataCenter` sert de pont entre les différentes parties de l'application nécessitant l'accès ou la modification des données utilisateur, tels que les contrôleurs pour les opérations CRUD (Créer, Lire, Mettre à jour, Supprimer).
 - Interagit étroitement avec `RegistrationModel` pour l'ajout de nouveaux utilisateurs et avec les contrôleurs pour fournir les données utilisateur nécessaires lors de diverses opérations.
+
+
+# Navigation Rapide
+
+| Section          | Lien                                                   |
+|------------------|--------------------------------------------------------|
+| **Accueil**      | [Accueil](../js.md)                                      |
+| **Contrôleurs**  | [Contrôleurs](../controllers/controllers.md)           |
+| **Modèles**      | [Modèles](../models/models.md)                         |
+| **Pages**        | [Pages](../pages/pages.md)                             |
+| **Services**     | [Services](../services/services.md)                    |
+| **Utilitaires**  | [Utilitaires](../utils/utils.md)                       |
+| **Vues**         | [Vues](../views/views.md)                              |
+
