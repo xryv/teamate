@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const ageSlider = document.getElementById("ageSlider");
 
-    // Sélectionnez l'élément span où vous voulez afficher la valeur
+    // Sélectionnez l'élément span où  afficher la valeur
     const ageSliderValue = document.getElementById("ageSliderValue");
     const inputName = document.getElementById("nameCreate")
     const nomSalon = document.getElementById("nomSalon")
