@@ -1,44 +1,37 @@
 Voici un aperçu structuré de l'architecture de notre application web, présenté pour guider les développeurs à travers les différents scripts et leur interaction au sein de l'application :
 
 ```
-Application Web
+App
 │
-├── index.html (Point d'entrée)
+├── ... ()
 │
-├── js/ (JavaScript)
-│   ├── models/ (Gestion des données)
-│   │   ├── User.js (Définit la structure des données utilisateur)
-│   │   └── UserDataCenter.js (Gère la collection d'utilisateurs)
+├── js/ (Dossiers contenant les fichiers JavaScript)
 │   │
-│   ├── views/ (Interface Utilisateur)
-│   │   ├── LoginView.js (Gère l'interface de connexion)
-│   │   ├── DashboardView.js (Gère l'interface du tableau de bord)
-│   │   └── RegistrationView.js (Gère l'interface d'inscription)
+│   ├── controllers/ (Contrôleurs gérant la logique métier)
+│   │   ├── dashboardController.js (Gère les interactions du tableau de bord)
+│   │   ├── loginController.js (Traite les actions de connexion)
+│   │   └── registrationController.js (Gère les actions d'inscription)
 │   │
-│   ├── controllers/ (Logique Métier)
-│   │   ├── LoginController.js (Traite les actions de connexion)
-│   │   │   └── interagit avec -> UserDataCenter.js
-│   │   │
-│   │   ├── DashboardController.js (Gère les actions du tableau de bord)
-│   │   │   └── interagit avec -> UserDataCenter.js
-│   │   │
-│   │   └── RegistrationController.js (Gère les actions d'inscription)
-│   │       └── crée des instances -> User.js
-│   │       └── interagit avec -> UserDataCenter.js
+│   ├── models/ (Modèles pour la gestion des données)
+│   │   ├── registrationModel.js (Modèle pour l'inscription des utilisateurs)
+│   │   ├── user.js (Définit la structure des données utilisateur)
+│   │   └── userDataCenter.js (Centralise la gestion des utilisateurs)
 │   │
-│   ├── navbar/
-│   │   └── navbar.js (Gère l'UI et les interactions de la barre de navigation)
+│   ├── pages/ (Scripts spécifiques à chaque page)
+│   │   ├── dashboard.js (Initialisation spécifique au tableau de bord)
+│   │   ├── login.js (Initialisation spécifique à la page de connexion)
+│   │   └── register.js (Initialisation spécifique à la page d'inscription)
 │   │
-│   ├── services/
-│   │   └── fetch_countries.js (Récupère les données des pays pour RegistrationView)
+│   ├── services/ (Services pour les opérations externes)
+│   │   └── fetch_countries.js (Récupère la liste des pays pour le formulaire d'inscription)
 │   │
-│   ├── utils/
-│   │   └── Validator.js (Fournit la logique de validation pour RegistrationView)
+│   ├── utils/ (Utilitaires généraux)
+│   │   └── validation.js (Logique de validation des formulaires)
 │   │
-│   └── app.js (Initialisation Principale de l'Application)
-│       └── initialise -> LoginView.js
-│       └── initialise -> DashboardView.js
-│       └── initialise -> RegistrationView.js
-│       └── initialise -> navbar.js
+│   └── views/ (Vues gérant l'interface utilisateur)
+│       ├── dashboardView.js (Gère l'affichage du tableau de bord)
+│       ├── loginView.js (Gère l'affichage de la page de connexion)
+│       └── registrationView.js (Gère l'affichage du formulaire d'inscription)
+
 ```
 

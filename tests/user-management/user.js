@@ -8,9 +8,11 @@ class User {
     surname;
     born;
     country;
+    role;
+    status;
 
     // Constructeur de la classe, initialisant les propriétés avec les valeurs fournies
-    constructor(email, password, username, name, surname, born, country) {
+    constructor(email, password, username, name, surname, born, country, role, status) {
         console.log(`Initialisation d'un nouvel utilisateur : ${username}`);
 
         this.email = email; // Adresse email de l'utilisateur
@@ -20,6 +22,9 @@ class User {
         this.surname = surname; // Nom de famille de l'utilisateur
         this.born = born; // Date de naissance de l'utilisateur
         this.country = country; // Pays de l'utilisateur
+
+        this.role = role;
+        this.status = status;
 
         console.log(`Utilisateur ${this.username} (${this.name} ${this.surname}) créé avec succès.`);
     }
@@ -60,5 +65,15 @@ class User {
     getCountry() {
         console.log(`Accès au pays de l'utilisateur ${this.username} : ${this.country}`);
         return this.country;
+    }
+
+    getRole() { 
+        console.log(`Accès au Role ${this.email} : ${this.role}`);
+        return this.role;
+    }
+
+    getStatus() {
+        console.log(`Accessing user's status: ${this.status}`);
+        return this.status;
     }
 }

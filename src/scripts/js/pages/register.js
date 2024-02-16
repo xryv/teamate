@@ -1,23 +1,21 @@
-// register.js
-
-// Ajout d'un écouteur d'événement pour exécuter le code une fois que le contenu du document est entièrement chargé.
+// Attente du chargement complet du contenu du document avant d'exécuter le code d'initialisation.
 document.addEventListener('DOMContentLoaded', () => {
-
+    // Instanciation du UserDataCenter pour gérer les données des utilisateurs au sein de l'application.
     const userDataCenter = new UserDataCenter();
-
-    
-    // Création d'une instance du modèle d'inscription. 
-    // Le modèle gère les données, la logique et les règles de l'application.
+  
+    // Création d'une instance de RegistrationModel.
+    // Ce modèle contient la logique et les données nécessaires à l'inscription, comme la validation des informations fournies par l'utilisateur.
     const model = new RegistrationModel();
 
-    // Création d'une instance de la vue d'inscription.
-    // La vue présente les données (le modèle) et relaie les actions de l'utilisateur au contrôleur.
+    // Instanciation de RegistrationView.
+    // Cette vue s'occupe de l'interface utilisateur pour l'inscription, affichant le formulaire et collectant les entrées utilisateur.
     const view = new RegistrationView();
 
-    // Création d'une instance du contrôleur d'inscription et liaison avec le modèle et la vue.
-    // Le contrôleur agit comme un intermédiaire entre la vue et le modèle, écoutant les événements de la vue
-    // et exécutant les actions appropriées sur le modèle.
+    // Assemblage du contrôleur d'inscription, en le reliant au modèle et à la vue.
+    // Le RegistrationController coordonne les interactions entre la vue (entrées de l'utilisateur) et le modèle (logique de traitement des données).
     new RegistrationController(model, view, userDataCenter);
 
+    // La ligne commentée ci-dessous montre une autre façon de déclarer et initialiser le RegistrationController,
+    // avec des variables explicites pour le modèle, la vue et le UserDataCenter.
     // const registrationController = new RegistrationController(registrationModel, registrationView, userDataCenter);
 });
