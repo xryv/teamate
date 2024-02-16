@@ -12,7 +12,7 @@ Bienvenue dans la documentation principale de Teamate. Ici, nous détaillons l'a
 - [Scripts et Logique](#scripts-et-logique)
 
 ### Introduction
-Découvrez Teamate, un espace dédié aux amateurs de jeux vidéo, offrant une expérience utilisateur immersive et sécurisée. Pour une vue globale, parcourez le [README Principal](./README.md).
+Découvrez ma vision de Teamate en parcourant la [Présentation](./docs/Presentation.md) que j'ai soigneusement préparée. C'est la façon la plus directe pour saisir l'ampleur de mon projet.
 
 ### Documentation
 - [Guide pour Git](./docs/guide_git.md)
