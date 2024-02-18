@@ -20,4 +20,15 @@ export interface AuthContextInterface {
     registerError: string | null
     isRegisterLoading: boolean
     logoutUser: () => void
+    loginInfo: LoginInfo
+    updateLoginInfo: (info: SetStateAction<LoginInfo>) => void
+    loginUser: () => Promise<void>
+    loginError: string | null
+    isLoginLoading: boolean
+}
+
+export interface LoginInfo {
+    username: string
+    email: string
+    password: string
 }

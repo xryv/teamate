@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TextField, Button, Box, createTheme, ThemeProvider, Alert } from '@mui/material';
 import tw from 'twin.macro';
 import styled, { css } from 'styled-components';
@@ -42,7 +42,6 @@ function RegisterPage(): JSX.Element {
     const [emailError, setEmailError] = useState('');
     const [usernameError, setUsernameError] = useState('');
     const [passwordError, setPasswordError] = useState('');
-    const [registerSuccess, setRegisterSuccess] = useState<boolean>(false);
     const [confirmPasswordError, setConfirmPasswordError] = useState('');
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
@@ -77,21 +76,16 @@ function RegisterPage(): JSX.Element {
         if (registerInfo.email !== '' && registerInfo.username !== '' && registerInfo.password !== '' && confirmPassword !== '' && registerInfo.password === confirmPassword) {
             registerUser().then(() => {
                 // Faire quelque chose lorsque la promesse est résolue
-                if (registerError !== null) {
-                    // console.log('registerError');
-                    setRegisterSuccess(true);
-                    setTimeout(() => {
-                        // Faire quelque chose après un délai
-                        // Par exemple, vous pouvez changer l'état ici pour afficher un message de succès
-                    }, 2000);
-                }
+                // setTimeout() ne marche pas ici
+                console.log('Inscription réussie');
             }).catch((error) => {
                 // Gérer l'erreur
-                console.error(error);
+                console.error('catcheur', error);
             });
         }
     }
-
+    // azerty@az.com
+    // Azerty123&
     const formFields = [
         { label: 'Adresse e-mail', type: 'email', value: registerInfo.email, name: 'email', onchange: (e: React.ChangeEvent<HTMLInputElement>) => { updateRegisterInfo({ ...registerInfo, email: e.target.value || '' }); } },
         { label: "Nom d'utilisateur", type: 'text', value: registerInfo.username, name: 'username', onchange: (e: React.ChangeEvent<HTMLInputElement>) => { updateRegisterInfo({ ...registerInfo, username: e.target.value }); } },
@@ -116,7 +110,7 @@ function RegisterPage(): JSX.Element {
                         '& .MuiTextField-root': { my: 1, width: '100%' },
                     }}
                     noValidate
-                    autoComplete="off"
+                    // autoComplete="off"
                     onSubmit={handleSubmit}
                 >
                     {formFields.map((field, index) => (
@@ -139,7 +133,7 @@ function RegisterPage(): JSX.Element {
                             {registerError}
                         </Alert>
                     )}
-                    {registerSuccess && (
+                    {isRegisterLoading === true && (
                         <Alert severity="success" sx={{ width: '100%', mt: 2 }}>
                             Inscription réussie !
                         </Alert>
@@ -151,7 +145,7 @@ function RegisterPage(): JSX.Element {
                         disableElevation
                         sx={{ marginTop: '20px' }}
                     >
-                        {isRegisterLoading === true ? 'Créer un compte' : "S'inscrire"}
+                        {isRegisterLoading === true ? 'Chargement...' : 'Inscription'}
                     </Button>
                 </Box>
             </ThemeProvider>

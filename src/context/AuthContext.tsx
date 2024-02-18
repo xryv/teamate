@@ -1,6 +1,6 @@
 import { type ReactElement, createContext, useState, useCallback, type SetStateAction, useEffect, useContext } from 'react';
 import { type PostRequestResponse, baseUrl, postRequest } from '../utils/services';
-import { type User, type AuthContextInterface, type RegisterInfo } from './AuthContextProps';
+import { type User, type AuthContextInterface, type RegisterInfo, type LoginInfo } from './AuthContextProps';
 
 // JE COMPREND RIEN AUX TYPES DE CETTE FONCTION
 // Un hook qui retourne le contexte d'authentification
@@ -32,8 +32,16 @@ export const AuthContextProvider = ({ children }: { children: ReactElement }): J
         email: '',
         password: '',
     });
+    const [loginError, setLoginError] = useState<string | null>(null);
+    const [isLoginLoading, setLoginLoading] = useState<boolean>(false);
+    const [loginInfo, setLoginInfo] = useState<LoginInfo>({
+        username: '',
+        email: '',
+        password: '',
+    });
 
-    console.log('user', user);
+    // console.log('Userr', user);
+    // console.log('loginInfo', loginInfo);
 
     useEffect(() => {
         const userItem = localStorage.getItem('User');
@@ -45,21 +53,26 @@ export const AuthContextProvider = ({ children }: { children: ReactElement }): J
     const updateRegisterInfo = useCallback((info: SetStateAction<RegisterInfo>) => {
         setRegisterInfo(info);
     }, []);
+    const updateLoginInfo = useCallback((info: SetStateAction<LoginInfo>) => {
+        setLoginInfo(info);
+    }, []);
 
     const registerUser = useCallback(async () => {
         setRegisterLoading(true);
         setRegisterError(null);
 
-        const response: PostRequestResponse = await postRequest(
+        const response = await postRequest(
             `${baseUrl}/users/register`,
             JSON.stringify(registerInfo),
         );
 
         setRegisterLoading(false);
 
-        if (response.error !== null) {
+        console.log('response', response.error);
+
+        if (response.error === true) {
             setRegisterError(response.message ?? null);
-            return;
+            throw new Error(response.message); // Rejeter la promesse en cas d'erreur
         }
 
         const newUser: User = {
@@ -72,7 +85,34 @@ export const AuthContextProvider = ({ children }: { children: ReactElement }): J
         setUser(newUser);
     }, [registerInfo]);
 
+    const loginUser = useCallback(async () => {
+        setLoginError(null);
+        setLoginLoading(true);
+
+        const response = await postRequest(
+            `${baseUrl}/users/login`,
+            JSON.stringify(loginInfo),
+        );
+
+        setLoginLoading(false);
+
+        if (response.error === true) {
+            setLoginError(response.message ?? null);
+            throw new Error(response.message); // Rejeter la promesse en cas d'erreur
+        }
+
+        const newUser: User = {
+            username: response.username,
+            email: response.email,
+            password: response.password,
+        };
+
+        localStorage.setItem('User', JSON.stringify(newUser));
+        setUser(newUser);
+    }, [loginInfo]);
+
     const logoutUser = useCallback(() => {
+        console.log('Déconnexion');
         localStorage.removeItem('User');
         setUser(null);
     }, []);
@@ -86,7 +126,11 @@ export const AuthContextProvider = ({ children }: { children: ReactElement }): J
             registerError,
             isRegisterLoading,
             logoutUser,
-
+            loginInfo,
+            updateLoginInfo,
+            loginUser,
+            loginError,
+            isLoginLoading,
         }}>
             {children}
         </AuthContext.Provider>

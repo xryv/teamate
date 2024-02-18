@@ -37,7 +37,7 @@ const loginUser = async (req, res) => {
         const isValidPassword = await bcrypt.compare(password, user.password);
         if (!isValidPassword) return res.status(400).json('Invalid email or password');
         const token = createToken(user._id);
-        res.status(200).json({ _id: user._id, name: user.name, email, token });
+        res.status(200).json({ _id: user._id, username: user.username, email, token });
     } catch (error) {
         console.log(error);
         res.status(500).json(error);

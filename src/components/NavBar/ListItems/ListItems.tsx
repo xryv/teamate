@@ -42,7 +42,7 @@ export const ListItems = ({ items }: { items: ListItemProps[] }): JSX.Element =>
                         <StyledLinkText $variant={hoveredItemId === item.id ? 'hover' : 'default'}
                             href={item.href}>{item.name}
                         </StyledLinkText>
-                        {item.isConnect !== undefined && <StyledLinkText onClick={() => logoutUser } $variant={hoveredItemId === item.id ? 'hoverConnect' : 'defaultConnect'}
+                        {item.isConnect !== undefined && <StyledLinkText onClick={logoutUser} $variant={hoveredItemId === item.id ? 'hoverConnect' : 'defaultConnect'}
                             href={item.href}>{item.isConnect && 'Se déconnecter'}
                         </StyledLinkText>}
                     </li>

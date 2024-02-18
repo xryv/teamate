@@ -6,6 +6,7 @@ import { type ListItemProps } from '../interfaces/ListItemProps';
 
 export function useUlList(): ListItemProps[] {
     const { user } = useAuthContext(['user']);
+    console.log('userrr', user);
     return [
         { id: 1, name: 'Accueil', svg: <Home size='2.5em' strokeWidth={1} />, isLink: true, href: '/', variantTopBar: 'firstHalf', sizeTopBar: 'firstHalf' },
         { id: 2, name: 'Recherché', svg: <Search size='2.5rem' strokeWidth={1} />, isLink: true, href: '/Recherché', variantTopBar: 'firstHalf', sizeTopBar: 'firstHalf' },
@@ -13,7 +14,7 @@ export function useUlList(): ListItemProps[] {
         { id: 4, name: 'Parcourir', svg: <LayoutDashboard size='2.5rem' strokeWidth={1} />, isLink: true, href: '/Parcourir', variantTopBar: 'firstHalf', sizeTopBar: 'firstHalf' },
         { id: 5, name: 'Amis', svg: <Users size='2.5rem' strokeWidth={1} />, isLink: false, variantTopBar: 'firstHalf', sizeTopBar: 'firstHalf' },
         { id: 6, name: 'Notification', svg: <Bell size='2.5rem' strokeWidth={1} />, isLink: false, variantTopBar: 'firstHalf', sizeTopBar: 'firstHalf' },
-        { id: 7, name: user !== null ? `Profile : ${user?.username}` : 'Se connectez', svg: <User size='2.5rem' strokeWidth={1} />, isLink: true, href: '/Profil', variantTopBar: 'firstHalf', sizeTopBar: 'firstHalf', isConnect: user !== null },
+        { id: 7, name: user !== null ? `${user?.username}` : 'Se connectez', svg: <User size='2.5rem' strokeWidth={1} />, isLink: true, href: '/Profil', variantTopBar: 'firstHalf', sizeTopBar: 'firstHalf', isConnect: user !== null },
         { id: 8, name: 'En savoir plus', svg: <MoreVertical size='2.5rem' strokeWidth={1} />, isLink: true, href: '/Profil', variantTopBar: 'firstHalf', sizeTopBar: 'firstHalf' },
         // { id: 9, name: 'Se connecter', svg: <LogIn size='2.5rem' strokeWidth={1} />, isLink: true, href: '/login' },
         // { id: 10, name: 'Se déconnecter', svg: <LogOut size='2.5rem' strokeWidth={1} />, isLink: true, href: '/logout' },
