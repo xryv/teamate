@@ -37,4 +37,3 @@ document.addEventListener("DOMContentLoaded", function () {
         sliderValue.textContent = playerSlider.value;
     });
 });
-
