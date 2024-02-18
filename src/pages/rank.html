@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -83,45 +82,53 @@
             </div>
         </nav>
     </header>
-    <main class="">
+    <main>
         <section class="flex flex-col">
             <article class="mt-16">
                 <h1 class="text-slate-100 text-5xl mx-auto text-center">Ranks</h1>
             </article>
+
             <article class="grid grid-cols-3 gap-8 mt-16">
                 <div id="col_1Free"></div>
                 <div class="col-span-1 flex justify-center items-center">
-                    <img class="" src="/teamate/src/icon/ranks/rank5Star 22.png" alt="rank 5, niveau 3">
-                </div>
+                    <button><img class="" src="/teamate/src/icon/ranks/rank5Star 22.png" alt="rank 5, niveau 3"></button>
+                    
+                </div> 
+
                 <div class="flex justify-center gap-10">
                     <div class="flex flex-col items-center gap-2">
                         <div class="h-32 w-4 bg-slate-100 rounded-lg relative">
-                            <span class="absolute block h-[10%] w-full bg-sky-700 rounded-lg bottom-0"></span>
+                            <span id="toxic" class="absolute block h-[0%] w-full bg-sky-700 rounded-lg bottom-0"></span>
                         </div>
-                        <img class="" src="/teamate/src/icon/ranks/toxique (1).png" alt="icon toxique">
+                        <button id="btn_toxic"><img class="" src="/teamate/src/icon/ranks/toxique (1).png" alt="icon toxique"></button>
+                        
                     </div>
                 
                     <div class="flex flex-col items-center gap-2">
                         <div class="h-32 w-4 bg-slate-100 rounded-lg relative">
-                            <span class="absolute block h-[50%] w-full bg-sky-700 rounded-lg bottom-0"></span>
+                            <span id="communicatif" class="absolute block h-[0%] w-full bg-sky-700 rounded-lg bottom-0"></span>
                         </div>
-                        <img class="" src="/teamate/src/icon/ranks/options (1).png" alt="icon Bienveillant">
+                        <button id="btn_communicatif"><img class="" src="/teamate/src/icon/ranks/options (1).png" alt="icon communicatif"></button>
+                        
                     </div>
                 
                     <div class="flex flex-col items-center gap-2">
                         <div class="h-32 w-4 bg-slate-100 rounded-lg relative">
-                            <span class="absolute block h-[35%] w-full bg-sky-700 rounded-lg bottom-0"></span>
+                            <span id="bienveillant" class="absolute block h-[0%] w-full bg-sky-700 rounded-lg bottom-0"></span>
                         </div>
-                        <img class="" src="/teamate/src/icon/ranks/ange (1) (1).png" alt="icon communicatif">
+                        <button id="btn_bienveillant"><img class="" src="/teamate/src/icon/ranks/ange (1) (1).png" alt="icon Bienveillant"></button>
+                        
                     </div>
                 
                     <div class="flex flex-col items-center gap-2">
                         <div class="h-32 w-4 bg-slate-100 rounded-lg relative">
-                            <span class="absolute block h-[90%] w-full bg-sky-700 rounded-lg bottom-0"></span>
+                            <span id="expert" class="absolute block h-[0%] w-full bg-sky-700 rounded-lg bottom-0"></span>
                         </div>
-                        <img class="" src="/teamate/src/icon/ranks/etoile-filante (1).png" alt="icon Expert">
+                        <button id="btn_expert"><img class="" src="/teamate/src/icon/ranks/etoile-filante (1).png" alt="icon Expert"></button>
+                        
                     </div>
-                </div>              
+                </div>
+                              
             </article>
             <article class="grid grid-cols-5 gap-16 grid-rows-4 place-items-center items-start text-slate-100 text-2xl">
                 <h2 class="place-self-end mx-auto">Rank 1</h2>
@@ -148,6 +155,7 @@
         </section>
     </main>
     <script src="/teamate/src/scripts/navbar.js"></script>
+    <script src="/teamate/src/scripts/rank.js"></script>
 </body>
 
 </html>

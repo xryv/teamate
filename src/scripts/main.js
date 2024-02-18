@@ -8,9 +8,95 @@ document.addEventListener('DOMContentLoaded', () => {
     const colorPicker = document.querySelector('#colorPicker');
     const profilMiniatureTop = document.querySelector('#miniature1');
     const profilMiniatureMid = document.querySelector('#miniature2');
-    const profilMiniatureBottom = document.querySelector('#miniature3');
+
+    const bio = document.querySelector('#bio');
+    const btn_bio = document.querySelector('#btn_bio');
+    const inputBio = document.querySelector('#inputBio');
+    const register = document.querySelector('#register');
+
+
+ const fileInput = document.getElementById('file_input');
+ const carousel = document.getElementById('carousel');
+
+
+ function addImageToCarousel(src) {
+     const img = document.createElement('img');
+     img.src = src;
+     img.classList.add('mb-5', 'w-40','max-h-48','object-contain'); 
+     carousel.appendChild(img);
+ }
+
+ console.dir(carousel);
+
+ // Gérer le changement de l'input de fichier
+ fileInput.addEventListener('change', function(event) {
+     const files = event.target.files;
+
+     for (let i = 0; i < files.length; i++) {
+         const file = files[i];
+         const reader = new FileReader();
+
+         reader.onload = function(e) {
+             // Ajoutez l'image lue au carrousel
+             addImageToCarousel(e.target.result);
+         };
+
+         reader.readAsDataURL(file);
+     }
+ });
+
+ // Cliquez sur l'input de fichier lorsque vous cliquez sur le SVG
+ document.querySelector('svg').addEventListener('click', function() {
+     fileInput.click();
+ });
+
+
+    btnAvatar.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+
+        if (file) {
+            const allowedTypes = ["image/jpeg", "image/png", "image/svg+xml", "image/gif", "image/webp"];
+
+            if (allowedTypes.includes(file.type)) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    avatarImg.src = e.target.result;
+                    profilMiniatureTop.src = e.target.result;
+                    profilMiniatureMid.src = e.target.result;
+                    profilMiniatureBottom.src = e.target.result;
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                alert("Type de fichier non pris en charge. Veuillez sélectionner une image au format JPEG, PNG, SVG ou GIF.");
+                btnAvatar.value = "";
+            }
+        }
+    });
+
 
     let currentName = "Emma";
+
+    btn_bio.addEventListener('click', (e) => {
+        inputBio.style.display = 'block';
+        bio.style.display = 'none';
+        btn_bio.style.display = 'none';
+        register.style.display = 'block';
+        inputBio.focus();
+    });
+
+    register.addEventListener('click', (e) => {
+        bio.textContent = inputBio.value;
+        inputBio.style.display = 'none';
+        bio.style.display = 'block';
+        register.style.display = 'none';
+        btn_bio.style.display = 'block';
+
+    });
+
+
+
 
     btnColor.addEventListener('click', (e) => {
         if (colorPicker.style.display === "block") {
@@ -18,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             colorPicker.style.display = "block";
         }
-        e.preventDefault();
     });
 
     btnName.addEventListener('click', (e) => {
@@ -47,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function updateTexts(oldText, newText) {
-        document.querySelectorAll('p').forEach(function(p) {
+        document.querySelectorAll('p').forEach(function (p) {
             if (p.textContent.includes(oldText)) {
                 p.textContent = p.textContent.replace(oldText, newText);
             }
@@ -75,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 reader.readAsDataURL(file);
             } else {
                 alert("Type de fichier non pris en charge. Veuillez sélectionner une image au format JPEG, PNG, SVG ou GIF.");
-                btnAvatar.value = ""; 
+                btnAvatar.value = "";
             }
         }
     });
@@ -126,4 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.style.setProperty('--profil-border', color.hexString);
     });
 
+
+
+    
 });

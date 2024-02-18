@@ -9,7 +9,8 @@
 
 </head>
 
-<body class="bg-gradient box-border font-roboto">
+<body
+    class="bg-gradient box-border font-roboto scrollbar-thin scrollbar-track-profil-block scrollbar-thumb-profil-border">
     <header>
         <nav class="grid grid-cols-5 place-items-center items-center">
             <div class="col-span-2 flex justify-end items-center gap-24">
@@ -87,14 +88,15 @@
             </div>
         </nav>
     </header>
-    <main class="flex flex-col gap-10 ">
+    
+    <main class="flex flex-col gap-10">
 
         <article class="relative h-44 flex  items-end justify-center mt-8">
             <div id="photo"
-                class="flex items-center justify-center border-4 border-profil-border absolute top-0 left-0 bg-slate-100 rounded-full h-52 w-52 text-center overflow-hidden">
+                class="flex items-center justify-center border-4 border-profil-border absolute top-0 left-0 bg-profil-border rounded-full h-52 w-52 text-center overflow-hidden">
                 <input class="hidden" type="file" name="photo" id="photo-upload">
                 <label for="photo-upload"
-                    class="flex items-center justify-center h-full w-full absolute inset-x-1/2 inset-y-1/2 -translate-x-[50%] -translate-y-[50%] cursor-pointer text-slate-200 opacity-0 hover:opacity-100 hover:bg-noirTransparent-800">
+                    class="flex items-center justify-center h-full w-full absolute inset-x-1/2 inset-y-1/2 -translate-x-[50%] -translate-y-[50%] cursor-pointer text-profil-text opacity-0 hover:opacity-100 hover:bg-noirTransparent-800">
                     <u>Modifier</u>
                 </label>
                 <img id="photoDeProfil" class="w-full h-full object-cover hover:opacity-0"
@@ -111,9 +113,9 @@
                                     class="mt-1 hidden rounded-lg text-profil-text bg-transparent border-2 border-profil-border outline-none px-2"
                                     type="text">
                             </div>
-                            <button class="ml-1" id="btn_name"><svg xmlns="http://www.w3.org/2000/svg" height="10"
-                                    width="10" viewBox="0 0 512 512">
-                                    <path fill="#ffffff"
+                            <button class="ml-1" id="btn_name"><svg class="fill-profil-text"
+                                    xmlns="http://www.w3.org/2000/svg" height="10" width="10" viewBox="0 0 512 512">
+                                    <path fill=""
                                         d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z" />
                                 </svg></button>
                         </div>
@@ -137,10 +139,6 @@
                 </div>
             </div>
         </article>
-
-
-
-
         <article class=" flex justify-evenly items-center rounded-full bg-profil-block mx-auto w-2/4">
             <div>
                 <img src="/teamate/src/icon/levelMain.svg" alt="#">
@@ -182,35 +180,59 @@
         </article>
 
         <!-- PAGE PRINCIPALE  -->
-
         <section class=" flex justify-between gap-8 mx-16">
-            <article class="flex items-center flex-col  bg-profil-block rounded-2xl p-8 gap-8 w-1/4 ">
+
+            <!-- BLOCK DE GAUCHE  -->
+            <article class="flex items-center flex-col bg-profil-block rounded-2xl p-8 gap-8 w-1/4">
                 <div
-                    class="p-5 shadow-3xl rounded-bl-3xl rounded-tr-3xl rounded-br-3xl shadow-lg shadow-profil-shadow w-11/12">
-                    <p id="bio" class="text-profil-text text-base">Hello, compétitrice passionnée depuis l'enfance, a
-                        toujours cherché à repousser ses limites. Des jeux entre amis à la scène des tournois, j’inspire
-                        par sa détermination. Toujours prête pour de nouveaux défis, je reste une figure respectée dans
-                        le monde des jeux compétitifs</p>
+                    class=" flex flex-col justify-end items-end p-5 shadow-3xl rounded-bl-3xl rounded-tr-3xl rounded-br-3xl shadow-lg shadow-profil-shadow w-11/12 relative">
+
+                    <label class="hidden" for="inputBio"></label>
+                    <textarea
+                        class="hidden rounded-lg text-profil-text bg-transparent border border-profil-border outline-none p-4 w-full h-52"
+                        name="inputBio" id="inputBio" cols="30" rows="10"></textarea>
+                    <button id="register"
+                        class="text-sm transition ease-in-out delay-0 hover:-translate-10 hover:scale-105 hover:bg-zinc-900 duration-75 hover:text-profil-text hover:bg-gradient mt-2 w-1/3 bg-profil-block text-profil-text border border-profil-border outline-none rounded-lg hidden  "
+                        type="button">Enregistrer ...</button>
+                    <div class="w-full">
+                        <p id="bio" class="text-profil-text text-base">Hello.</p>
+                    </div>
+                    <button class="absolute top-0 right-0" id="btn_bio"><svg class="fill-profil-text"
+                            xmlns="http://www.w3.org/2000/svg" height="10" width="10" viewBox="0 0 512 512">
+                            <path fill=""
+                                d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z" />
+                        </svg></button>
                 </div>
+
                 <div
-                    class="py-5 shadow-3xl rounded-bl-3xl rounded-tr-3xl rounded-br-3xl shadow-lg shadow-profil-shadow w-11/12 h-3/4">
-                    <p class="text-slat">
-                    <div class=" flex flex-col justify-center items-center">
-                        <img class="mb-5 w-40" src="/teamate/src/icon/imgArticle1 (3).svg" alt="#"><img
-                            class="mb-5  w-40" src="/teamate/src/icon/imgArticle1 (2).svg" alt="#"><img
-                            class="mb-5  w-40" src="/teamate/src/icon/imgArticle1 (1).svg" alt="#">
-                    </div>
-                    <div class="flex justify-center">
-                        <img src="/teamate/src/icon/fleche-vers-le-bas (1).svg" alt="#">
+                    class="flex gap-4 justify-center py-5 shadow-3xl rounded-bl-3xl rounded-tr-3xl rounded-br-3xl shadow-lg shadow-profil-shadow w-11/12 h-3/4">
+                    <input type="file" id="file_input" class="hidden">
+
+                    <svg class="fill-profil-text cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="20"
+                        width="17.5" viewBox="0 0 448 512" onclick="document.getElementById('file_input').click();">
+                        <path
+                            d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM200 344V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H248v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
+                    </svg>
+
+                    <div
+                        class="carousel-container overflow-y-auto scrollbar-thin scrollbar-track-profil-block scrollbar-thumb-profil-border">
+                        <div class="carousel flex flex-col items-center h-[515px] mr-4" id="carousel">
+
+                        </div>
                     </div>
                 </div>
+
             </article>
-            <article class="flex flex-col gap-8 w-3/4">
+
+            <!-- BLOCK CENTRE  -->
+            <article class="flex flex-col gap-8 w-3/4 ">
+
+                <!-- BLOCK PUBLIER...  -->
                 <div class="relative flex items-center">
                     <label for="publier" class="block text-sm font-medium text-white"></label>
                     <div class="flex items-center relative w-full">
                         <input
-                            class="pl-10 pr-8 py-2 rounded-full w-full focus:outline-none text-profil-text bg-profil-block border-2 border-profil-border"
+                            class="pl-10 pr-8 py-2 rounded-full w-full focus:outline-none text-profil-text bg-profil-block border-2 border-profil-border placeholder:text-profil-text"
                             type="text" id="publier" name="publier" placeholder="| Publier ...">
                         <img src="/teamate/src/icon/fleche-courbe 1.svg" alt="Image 2"
                             class="absolute right-0 top-1/2 transform -translate-y-1/2 w-8 h-8 mr-10 rounded-full">
@@ -218,12 +240,17 @@
                             class="absolute right-0 top-1/2 transform -translate-y-1/2 w-8 h-8 mr-2 rounded-full">
                     </div>
                 </div>
-                <div class="bg-profil-block rounded-2xl h-full w-full">
+
+                <!-- BLOCK PUBLICATIONS  -->
+                <div
+                    class="bg-profil-block rounded-2xl h-full w-full overflow-y-auto scrollbar-thin scrollbar-track-profil-block scrollbar-thumb-profil-border">
                     <div class="flex flex-col gap-2 w-11/12 m-auto mt-8">
                         <div class="flex items-center  gap-4 ">
-                            <div class="flex items-center justify-center w-10 h-10 bg-white rounded-full overflow-hidden ">
-                                <img id="miniature1" class="w-full h-full object-cover" src="" alt="Miniature de profil">
-                            </div>
+
+                            <img id="miniature1"
+                                class="object-cover w-10 h-10 rounded-full bg-profil-border border border-profil-border"
+                                src="/teamate/src/icon/la-personne.png" alt="photo de profil">
+
 
                             <div>
                                 <p class="text-profil-top text-xl">Emma</p>
@@ -253,9 +280,10 @@
                     </div>
                     <div class="flex flex-col gap-2 w-11/12 m-auto mt-8">
                         <div class="flex items-center  gap-4 ">
-                            <div class="flex items-center justify-center w-10 h-10 bg-white rounded-full overflow-hidden ">
-                                <img id="miniature2" class="w-full h-full object-cover" src="" alt="Miniature de profil">
-                            </div>
+
+                            <img id="miniature2"
+                                class="object-cover w-10 h-10 rounded-full bg-profil-border border border-profil-border"
+                                src="/teamate/src/icon/la-personne.png" alt="photo de profil">
 
                             <div>
                                 <p class="text-xl text-profil-top">Emma</p>
@@ -282,9 +310,9 @@
                     </div>
                     <div class="flex flex-col gap-2 w-11/12 m-auto mt-8">
                         <div class="flex items-center  gap-4 ">
-                            <div class="flex items-center justify-center w-10 h-10 bg-white rounded-full overflow-hidden ">
-                                <img id="miniature3" class="w-full h-full object-cover" src="" alt="Miniature de profil">
-                            </div>
+                            <img id="miniature3"
+                                class="object-cover w-10 h-10 rounded-full border border-profil-border bg-profil-border "
+                                src="/teamate/src/icon/la-personne.png" alt="Miniature de profil">
 
                             <div>
                                 <p class="text-xl text-profil-top">Emma</p>
@@ -300,13 +328,15 @@
                             <div
                                 class="flex items-center justify-center gap-4 bg-profil-top px-4 py-2 rounded-full m-auto ">
                                 <a href="#">Regarder le live !</a>
-                                <img src="/teamate/src/icon/contour-du-bouton-circulaire-fleche-droite.svg" alt="">
+                                <img src="/teamate/src/icon/contour-du-bouton-circulaire-fleche-droite.svg"
+                                    alt="photo de profil">
                             </div>
                         </div>
                     </div>
                 </div>
             </article>
 
+            <!-- BLOCK DROITE  -->
             <article class="w-1/5 text-profil-text flex flex-col gap-8">
                 <div class="flex justify-between">
                     <div

@@ -5,9 +5,10 @@
 :root {
 
     --profil-block: rgba(24, 24, 27, 1);
-    --profil-top: rgba(187, 47, 122, 1);
-    --profil-text: rgba(242, 243, 237, 1);
-    --profil-shadow: rgba(249, 168, 212, 1);
-    --profil-border: rgba(249, 168, 212, 1);
+    --profil-top: rgb(231, 231, 231);
+    --profil-text: rgb(231, 231, 231);
+    --profil-shadow: rgb(231, 231, 231);
+    --profil-border: rgb(231, 231, 231);
   }
-  
+
+

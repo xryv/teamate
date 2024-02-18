@@ -84,6 +84,7 @@ module.exports = {
     },
   },
   plugins: [
+    require('tailwind-scrollbar')({ preferredStrategy: 'pseudoelements' }),
     function ({ addUtilities }) {
       const newUtilities = {
         '.navbarDiv': {
@@ -114,3 +115,4 @@ module.exports = {
     },
   ],
 }
+
