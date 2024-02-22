@@ -31,7 +31,7 @@ li {
     }}`;
 
 export const SideBar = styled.nav<SideBarProps>`
-    ${tw`md:hidden block fixed right-0 h-screen max-h-[500px] transition-all duration-300 ease-out bg-gradient2 z-30 border-none outline-none rounded-b-2xl overflow-y-auto`};
+    ${tw`md:hidden block fixed top-0 right-0 h-screen max-h-[500px] pt-40 transition-all duration-300 ease-out bg-gradient2 z-30 border-none outline-none rounded-b-2xl overflow-y-auto`};
     ${(props => props.$variant === 'active' ? tw`w-fit` : tw`w-0`)};
     ${(props => props.$size === 'active' ? tw`opacity-100` : tw`opacity-0`)};
 `;

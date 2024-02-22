@@ -7,11 +7,6 @@ import macrosPlugin from 'vite-plugin-babel-macros'
 export default defineConfig({
   plugins: [react(), macrosPlugin()],
   server: {
-    proxy: {
-      '/socket.io': {
-        target: 'http://localhost:3001',
-        ws: true
-      }
-    }
+    host : true
   }
 })

@@ -12,7 +12,7 @@ export function TopBar({ isOpen, onClick }: { isOpen: boolean, onClick: () => vo
             <LogoList>
                 <li>
                     <ButtonOrLink isLink href="/">
-                        <img src={logo} alt="Logo" />
+                        {logo}
                     </ButtonOrLink>
                 </li>
             </LogoList>

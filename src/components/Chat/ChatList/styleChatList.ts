@@ -6,7 +6,7 @@ type TimeProps = {
 } & React.HTMLAttributes<HTMLElement>;
 
 export const ChatListContainer = styled.ul`
-    ${tw`relative flex flex-col  p-4 scroll-pt-4  max-h-[55vh] md:max-h-[70vh] md:p-6 md:scroll-pt-8 overflow-y-auto  hover:scrollbar-thumb-slate-300 scrollbar-track-transparant-100 scroll-smooth  text-slate-300 `}
+    ${tw`relative flex flex-col  p-4 scroll-pt-4  max-h-[70vh] md:max-h-[70vh] md:p-6 md:scroll-pt-8 overflow-y-auto  hover:scrollbar-thumb-slate-300 scrollbar-track-transparant-100 scroll-smooth  text-slate-300 `}
     &::-webkit-scrollbar {
 
     }

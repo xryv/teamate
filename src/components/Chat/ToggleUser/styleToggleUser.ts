@@ -5,7 +5,7 @@ interface ToggleProps {
     $toggleUser: boolean
 }
 export const ToggleContainer = styled.div`
-${tw`absolute left-0`}
+${tw`absolute left-20 top-40`}
 `;
 
 export const ToggleButton = styled.div<ToggleProps>`
