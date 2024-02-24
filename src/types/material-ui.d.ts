@@ -7,6 +7,7 @@ declare module '@mui/material/styles' {
         bluePV: PaletteColor
         orangePV: PaletteColor
         transparant: PaletteColor
+        slate: PaletteColor
     }
     interface PaletteOptions {
         noirTransparent: PaletteColorOptions
@@ -14,5 +15,6 @@ declare module '@mui/material/styles' {
         bluePV: PaletteColorOptions
         orangePV: PaletteColorOptions
         transparant: PaletteColorOptions
+        slate: PaletteColorOptions
     }
 }

@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 export const StyleChatBar = styled.form`
-    ${tw`relative flex flex-row items-center w-full h-fit bg-transparent `}
+    ${tw`relative flex flex-row items-center w-[95%] h-fit mb-1 mx-auto bg-transparent `}
         label {
             ${tw`hidden`};
         }
         input { 
-            ${tw`w-full h-10 px-24 text-slate-300 text-sm bg-transparent border border-transparant-900 rounded-full outline-none focus:outline-orangePV-500`};
+            ${tw`w-full h-10 pl-20 pr-10 text-slate-300 text-sm bg-transparent border border-transparant-900 rounded outline-none focus:outline-orangePV-500`};
             &::placeholder {
                 ${tw`text-slate-300 opacity-50`};
             }
@@ -26,7 +26,7 @@ export const StyleChatBar = styled.form`
             }
         }
         .emoji-picker {
-            ${tw`absolute bottom-full w-fit h-fit`} // Ajoutez vos styles ici
+            ${tw`absolute bottom-full w-fit h-fit`}
         }
         .rien{
             ${tw`p-10`}

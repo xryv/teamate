@@ -5,7 +5,7 @@ import { type ListItemProps } from '../interfaces/ListItemProps';
 
 export function useUlList(): ListItemProps[] {
     const { user } = useAuthContext(['user']);
-    console.log('userrr', user);
+    // console.log('userrr', user);
     return [
         { id: 1, name: 'Accueil', svg: <Home size='2.5em' strokeWidth={1} />, isLink: true, href: '/', variantTopBar: 'firstHalf', sizeTopBar: 'firstHalf' },
         { id: 2, name: 'Recherché', svg: <Search size='2.5rem' strokeWidth={1} />, isLink: true, href: '/Recherché', variantTopBar: 'firstHalf', sizeTopBar: 'firstHalf' },
