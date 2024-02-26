@@ -1,5 +1,7 @@
 // tailwind.config.cjs
 /** @type {import('tailwindcss').Config} */
+const flattenColorPalette = require('tailwindcss/lib/util/flattenColorPalette').default
+
 // eslint-disable-next-line no-undef
 module.exports = {
   content: [
@@ -66,6 +68,7 @@ module.exports = {
           1000: 'rgba(243, 129, 99, 1)'
         },
         'transparant': {
+          50: 'rgba(177, 188, 195, 0.05)',
           100: 'rgba(177, 188, 195, 0.1)',
           200: 'rgba(177, 188, 195, 0.2)',
           300: 'rgba(177, 188, 195, 0.3)',
@@ -81,14 +84,27 @@ module.exports = {
     },
   },
   plugins: [
-    require ( 'tailwind-scrollbar' ) ( {  nocompatible : true  } ) , 
-    function({ addUtilities }) {
+    require('tailwind-scrollbar')({ nocompatible: true }),
+    function ({ addUtilities }) {
       const newUtilities = {
         '.inset-shadow': {
           boxShadow: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
         },
       }
       addUtilities(newUtilities)
-    }
+    },
+    addVariablesForColors,
   ],
+}
+
+// This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
+function addVariablesForColors({ addBase, theme }) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+
+  addBase({
+    ":root": newVars,
+  });
 }

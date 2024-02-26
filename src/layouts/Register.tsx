@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { TextField, Button, Box, createTheme, ThemeProvider, Alert } from '@mui/material';
+import { TextField, Button, Box, createTheme, ThemeProvider, Alert, Typography, Link, alpha } from '@mui/material';
 import tw from 'twin.macro';
 import styled, { css } from 'styled-components';
 import { useAuthContext } from '../context/AuthContext';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 const theme = createTheme({
     palette: {
@@ -43,6 +44,14 @@ function RegisterPage(): JSX.Element {
     const [usernameError, setUsernameError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [confirmPasswordError, setConfirmPasswordError] = useState('');
+    const navigate = useNavigate();
+    const { user } = useAuthContext(['user']);
+
+    useEffect(() => {
+        if (user !== null) {
+            navigate('/');
+        }
+    }, [user, navigate]);
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
         e.preventDefault();
@@ -54,30 +63,34 @@ function RegisterPage(): JSX.Element {
         setConfirmPasswordError('');
 
         // Vérifier tous les champs
-        if (registerInfo.email === '') {
+        if (registerInfo?.email === '') {
             setEmailError('Veuillez remplir ce champ');
         }
-        if (registerInfo.username === '') {
+        if (registerInfo?.username === '') {
             setUsernameError('Veuillez remplir ce champ');
         }
-        if (registerInfo.password === '') {
+        if (registerInfo?.password === '') {
             setPasswordError('Veuillez remplir ce champ');
         }
         if (confirmPassword === '') {
             setConfirmPasswordError('Veuillez remplir ce champ');
         }
         // Vérifier si les mots de passe correspondent
-        if (registerInfo.password !== confirmPassword) {
+        if (registerInfo?.password !== confirmPassword) {
             setPasswordError('Les mots de passe ne correspondent pas');
             setConfirmPasswordError('Les mots de passe ne correspondent pas');
         }
 
         // Si aucune erreur, appeler la fonction pour enregistrer l'utilisateur
-        if (registerInfo.email !== '' && registerInfo.username !== '' && registerInfo.password !== '' && confirmPassword !== '' && registerInfo.password === confirmPassword) {
+        if (registerInfo?.email !== '' && registerInfo?.username !== '' && registerInfo?.password !== '' && confirmPassword !== '' && registerInfo?.password === confirmPassword) {
             registerUser().then(() => {
                 // Faire quelque chose lorsque la promesse est résolue
                 // setTimeout() ne marche pas ici
+                // Vider les champs d'entrée
+                updateRegisterInfo({ email: '', username: '', password: '' });
+                setConfirmPassword('');
                 console.log('Inscription réussie');
+                navigate('/');
             }).catch((error) => {
                 // Gérer l'erreur
                 console.error('catcheur', error);
@@ -87,69 +100,89 @@ function RegisterPage(): JSX.Element {
     // azerty@az.com
     // Azerty123&
     const formFields = [
-        { label: 'Adresse e-mail', type: 'email', value: registerInfo.email, name: 'email', onchange: (e: React.ChangeEvent<HTMLInputElement>) => { updateRegisterInfo({ ...registerInfo, email: e.target.value || '' }); } },
-        { label: "Nom d'utilisateur", type: 'text', value: registerInfo.username, name: 'username', onchange: (e: React.ChangeEvent<HTMLInputElement>) => { updateRegisterInfo({ ...registerInfo, username: e.target.value }); } },
-        { label: 'Mot de passe', type: 'password', value: registerInfo.password, name: 'password', onchange: (e: React.ChangeEvent<HTMLInputElement>) => { updateRegisterInfo({ ...registerInfo, password: e.target.value }); } },
+        { label: 'Adresse e-mail', type: 'email', value: registerInfo?.email, name: 'email', onchange: (e: React.ChangeEvent<HTMLInputElement>) => { updateRegisterInfo({ ...registerInfo, email: e.target.value || '' }); } },
+        { label: "Nom d'utilisateur", type: 'text', value: registerInfo?.username, name: 'username', onchange: (e: React.ChangeEvent<HTMLInputElement>) => { updateRegisterInfo({ ...registerInfo, username: e.target.value }); } },
+        { label: 'Mot de passe', type: 'password', value: registerInfo?.password, name: 'password', onchange: (e: React.ChangeEvent<HTMLInputElement>) => { updateRegisterInfo({ ...registerInfo, password: e.target.value }); } },
         { label: 'Confirmer le mot de passe', type: 'password', value: confirmPassword, name: 'confirmPassword', onchange: (e: React.ChangeEvent<HTMLInputElement>) => { setConfirmPassword(e.target.value); } },
     ];
 
     return (
-        <section className='flex flex-col items-center max-w-[70%] h-full my-10 p-10 bg-transparant-600 rounded-xl backdrop-blur-2xl'>
-            <TextGradient className='w-full text-5xl text-gradient text-center p-2 font-bold font'>Inscription</TextGradient>
-            <ThemeProvider theme={theme}>
+        <main className='min-h-screen flex justify-center items-center bg-gradient'>
+            <section className='flex flex-col items-center max-w-[70%] h-full p-10 bg-transparant-300 rounded-xl backdrop-blur-2xl'>
+                <TextGradient className='w-full text-5xl text-gradient text-center p-2 font-bold font'>Inscription</TextGradient>
+                <ThemeProvider theme={theme}>
 
-                <hr className='w-full my-5 border-orangePV-1000' />
+                    <hr className='w-full my-5 border-orangePV-1000' />
 
-                <Box
-                    component="form"
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        '& .MuiTextField-root': { my: 1, width: '100%' },
-                    }}
-                    noValidate
-                    // autoComplete="off"
-                    onSubmit={handleSubmit}
-                >
-                    {formFields.map((field, index) => (
-                        <TextField
-                            key={index}
-                            label={field.label}
-                            type={field.type}
-                            variant="filled"
-                            color='secondary'
-                            required
-                            value={field.value}
-                            name={field.name}
-                            onChange={field.onchange}
-                            error={field.name === 'email' ? emailError !== '' : field.name === 'username' ? usernameError !== '' : field.name === 'password' ? passwordError !== '' : confirmPasswordError !== ''}
-                            helperText={field.name === 'email' ? emailError : field.name === 'username' ? usernameError : field.name === 'password' ? passwordError : confirmPasswordError}
-                        />
-                    ))}
-                    {registerError !== null && (
-                        <Alert severity="error" sx={{ width: '100%', mt: 2 }}>
-                            {registerError}
-                        </Alert>
-                    )}
-                    {isRegisterLoading === true && (
-                        <Alert severity="success" sx={{ width: '100%', mt: 2 }}>
-                            Inscription réussie !
-                        </Alert>
-                    )}
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                        disableElevation
-                        sx={{ marginTop: '20px' }}
+                    <Box
+                        component="form"
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            '& .MuiTextField-root': { my: 1, width: '100%' },
+                        }}
+                        noValidate
+                        onSubmit={handleSubmit}
                     >
-                        {isRegisterLoading === true ? 'Chargement...' : 'Inscription'}
-                    </Button>
-                </Box>
-            </ThemeProvider>
-        </section>
+                        {formFields.map((field, index) => (
+                            <TextField
+                                key={index}
+                                label={field.label}
+                                type={field.type}
+                                variant="filled"
+                                color='secondary'
+                                required
+                                value={field.value}
+                                name={field.name}
+                                onChange={field.onchange}
+                                error={field.name === 'email' ? emailError !== '' : field.name === 'username' ? usernameError !== '' : field.name === 'password' ? passwordError !== '' : confirmPasswordError !== ''}
+                                helperText={field.name === 'email' ? emailError : field.name === 'username' ? usernameError : field.name === 'password' ? passwordError : confirmPasswordError}
+                                sx={{
+                                    '& .MuiInputBase-input': {
+                                        color: alpha(theme.palette.common.white, 0.85),
+                                    },
+                                    '& .MuiFilledInput-underline:before': {
+                                        borderBottomColor: alpha(theme.palette.common.white, 0.5),
+                                    },
+                                    '& .MuiFormLabel-root': {
+                                        color: alpha(theme.palette.common.white, 0.75),
+                                    },
+                                }}
+                            />
+                        ))}
+                        {registerError !== null && (
+                            <Alert severity="error" sx={{ width: '100%', mt: 2 }}>
+                                {registerError}
+                            </Alert>
+                        )}
+                        {isRegisterLoading === true && (
+                            <Alert severity="success" sx={{ width: '100%', mt: 2 }}>
+                                Inscription réussie !
+                            </Alert>
+                        )}
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            disableElevation
+                            sx={{ marginTop: '20px' }}
+                        >
+                            {isRegisterLoading === true ? 'Chargement...' : 'Inscription'}
+                        </Button>
+                    </Box>
+                    <Box sx={{ mt: 2 }}>
+                        <Typography variant="body2" sx={{ color: alpha(theme.palette.common.white, 0.55) }}>
+                                Vous avez déjà un compte ?{' '}
+                            <Link component={RouterLink} to="/login" color='secondary' underline='none'>
+                                    Connectez-vous
+                            </Link>
+                        </Typography>
+                    </Box>
+                </ThemeProvider>
+            </section>
+        </main>
     );
 }
 

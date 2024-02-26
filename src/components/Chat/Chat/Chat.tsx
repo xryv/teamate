@@ -19,8 +19,8 @@ export function Chat(): JSX.Element {
     const [listMessages, setListMessages] = useState<Message[]>([]);
     const [editingId, setEditingId] = useState<string | null>(null);
     const [toggleUser, setToggleUser] = useState<boolean>(false);
-    const { userChats, isUserChatsLoading, isUserChatsError } = useContext(ChatContext);
-    console.log('userChats', userChats);
+    // const { userChats, isUserChatsLoading, isUserChatsError } = useContext(ChatContext);
+    // console.log('userChats', userChats);
 
     // const [messageReceive, setMessageReceive] = useState<string>('');
 
