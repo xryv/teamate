@@ -1,0 +1,29 @@
+Véronique 
+
+Gestion des salons et des jeux – un salon regroupe des joueurs pour jouer 
+
+Seule la gestion des salons est demandée pour l’ECF. 
+
+ 
+
+Créer un salon : nom, un jeu, tranche nb joueur, micro connecté (oui/non), message du salon, tranche âge 
+
+Optionnel :  langue 
+
+Lister les salons : A partir de l’écran gestionSalon, on a une fonctionnalité pour rejoindre un salon avec possibilité de recherche par âge, par micro ... => écran de liste des salons 
+
+Optionnel : recherche par langue ou par nb de joueurs 
+
+Supprimer un salon – admin - même écran que lister les salons avec gestion pour rôle pour savoir si on affiche ou pas le bouton de suppression. 
+
+Modifier un salon : on peut modifier micro, nom 
+
+
+Nous avons choisi Tailwind pour avoir la même librairie. je n'ai pas encore pu faire ce que j'ai envie de faire car après demande à des amis dev ils m'ont dit que je pourrais
+réaliser la fin du projet avec du PHP. J'en suis toujours a essayé de comprendre React qui me permettra un acce d'amelioration. 
+J'ai quand même réaliser la modification et les possibilités de choisir age et nombre de joueurs par contre il va falloir que ces données soient sauvegarder pour me permettre
+de creer une nouvelle page avec toutes ces données. 
+
+A faire  chercher comment réaliser ce prochain acce d'amelioration 
+
+Tout le projet est sur github et à chaque amelioration je l'enregistre 

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    // Écoutez les changements de la barre de défilement
+   
     ageSlider.addEventListener("input", function () {
         // Mettre à jour le contenu de l'élément span avec la valeur de la barre de défilement
         ageSliderValue.textContent = ageSlider.value;
