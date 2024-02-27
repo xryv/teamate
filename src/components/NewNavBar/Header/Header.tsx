@@ -4,51 +4,7 @@ import { Menu as MenuIcon, Search as SearchIcon, AccountCircle, Mail as MailIcon
 import LogoTeamateIcon from '../../Logo/LogoTeamateIcon';
 import { useAuthContext } from '../../../context/AuthContext';
 import customTheme from '../../../styles/customTheme';
-
-const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
-    color: '#cbd5e1',
-    border: '1px solid #cbd5e1',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: 'transparent',
-    '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 0.15),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: theme.spacing(2),
-    width: 'auto',
-    [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(3),
-        width: 'auto',
-    },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: 'inherit',
-    '& .MuiInputBase-input': {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-        transition: theme.transitions.create('width'),
-        width: '0ch',
-        [theme.breakpoints.up('sm')]: {
-            width: '10ch',
-        },
-        [theme.breakpoints.up('md')]: {
-            width: '20ch',
-        },
-    },
-}));
+import { SearchBar, SearchBarInDialog } from '../../SearchBar/SearchBar';
 
 const DialogSearch = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -61,7 +17,6 @@ const DialogSearch = styled('div')(({ theme }) => ({
     },
     width: '100%', // make the width 100%
 }));
-
 const DialogSearchIconWrapper = styled('div')(({ theme }) => ({
     padding: theme.spacing(0, 2),
     height: '100%',
@@ -87,6 +42,7 @@ const pages = ['Accueil', 'Événement', 'Calendrier'];
 
 export default function Header(): JSX.Element {
     const { logoutUser } = useAuthContext();
+    const { user } = useAuthContext(['user']);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
         null,
@@ -158,6 +114,7 @@ export default function Header(): JSX.Element {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
+            <MenuItem onClick={handleMenuClose}>{user?.username}</MenuItem>
             <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
             <MenuItem onClick={() => {
                 handleMenuClose();
@@ -309,16 +266,7 @@ export default function Header(): JSX.Element {
                             >
                             eamate
                             </Link>
-                            <Search>
-                                <SearchIconWrapper>
-                                    <SearchIcon />
-                                </SearchIconWrapper>
-                                <StyledInputBase
-                                    placeholder="Search…"
-                                    inputProps={{ 'aria-label': 'search' }}
-                                    onClick={handleOpen}
-                                />
-                            </Search>
+                            <SearchBar placeholder="Search" onClick={handleOpen} inputProps={{ 'aria-label': 'search' }} />
                             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                                 <IconButton
                                     size="large"
@@ -367,30 +315,12 @@ export default function Header(): JSX.Element {
                     {renderMobileMenu}
                     {renderMenu}
                 </Box>
-                <Dialog fullWidth open={open} onClose={handleClose} sx={{
-                    '& .MuiDialog-paper': {
-                        bgcolor: 'transparent', // change the background color
-                        color: alpha(theme.palette.common.white, 0.95), // change the text color
-                        borderRadius: '.5rem',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    },
-                }}>
-                    <DialogSearch>
-                        <DialogSearchIconWrapper>
-                            <SearchIcon />
-                        </DialogSearchIconWrapper>
-                        <DialogStyledInputBase
-                            placeholder="Search…"
-                            inputProps={{ 'aria-label': 'search' }}
-                            onChange={handleSearchChange}
-                            value={search}
-                            multiline
-                            maxRows={5}
-                        />
-                    </DialogSearch>
-                </Dialog>
+                <SearchBarInDialog
+                    placeholder="Search…"
+                    inputProps={{ 'aria-label': 'search' }}
+                    onClose={handleClose}
+                    open={open}
+                ></SearchBarInDialog>
             </ThemeProvider>
         </>
     );

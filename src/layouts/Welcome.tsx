@@ -57,7 +57,7 @@ export default function Welcome(): JSX.Element {
                 </Button>
                 <RouterLink to="/login">
                     <StyledBox>
-                        Inscrivez-vous !
+                        Signup !
                     </StyledBox>
                 </RouterLink>
 

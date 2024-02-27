@@ -163,7 +163,7 @@ function App(): JSX.Element {
                     <Box sx={{ mt: 2 }}>
                         <Typography variant="body2" sx={{ color: alpha(theme.palette.common.white, 0.55) }}>
                             Vous êtes nouveau ?{' '}
-                            <Link component={RouterLink} to="/register" color='secondary' underline='none'>
+                            <Link component={RouterLink} to="/register" color='secondary' underline='none' sx={{ fontWeight: 700 }}>
                                 Inscrivez-vous !
                             </Link>
                         </Typography>

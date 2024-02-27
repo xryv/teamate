@@ -1,8 +1,7 @@
-import { type FormEvent, useState, type MouseEventHandler, type ChangeEvent, type SetStateAction, useEffect, useContext } from 'react';
+import { type FormEvent, useState, type MouseEventHandler, type ChangeEvent, type SetStateAction } from 'react';
 import { ChatList } from '../ChatList/ChatList';
 import { ChatBar } from '../ChatBar/ChatBar';
 // import { ToggleUser } from '../ToggleUser/ToggleUser';
-import { ChatContext } from '../../../context/ChatContext';
 // import { io } from 'socket.io-client';
 
 interface Message {
@@ -19,8 +18,6 @@ export function Chat(): JSX.Element {
     const [listMessages, setListMessages] = useState<Message[]>([]);
     const [editingId, setEditingId] = useState<string | null>(null);
     const [toggleUser, setToggleUser] = useState<boolean>(false);
-    // const { userChats, isUserChatsLoading, isUserChatsError } = useContext(ChatContext);
-    // console.log('userChats', userChats);
 
     // const [messageReceive, setMessageReceive] = useState<string>('');
 

@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { ArrowLeftCircle, ArrowRightCircle } from 'lucide-react';
-import { Accordion, AccordionDetails, AccordionSummary, Box, InputBase, ThemeProvider, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Box, InputBase, LinearProgress, ThemeProvider, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled, alpha } from '@mui/material/styles';
@@ -11,6 +11,10 @@ import Header from '../components/NewNavBar/Header/Header';
 import { game } from '../data/ulListNavbar';
 import customTheme from '../styles/customTheme';
 import profil from '../assets/profil.png';
+import { ChatContext } from '../context/ChatContext';
+import { useAuthContext } from '../context/AuthContext';
+import { UserChat } from '../components/Chat/User/UserChat';
+import { PotentialChats } from '../components/Chat/User/PotentialChats';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -86,6 +90,8 @@ const accordionInAccordion = [
 
 const NewPages = (): JSX.Element => {
     const [open, setOpen] = useState(false);
+    const { user } = useAuthContext(['user']);
+    const { userChats, isUserChatsLoading, userChatsError } = useContext(ChatContext);
 
     const toggleDrawer = (newOpen: boolean) => () => {
         setOpen(newOpen);
@@ -95,6 +101,9 @@ const NewPages = (): JSX.Element => {
             <ThemeProvider theme={customTheme} >
                 <div className="flex flex-col flex-grow relative bg-gradient overflow-hidden" id="786:1948">
                     <Header />
+                    <Box sx={{ width: isUserChatsLoading ? '100%' : '0px' }}>
+                        <LinearProgress color='warning' />
+                    </Box>
                     <Box sx={{ display: 'flex' }}>
                         <Box sx={{ width: open ? '40%' : '0px' }} role="show" className="flex flex-col flex-shrink-0 relative items-start gap-4 text-slate-300 bg-transparant-50 max-h-screen overflow-y-auto duration-300 ease-linear transition-all" id="792:2151" >
                             <Typography variant="h1" sx={{ fontSize: '1.125rem', lineHeight: '1.75rem', p: 2 }}>
@@ -126,6 +135,16 @@ const NewPages = (): JSX.Element => {
                                 </Accordion>
 
                             ))}
+                            {userChats.map((chat, index) => {
+                                return (
+                                    <UserChat chat={chat} user={user} />
+                                );
+                            })}
+                            <Typography variant="h2" sx={{ fontSize: '1.125rem', lineHeight: '1.75rem', p: 2 }}>
+                                Mes salons :
+                            </Typography>
+                            <PotentialChats />
+
                             {accordionInAccordion.map((accordion) => (
                                 <Accordion sx={{ bgcolor: 'transparent', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.5)', width: '100%' }} key={accordion.id} >
                                     <AccordionSummary

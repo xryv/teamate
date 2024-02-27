@@ -1,15 +1,19 @@
 import { type SetStateAction } from 'react';
 
 export interface User {
+    _id: string
     username: string
     email: string
     password: string
+    token: string
 }
 
 export interface RegisterInfo {
+    _id: string
     username: string
     email: string
     password: string
+    token: string
 }
 
 export interface AuthContextInterface {

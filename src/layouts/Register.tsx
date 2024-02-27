@@ -175,7 +175,7 @@ function RegisterPage(): JSX.Element {
                     <Box sx={{ mt: 2 }}>
                         <Typography variant="body2" sx={{ color: alpha(theme.palette.common.white, 0.55) }}>
                                 Vous avez déjà un compte ?{' '}
-                            <Link component={RouterLink} to="/login" color='secondary' underline='none'>
+                            <Link component={RouterLink} to="/login" color='secondary' underline='none' sx={{ fontWeight: 700 }}>
                                     Connectez-vous
                             </Link>
                         </Typography>

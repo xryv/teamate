@@ -30,7 +30,9 @@ const findUserChats = async (req, res) => {
     const userId = req.params.userId;
 
     try {
-        const chats = await ChatModel.find({ members: { $in: [userId] } });
+        const chats = await ChatModel.find({
+            members: { $in: [userId] },
+        });
         res.status(200).json(chats);
     } catch (error) {
         res.status(500).json(error);
@@ -46,11 +48,7 @@ const findChat = async (req, res) => {
         const chat = await ChatModel.findOne({
             members: { $all: [firstId, secondId] },
         });
-        // enlever le if si sa creer erreur et le 404
-        if (chat) {
-            return res.status(200).json(chat);
-        }
-        res.status(404).json('Chat not found');
+        return res.status(200).json(chat);
     } catch (error) {
         res.status(500).json(error);
     }

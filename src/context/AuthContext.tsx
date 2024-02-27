@@ -76,9 +76,11 @@ export const AuthContextProvider = ({ children }: { children: ReactElement }): J
         }
 
         const newUser: User = {
+            _id: response._id,
             username: response.username,
             email: response.email,
             password: response.password,
+            token: response.token,
         };
 
         localStorage.setItem('User', JSON.stringify(newUser));
@@ -102,9 +104,11 @@ export const AuthContextProvider = ({ children }: { children: ReactElement }): J
         }
 
         const newUser: User = {
+            _id: response._id,
             username: response.username,
             email: response.email,
             password: response.password,
+            token: response.token,
         };
 
         localStorage.setItem('User', JSON.stringify(newUser));

@@ -8,4 +8,3 @@ router.get('/:userId', findUserChats);
 router.get('/find/:firstId/:secondId', findChat);
 
 export default router;
-// Path: server/Controllers/chatController.js
