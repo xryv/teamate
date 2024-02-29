@@ -21,13 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
    
     ageSlider.addEventListener("input", function () {
-        // Mettre à jour le contenu de l'élément span avec la valeur de la barre de défilement
+        
         ageSliderValue.textContent = ageSlider.value;
-        // Sélection de la slide bar et de l'élément où afficher la valeur
+ 
         const playerSlider = document.getElementById("playerSlider");
         const sliderValue = document.getElementById("sliderValue");
 
-        // Événement input pour détecter les changements en temps réel sur la slide bar
+  
         playerSlider.addEventListener("input", function () {
             // Mettre à jour la valeur affichée
             sliderValue.textContent = playerSlider.value;
