@@ -1,11 +1,12 @@
-import { Avatar, List, ListItem, ListItemText, Typography, ListItemAvatar, Badge, ThemeProvider, styled, Box, Stack } from '@mui/material';
+import { Avatar, Typography, Badge, ThemeProvider, styled, Box, Stack } from '@mui/material';
 import customTheme from '../../../styles/customTheme';
-import { useFetchRecipientUser } from '../../../hooks/useFetchRecipient';
-import { Fragment } from 'react';
+import { type UseFetchRecipientUserProps, useFetchRecipientUser } from '../../../hooks/useFetchRecipient';
+import { useChatContext } from '../../../context/ChatContext';
+import { type User } from '../../../context/AuthContextProps';
 
-const StyledBadge = styled(Badge)(({ theme }) => ({
+const StyledBadge = styled(Badge)(({ theme, onlineUsers }: { theme: any, onlineUsers: User[] | null }) => ({
     '& .MuiBadge-badge': {
-        backgroundColor: '#44b700',
+        backgroundColor: onlineUsers != null && onlineUsers.length > 0 ? '#44b700' : '#f44336',
         color: '#44b700',
         boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
         '&::after': {
@@ -32,9 +33,19 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
     },
 }));
 
-export const UserChat = ({ chat, user }) => {
-    const { recipientUser } = useFetchRecipientUser(chat, user);
+interface UserChatProps extends UseFetchRecipientUserProps {
+    onClick: () => void
+    onlineUsers: User[] | null | undefined
+}
+export const UserChat = ({ chat, onClick, user, onlineUsers }: UserChatProps): JSX.Element => {
+    const { recipientUser } = useFetchRecipientUser({ chat, user });
+    const { updateCurrentChat } = useChatContext(['updateCurrentChat']);
+    // console.log('onlineUsers', onlineUsers);
+    // console.log('recipientUser', recipientUser);
 
+    if (updateCurrentChat === undefined) {
+        throw new Error('updateCurrentChat is undefined');
+    }
     return (
         <>
             <ThemeProvider theme={customTheme}>
@@ -46,33 +57,42 @@ export const UserChat = ({ chat, user }) => {
                         '&:hover': {
                             bgcolor: 'noirTransparent.light',
                         },
+                        cursor: 'pointer',
+                    }}
+                    onClick={() => {
+                        updateCurrentChat(chat);
+                        onClick();
                     }}
                 >
                     <Stack
                         direction="row"
                         alignItems="center"
                         justifyContent="space-between"
+                        p={1}
+                        spacing={3}
                     >
-                        <Stack direction='row' spacing={2}>
+                        <Stack direction='row' maxWidth={'50%'} spacing={2}>
                             <Stack alignItems="center">
                                 <StyledBadge
+                                    theme={customTheme}
+                                    onlineUsers={(onlineUsers != null && onlineUsers.some((u: User) => u?.userId === (recipientUser?._id ?? ''))) ? onlineUsers : null}
                                     overlap="circular"
                                     anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                                     variant="dot"
                                 >
                                     <Avatar
                                         alt={recipientUser?.username}
-                                        src={recipientUser?.profilePicture}
+                                        // src={recipientUser?.profilePicture}
                                     />
                                 </StyledBadge>
                             </Stack>
-                            <Stack spacing={0.3}>
-                                <Typography variant='subtitle2'>{recipientUser?.username}</Typography>
+                            <Stack maxWidth={'100%'} spacing={0.3}>
+                                <Typography noWrap variant='subtitle2'>{recipientUser?.username}</Typography>
                                 {/* <Typography variant='body2'>{chat?.lastMessage?.message}</Typography> */}
-                                <Typography variant='caption'>last message</Typography>
+                                <Typography noWrap variant='caption'>last message</Typography>
                             </Stack>
                         </Stack>
-                        <Stack direction='column' spacing={2} alignItems={'center'} p={1} >
+                        <Stack direction='column' alignItems={'center'} p={1} >
                             <Typography
                                 variant='caption'
                                 sx={{
@@ -84,8 +104,19 @@ export const UserChat = ({ chat, user }) => {
                             <Badge
                                 // badgeContent={chat?.unreadMessages}
                                 badgeContent={2}
-                                color="primary"
-                                overlap='rectangular'
+                                color="error"
+                                sx={{
+                                    '& .MuiBadge-colorWarning': {
+                                        backgroundColor: '#FF7300',
+                                        color: '#FFFFE6', // #FFFFE6
+                                    },
+                                    '& .MuiBadge-badge': {
+                                        fontWeight: 'bold',
+                                        position: 'static',
+                                        transform: 'none',
+                                    },
+
+                                }}
                             />
 
                         </Stack>

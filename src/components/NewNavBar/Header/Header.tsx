@@ -1,42 +1,11 @@
 import * as React from 'react';
-import { styled, alpha, AppBar, Box, Toolbar, IconButton, Typography, InputBase, Badge, MenuItem, Menu, Button, Dialog, Link, ThemeProvider, useMediaQuery, useTheme } from '@mui/material';
-import { Menu as MenuIcon, Search as SearchIcon, AccountCircle, Mail as MailIcon, Notifications as NotificationsIcon, MoreVert as MoreIcon } from '@mui/icons-material';
+import { AppBar, Box, Toolbar, Typography, Badge, MenuItem, Menu, Button, Link, ThemeProvider, useMediaQuery, useTheme, Stack, Divider } from '@mui/material';
+import { AccountCircle, Mail as MailIcon, Notifications as NotificationsIcon, MoreVert as MoreIcon } from '@mui/icons-material';
 import LogoTeamateIcon from '../../Logo/LogoTeamateIcon';
 import { useAuthContext } from '../../../context/AuthContext';
 import customTheme from '../../../styles/customTheme';
-import { SearchBar, SearchBarInDialog } from '../../SearchBar/SearchBar';
-
-const DialogSearch = styled('div')(({ theme }) => ({
-    position: 'relative',
-    // borderRadius: theme.shape.borderRadius,
-    borderRadius: '.5rem',
-    border: '1px solid #cbd5e1',
-    backgroundColor: alpha(theme.palette.grey[800], 0.15),
-    '&:hover': {
-        backgroundColor: alpha(theme.palette.grey[900], 0.25),
-    },
-    width: '100%', // make the width 100%
-}));
-const DialogSearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-}));
-
-const DialogStyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: 'inherit',
-    '& .MuiInputBase-input': {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-        transition: theme.transitions.create('width'),
-        width: '100%', // make the width 100%
-    },
-}));
+import { SearchBar, SearchBarInDialog, SearchIconOnly, StyledIconButton } from '../../SearchBar/SearchBar';
+import { BurgerIconUI } from '../../Button/Button';
 
 const pages = ['Accueil', 'Événement', 'Calendrier'];
 
@@ -48,7 +17,10 @@ export default function Header(): JSX.Element {
         null,
     );
     const [open, setOpen] = React.useState(false);
-    const [search, setSearch] = React.useState('');
+    const [isHovered, setIsHovered] = React.useState(false);
+    const [hoveredPage, setHoveredPage] = React.useState<string | null>(null);
+
+    const isMdUp = useMediaQuery(customTheme.breakpoints.up('sm'));
 
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
         React.useState<null | HTMLElement>(null);
@@ -56,9 +28,6 @@ export default function Header(): JSX.Element {
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        setSearch(event.target.value);
-    };
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -78,6 +47,7 @@ export default function Header(): JSX.Element {
 
     const handleCloseNavMenu = (): void => {
         setAnchorElNav(null);
+        setIsHovered(false);
     };
 
     const handleMobileMenuClose = (): void => {
@@ -113,6 +83,8 @@ export default function Header(): JSX.Element {
             }}
             open={isMenuOpen}
             onClose={handleMenuClose}
+            sx={{ '& .MuiMenu-paper': { backgroundColor: customTheme.palette.slate[300] } }}
+
         >
             <MenuItem onClick={handleMenuClose}>{user?.username}</MenuItem>
             <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
@@ -141,42 +113,43 @@ export default function Header(): JSX.Element {
             }}
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
+            sx={{ '& .MuiMenu-paper': { backgroundColor: customTheme.palette.slate[300] } }}
         >
             <MenuItem>
-                <IconButton
+                <StyledIconButton
                     size="large"
                     ria-label="show 4 new mails"
-                    style={{ color: customTheme.palette.bluePV.dark }}
-
+                    menuStyle={true}
                 >
                     <Badge badgeContent={4} color="error">
                         <MailIcon />
                     </Badge>
-                </IconButton>
+                </StyledIconButton>
                 <p>Messages</p>
             </MenuItem>
             <MenuItem>
-                <IconButton
+                <StyledIconButton
                     size="large"
                     aria-label="show 17 new notifications"
-                    style={{ color: customTheme.palette.bluePV.dark }}
+                    menuStyle={true}
                 >
                     <Badge badgeContent={17} color="error">
                         <NotificationsIcon />
                     </Badge>
-                </IconButton>
+                </StyledIconButton>
                 <p>Notifications</p>
             </MenuItem>
             <MenuItem onClick={handleProfileMenuOpen}>
-                <IconButton
+                <StyledIconButton
                     size="large"
                     aria-label="account of current user"
                     aria-controls="primary-search-account-menu"
                     aria-haspopup="true"
-                    style={{ color: customTheme.palette.bluePV.dark }}
+                    menuStyle={true}
+
                 >
                     <AccountCircle />
-                </IconButton>
+                </StyledIconButton>
                 <p>Mon Compte</p>
             </MenuItem>
         </Menu>
@@ -185,19 +158,19 @@ export default function Header(): JSX.Element {
     return (
         <>
             <ThemeProvider theme={theme}>
-                <Box sx={{ flexGrow: 1 }}>
+                <Box sx={{ flexGrow: 1, height: 68.5 }}>
                     <AppBar position="static" color="transparent">
                         <Toolbar>
                             <Box sx={{ flexGrow: 1, py: 1, display: { xs: 'flex', md: 'none' } }}>
-                                <IconButton
-                                    size="large"
-                                    edge="start"
+                                <BurgerIconUI
+                                    size='large'
                                     aria-label="open drawer"
-                                    onClick={handleOpenNavMenu}
-                                    style={{ color: customTheme.palette.slate[300] }}
-                                >
-                                    <MenuIcon />
-                                </IconButton>
+                                    isOpen={isHovered}
+                                    onClick={(event) => {
+                                        setIsHovered(!isHovered);
+                                        handleOpenNavMenu(event);
+                                    }}
+                                />
                                 <Menu
                                     id="menu-appbar"
                                     anchorEl={anchorElNav}
@@ -214,6 +187,8 @@ export default function Header(): JSX.Element {
                                     onClose={handleCloseNavMenu}
                                     sx={{
                                         display: { xs: 'block', md: 'none' },
+                                        '& .MuiMenu-paper': { backgroundColor: customTheme.palette.slate[300] },
+
                                     }}
                                 >
                                     {pages.map((page) => (
@@ -225,17 +200,27 @@ export default function Header(): JSX.Element {
                             </Box>
                             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                                 {pages.map((page) => (
-                                    <Button
-                                        key={page}
-                                        onClick={handleCloseNavMenu}
-                                        sx={{ my: 2, color: 'white', display: 'block' }}
-                                    >
-                                        {page}
-                                    </Button>
+                                    <Stack key={page} sx={{ my: 2 }}>
+                                        <Button
+                                            onClick={handleCloseNavMenu}
+                                            sx={{ color: customTheme.palette.slate[200], display: 'block', '&:hover': { color: customTheme.palette.slate[300] } }}
+                                            onMouseEnter={() => { setHoveredPage(page); }}
+                                            onMouseLeave={() => { setHoveredPage(null); }}
+                                        >
+                                            {page}
+                                        </Button>
+                                        <Divider sx={{
+                                            width: hoveredPage === page ? '100%' : '0%',
+                                            backgroundColor: customTheme.palette.common.white,
+                                            height: '1px',
+                                            transition: 'width 0.5s',
+                                        }} />
+                                    </Stack>
                                 ))}
                             </Box>
                             <LogoTeamateIcon
                                 id="md"
+                                href='/'
                                 sx={{
                                     width: '3rem',
                                     height: '100%',
@@ -247,12 +232,11 @@ export default function Header(): JSX.Element {
                                 noWrap
                                 href="/"
                                 sx={{
-                                    flexGrow: 1,
                                     fontWeight: 700,
                                     letterSpacing: '.1rem',
                                     color: 'transparent',
                                     textDecoration: 'none',
-                                    background: 'linear-gradient(90deg, #97296C, #E7378B, #F4BE5C)',
+                                    background: 'linear-gradient(90deg, #E9695B, #E7378B, #F4BE5C)',
                                     backgroundSize: '200% auto',
                                     WebkitBackgroundClip: 'text',
                                     backgroundClip: 'text',
@@ -264,51 +248,48 @@ export default function Header(): JSX.Element {
                                     },
                                 }}
                             >
-                            eamate
+                                eamate
                             </Link>
-                            <SearchBar placeholder="Search" onClick={handleOpen} inputProps={{ 'aria-label': 'search' }} />
+                            <Box sx={{ flexGrow: 1 }} />
+                            {isMdUp ? (<SearchBar placeholder="Search" inputProps={{ 'aria-label': 'search' }}></SearchBar>) : (<SearchIconOnly onClick={handleOpen} />)}
                             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                                <IconButton
+                                <StyledIconButton
                                     size="large"
                                     aria-label="show 4 new mails"
-                                    style={{ color: customTheme.palette.slate[300] }}
                                 >
                                     <Badge badgeContent={4} color="error">
                                         <MailIcon />
                                     </Badge>
-                                </IconButton>
-                                <IconButton
+                                </StyledIconButton>
+                                <StyledIconButton
                                     size="large"
                                     aria-label="show 17 new notifications"
-                                    style={{ color: customTheme.palette.slate[300] }}
                                 >
                                     <Badge badgeContent={17} color="error">
                                         <NotificationsIcon />
                                     </Badge>
-                                </IconButton>
-                                <IconButton
+                                </StyledIconButton>
+                                <StyledIconButton
                                     size="large"
                                     edge="end"
                                     aria-label="account of current user"
                                     aria-controls={menuId}
                                     aria-haspopup="true"
                                     onClick={handleProfileMenuOpen}
-                                    style={{ color: customTheme.palette.slate[300] }}
                                 >
                                     <AccountCircle />
-                                </IconButton>
+                                </StyledIconButton>
                             </Box>
                             <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-                                <IconButton
+                                <StyledIconButton
                                     size="large"
                                     aria-label="show more"
                                     aria-controls={mobileMenuId}
                                     aria-haspopup="true"
                                     onClick={handleMobileMenuOpen}
-                                    style={{ color: customTheme.palette.slate[300] }}
                                 >
                                     <MoreIcon />
-                                </IconButton>
+                                </StyledIconButton>
                             </Box>
                         </Toolbar>
                     </AppBar>

@@ -78,11 +78,11 @@ function App(): JSX.Element {
         setPasswordError('');
 
         // Vérifier tous les champs
-        if (loginInfo.email === '') {
+        if (loginInfo?.email === '') {
             setEmailError('Veuillez remplir ce champ');
         }
 
-        if (loginInfo.password === '') {
+        if (loginInfo?.password === '') {
             setPasswordError('Veuillez remplir ce champ');
         }
 

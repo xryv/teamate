@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 export const StyleChatBar = styled.form`
-    ${tw`relative flex flex-row items-center w-[95%] h-fit mb-1 mx-auto bg-transparent `}
+    ${tw`relative flex flex-row items-center w-full h-fit mb-1 bg-transparent `}
         label {
             ${tw`hidden`};
         }
@@ -19,10 +19,8 @@ export const StyleChatBar = styled.form`
         button {
             ${tw`absolute right-0 w-10 h-full rounded-full`}
             svg {
-                ${tw`w-6 h-6 opacity-50`}
-                &:hover {
-                    ${tw`opacity-100`}
-                }
+                ${tw`w-6 h-6 opacity-100`}
+
             }
         }
         .emoji-picker {

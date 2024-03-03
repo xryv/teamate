@@ -1,8 +1,9 @@
 import { Mic, Paperclip, SendHorizontal, Smile } from 'lucide-react';
-import { StyleChatBar } from './StyleChatBar';
-import { ButtonOrLink } from '../../Button/Button';
 import { type ChangeEvent, useState, useRef, type FormEvent } from 'react';
 import Picker from '@emoji-mart/react';
+import { StyledIconButton } from '../../SearchBar/SearchBar';
+import { Box, Stack, TextField, alpha } from '@mui/material';
+import customTheme from '../../../styles/customTheme';
 
 interface ChatBarProps {
     placeholder: string
@@ -23,40 +24,91 @@ export function ChatBar({ placeholder, onClick, value, name, onChange, onEmojiSe
     };
 
     return (
-        <StyleChatBar onSubmit={onsubmit}>
-            <label htmlFor="chatInput" className='hidden'>Message</label>
-            <input autoFocus id="chatInput" type="text" placeholder={placeholder} value={value} name={name} onChange={onChange} autoComplete="off" />
-            <ButtonOrLink onClick={() => { setTimeout(() => { setShowEmojis(!showEmojis); }, 0); }} $size='smiley' $variant='ghostHovered' >
-                <Smile />
-            </ButtonOrLink>
+        <Stack direction={'row'} component={'form'} onSubmit={onsubmit}>
+            {showEmojis && <>
+                <Box position={'absolute'} bottom={64} className='emoji-picker'>
+                    <Picker onClickOutside={() => { setShowEmojis(!showEmojis); }} onEmojiSelect={onEmojiSelect} />
+                </Box>
+            </>}
+            <TextField
+                id="chatInput"
+                // label={placeholder}
+                // hiddenLabel={true}
+                type="text"
+                placeholder={placeholder}
+                value={value}
+                name={name}
+                onChange={onChange}
+                onKeyDown={(ev) => {
+                    if (ev.key === 'Enter') {
+                        onsubmit(ev as unknown as FormEvent<HTMLFormElement>);
+                        ev.preventDefault();
+                    }
+                }}
+                autoComplete="off"
+                size='small'
+                fullWidth
+                margin='none'
+                multiline
+                maxRows={2}
+                variant='filled'
+                color='warning'
+                sx={{
+                    '& .MuiFilledInput-underline:before': {
+                        borderBottomColor: alpha(customTheme.palette.common.white, 0.10),
+                    },
+                    '& .MuiInputBase-root': {
+                        padding: '0.25rem ',
+                        color: alpha(customTheme.palette.common.white, 0.95),
+                        backgroundColor: alpha(customTheme.palette.common.white, 0.10),
+                        backdropFilter: 'blur(10rem)',
+                    },
+                    '& .MuiInputBase-input': {
+                        padding: '0.5rem 1rem',
+                    },
+
+                }}
+
+                InputProps={{
+                    startAdornment: (
+                        <Stack direction='row' alignItems={'flex-end'}>
+                            <StyledIconButton onClick={() => { setTimeout(() => { setShowEmojis(!showEmojis); }, 0); }} barStyle={true} >
+                                <Smile />
+                            </StyledIconButton>
+
+                            <StyledIconButton onClick={handlePaperclipClick} barStyle={true} >
+                                <Paperclip />
+                            </StyledIconButton>
+                        </Stack>
+                    ),
+                    endAdornment: (
+                        <Stack direction={'row'} alignItems={'flex-end'}>
+                            {value !== ''
+                                ? (
+                                    <>
+                                        <StyledIconButton type='submit' onClick={onClick} barStyle={true} >
+                                            <SendHorizontal />
+                                        </StyledIconButton>
+
+                                    </>
+                                )
+                                : (
+                                    <>
+
+                                        <StyledIconButton barStyle={true}>
+                                            <Mic />
+                                        </StyledIconButton>
+                                    </>
+                                )}
+                        </Stack>
+                    ),
+                }}
+            />
             <>
-                <ButtonOrLink onClick={handlePaperclipClick} $size='paperclip' $variant='ghostHovered' >
-                    <Paperclip />
-                </ButtonOrLink>
                 <label htmlFor="fileInput" className='hidden'>File</label>
                 <input ref={fileInputRef} onChange={onChange} id='fileInput' className='hidden' type="file" accept="image/*" />
             </>
-            {showEmojis && <>
-                <div className='emoji-picker'>
-                    <Picker onClickOutside={() => { setShowEmojis(!showEmojis); }} onEmojiSelect={onEmojiSelect} />
-                </div>
-            </>}
-            {value !== ''
-                ? (
-                    <>
 
-                        <ButtonOrLink onClick={onClick} $size='default' $variant='ghostHovered' isSubmit >
-                            <SendHorizontal />
-                        </ButtonOrLink>
-                    </>
-                )
-                : (
-                    <>
-                        <ButtonOrLink $size='mic' $variant='ghostHovered' >
-                            <Mic />
-                        </ButtonOrLink>
-                    </>
-                )}
-        </StyleChatBar>
+        </Stack>
     );
 }

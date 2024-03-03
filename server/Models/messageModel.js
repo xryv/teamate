@@ -4,6 +4,7 @@ const messageSchema = new mongoose.Schema({
     chatId: String,
     senderId: String,
     text: String,
+    read: Boolean,
 }, { timestamps: true });
 
 const MessageModel = mongoose.model('Message', messageSchema);

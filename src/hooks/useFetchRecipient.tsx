@@ -1,35 +1,36 @@
 import { useEffect, useState } from 'react';
 import { baseUrl, getRequest } from '../utils/services';
+import { type User, type Chat } from '../context/ChatContextProps';
 
-interface Chat {
-    members: string[]
+export interface UseFetchRecipientUserProps {
+    chat: Chat
+    user: User | null | undefined
 }
 
-interface User {
-    _id: string
-    // Ajoutez d'autres propriétés si nécessaire
+export interface UseFetchRecipientUserReturn {
+    recipientUser: User | null | undefined
 }
 
-export const useFetchRecipientUser = (chat: Chat, user: User) => {
-    const [recipientUser, setRecipientUser] = useState<any>(null);
-    const [error, setError] = useState<string | null | any>(null);
+export const useFetchRecipientUser = ({ chat, user }: UseFetchRecipientUserProps): UseFetchRecipientUserReturn => {
+    const [recipientUser, setRecipientUser] = useState<User | null>(null);
+    const [, setError] = useState<string | null>(null);
 
     const recipientId = chat?.members?.find((id: string) => id !== user?._id);
 
     useEffect(() => {
         const getUser = async (): Promise<any> => {
-            if (!recipientId) return null;
+            if (recipientId === undefined) return null;
 
             const response = await getRequest(`${baseUrl}/users/find/${recipientId}`);
 
-            if (response.error) {
-                setError(response);
+            if (response.error === true) {
+                setError(response as string);
                 return;
             }
-            setRecipientUser(response);
+            setRecipientUser(response as User);
         };
-        getUser();
-    }, []);
+        void getUser();
+    }, [recipientId]);
 
     return { recipientUser };
 };

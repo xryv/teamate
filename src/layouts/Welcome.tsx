@@ -1,4 +1,4 @@
-import { styled, Link as MuiLink } from '@mui/material';
+import { styled } from '@mui/material';
 import { Box } from '@mui/system';
 
 import { Button } from '../components/ui/moving-border';

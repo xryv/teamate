@@ -5,9 +5,9 @@ import { type LinkProps } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const BurgerVariantStyles = {
-    top: tw`-translate-y-2`,
+    top: tw`-translate-y-1.5`,
     center: tw``,
-    bottom: tw`translate-y-2`,
+    bottom: tw`translate-y-1.5`,
     'top-active': tw`rotate-[135deg]`,
     'center-active': tw`transition-opacity duration-100 opacity-0`,
     'bottom-active': tw`-rotate-[135deg]`,
@@ -61,7 +61,7 @@ export const StyledBurgerButton = styled.button`
 `;
 
 export const StyledBurgerButtonSpan = styled.span<StyledBurgerButtonSpanProps>`
-    ${tw`absolute block w-8 h-0.5 bg-slate-100 transition-all duration-300 ease-out `};
+    ${tw`absolute block w-5 h-0.5 bg-slate-100 transition-all duration-300 ease-out `};
     ${({ $variant }) => BurgerVariantStyles[$variant]};
 `;
 
