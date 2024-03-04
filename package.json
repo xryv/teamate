@@ -30,7 +30,7 @@
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.324.0",
     "mongodb": "^6.3.0",
-    "mongoose": "^8.1.2",
+    "mongoose": "^8.2.0",
     "nodemon": "^3.0.3",
     "postcss-import": "^16.0.0",
     "react": "^18.0.0",

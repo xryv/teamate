@@ -11,13 +11,13 @@ const io = new Server(5001, {
 let onlineUsers = [];
 
 io.on('connection', (socket) => {
-    console.log('a user connected', socket.id);
+    // console.log('a user connected', socket.id);
     // écouté la connexion
     socket.on('addNewUser', (userId) => {
         if (!onlineUsers.some((user) => user.userId === userId)) {
             onlineUsers.push({ userId, socketId: socket.id });
         }
-        console.log('onlineUsers', onlineUsers);
+        // console.log('onlineUsers', onlineUsers);
         io.emit('getOnlineUsers', onlineUsers);
     });
 
@@ -29,8 +29,25 @@ io.on('connection', (socket) => {
         }
     });
 
+    // edit message
+    socket.on('editMessage', (editedMessage) => {
+        const { messageId, newText, recipientId } = editedMessage;
+        const user = onlineUsers.find((u) => u.userId === recipientId);
+        if (user !== undefined) {
+            io.to(user.socketId).emit('messageEdited', { messageId, newText });
+        }
+    });
+
+    // delete message
+    socket.on('deleteMessage', (deletedMessage) => {
+        const { messageId, recipientId } = deletedMessage;
+        const user = onlineUsers.find((u) => u.userId === recipientId);
+        if (user !== undefined) {
+            io.to(user.socketId).emit('messageDeleted', messageId);
+        }
+    });
+
     socket.on('disconnect', () => {
-        console.log('user disconnected', socket.id);
         onlineUsers = onlineUsers.filter((user) => user.socketId !== socket.id);
         io.emit('getOnlineUsers', onlineUsers);
     });

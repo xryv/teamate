@@ -39,8 +39,6 @@ export const ChatContextProvider = ({ children, user }: ChatContextProviderProps
     const [onlineUsers, setOnlineUsers] = useState<User[]>([]);
     const [editMessageError, setEditMessageError] = useState<string | null>(null);
 
-    console.log('onlineUsers', onlineUsers);
-
     useEffect(() => {
         const newSocket = io('http://localhost:5001');
         setSocket(newSocket);
@@ -67,6 +65,40 @@ export const ChatContextProvider = ({ children, user }: ChatContextProviderProps
         }
     }, [newMessage]);
 
+    // Listen for message edits
+    useEffect(() => {
+        if (socket == null) return;
+
+        const handleEditMessage = (editedMessage: { messageId: string, newText: string }): void => {
+            setMessages((prevMessages) =>
+                prevMessages.map((message) =>
+                    message._id === editedMessage.messageId ? { ...message, text: editedMessage.newText } : message,
+                ),
+            );
+        };
+
+        socket.on('messageEdited', handleEditMessage);
+
+        return () => {
+            socket.off('messageEdited', handleEditMessage);
+        };
+    }, [socket, messages]);
+
+    // Listen for message deletions
+    useEffect(() => {
+        if (socket == null) return;
+
+        const handleDeleteMessage = (messageId: string): void => {
+            setMessages((prevMessages) => prevMessages.filter((message) => message._id !== messageId));
+        };
+
+        socket.on('messageDeleted', handleDeleteMessage);
+
+        return () => {
+            socket.off('messageDeleted', handleDeleteMessage);
+        };
+    }, [socket, messages]);
+
     // receive new message
     useEffect(() => {
         if (socket != null) {
@@ -83,6 +115,8 @@ export const ChatContextProvider = ({ children, user }: ChatContextProviderProps
             };
         }
     }, [socket, currentChat]);
+
+    //
 
     // Fetch potential chats
     useEffect(() => {
@@ -158,7 +192,6 @@ export const ChatContextProvider = ({ children, user }: ChatContextProviderProps
     const sendTextMessage = useCallback(async (textMessage: string, sender, currentChatId, setTextMessage) => {
         if (textMessage == null) return;
         if (currentChatId !== undefined) {
-            console.log('re');
             const response = await postRequest(
                 `${baseUrl}/messages`,
                 JSON.stringify({
@@ -183,6 +216,20 @@ export const ChatContextProvider = ({ children, user }: ChatContextProviderProps
         setCurrentChat(chat);
     }, []);
 
+    // Create chat
+    const createChat = useCallback(async (firstId, secondId) => {
+        const response = await postRequest(
+            `${baseUrl}/chats`,
+            JSON.stringify({
+                firstId, secondId,
+            }),
+        );
+        if (response.error === true) {
+            console.log('Error creating chat', response);
+        }
+        setUserChats((prev) => [...(prev ?? []), response as Chat]);
+    }, []);
+
     // Edit Message
     const editMessage = useCallback(async (messageId: string, newText: string) => {
         const response = await postRequest(
@@ -202,24 +249,26 @@ export const ChatContextProvider = ({ children, user }: ChatContextProviderProps
         });
     }, []);
 
-    // Create chat
-    const createChat = useCallback(async (firstId, secondId) => {
-        const response = await postRequest(
-            `${baseUrl}/chats`,
-            JSON.stringify({
-                firstId, secondId,
-            }),
+    // Delete Message
+    const deleteMessage = useCallback(async (messageId: string) => {
+        const response = await fetch(
+            `${baseUrl}/messages/${messageId}`,
+            {
+                method: 'DELETE',
+            },
         );
-        if (response.error === true) {
-            console.log('Error creating chat', response);
+        if (!response.ok) {
+            console.log('Error deleting message', response);
+            return;
         }
-        setUserChats((prev) => [...(prev ?? []), response as Chat]);
+        setMessages((prev) => {
+            if (prev === null) return prev;
+            return prev.filter((message) => message._id !== messageId);
+        });
     }, []);
 
-    // delete chat
-
     return (
-        <ChatContext.Provider value={{ userChats, isUserChatsLoading, userChatsError, potentialChats, potentialChatsLoading, createChat, currentChat, updateCurrentChat, messages, isMessagesLoading, messagesError, sendTextMessageError, editMessageError, sendTextMessage, onlineUsers, editMessage }}>
+        <ChatContext.Provider value={{ userChats, isUserChatsLoading, userChatsError, potentialChats, potentialChatsLoading, createChat, currentChat, updateCurrentChat, messages, isMessagesLoading, messagesError, sendTextMessageError, editMessageError, sendTextMessage, onlineUsers, editMessage, deleteMessage }}>
             {children}
         </ChatContext.Provider>
 

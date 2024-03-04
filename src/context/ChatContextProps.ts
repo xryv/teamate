@@ -7,7 +7,7 @@ export interface ChatContextProps {
     potentialChats: User[]
     potentialChatsLoading: boolean
     createChat: (firstId: number, secondId: number) => Promise<void>
-    currentChat: Chat
+    currentChat: Chat | null
     updateCurrentChat: (chat: Chat) => void
     messages: Message[] | null
     isMessagesLoading: boolean
@@ -17,6 +17,7 @@ export interface ChatContextProps {
     onlineUsers: User[] | null
     editMessage: (messageId: string, newText: string) => Promise<void>
     editMessageError: string | null
+    deleteMessage: (messageId: string) => Promise<void>
     // deleteChat: (chatId: string) => Promise<void>
 }
 export interface ChatContextProviderProps {

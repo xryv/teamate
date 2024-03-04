@@ -86,7 +86,7 @@ export function ChatBar({ placeholder, onClick, value, name, onChange, onEmojiSe
                             {value !== ''
                                 ? (
                                     <>
-                                        <StyledIconButton type='submit' onClick={onClick} barStyle={true} >
+                                        <StyledIconButton onClick={onClick} barStyle={true} >
                                             <SendHorizontal />
                                         </StyledIconButton>
 

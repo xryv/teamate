@@ -3,7 +3,7 @@ import { baseUrl, getRequest } from '../utils/services';
 import { type User, type Chat } from '../context/ChatContextProps';
 
 export interface UseFetchRecipientUserProps {
-    chat: Chat
+    chat: Chat | null | undefined
     user: User | null | undefined
 }
 
@@ -29,8 +29,10 @@ export const useFetchRecipientUser = ({ chat, user }: UseFetchRecipientUserProps
             }
             setRecipientUser(response as User);
         };
-        void getUser();
-    }, [recipientId]);
+        if (chat !== undefined) {
+            void getUser();
+        }
+    }, [recipientId, chat]);
 
     return { recipientUser };
 };
