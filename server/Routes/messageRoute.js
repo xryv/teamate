@@ -1,12 +1,17 @@
 import express from 'express';
-import { createMessage, getMessages, getMessage, deleteMessage, editMessage } from '../Controllers/messageController.js';
+import multer from 'multer';
+import { createMessage, getMessages, getMessage, deleteMessage, editMessage, deleteImageUrl } from '../Controllers/messageController.js';
 
 const router = express.Router();
 
-router.post('/', createMessage);
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
+router.post('/', upload.array('imageFiles'), createMessage);
 router.get('/:chatId', getMessages);
 router.get('/:id', getMessage);
 router.delete('/:id', deleteMessage);
+router.delete('/:id/imageUrls', deleteImageUrl);
 router.post('/:id', editMessage);
 
 export default router;

@@ -12,19 +12,20 @@ import MessageIcon from '@mui/icons-material/Message';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { SearchBar, SearchBarInDialog, SearchIconOnly, SearchUsers, StyledIconButton } from '../components/SearchBar/SearchBar';
 import { type Chat as ChatProps } from '../context/ChatContextProps';
+import { ArrowBack } from '@mui/icons-material';
+import { unreadNotificationsFunc } from '../utils/unreadNotifications';
 
 export const HeightContext = createContext(0);
 
 const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
     '& .MuiPaper-root': {
-        padding: theme.spacing(4),
+        padding: theme.spacing(2),
         background: 'linear-gradient(to bottom, #2b2965, #322666, #392367, #402067, #471b66)',
         transition: 'width 0.5s',
         color: theme.palette.common.white,
         width: '100%',
 
         [theme.breakpoints.up('md')]: {
-            padding: theme.spacing(2),
             width: '30rem',
         },
     },
@@ -34,8 +35,8 @@ const NewPages = (): JSX.Element => {
     const [open, setOpen] = useState(false);
     const [openSearchInDialog, setOpenSearchInDialog] = useState(false);
     const { user } = useAuthContext(['user']);
-    const { userChats, isUserChatsLoading, potentialChats, onlineUsers } = useChatContext(['userChats', 'isUserChatsLoading', 'potentialChats', 'onlineUsers']);
-
+    const { userChats, isUserChatsLoading, potentialChats, onlineUsers, notifications, markThisUserNotificationsAsRead } = useChatContext(['userChats', 'isUserChatsLoading', 'potentialChats', 'onlineUsers', 'notifications', 'markThisUserNotificationsAsRead']);
+    const unreadNotifications = unreadNotificationsFunc(notifications);
     const isMdUp = useMediaQuery(customTheme.breakpoints.up('sm'));
 
     const handleOpenSearchBarInDialog = (): void => {
@@ -75,13 +76,16 @@ const NewPages = (): JSX.Element => {
     return (
         <>
             <ThemeProvider theme={customTheme} >
-                <div className="flex flex-col flex-grow relative bg-gradient overflow-hidden" id="786:1948">
+
+                <Stack minHeight={'100vh'} overflow={'hidden'} sx={{
+                    backgroundImage: 'linear-gradient(to right, #0a3155, #172e60, #2e2966, #471d67, #5f0061)',
+                }} >
                     <Header />
                     <Box sx={{ width: isUserChatsLoading === true ? '100%' : '0px' }}>
                         <LinearProgress color='warning' />
                     </Box>
 
-                    <Box sx={{ display: 'flex' }}>
+                    <Stack flexGrow={1}>
                         <StyledSwipeableDrawer
                             open={open}
                             onClose={toggleDrawer(false)}
@@ -94,7 +98,19 @@ const NewPages = (): JSX.Element => {
                             role="show"
                             id="792:2151" >
                             <Stack spacing={4}>
-                                <SearchUsers data={potentialChats} loading={isUserChatsLoading} />
+                                <Stack direction={'row'} alignItems={'center'} spacing={3}>
+
+                                    <SearchUsers data={potentialChats} loading={isUserChatsLoading} />
+                                    <StyledIconButton
+                                        size="large"
+                                        role="button"
+                                        aria-haspopup="true"
+                                        aria-label="open drawer"
+                                        onClick={toggleDrawer(false)}
+                                    >
+                                        <ArrowBack />
+                                    </StyledIconButton>
+                                </Stack>
                                 <Stack maxHeight='calc(100vh - 200px)' overflow={'auto'} sx={{
                                     '&::-webkit-scrollbar': {
                                         width: '0.5rem',
@@ -114,14 +130,14 @@ const NewPages = (): JSX.Element => {
                                 }} >
                                     {userChats?.map((chat: ChatProps) => {
                                         return (
-                                            <UserChat onClick={toggleDrawer(false)} chat={chat} user={user} key={chat._id} onlineUsers={onlineUsers} />
+                                            <UserChat onClick={toggleDrawer(false)} chat={chat} user={user} key={chat._id} onlineUsers={onlineUsers} unreadNotifications={unreadNotifications} markThisUserNotificationsAsRead={markThisUserNotificationsAsRead} notifications={notifications}/>
                                         );
                                     })}
                                 </Stack>
                             </Stack>
 
                         </StyledSwipeableDrawer>
-                        <Stack sx={{ flexGrow: 1, height: `calc(100vh - ${68.5}px)` }} py={1} px={isMdUp ? 3 : 2}>
+                        <Stack flexGrow={1} py={1} px={isMdUp ? 3 : 2}>
                             <Stack direction='row' alignItems={'flex-start'} justifyContent={'space-between'}>
                                 <StyledIconButton
                                     size="large"
@@ -141,8 +157,8 @@ const NewPages = (): JSX.Element => {
                             </Stack>
                             <Chat />
                         </Stack>
-                    </Box>
-                </div>
+                    </Stack>
+                </Stack>
                 <SearchBarInDialog
                     placeholder="Search…"
                     inputProps={{ 'aria-label': 'search' }}

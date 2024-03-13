@@ -26,6 +26,11 @@ io.on('connection', (socket) => {
         const user = onlineUsers.find((u) => u.userId === message.recipientId);
         if (user !== undefined) {
             io.to(user.socketId).emit('getMessage', message);
+            io.to(user.socketId).emit('getNotification', {
+                senderId: message.senderId,
+                isRead: false,
+                date: new Date(),
+            });
         }
     });
 
@@ -47,6 +52,16 @@ io.on('connection', (socket) => {
         }
     });
 
+    // delete image url
+    socket.on('deleteImageUrl', (deletedImageUrl) => {
+        const { recipientId } = deletedImageUrl;
+        const user = onlineUsers.find((u) => u.userId === recipientId);
+        if (user !== undefined) {
+            io.to(user.socketId).emit('imageUrlDeleted', deletedImageUrl);
+        }
+    });
+
+    // disconnect
     socket.on('disconnect', () => {
         onlineUsers = onlineUsers.filter((user) => user.socketId !== socket.id);
         io.emit('getOnlineUsers', onlineUsers);

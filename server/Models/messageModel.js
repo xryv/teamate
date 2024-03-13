@@ -5,7 +5,10 @@ const messageSchema = new mongoose.Schema({
     senderId: String,
     text: String,
     read: Boolean,
-    imageUrl: String,
+    imageUrls: {
+        type: [String],
+        default: [],
+    },
 }, { timestamps: true });
 
 const MessageModel = mongoose.model('Message', messageSchema);

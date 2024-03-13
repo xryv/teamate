@@ -1,35 +1,61 @@
 import * as React from 'react';
-import { AppBar, Box, Toolbar, Typography, Badge, MenuItem, Menu, Button, Link, ThemeProvider, useMediaQuery, useTheme, Stack, Divider } from '@mui/material';
+import { AppBar, Box, Toolbar, Typography, Badge, MenuItem, Menu, Button, Link, ThemeProvider, useMediaQuery, useTheme, Stack, Divider, ListItemText, MenuList } from '@mui/material';
 import { AccountCircle, Mail as MailIcon, Notifications as NotificationsIcon, MoreVert as MoreIcon } from '@mui/icons-material';
 import LogoTeamateIcon from '../../Logo/LogoTeamateIcon';
 import { useAuthContext } from '../../../context/AuthContext';
 import customTheme from '../../../styles/customTheme';
 import { SearchBar, SearchBarInDialog, SearchIconOnly, StyledIconButton } from '../../SearchBar/SearchBar';
 import { BurgerIconUI } from '../../Button/Button';
+import { useChatContext } from '../../../context/ChatContext';
+import { unreadNotificationsFunc } from '../../../utils/unreadNotifications';
+import { formatDistanceToNow, isToday, isYesterday, format, differenceInDays } from 'date-fns';
+import { fr } from 'date-fns/locale';
 
 const pages = ['Accueil', 'Événement', 'Calendrier'];
 
 export default function Header(): JSX.Element {
     const { logoutUser } = useAuthContext();
     const { user } = useAuthContext(['user']);
+    const { notifications, userChats, allUsers, markAllNotificationsAsRead, markNotificationAsRead } = useChatContext(['notifications', 'userChats', 'allUsers', 'markAllNotificationsAsRead', 'markNotificationAsRead']);
+
+    const unreadNotifications = unreadNotificationsFunc(notifications);
+    const modifiedNotifications = notifications.map((n) => {
+        const sender = allUsers.find((u) => u._id === n.senderId);
+        return { ...n, senderName: sender?.username };
+    });
+
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-        null,
-    );
+    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);
+    const [notificationsAnchorEl, setNotificationsAnchorEl] = React.useState<null | HTMLElement>(null);
+
     const [open, setOpen] = React.useState(false);
     const [isHovered, setIsHovered] = React.useState(false);
     const [hoveredPage, setHoveredPage] = React.useState<string | null>(null);
-
     const isMdUp = useMediaQuery(customTheme.breakpoints.up('sm'));
-
-    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
-        React.useState<null | HTMLElement>(null);
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+    const notificationsOpen = Boolean(notificationsAnchorEl);
 
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+    function formatDate(date: Date | string): string {
+        const parsedDate = typeof date === 'string' ? new Date(date) : date;
+
+        if (isToday(parsedDate) || isYesterday(parsedDate) || differenceInDays(new Date(), parsedDate) <= 7) {
+            return `${format(parsedDate, 'HH:mm', { locale: fr })} - ${formatDistanceToNow(parsedDate, { addSuffix: true, locale: fr })}`;
+        } else if (differenceInDays(new Date(), parsedDate) <= 7) {
+            return `il y a ${formatDistanceToNow(parsedDate, { addSuffix: true, locale: fr })}`;
+        } else if (differenceInDays(new Date(), parsedDate) <= 30) {
+            return 'il y a plus d\'une semaine';
+        } else if (differenceInDays(new Date(), parsedDate) <= 365) {
+            return 'il y a plus d\'un mois';
+        } else {
+            return 'il y a plus d\'un an';
+        }
+    }
 
     const handleOpen = (): void => {
         if (isSmallScreen) {
@@ -41,13 +67,14 @@ export default function Header(): JSX.Element {
         setOpen(false);
     };
 
-    const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>): void => {
-        setAnchorEl(event.currentTarget);
+    const handleNoticationsMenuOpen = (event: React.MouseEvent<HTMLElement>): void => {
+        setNotificationsAnchorEl(event.currentTarget);
+        console.log('NotificationsMenuOpen');
     };
 
-    const handleCloseNavMenu = (): void => {
-        setAnchorElNav(null);
-        setIsHovered(false);
+    const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>): void => {
+        setAnchorEl(event.currentTarget);
+        console.log('ProfileMenuOpen');
     };
 
     const handleMobileMenuClose = (): void => {
@@ -56,15 +83,26 @@ export default function Header(): JSX.Element {
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>): void => {
         setAnchorElNav(event.currentTarget);
+        console.log('OpenNavMenu');
+        // nav
+    };
+
+    const handleCloseNavMenu = (): void => {
+        setAnchorElNav(null);
+        setIsHovered(false);
+        console.log('CloseNavMenu');
+        // nav
     };
 
     const handleMenuClose = (): void => {
         setAnchorEl(null);
         handleMobileMenuClose();
+        console.log('MenuClose');
     };
 
     const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>): void => {
         setMobileMoreAnchorEl(event.currentTarget);
+        console.log('MobileMenuOpen');
     };
 
     const menuId = 'primary-search-account-menu';
@@ -82,8 +120,21 @@ export default function Header(): JSX.Element {
                 horizontal: 'right',
             }}
             open={isMenuOpen}
-            onClose={handleMenuClose}
-            sx={{ '& .MuiMenu-paper': { backgroundColor: customTheme.palette.slate[300] } }}
+            onClose={() => {
+                setAnchorEl(null);
+                console.log('MenuClose');
+            }}
+            sx={{
+                '& .MuiMenu-paper': {
+                    backgroundColor: customTheme.palette.bluePV.dark,
+                    color: customTheme.palette.slate[300],
+                },
+                '& .MuiMenuItem-root': {
+                    '&:hover': {
+                        backgroundColor: customTheme.palette.transparant[100],
+                    },
+                },
+            }}
 
         >
             <MenuItem onClick={handleMenuClose}>{user?.username}</MenuItem>
@@ -112,8 +163,22 @@ export default function Header(): JSX.Element {
                 horizontal: 'right',
             }}
             open={isMobileMenuOpen}
-            onClose={handleMobileMenuClose}
-            sx={{ '& .MuiMenu-paper': { backgroundColor: customTheme.palette.slate[300] } }}
+            onClose={() => {
+                handleMobileMenuClose();
+                setAnchorEl(null);
+                console.log('MobileMenuClose');
+            }}
+            sx={{
+                '& .MuiMenu-paper': {
+                    backgroundColor: customTheme.palette.bluePV.dark,
+                    color: customTheme.palette.slate[300],
+                },
+                '& .MuiMenuItem-root': {
+                    '&:hover': {
+                        backgroundColor: customTheme.palette.transparant[100],
+                    },
+                },
+            }}
         >
             <MenuItem>
                 <StyledIconButton
@@ -127,13 +192,13 @@ export default function Header(): JSX.Element {
                 </StyledIconButton>
                 <p>Messages</p>
             </MenuItem>
-            <MenuItem>
+            <MenuItem onClick={handleNoticationsMenuOpen}>
                 <StyledIconButton
                     size="large"
-                    aria-label="show 17 new notifications"
+                    aria-label={`show ${unreadNotifications.length} new notifications`}
                     menuStyle={true}
                 >
-                    <Badge badgeContent={17} color="error">
+                    <Badge badgeContent={unreadNotifications.length} color="error">
                         <NotificationsIcon />
                     </Badge>
                 </StyledIconButton>
@@ -155,10 +220,147 @@ export default function Header(): JSX.Element {
         </Menu>
     );
 
+    const renderNoticationsMenu = (
+        <Menu
+            anchorEl={notificationsAnchorEl}
+            anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+            }}
+            id="notifications-menu"
+            keepMounted
+            transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+            }}
+            open={notificationsOpen}
+            onClose={() => {
+                setNotificationsAnchorEl(null);
+                console.log('NotificationsMenuClose');
+            }}
+            sx={{
+                '& .MuiMenu-paper': {
+                    backgroundColor: customTheme.palette.bluePV.dark,
+                    color: customTheme.palette.slate[300],
+                },
+                '& .MuiMenuItem-root': {
+                    '&:hover': {
+                        backgroundColor: customTheme.palette.transparant[100],
+                    },
+                },
+            }}
+        >
+            <MenuList color='warning' sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                width: '100%',
+                height: '100%',
+                padding: '0',
+                margin: '0',
+
+            }}>
+                <MenuItem sx={{
+                    color: customTheme.palette.slate[300],
+                    paddingY: '0.5rem',
+                }}>
+                    Notifications
+                </MenuItem>
+                {unreadNotifications.length > 0 && <MenuItem
+                    onClick={() => {
+                        markAllNotificationsAsRead(notifications);
+                        setNotificationsAnchorEl(null);
+                    }}
+                    sx={{
+                        color: customTheme.palette.slate[300],
+                    }}>
+                    Tout marquer comme lu
+                </MenuItem>}
+
+            </MenuList>
+            <Divider sx={{ backgroundColor: customTheme.palette.slate[300] }} />
+            {modifiedNotifications.map((n) => (
+                <MenuItem key={n._id} sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    marginBottom: '0.1rem',
+                    backgroundColor: customTheme.palette.orangePV.light,
+                    '&:hover': {
+                        backgroundColor: customTheme.palette.orangePV.main,
+                    },
+
+                }}>
+                    <ListItemText
+                        onClick={() => {
+                            markNotificationAsRead(n, userChats, user, notifications);
+                            setNotificationsAnchorEl(null);
+                        }}
+                        sx={{
+                            width: '100%',
+                            color: customTheme.palette.slate[300],
+                            paddingY: '0.5rem',
+
+                            '& .MuiListItemText-primary': {
+                                display: 'flex',
+                                flexDirection: 'row',
+                                justifyContent: 'space-between',
+                                alignItems: 'center',
+                                fontSize: '0.9rem',
+                                fontWeight: 600,
+                            },
+                            '& .MuiListItemText-secondary': {
+                                fontSize: '0.7rem',
+                                color: customTheme.palette.slate[300],
+
+                            },
+                        }}
+                        primary={
+                            <>
+                                <Typography sx={{ display: 'flex', flexDirection: 'row' }} noWrap >{n.senderName}
+                                    <Typography pl={0.5} noWrap>
+                                        vous a envoyé un message
+                                    </Typography>
+                                </Typography>
+                                <Badge color='warning' variant='dot' invisible={n.isRead}
+                                    sx={{
+                                        '& .MuiBadge-colorWarning': {
+                                            backgroundColor: '#FF7300',
+                                            color: '#FFFFE6',
+                                        },
+                                        '& .MuiBadge-badge': {
+                                            fontWeight: 'bold',
+                                            position: 'static',
+                                            transform: 'none',
+                                        },
+                                        '& .MuiBadge-dot': {
+                                            width: '0.75rem',
+                                            height: '0.75rem',
+                                            borderRadius: '50%',
+                                        },
+
+                                    }}
+                                />
+                            </>
+                        }
+                        secondary={formatDate(n.date)}
+                    />
+                </MenuItem>
+            ))}
+            {unreadNotifications.length < 1 && <MenuItem sx={{
+                color: customTheme.palette.slate[300],
+                paddingY: '1rem',
+            }}>
+                Aucune nouvelle notification
+            </MenuItem>}
+
+        </Menu>
+    );
+
     return (
         <>
             <ThemeProvider theme={theme}>
-                <Box sx={{ flexGrow: 1, height: 68.5 }}>
+                <Stack height={68.5}>
                     <AppBar position="static" color="transparent">
                         <Toolbar>
                             <Box sx={{ flexGrow: 1, py: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -187,8 +389,15 @@ export default function Header(): JSX.Element {
                                     onClose={handleCloseNavMenu}
                                     sx={{
                                         display: { xs: 'block', md: 'none' },
-                                        '& .MuiMenu-paper': { backgroundColor: customTheme.palette.slate[300] },
-
+                                        '& .MuiMenu-paper': {
+                                            backgroundColor: customTheme.palette.bluePV.dark,
+                                            color: customTheme.palette.slate[300],
+                                        },
+                                        '& .MuiMenuItem-root': {
+                                            '&:hover': {
+                                                backgroundColor: customTheme.palette.transparant[100],
+                                            },
+                                        },
                                     }}
                                 >
                                     {pages.map((page) => (
@@ -263,9 +472,10 @@ export default function Header(): JSX.Element {
                                 </StyledIconButton>
                                 <StyledIconButton
                                     size="large"
-                                    aria-label="show 17 new notifications"
+                                    aria-label={`show ${unreadNotifications.length} new notifications`}
+                                    onClick={handleNoticationsMenuOpen}
                                 >
-                                    <Badge badgeContent={17} color="error">
+                                    <Badge badgeContent={unreadNotifications.length} color="error">
                                         <NotificationsIcon />
                                     </Badge>
                                 </StyledIconButton>
@@ -295,7 +505,8 @@ export default function Header(): JSX.Element {
                     </AppBar>
                     {renderMobileMenu}
                     {renderMenu}
-                </Box>
+                    {renderNoticationsMenu}
+                </Stack>
                 <SearchBarInDialog
                     placeholder="Search…"
                     inputProps={{ 'aria-label': 'search' }}

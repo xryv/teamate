@@ -1,34 +1,31 @@
-import { type FormEvent, useState, type ChangeEvent, useEffect } from 'react';
+import { type FormEvent, useState, type ChangeEvent } from 'react';
 import { ChatList } from '../ChatList/ChatList';
 import { ChatBar } from '../ChatBar/ChatBar';
 import { useFetchRecipientUser } from '../../../hooks/useFetchRecipient';
 import { useChatContext } from '../../../context/ChatContext';
 import { useAuthContext } from '../../../context/AuthContext';
-// import { ToggleUser } from '../ToggleUser/ToggleUser';
 import { io } from 'socket.io-client';
 
 const socket = io('http://localhost:5001');
 
 export function Chat(): JSX.Element {
     const { user } = useAuthContext(['user']);
-    const { currentChat, messages, isMessagesLoading, sendTextMessage, editMessage, deleteMessage } = useChatContext(['currentChat', 'messages', 'isMessagesLoading', 'sendTextMessage', 'editMessage', 'deleteMessage']);
+    const { currentChat, messages, isMessagesLoading, sendTextMessage, editMessage, deleteMessage, deleteImageUrl } = useChatContext(['currentChat', 'messages', 'isMessagesLoading', 'sendTextMessage', 'editMessage', 'deleteMessage', 'deleteImageUrl']);
     const recipientUser = useFetchRecipientUser({ chat: currentChat, user });
     const [message, setMessage] = useState<string>('');
     const [editId, setEditId] = useState<string>('');
-
-    // console.log('message', message);
-    // console.log('editId', editId);
+    const [uploading, setUploading] = useState<boolean>(false);
+    const [selectedImages, setSelectedImages] = useState<string[]>([]);
+    const [errorImg, setErrorImg] = useState<string | null>(null);
+    const imgAllowed = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/svg', 'image/webp'];
 
     // useEffect(() => {
     //     if (editId !== '') {
     //         const recipientId = currentChat?.members.find((id) => id !== user?._id);
     //         const editedMessage = { messageId: editId, newText: message, recipientId };
-    //         console.log(editedMessage); // Ajout du console.log ici
     //         socket.emit('editMessage', editedMessage);
     //     }
     // }, [editId, message]);
-
-    // fonction qui gère la soumission du formulaire et l'ajout d'un message dans la liste des messages
 
     function handleClick(): void {
         if (editId !== '' && message.length > 0) {
@@ -39,19 +36,52 @@ export function Chat(): JSX.Element {
                 socket.emit('editMessage', editedMessage);
             }
             setEditId('');
-        } else if (editId === '' && message.length > 0) {
-            if (sendTextMessage != null) void sendTextMessage(message, user, currentChat?._id, setMessage);
+        } else if (editId === '' && user !== undefined && currentChat !== undefined && sendTextMessage != null) {
+            if (message.length > 0 || selectedImages.length > 0) {
+                void sendTextMessage(message, user, currentChat?._id, setMessage, selectedImages);
+            }
         }
         setMessage('');
+        setSelectedImages([]);
     }
     function handleSubmit(e: FormEvent): void {
         e.preventDefault();
         handleClick();
     }
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+        if (e.target.files !== null && e.target.files.length > 0) {
+            setUploading(true);
+            const filesArray = Array.from(e.target.files).filter((file) => {
+                // Vérifie si le fichier est une image et si sa taille est inférieure à 4 Mo et si le nombre d'images est inférieur à 4
+                if (!imgAllowed.includes(file.type)) {
+                    setErrorImg('Seuls les fichiers image de type jpeg, png, jpg, gif, svg et webp sont autorisés.');
+                    return false;
+                } else if (file.size > 4000000) {
+                    setErrorImg('La taille de l\'image ne doit pas dépasser 4 Mo.');
+                    return false;
+                } else if (selectedImages.length >= 4) {
+                    setErrorImg('Vous ne pouvez pas envoyer plus de 4 images à la fois.');
+                    return false;
+                }
+                setErrorImg(null);
+                return true;
+            }).map((file) =>
+                URL.createObjectURL(file),
+            );
 
-    // fonction qui gère le changement de l'input texte et l'ajout d'un message dans la liste des messages
+            setSelectedImages((prevImages) => prevImages.concat(filesArray));
+
+            Array.from(e.target.files).map(
+                (file) => {
+                    URL.revokeObjectURL(file as unknown as string);
+                    return null;
+                },
+            );
+            setUploading(false);
+        }
+    };
+
     function handleChange(e: ChangeEvent<HTMLInputElement> | { native: string }): void {
-        // si l'événement est un changement de texte, mettre à jour le message
         if ('target' in e) {
             setMessage(e.target.value);
         } else if ('native' in e) {
@@ -59,7 +89,6 @@ export function Chat(): JSX.Element {
         }
     }
 
-    // fonction qui renvoie le message à éditer dans le input texte
     function handleEdit(_id: string): void {
         const messageToEdit = messages?.find(msg => msg?._id === _id);
         if (messageToEdit !== undefined) {
@@ -77,9 +106,38 @@ export function Chat(): JSX.Element {
         socket.emit('deleteMessage', deletedMessage);
     }
 
+    function onDeleteImg(id: string, url: string): void {
+        if (deleteImageUrl != null) void deleteImageUrl(id, url);
+        const recipientId = currentChat?.members.find((idForDeleteImg) => idForDeleteImg !== user?._id);
+        if (messages != null) {
+            messages.forEach((msg) => {
+                if (msg.text == null && msg.imageUrls?.length === 1) {
+                    onDelete(msg._id);
+                }
+            });
+        }
+        const deletedImageUrl = { messageId: id, imageUrl: url, recipientId };
+        socket.emit('deleteImageUrl', deletedImageUrl);
+    }
+
+    function handleDeleteImage(url: string): void {
+        setSelectedImages((prevImages) => prevImages.filter((img) => img !== url));
+    }
+
+    // useEffect(() => {
+    //     if (messages != null) {
+    //         messages.forEach((msg) => {
+    //             if (msg.text == null && (msg.imageUrls == null || msg.imageUrls.length === 0)) {
+    //                 onDelete(msg._id);
+    //             }
+    //         });
+    //     }
+    // }, [messages]);
+
     return (
         <>
-            <ChatList list={messages} user={user} onEdit={handleEdit} recipientUser={recipientUser} isMessagesLoading={isMessagesLoading} onDelete={onDelete} />
-            <ChatBar onClick={handleClick} onsubmit={handleSubmit} onEmojiSelect={handleChange} placeholder='Message' value={message} name={`message from  ${user?.username}`} onChange={handleChange} />        </>
+            <ChatList list={messages} user={user} onEdit={handleEdit} recipientUser={recipientUser} isMessagesLoading={isMessagesLoading} onDelete={onDelete} onDeleteImg={onDeleteImg}/>
+            <ChatBar onClick={handleClick} onSubmit={handleSubmit} placeholder='Message' value={message} name={`message from  ${user?.username}`} onChange={handleChange} selectedImages={selectedImages} uploading={uploading} onChangeImages={handleImageChange} onClickDeleteImage={handleDeleteImage} error={errorImg} onEmojiSelect={handleChange}/>
+        </>
     );
 }

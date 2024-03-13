@@ -121,7 +121,7 @@ const IconButtonWithProps = ({ menuStyle, barStyle, burger, ...props }: StyledIc
 );
 
 export const StyledIconButton = styled(IconButtonWithProps)<StyledIconButtonProps>(({ theme, menuStyle, barStyle, burger }) => ({
-    color: menuStyle === true ? customTheme.palette.bluePV.main : customTheme.palette.slate[200],
+    color: menuStyle === true ? customTheme.palette.slate[200] : customTheme.palette.slate[200],
     borderRadius: barStyle === true ? '0.25rem' : '',
     padding: burger === true ? '1.5rem' : '',
     '&:hover': {

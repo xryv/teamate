@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { baseUrl, getRequest, postRequest } from '../utils/services';
-import { type ChatContextProviderProps, type ChatContextProps, type Chat, type User, type Message } from './ChatContextProps';
+import { baseUrl, getRequest, postRequest, deleteRequest } from '../utils/services';
+import { type ChatContextProviderProps, type ChatContextProps, type Chat, type User, type Message, type Notification, type MarkNotificationAsReadType } from './ChatContextProps';
 import { io } from 'socket.io-client';
 import { type Socket } from 'socket.io';
 
@@ -38,10 +38,15 @@ export const ChatContextProvider = ({ children, user }: ChatContextProviderProps
     const [socket, setSocket] = useState<Socket | null>(null);
     const [onlineUsers, setOnlineUsers] = useState<User[]>([]);
     const [editMessageError, setEditMessageError] = useState<string | null>(null);
+    const [isMessageLoading, setIsMessageLoading] = useState<boolean>(false);
+    const [notifications, setNotifications] = useState<Notification[]>([]);
+    const [allUsers, setAllUsers] = useState<User[]>([]);
+
+    // console.log('notifications', notications);
 
     useEffect(() => {
         const newSocket = io('http://localhost:5001');
-        setSocket(newSocket);
+        setSocket(newSocket as unknown as Socket);
         return () => {
             newSocket.disconnect();
         };
@@ -99,19 +104,53 @@ export const ChatContextProvider = ({ children, user }: ChatContextProviderProps
         };
     }, [socket, messages]);
 
-    // receive new message
+    // Listen for image url deletions
+    useEffect(() => {
+        if (socket == null) return;
+
+        const handleDeleteImageUrl = (deletedImageUrl: { messageId: string, imageUrl: string }): void => {
+            const { messageId, imageUrl } = deletedImageUrl;
+            setMessages((prevMessages) =>
+                prevMessages.map((message) =>
+                    message._id === messageId ? { ...message, imageUrls: message.imageUrls?.filter((url) => url !== imageUrl) } : message,
+                ),
+            );
+        };
+
+        socket.on('imageUrlDeleted', handleDeleteImageUrl);
+
+        return () => {
+            socket.off('imageUrlDeleted', handleDeleteImageUrl);
+        };
+    }, [socket, messages]);
+
+    // receive new message and notify user
     useEffect(() => {
         if (socket != null) {
             const messageListener = (res: Message): void => {
                 if (res.chatId === currentChat?._id) {
-                    setMessages((prev) => [...(prev ?? []), res]);
+                    setMessages((prev) => [res, ...(prev ?? [])]);
                 }
             };
 
             socket.on('getMessage', messageListener);
 
+            socket.on('getNotification', (res: Notification) => {
+                const isChatOpen = currentChat?.members.some(id => id === res.senderId);
+
+                if (isChatOpen === true) {
+                    setNotifications((prev) => [{ ...res, isRead: true }, ...(prev ?? [])]);
+                } else {
+                    setNotifications((prev) => [{ ...res, isRead: false }, ...(prev ?? [])]);
+                }
+            });
+
             return () => {
                 socket.off('getMessage', messageListener);
+                socket.off('getNotification', () => {
+                    console.log('Notification listener removed');
+                },
+                );
             };
         }
     }, [socket, currentChat]);
@@ -140,6 +179,7 @@ export const ChatContextProvider = ({ children, user }: ChatContextProviderProps
                 return !isChatCreated;
             });
             setPotentialChats(pChats as User[]);
+            setAllUsers(response as User[]);
         };
         void getUsers();
     }, [userChats]);
@@ -164,7 +204,7 @@ export const ChatContextProvider = ({ children, user }: ChatContextProviderProps
             }
         };
         void getUserChats();
-    }, [user]);
+    }, [user, notifications]);
 
     // Fetch messages
     useEffect(() => {
@@ -181,7 +221,7 @@ export const ChatContextProvider = ({ children, user }: ChatContextProviderProps
                     console.log('response', response);
                     return;
                 }
-                setMessages(response as Message[]);
+                setMessages((response as Message[]).reverse());
             }
         };
 
@@ -189,25 +229,49 @@ export const ChatContextProvider = ({ children, user }: ChatContextProviderProps
     }, [currentChat]);
 
     // Send text message
-    const sendTextMessage = useCallback(async (textMessage: string, sender, currentChatId, setTextMessage) => {
-        if (textMessage == null) return;
-        if (currentChatId !== undefined) {
-            const response = await postRequest(
-                `${baseUrl}/messages`,
-                JSON.stringify({
-                    chatId: currentChatId,
-                    senderId: sender?._id,
-                    text: textMessage,
-                }),
-            );
-            if (response.error === true) {
-                console.log('Error sending message', response);
-                setSendTextMessageError(response as unknown as string);
-                return;
+    const sendTextMessage = useCallback(async (textMessage: string, sender, currentChatId, setTextMessage, selectedImages: string[]) => {
+        setIsMessageLoading(true);
+        // Si ni le texte ni les images ne sont fournis, retournez immédiatement
+        if ((textMessage === null || textMessage) === '' && (selectedImages === null || selectedImages.length === 0)) return;
+        if (currentChatId === null) return;
+
+        const formData = new FormData();
+        formData.append('chatId', (currentChatId as unknown as string));
+        if (sender?._id !== undefined) {
+            formData.append('senderId', (sender._id as unknown as string));
+        }
+
+        if (textMessage !== null && textMessage !== '') {
+            formData.append('text', textMessage);
+        }
+
+        if (selectedImages !== null && selectedImages.length > 0) {
+            for (const [index, imageUrl] of selectedImages.entries()) {
+                const response = await fetch(imageUrl);
+                const imageBlob = await response.blob();
+                formData.append('imageFiles', imageBlob, `image${index}`);
             }
-            setNewMessage(response as Message);
-            setMessages((prev) => [...(prev ?? []), response as Message]);
+        }
+
+        try {
+            const response = await fetch(`${baseUrl}/messages`, {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (!response.ok) {
+                throw new Error('Error sending message');
+            }
+
+            const responseData = await response.json();
+
+            setNewMessage(responseData as Message);
+            setMessages((prev) => [responseData as Message, ...(prev ?? [])]);
             setTextMessage('');
+            setIsMessageLoading(false);
+        } catch (error) {
+            console.error(error);
+            setSendTextMessageError('Error sending message');
         }
     }, []);
 
@@ -251,14 +315,11 @@ export const ChatContextProvider = ({ children, user }: ChatContextProviderProps
 
     // Delete Message
     const deleteMessage = useCallback(async (messageId: string) => {
-        const response = await fetch(
-            `${baseUrl}/messages/${messageId}`,
-            {
-                method: 'DELETE',
-            },
-        );
-        if (!response.ok) {
-            console.log('Error deleting message', response);
+        console.log('messageId', messageId);
+        const response = await deleteRequest(`${baseUrl}/messages/${messageId}`);
+
+        if (response.error === true) {
+            console.log('Error deleting message', response.message);
             return;
         }
         setMessages((prev) => {
@@ -267,8 +328,71 @@ export const ChatContextProvider = ({ children, user }: ChatContextProviderProps
         });
     }, []);
 
+    const deleteImageUrl = async (messageId: string, url: string): Promise<void> => {
+        const response = await deleteRequest(
+            `${baseUrl}/messages/${messageId}/imageUrls`,
+            { imageUrl: url },
+            { 'Content-Type': 'application/json' },
+        );
+
+        console.log('url', url);
+        console.log('messageId', messageId);
+
+        if (response.error === true) {
+            console.log('Error deleting image url', response.message);
+            return;
+        }
+
+        setMessages((prev) => {
+            if (prev === null) return prev;
+            return prev.map((message) => message._id === messageId ? { ...message, imageUrls: message.imageUrls?.filter((imageUrl) => imageUrl !== url) } : message);
+        });
+    };
+
+    const markAllNotificationsAsRead = useCallback((notif: Notification[] | null | undefined): void => {
+        const mNotifications = notif?.map((n) => ({ ...n, isRead: true }));
+        setNotifications(mNotifications as Notification[]);
+    }, []);
+
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    const markNotificationAsRead: MarkNotificationAsReadType = useCallback((n, userChats, user, notications): void => {
+        // find chat to open
+        const desiredChat = userChats?.find((chat) => {
+            const chatMembers = [user?._id, n.senderId];
+            const isDesiredChat = chat?.members.every((member) => chatMembers.includes(member));
+            return isDesiredChat;
+        });
+        // mark notification as read
+        const mNotifications = notications?.map((el) => {
+            if (n.senderId === el.senderId) {
+                return { ...n, isRead: true };
+            } else {
+                return el;
+            }
+        });
+
+        // eslint-disable-next-line @typescript-eslint/non-nullable-type-assertion-style
+        updateCurrentChat(desiredChat as Chat);
+        // eslint-disable-next-line @typescript-eslint/non-nullable-type-assertion-style
+        setNotifications(mNotifications as Notification[]);
+    }, []);
+
+    const markThisUserNotificationsAsRead = useCallback((thisUserNotifications, notif) => {
+        // mark notification as read
+        const mNotifications = notif?.map((el: Notification) => {
+            let notification = el;
+            thisUserNotifications?.forEach((n: Notification) => {
+                if (n.senderId === el.senderId) {
+                    notification = { ...n, isRead: true };
+                }
+            });
+            return notification;
+        });
+        setNotifications(mNotifications as Notification[]);
+    }, []);
+
     return (
-        <ChatContext.Provider value={{ userChats, isUserChatsLoading, userChatsError, potentialChats, potentialChatsLoading, createChat, currentChat, updateCurrentChat, messages, isMessagesLoading, messagesError, sendTextMessageError, editMessageError, sendTextMessage, onlineUsers, editMessage, deleteMessage }}>
+        <ChatContext.Provider value={{ userChats, isUserChatsLoading, userChatsError, potentialChats, potentialChatsLoading, createChat, currentChat, updateCurrentChat, messages, isMessagesLoading, messagesError, sendTextMessageError, editMessageError, sendTextMessage, onlineUsers, editMessage, deleteMessage, isMessageLoading, deleteImageUrl, notifications, allUsers, markAllNotificationsAsRead, markNotificationAsRead, markThisUserNotificationsAsRead }}>
             {children}
         </ChatContext.Provider>
 

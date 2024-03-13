@@ -18,7 +18,13 @@ export interface ChatContextProps {
     editMessage: (messageId: string, newText: string) => Promise<void>
     editMessageError: string | null
     deleteMessage: (messageId: string) => Promise<void>
-    // deleteChat: (chatId: string) => Promise<void>
+    isMessageLoading: boolean
+    deleteImageUrl: (messageId: string, imageUrl: string) => Promise<void>
+    notifications: Notification[] | null
+    allUsers: User[]
+    markAllNotificationsAsRead: (notif: Notification[] | null | undefined) => void
+    markNotificationAsRead: MarkNotificationAsReadType
+    markThisUserNotificationsAsRead: (thisUserNotifications: Notification[] | undefined, notifications: Notification[] | null | undefined) => void
 }
 export interface ChatContextProviderProps {
     children: ReactNode
@@ -47,8 +53,21 @@ export interface Message {
     text: string
     createdAt: string
     updatedAt: string
-    image?: string
+    imageUrls?: string[]
     // Ajoutez d'autres propriétés du message ici
+}
+
+export interface Notification {
+    _id: string
+    senderId: string
+    recipientId: string
+    chatId: string
+    text: string
+    createdAt: string
+    updatedAt: string
+    isRead: boolean
+    date: string | Date
+    // Ajoutez d'autres propriétés de la notification ici
 }
 
 export interface SendTextMessageProps {
@@ -58,4 +77,6 @@ export interface SendTextMessageProps {
     setTextMessage: React.Dispatch<React.SetStateAction<string>>
 }
 
-export type SendTextMessageFunction = (textMessage: string, sender: User | null | undefined, currentChatId: Chat | string | undefined, setTextMessage: React.Dispatch<React.SetStateAction<string>>) => Promise<void>;
+export type MarkNotificationAsReadType = (n: Notification, userChats: Chat[] | null | undefined, user: User | null | undefined, notifications: Notification[] | null | undefined) => void;
+
+export type SendTextMessageFunction = (textMessage: string, sender: User | null | undefined, currentChatId: Chat | string | undefined, setTextMessage: React.Dispatch<React.SetStateAction<string>>, selectedImages: string[]) => Promise<void>;

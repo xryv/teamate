@@ -9,7 +9,7 @@ type ChatListContainerProps = {
 } & React.HTMLAttributes<HTMLElement>;
 
 export const ChatListContainer = styled.ul<ChatListContainerProps>`
-${tw`relative flex flex-col  p-4 scroll-pt-4  md:p-6 md:scroll-pt-8 overflow-y-auto  scroll-smooth  text-slate-300 `}
+${tw`relative flex flex-col-reverse  p-4 scroll-pt-4  md:p-6 md:scroll-pt-8 overflow-y-auto  scroll-smooth  text-slate-300 `}
 max-height: calc(100vh - ${props => props.$heightStack}px - 68.5px - 12rem);
 &::-webkit-scrollbar {
     width: 0.5rem;
@@ -46,7 +46,7 @@ export const StyledTime = styled.small<TimeProps>`
     ${tw`text-xs px-2 py-1 break-normal`}
     ${props => props.$image === true
         ? css`
-        ${tw`absolute right-0 bottom-0 bg-noirTransparent-300 rounded-tl-xl`}
+        ${tw`absolute right-0 top-0 bg-noirTransparent-300 rounded-bl-xl`}
     `
         : tw`h-full`}
 `;
