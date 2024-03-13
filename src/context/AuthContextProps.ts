@@ -11,11 +11,11 @@ export interface User {
 }
 
 export interface RegisterInfo {
-    _id: string
-    username: string
-    email: string
-    password: string
-    token: string
+    _id?: string
+    username?: string
+    email?: string
+    password?: string
+    token?: string
 }
 
 export interface AuthContextInterface {

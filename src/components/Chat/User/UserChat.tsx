@@ -3,6 +3,7 @@ import customTheme from '../../../styles/customTheme';
 import { type UseFetchRecipientUserProps, useFetchRecipientUser } from '../../../hooks/useFetchRecipient';
 import { useChatContext } from '../../../context/ChatContext';
 import { type User } from '../../../context/AuthContextProps';
+import { type MarkThisUserNotificationsAsReadType, type Chat, type Notification } from '../../../context/ChatContextProps';
 import { useFetchLastestMessage } from '../../../hooks/useFetchLastestMessage';
 import { formatDistanceToNow, isToday, isYesterday, format, differenceInDays } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -41,12 +42,12 @@ interface UserChatProps extends UseFetchRecipientUserProps {
     onlineUsers: User[] | null | undefined
     unreadNotifications: Notification[] | null | undefined
     notifications: Notification[] | null | undefined
-    markThisUserNotificationsAsRead: (notif: Notification[] | null | undefined) => void
+    markThisUserNotificationsAsRead: MarkThisUserNotificationsAsReadType
 }
 export const UserChat = ({ chat, onClick, user, onlineUsers, unreadNotifications, markThisUserNotificationsAsRead, notifications }: UserChatProps): JSX.Element => {
     const { recipientUser } = useFetchRecipientUser({ chat, user });
     const { updateCurrentChat } = useChatContext(['updateCurrentChat']);
-    const { lastestMessage } = useFetchLastestMessage(chat);
+    const { lastestMessage } = useFetchLastestMessage(chat as unknown as Chat);
 
     const thisUserNotifications = unreadNotifications?.filter((notif) => notif.senderId === recipientUser?._id);
 
@@ -83,7 +84,7 @@ export const UserChat = ({ chat, onClick, user, onlineUsers, unreadNotifications
                         cursor: 'pointer',
                     }}
                     onClick={() => {
-                        updateCurrentChat(chat);
+                        updateCurrentChat(chat as unknown as Chat);
                         onClick();
                         if (thisUserNotifications?.length !== 0) {
                             markThisUserNotificationsAsRead(thisUserNotifications, notifications);

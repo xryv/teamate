@@ -1,5 +1,5 @@
 import { type ReactElement, createContext, useState, useCallback, type SetStateAction, useEffect, useContext } from 'react';
-import { type PostRequestResponse, baseUrl, postRequest } from '../utils/services';
+import { baseUrl, postRequest } from '../utils/services';
 import { type User, type AuthContextInterface, type RegisterInfo, type LoginInfo } from './AuthContextProps';
 
 // JE COMPREND RIEN AUX TYPES DE CETTE FONCTION

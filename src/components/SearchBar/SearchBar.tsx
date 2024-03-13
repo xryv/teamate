@@ -253,9 +253,13 @@ export function SearchUsers({ data, loading }: SearchUsersProps): JSX.Element {
                     setOpen(false);
                     setHasStartedTyping(false);
                 }}
-                onChange={(_, value) => {
-                    if (value?._id !== undefined) {
-                        void createChat(user?._id, value._id);
+                onChange={(_, value: unknown) => {
+                    const typedValue = value as { _id?: string } | null;
+                    if (typedValue != null && user?._id !== undefined && typedValue._id !== undefined) {
+                        const createChatFn = createChat as ((userId: string, valueId: string) => void) | undefined;
+                        if (createChatFn !== undefined) {
+                            createChatFn(user?._id, typedValue._id);
+                        }
                     }
                 }}
                 isOptionEqualToValue={(option, value) => (option as OptionType)._id !== (value as OptionType)._id }
@@ -282,7 +286,7 @@ export function SearchUsers({ data, loading }: SearchUsersProps): JSX.Element {
                             ),
                             endAdornment: (
                                 <Fragment>
-                                    {loading === true ? <CircularProgress color="orangePV" size={20} /> : null}
+                                    {loading === true ? <CircularProgress color={customTheme.palette.orangePV.dark} size={20} /> : null}
                                     {params.InputProps.endAdornment}
                                 </Fragment>
                             ),

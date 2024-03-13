@@ -19,8 +19,8 @@ export default function Header(): JSX.Element {
     const { notifications, userChats, allUsers, markAllNotificationsAsRead, markNotificationAsRead } = useChatContext(['notifications', 'userChats', 'allUsers', 'markAllNotificationsAsRead', 'markNotificationAsRead']);
 
     const unreadNotifications = unreadNotificationsFunc(notifications);
-    const modifiedNotifications = notifications.map((n) => {
-        const sender = allUsers.find((u) => u._id === n.senderId);
+    const modifiedNotifications = notifications?.map((n) => {
+        const sender = allUsers?.find((u) => u._id === n.senderId);
         return { ...n, senderName: sender?.username };
     });
 
@@ -268,7 +268,9 @@ export default function Header(): JSX.Element {
                 </MenuItem>
                 {unreadNotifications.length > 0 && <MenuItem
                     onClick={() => {
-                        markAllNotificationsAsRead(notifications);
+                        if (markAllNotificationsAsRead !== undefined && notifications !== undefined) {
+                            markAllNotificationsAsRead(notifications);
+                        }
                         setNotificationsAnchorEl(null);
                     }}
                     sx={{
@@ -279,7 +281,7 @@ export default function Header(): JSX.Element {
 
             </MenuList>
             <Divider sx={{ backgroundColor: customTheme.palette.slate[300] }} />
-            {modifiedNotifications.map((n) => (
+            {modifiedNotifications?.map((n) => (
                 <MenuItem key={n._id} sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -293,7 +295,9 @@ export default function Header(): JSX.Element {
                 }}>
                     <ListItemText
                         onClick={() => {
-                            markNotificationAsRead(n, userChats, user, notifications);
+                            if (markNotificationAsRead !== undefined && userChats !== undefined) {
+                                markNotificationAsRead(n, userChats, user, notifications);
+                            }
                             setNotificationsAnchorEl(null);
                         }}
                         sx={{

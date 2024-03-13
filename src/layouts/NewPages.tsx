@@ -130,7 +130,16 @@ const NewPages = (): JSX.Element => {
                                 }} >
                                     {userChats?.map((chat: ChatProps) => {
                                         return (
-                                            <UserChat onClick={toggleDrawer(false)} chat={chat} user={user} key={chat._id} onlineUsers={onlineUsers} unreadNotifications={unreadNotifications} markThisUserNotificationsAsRead={markThisUserNotificationsAsRead} notifications={notifications}/>
+                                            <UserChat
+                                                onClick={toggleDrawer(false)}
+                                                chat={chat}
+                                                user={user}
+                                                key={chat._id}
+                                                onlineUsers={onlineUsers}
+                                                unreadNotifications={unreadNotifications}
+                                                markThisUserNotificationsAsRead={markThisUserNotificationsAsRead ?? (() => {})}
+                                                notifications={notifications}
+                                            />
                                         );
                                     })}
                                 </Stack>

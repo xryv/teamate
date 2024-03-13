@@ -392,7 +392,7 @@ export const ChatContextProvider = ({ children, user }: ChatContextProviderProps
     }, []);
 
     return (
-        <ChatContext.Provider value={{ userChats, isUserChatsLoading, userChatsError, potentialChats, potentialChatsLoading, createChat, currentChat, updateCurrentChat, messages, isMessagesLoading, messagesError, sendTextMessageError, editMessageError, sendTextMessage, onlineUsers, editMessage, deleteMessage, isMessageLoading, deleteImageUrl, notifications, allUsers, markAllNotificationsAsRead, markNotificationAsRead, markThisUserNotificationsAsRead }}>
+        <ChatContext.Provider value={{ userChats, isUserChatsLoading, userChatsError, potentialChats, potentialChatsLoading, createChat, currentChat, updateCurrentChat, messages, isMessagesLoading, messagesError, sendTextMessageError, editMessageError, sendTextMessage, onlineUsers, editMessage, deleteMessage, isMessageLoading, deleteImageUrl, notifications, allUsers, markAllNotificationsAsRead, markNotificationAsRead, markThisUserNotificationsAsRead, newMessage }}>
             {children}
         </ChatContext.Provider>
 

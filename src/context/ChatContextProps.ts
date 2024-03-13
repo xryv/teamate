@@ -24,11 +24,13 @@ export interface ChatContextProps {
     allUsers: User[]
     markAllNotificationsAsRead: (notif: Notification[] | null | undefined) => void
     markNotificationAsRead: MarkNotificationAsReadType
-    markThisUserNotificationsAsRead: (thisUserNotifications: Notification[] | undefined, notifications: Notification[] | null | undefined) => void
+    markThisUserNotificationsAsRead: MarkThisUserNotificationsAsReadType
+
+    newMessage: Message | null
 }
 export interface ChatContextProviderProps {
     children: ReactNode
-    user: User | null
+    user: User | null | undefined
 
 }
 export interface User {
@@ -78,5 +80,5 @@ export interface SendTextMessageProps {
 }
 
 export type MarkNotificationAsReadType = (n: Notification, userChats: Chat[] | null | undefined, user: User | null | undefined, notifications: Notification[] | null | undefined) => void;
-
+export type MarkThisUserNotificationsAsReadType = (notif: Notification[] | null | undefined, notif2: Notification[] | null | undefined) => void;
 export type SendTextMessageFunction = (textMessage: string, sender: User | null | undefined, currentChatId: Chat | string | undefined, setTextMessage: React.Dispatch<React.SetStateAction<string>>, selectedImages: string[]) => Promise<void>;
